@@ -228,6 +228,98 @@
       margin-bottom: 16px;
     }
 
+    .top-chatters-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .chatter-card {
+      background: #1a1a2b;
+      border: 2px solid #000;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .chatter-head {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      background: #202036;
+      color: white;
+      font-family: monospace;
+      display: grid;
+      grid-template-columns: 54px 1fr 150px;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      text-align: left;
+    }
+
+    .chatter-head:hover {
+      background: #2b2b49;
+    }
+
+    .chatter-rank {
+      color: var(--yellow);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .chatter-name {
+      color: white;
+      font-size: 17px;
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    .chatter-words {
+      text-align: right;
+      color: var(--pink);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .chatter-extra {
+      display: none;
+      padding: 12px 14px 14px;
+      background: #151525;
+      border-top: 1px solid var(--border);
+    }
+
+    .chatter-card.open .chatter-extra {
+      display: block;
+    }
+
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .extra-stat {
+      background: #222238;
+      border: 1px solid #34344b;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .extra-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .extra-value {
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 900;
+      margin-top: 4px;
+    }
+
     .leaderboard {
       display: grid;
       gap: 10px;
@@ -328,7 +420,8 @@
     }
 
     @media (max-width: 850px) {
-      .top3 {
+      .top3,
+      .top-chatters-grid {
         grid-template-columns: 1fr;
       }
 
@@ -339,6 +432,19 @@
       .value {
         grid-column: 2;
         text-align: left;
+      }
+
+      .chatter-head {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .chatter-words {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .extra-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -360,7 +466,7 @@
     </section>
 
     <div class="button-bar">
-      <button class="view-btn active" onclick="showPanel('chatters', this)">Top 30 Chatters</button>
+      <button class="view-btn active" onclick="showPanel('chatters', this)">Top Chatter</button>
       <button class="view-btn" onclick="showPanel('degeneracy', this)">Degeneracy</button>
       <button class="view-btn" onclick="showPanel('lol', this)">LOL Lords</button>
       <button class="view-btn" onclick="showPanel('links', this)">Link Gremlins</button>
@@ -396,9 +502,12 @@
     </section>
 
     <section class="panel active" id="panel-chatters">
-      <h2>Top 30 Chatters</h2>
-      <div class="panel-note">ranked by words spoken</div>
-      <div class="leaderboard" id="chatters-list">loading...</div>
+      <h2>Top Chatter</h2>
+      <div class="panel-note">top 30 ranked by word count — click a name for the receipts</div>
+      <div class="top-chatters-grid">
+        <div id="chatters-left"></div>
+        <div id="chatters-right"></div>
+      </div>
     </section>
 
     <section class="panel" id="panel-degeneracy">
@@ -461,6 +570,11 @@
       button.classList.add('active');
     }
 
+    function toggleChatter(button) {
+      const card = button.closest('.chatter-card');
+      card.classList.toggle('open');
+    }
+
     function fmt(n) {
       return Number(n || 0).toLocaleString();
     }
@@ -494,6 +608,43 @@
           <div class="value">${fmt(u[field])} ${label}</div>
         </div>
       `).join('');
+    }
+
+    function makeChatterCards(users, startRank) {
+      return users.map((u, index) => {
+        const rank = startRank + index;
+
+        return `
+          <div class="chatter-card">
+            <button class="chatter-head" onclick="toggleChatter(this)">
+              <div class="chatter-rank">#${rank}</div>
+              <div class="chatter-name">${u.name}</div>
+              <div class="chatter-words">${fmt(u.words)} words</div>
+            </button>
+
+            <div class="chatter-extra">
+              <div class="extra-grid">
+                <div class="extra-stat">
+                  <div class="extra-label">joins</div>
+                  <div class="extra-value">${fmt(u.joins)}</div>
+                </div>
+                <div class="extra-stat">
+                  <div class="extra-label">lols</div>
+                  <div class="extra-value">${fmt(u.lol)}</div>
+                </div>
+                <div class="extra-stat">
+                  <div class="extra-label">links</div>
+                  <div class="extra-value">${fmt(u.links)}</div>
+                </div>
+                <div class="extra-stat">
+                  <div class="extra-label">degen</div>
+                  <div class="extra-value">${fmt(u.degeneracy)}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
     function fillTop3(users) {
@@ -533,8 +684,12 @@
 
         fillTop3(byWords.slice(0, 3));
 
-        document.getElementById('chatters-list').innerHTML =
-          makeRows(byWords.slice(0, 30), 'words', 'words');
+        const top30 = byWords.slice(0, 30);
+        document.getElementById('chatters-left').innerHTML =
+          makeChatterCards(top30.slice(0, 15), 1);
+
+        document.getElementById('chatters-right').innerHTML =
+          makeChatterCards(top30.slice(15, 30), 16);
 
         document.getElementById('degeneracy-list').innerHTML =
           makeRows(byDegeneracy.slice(0, 30), 'degeneracy', 'deg');
