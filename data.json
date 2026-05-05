@@ -1,14 +1,33 @@
 {
-  "channels": {
-    "#truth-seekers": 1234,
-    "#degenerates": 567
+  "bot": {
+    "name": "girl",
+    "site_name": "GirlServ",
+    "tagline": "chanstats, grudges, favorites, chaos, and receipts"
   },
+  "channels": [
+    {
+      "name": "#truth-seekers",
+      "messages": 0,
+      "joins": 0,
+      "top_user": "coming soon"
+    }
+  ],
   "top_users": [
-    { "name": "dead_girl", "messages": 999 },
-    { "name": "someone_else", "messages": 420 }
+    {
+      "name": "dead_girl",
+      "messages": 0,
+      "vibe": "creator"
+    }
   ],
-  "annoying": [
-    { "name": "random_user", "flags": 37 }
-  ],
-  "status": "online in #truth-seekers"
+  "girl_stats": {
+    "tokens_today": 0,
+    "tokens_yesterday": 0,
+    "tokens_all_time": 0,
+    "last_seen": "coming soon"
+  },
+  "redrose_stats": {
+    "links_seen": 0,
+    "titles_grabbed": 0,
+    "last_update": "coming soon"
+  }
 }
