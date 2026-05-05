@@ -9,20 +9,14 @@
       font-family: monospace;
       padding: 20px;
     }
-    h1 {
-      color: #ff4d6d;
-    }
-    a {
-      color: #8be9fd;
-    }
+    h1 { color: #ff4d6d; }
+    a { color: #8be9fd; }
     .box {
       border: 1px solid #333;
       padding: 15px;
       margin-top: 15px;
     }
-    .user {
-      color: #8be9fd;
-    }
+    .user { color: #8be9fd; }
   </style>
 </head>
 <body>
@@ -33,19 +27,36 @@
 
 <div class="box">
   <h2>Top Users</h2>
-  <p><span class="user">dead_girl</span> — 999 messages</p>
-  <p><span class="user">someone_else</span> — 420 messages</p>
+  <div id="top-users"></div>
 </div>
 
 <div class="box">
   <h2>Most Annoying</h2>
-  <p><span class="user">random_user</span> — flagged 37 times</p>
+  <div id="annoying"></div>
 </div>
 
 <div class="box">
   <h2>Status</h2>
-  <p>online in #truth-seekers</p>
+  <p id="status"></p>
 </div>
+
+<script>
+fetch('data.json')
+  .then(res => res.json())
+  .then(data => {
+    const top = document.getElementById('top-users');
+    data.top_users.forEach(u => {
+      top.innerHTML += `<p><span class="user">${u.name}</span> — ${u.messages} messages</p>`;
+    });
+
+    const annoying = document.getElementById('annoying');
+    data.annoying.forEach(u => {
+      annoying.innerHTML += `<p><span class="user">${u.name}</span> — ${u.flags} flags</p>`;
+    });
+
+    document.getElementById('status').innerText = data.status;
+  });
+</script>
 
 </body>
 </html>
