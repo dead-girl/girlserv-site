@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GirlServ</title>
+
   <style>
     :root {
-      --bg: #0a0a0f;
-      --panel: #141420;
-      --panel-2: #1b1b2b;
-      --ink: #f3f3f7;
-      --muted: #a8a8bb;
-      --pink: #ff4d8d;
-      --hotpink: #ff2f6d;
-      --blue: #58d6ff;
-      --yellow: #ffe066;
-      --green: #7cff8f;
-      --purple: #c28cff;
-      --border: #2c2c40;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg: #07070d;
+      --panel: #151521;
+      --panel2: #1d1d2f;
+      --text: #f4f4f8;
+      --muted: #a7a7b8;
+      --pink: #ff3f8f;
+      --blue: #4fdcff;
+      --yellow: #ffe45c;
+      --green: #78ff91;
+      --purple: #bf8cff;
+      --orange: #ff9f43;
+      --border: #303047;
     }
 
     * {
@@ -27,80 +27,64 @@
 
     body {
       margin: 0;
-      font-family: monospace;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,77,141,.12), transparent 20%),
-        radial-gradient(circle at 80% 10%, rgba(88,214,255,.10), transparent 20%),
-        radial-gradient(circle at 50% 80%, rgba(194,140,255,.10), transparent 25%),
-        repeating-linear-gradient(
-          135deg,
-          #0a0a0f 0px,
-          #0a0a0f 18px,
-          #0d0d14 18px,
-          #0d0d14 36px
-        );
-      min-height: 100vh;
       padding: 18px;
+      min-height: 100vh;
+      font-family: monospace;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255, 63, 143, 0.18), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(79, 220, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 50% 90%, rgba(191, 140, 255, 0.13), transparent 30%),
+        #07070d;
     }
 
     .wrap {
-      max-width: 1280px;
-      margin: 0 auto;
+      max-width: 1250px;
+      margin: auto;
     }
 
     .hero {
+      border: 3px solid #000;
+      border-radius: 26px;
+      padding: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 63, 143, 0.16), transparent 35%),
+        linear-gradient(315deg, rgba(79, 220, 255, 0.12), transparent 35%),
+        #12121e;
+      box-shadow: 8px 8px 0 #000;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #141420 0%, #101018 100%);
-      border: 2px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: var(--shadow);
       margin-bottom: 18px;
-    }
-
-    .hero::before,
-    .hero::after {
-      position: absolute;
-      font-weight: bold;
-      opacity: 0.12;
-      pointer-events: none;
-      transform: rotate(-10deg);
-    }
-
-    .hero::before {
-      content: "CHAOS";
-      right: 20px;
-      top: 10px;
-      font-size: 60px;
-      color: var(--pink);
     }
 
     .hero::after {
       content: "LOGGED";
-      left: 20px;
-      bottom: 10px;
-      font-size: 48px;
-      color: var(--blue);
-      transform: rotate(8deg);
+      position: absolute;
+      right: 18px;
+      top: 12px;
+      font-size: 70px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.06);
+      transform: rotate(-8deg);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 0.95;
       color: var(--pink);
-      text-shadow: 2px 2px 0 #000;
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 0.9;
+      text-shadow: 4px 4px 0 #000;
+      letter-spacing: -3px;
     }
 
-    .subtitle {
-      margin-top: 8px;
+    .tagline {
+      margin-top: 10px;
+      color: var(--yellow);
       font-size: 18px;
-      color: var(--muted);
+      font-weight: bold;
     }
 
-    .sticker-row {
+    .stickers {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -108,125 +92,124 @@
     }
 
     .sticker {
-      display: inline-block;
-      padding: 8px 14px;
+      padding: 9px 13px;
       border-radius: 999px;
       border: 2px solid #000;
+      color: #111;
       font-weight: bold;
-      box-shadow: 3px 3px 0 rgba(0,0,0,.45);
-      transform: rotate(var(--r));
+      box-shadow: 3px 3px 0 #000;
     }
 
-    .s1 { background: var(--yellow); color: #111; --r: -4deg; }
-    .s2 { background: var(--blue); color: #111; --r: 2deg; }
-    .s3 { background: var(--pink); color: #fff; --r: -2deg; }
-    .s4 { background: var(--green); color: #111; --r: 3deg; }
-    .s5 { background: var(--purple); color: #fff; --r: -3deg; }
+    .sticker:nth-child(1) { background: var(--yellow); transform: rotate(-3deg); }
+    .sticker:nth-child(2) { background: var(--blue); transform: rotate(2deg); }
+    .sticker:nth-child(3) { background: var(--green); transform: rotate(-2deg); }
+    .sticker:nth-child(4) { background: var(--pink); color: white; transform: rotate(3deg); }
+
+    .button-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .view-btn {
+      border: 3px solid #000;
+      border-radius: 18px;
+      padding: 16px 12px;
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 16px;
+      font-weight: 900;
+      color: white;
+      background: var(--panel2);
+      box-shadow: 5px 5px 0 #000;
+      transition: transform 0.12s ease, background 0.12s ease;
+    }
+
+    .view-btn:hover {
+      transform: translateY(-3px);
+      background: #292947;
+    }
+
+    .view-btn.active {
+      background: var(--pink);
+      color: white;
+      transform: translateY(-3px);
+    }
 
     .top3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin: 18px 0;
+      margin-bottom: 20px;
     }
 
     .podium {
-      background: linear-gradient(180deg, var(--panel-2), var(--panel));
-      border: 2px solid var(--border);
+      background: var(--panel);
+      border: 3px solid #000;
       border-radius: 22px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      min-height: 190px;
+      padding: 18px;
+      box-shadow: 6px 6px 0 #000;
+      min-height: 175px;
     }
 
     .podium.first {
+      background: linear-gradient(180deg, rgba(255, 228, 92, 0.18), var(--panel));
       border-color: var(--yellow);
-      transform: translateY(-6px);
     }
 
     .podium.second {
+      background: linear-gradient(180deg, rgba(79, 220, 255, 0.16), var(--panel));
       border-color: var(--blue);
     }
 
     .podium.third {
+      background: linear-gradient(180deg, rgba(255, 63, 143, 0.16), var(--panel));
       border-color: var(--pink);
     }
 
     .place {
-      font-size: 13px;
       color: var(--muted);
-      letter-spacing: 1px;
+      font-size: 13px;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .big-rank {
-      font-size: 42px;
-      font-weight: bold;
-      line-height: 1;
-      margin: 6px 0 10px;
-    }
-
-    .podium .name {
-      font-size: 26px;
-      font-weight: bold;
-      color: var(--ink);
-      word-break: break-word;
-    }
-
-    .podium .score {
-      margin-top: 12px;
-      font-size: 30px;
+    .rank-big {
+      font-size: 38px;
+      font-weight: 900;
       color: var(--yellow);
-      font-weight: bold;
+      margin: 5px 0;
     }
 
-    .podium .meta {
+    .podium-name {
+      font-size: 24px;
+      font-weight: 900;
+      word-break: break-word;
+      color: white;
+    }
+
+    .podium-score {
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: bold;
       margin-top: 8px;
+    }
+
+    .podium-meta {
       color: var(--muted);
+      margin-top: 8px;
       font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 8px 0 18px;
-    }
-
-    .tab-btn {
-      appearance: none;
-      border: 2px solid #000;
-      background: #202032;
-      color: white;
-      font-family: monospace;
-      font-weight: bold;
-      padding: 12px 16px;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: .18s ease;
-      box-shadow: 3px 3px 0 rgba(0,0,0,.45);
-    }
-
-    .tab-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .tab-btn.active {
-      background: var(--pink);
-      color: white;
     }
 
     .panel {
       display: none;
-      background: rgba(17,17,27,.88);
-      border: 2px solid var(--border);
-      border-radius: 22px;
+      border: 3px solid #000;
+      border-radius: 24px;
       padding: 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
+      background: rgba(18, 18, 30, 0.96);
+      box-shadow: 7px 7px 0 #000;
+      margin-bottom: 30px;
     }
 
     .panel.active {
@@ -234,14 +217,15 @@
     }
 
     .panel h2 {
-      margin: 0 0 6px;
+      margin: 0 0 4px;
+      font-size: 34px;
       color: var(--blue);
-      font-size: 28px;
+      text-shadow: 2px 2px 0 #000;
     }
 
     .panel-note {
       color: var(--muted);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .leaderboard {
@@ -251,193 +235,165 @@
 
     .row {
       display: grid;
-      grid-template-columns: 60px 1fr 160px;
-      gap: 14px;
+      grid-template-columns: 60px 1fr 170px;
       align-items: center;
-      padding: 12px 14px;
+      gap: 14px;
+      padding: 13px 14px;
+      background: #1a1a2b;
+      border: 1px solid var(--border);
       border-radius: 16px;
-      background: #171726;
-      border: 1px solid #26263a;
     }
 
     .row:nth-child(odd) {
-      background: #1b1b2c;
+      background: #202036;
+    }
+
+    .row:hover {
+      outline: 2px solid var(--pink);
+      background: #262640;
     }
 
     .rank {
-      font-size: 24px;
-      font-weight: bold;
       color: var(--yellow);
+      font-size: 23px;
+      font-weight: 900;
     }
 
-    .username {
+    .name {
+      color: white;
       font-size: 18px;
-      font-weight: bold;
-      color: var(--ink);
+      font-weight: 900;
       word-break: break-word;
     }
 
-    .subline {
+    .details {
       color: var(--muted);
-      font-size: 12px;
       margin-top: 4px;
+      font-size: 12px;
     }
 
     .value {
       text-align: right;
-      font-size: 24px;
-      font-weight: bold;
       color: var(--pink);
+      font-size: 22px;
+      font-weight: 900;
     }
 
     .mini-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 14px;
-      margin-top: 12px;
     }
 
     .mini-card {
-      background: #171726;
-      border: 1px solid #2a2a3d;
+      background: #1b1b2f;
+      border: 2px solid #000;
       border-radius: 18px;
       padding: 16px;
+      box-shadow: 4px 4px 0 #000;
     }
 
-    .mini-card .label {
+    .mini-label {
       color: var(--muted);
-      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-size: 12px;
     }
 
-    .mini-card .num {
-      font-size: 30px;
-      color: var(--blue);
-      font-weight: bold;
-      margin-top: 8px;
-    }
-
-    .pill-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .pill {
-      background: #222238;
-      border: 1px solid #34344b;
+    .mini-num {
       color: var(--yellow);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-    }
-
-    .memory-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
+      font-size: 32px;
+      font-weight: 900;
+      margin-top: 8px;
     }
 
     .memory-item {
-      background: #171726;
-      border: 1px solid #2a2a3d;
-      padding: 12px 14px;
+      background: #1b1b2f;
+      border: 1px solid var(--border);
       border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 8px;
     }
 
-    .memory-item .m-name {
+    .pill {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 8px 12px;
+      margin: 4px;
       font-weight: bold;
-      color: var(--blue);
-      font-size: 16px;
+      box-shadow: 2px 2px 0 #000;
     }
 
-    .memory-item .m-meta {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    .footer-note {
-      color: var(--muted);
-      margin-top: 14px;
-      font-size: 13px;
-    }
-
-    .error {
-      color: #ff9db5;
-      padding: 12px 0;
-    }
-
-    @media (max-width: 900px) {
+    @media (max-width: 850px) {
       .top3 {
         grid-template-columns: 1fr;
       }
 
       .row {
-        grid-template-columns: 50px 1fr;
+        grid-template-columns: 48px 1fr;
       }
 
       .value {
-        text-align: left;
         grid-column: 2;
-        font-size: 20px;
+        text-align: left;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
 
     <section class="hero">
       <h1>GirlServ</h1>
-      <div class="subtitle" id="tagline">loading chaos...</div>
+      <div class="tagline" id="tagline">loading chaos...</div>
 
-      <div class="sticker-row">
-        <span class="sticker s1">#truth-seekers</span>
-        <span class="sticker s2">top 30</span>
-        <span class="sticker s3">receipts</span>
-        <span class="sticker s4">degeneracy</span>
-        <span class="sticker s5">girl remembers</span>
+      <div class="stickers">
+        <span class="sticker">#truth-seekers</span>
+        <span class="sticker">top 30 losers</span>
+        <span class="sticker">receipts loaded</span>
+        <span class="sticker">girl is watching</span>
       </div>
     </section>
+
+    <div class="button-bar">
+      <button class="view-btn active" onclick="showPanel('chatters', this)">Top 30 Chatters</button>
+      <button class="view-btn" onclick="showPanel('degeneracy', this)">Degeneracy</button>
+      <button class="view-btn" onclick="showPanel('lol', this)">LOL Lords</button>
+      <button class="view-btn" onclick="showPanel('links', this)">Link Gremlins</button>
+      <button class="view-btn" onclick="showPanel('joins', this)">Door Slammers</button>
+      <button class="view-btn" onclick="showPanel('overview', this)">Overview</button>
+      <button class="view-btn" onclick="showPanel('memory', this)">girl Remembers</button>
+    </div>
 
     <section class="top3" id="top3">
       <div class="podium second">
-        <div class="place">2nd chatter</div>
-        <div class="big-rank">#2</div>
-        <div class="name">loading...</div>
-        <div class="score">0 words</div>
-        <div class="meta">loading...</div>
+        <div class="place">second most online</div>
+        <div class="rank-big">#2</div>
+        <div class="podium-name">loading...</div>
+        <div class="podium-score">0 words</div>
+        <div class="podium-meta">loading...</div>
       </div>
 
       <div class="podium first">
-        <div class="place">1st chatter</div>
-        <div class="big-rank">#1</div>
-        <div class="name">loading...</div>
-        <div class="score">0 words</div>
-        <div class="meta">loading...</div>
+        <div class="place">top chatter</div>
+        <div class="rank-big">#1</div>
+        <div class="podium-name">loading...</div>
+        <div class="podium-score">0 words</div>
+        <div class="podium-meta">loading...</div>
       </div>
 
       <div class="podium third">
-        <div class="place">3rd chatter</div>
-        <div class="big-rank">#3</div>
-        <div class="name">loading...</div>
-        <div class="score">0 words</div>
-        <div class="meta">loading...</div>
+        <div class="place">third place gremlin</div>
+        <div class="rank-big">#3</div>
+        <div class="podium-name">loading...</div>
+        <div class="podium-score">0 words</div>
+        <div class="podium-meta">loading...</div>
       </div>
     </section>
-
-    <div class="controls">
-      <button class="tab-btn active" data-panel="chatters">Top 30 Chatters</button>
-      <button class="tab-btn" data-panel="degenerates">Degeneracy</button>
-      <button class="tab-btn" data-panel="lol">LOL Lords</button>
-      <button class="tab-btn" data-panel="links">Link Gremlins</button>
-      <button class="tab-btn" data-panel="joins">Door Slammers</button>
-      <button class="tab-btn" data-panel="overview">Overview</button>
-      <button class="tab-btn" data-panel="memory">girl remembers</button>
-    </div>
 
     <section class="panel active" id="panel-chatters">
       <h2>Top 30 Chatters</h2>
@@ -445,10 +401,10 @@
       <div class="leaderboard" id="chatters-list">loading...</div>
     </section>
 
-    <section class="panel" id="panel-degenerates">
-      <h2>Most Degenerate</h2>
+    <section class="panel" id="panel-degeneracy">
+      <h2>Degeneracy Board</h2>
       <div class="panel-note">ranked by degeneracy points</div>
-      <div class="leaderboard" id="degenerates-list">loading...</div>
+      <div class="leaderboard" id="degeneracy-list">loading...</div>
     </section>
 
     <section class="panel" id="panel-lol">
@@ -470,113 +426,98 @@
     </section>
 
     <section class="panel" id="panel-overview">
-      <h2>Channel Overview</h2>
-      <div class="panel-note">the big ugly numbers</div>
+      <h2>Overview</h2>
+      <div class="panel-note">the whole ugly pile</div>
       <div class="mini-grid" id="overview-cards">loading...</div>
-      <div class="footer-note" id="overview-note"></div>
     </section>
 
     <section class="panel" id="panel-memory">
-      <h2>girl remembers</h2>
-      <div class="panel-note">admins, remembered users, and recent token usage</div>
+      <h2>girl Remembers</h2>
+      <div class="panel-note">from trollbot memory/config if girl_config.json exists</div>
 
-      <div class="mini-grid">
-        <div class="mini-card">
-          <div class="label">display name</div>
-          <div class="num" id="bot-name">girl</div>
-        </div>
-        <div class="mini-card">
-          <div class="label">admin count</div>
-          <div class="num" id="admin-count">0</div>
-        </div>
-        <div class="mini-card">
-          <div class="label">remembered users</div>
-          <div class="num" id="remembered-count">0</div>
-        </div>
-        <div class="mini-card">
-          <div class="label">latest token day</div>
-          <div class="num" id="latest-token-day" style="font-size:20px;">n/a</div>
-        </div>
-      </div>
+      <h3>Admins</h3>
+      <div id="admins-list"></div>
 
-      <h3 style="margin-top:18px;color:var(--yellow);">Admins</h3>
-      <div class="pill-wrap" id="admins-list"></div>
+      <h3>Remembered Users</h3>
+      <div id="profiles-list">loading...</div>
 
-      <h3 style="margin-top:18px;color:var(--yellow);">Remembered Users</h3>
-      <div class="memory-list" id="profiles-list"></div>
-
-      <h3 style="margin-top:18px;color:var(--yellow);">Recent Token Usage</h3>
-      <div class="memory-list" id="token-list"></div>
+      <h3>Recent Tokens</h3>
+      <div id="tokens-list">loading...</div>
     </section>
 
   </div>
 
   <script>
-    const taglines = [
-      "she is watching.",
-      "everything you say is logged.",
-      "you are being measured.",
-      "nobody escapes the logs.",
-      "your stats define you.",
-      "i remember everything.",
-      "too much talking detected.",
-      "receipts, chaos, and grudges.",
-      "girl saw that.",
-      "degeneracy detected."
-    ];
+    function showPanel(panelName, button) {
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
 
-    document.getElementById("tagline").innerText =
-      taglines[Math.floor(Math.random() * taglines.length)];
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      document.getElementById('panel-' + panelName).classList.add('active');
+      button.classList.add('active');
+    }
 
     function fmt(n) {
       return Number(n || 0).toLocaleString();
     }
 
-    function createRows(users, field, label) {
-      return users.map((u, i) => `
+    const taglines = [
+      "she is watching.",
+      "everything you say is logged.",
+      "girl saw that.",
+      "you are being measured.",
+      "nobody escapes the logs.",
+      "top 30 shame board loaded.",
+      "receipts are forever.",
+      "too much talking detected.",
+      "degeneracy detected.",
+      "welcome to the evidence locker."
+    ];
+
+    document.getElementById("tagline").innerText =
+      taglines[Math.floor(Math.random() * taglines.length)];
+
+    function makeRows(users, field, label) {
+      return users.map((u, index) => `
         <div class="row">
-          <div class="rank">#${i + 1}</div>
+          <div class="rank">#${index + 1}</div>
           <div>
-            <div class="username">${u.name}</div>
-            <div class="subline">
+            <div class="name">${u.name}</div>
+            <div class="details">
               words ${fmt(u.words)} · joins ${fmt(u.joins)} · lol ${fmt(u.lol)} · degeneracy ${fmt(u.degeneracy)} · links ${fmt(u.links)}
             </div>
           </div>
           <div class="value">${fmt(u[field])} ${label}</div>
         </div>
-      `).join("");
+      `).join('');
     }
 
-    function setTop3(users) {
-      if (users.length < 3) return;
+    function fillTop3(users) {
+      const cards = document.querySelectorAll('#top3 .podium');
+      const displayOrder = [users[1], users[0], users[2]];
 
-      const ordered = [users[1], users[0], users[2]];
-      const cards = document.querySelectorAll("#top3 .podium");
+      displayOrder.forEach((u, i) => {
+        if (!u) return;
 
-      ordered.forEach((u, index) => {
-        if (!u || !cards[index]) return;
-        const rankNum = index === 0 ? 2 : index === 1 ? 1 : 3;
-        cards[index].querySelector(".name").textContent = u.name;
-        cards[index].querySelector(".score").textContent = `${fmt(u.words)} words`;
-        cards[index].querySelector(".meta").innerHTML =
-          `joins ${fmt(u.joins)} · lol ${fmt(u.lol)} · degeneracy ${fmt(u.degeneracy)} · links ${fmt(u.links)}`;
+        cards[i].querySelector('.podium-name').innerText = u.name;
+        cards[i].querySelector('.podium-score').innerText = fmt(u.words) + ' words';
+        cards[i].querySelector('.podium-meta').innerText =
+          'joins ' + fmt(u.joins) +
+          ' · lol ' + fmt(u.lol) +
+          ' · degeneracy ' + fmt(u.degeneracy) +
+          ' · links ' + fmt(u.links);
       });
     }
 
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(`panel-${btn.dataset.panel}`).classList.add("active");
-      });
-    });
-
-    fetch("truth_seekers_user_stats.json")
-      .then(res => res.json())
+    fetch('truth_seekers_user_stats.json')
+      .then(response => response.json())
       .then(data => {
         const users = Object.entries(data).map(([name, stats]) => ({
-          name,
+          name: name,
           words: stats.words || 0,
           joins: stats.joins || 0,
           lol: stats.lol || 0,
@@ -585,18 +526,27 @@
         }));
 
         const byWords = [...users].sort((a, b) => b.words - a.words);
-        const byDeg = [...users].sort((a, b) => b.degeneracy - a.degeneracy);
+        const byDegeneracy = [...users].sort((a, b) => b.degeneracy - a.degeneracy);
         const byLol = [...users].sort((a, b) => b.lol - a.lol);
         const byLinks = [...users].sort((a, b) => b.links - a.links);
         const byJoins = [...users].sort((a, b) => b.joins - a.joins);
 
-        setTop3(byWords.slice(0, 3));
+        fillTop3(byWords.slice(0, 3));
 
-        document.getElementById("chatters-list").innerHTML = createRows(byWords.slice(0, 30), "words", "words");
-        document.getElementById("degenerates-list").innerHTML = createRows(byDeg.slice(0, 30), "degeneracy", "deg");
-        document.getElementById("lol-list").innerHTML = createRows(byLol.slice(0, 30), "lol", "lol");
-        document.getElementById("links-list").innerHTML = createRows(byLinks.slice(0, 30), "links", "links");
-        document.getElementById("joins-list").innerHTML = createRows(byJoins.slice(0, 30), "joins", "joins");
+        document.getElementById('chatters-list').innerHTML =
+          makeRows(byWords.slice(0, 30), 'words', 'words');
+
+        document.getElementById('degeneracy-list').innerHTML =
+          makeRows(byDegeneracy.slice(0, 30), 'degeneracy', 'deg');
+
+        document.getElementById('lol-list').innerHTML =
+          makeRows(byLol.slice(0, 30), 'lol', 'lol');
+
+        document.getElementById('links-list').innerHTML =
+          makeRows(byLinks.slice(0, 30), 'links', 'links');
+
+        document.getElementById('joins-list').innerHTML =
+          makeRows(byJoins.slice(0, 30), 'joins', 'joins');
 
         const totals = users.reduce((acc, u) => {
           acc.words += u.words;
@@ -607,74 +557,54 @@
           return acc;
         }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
 
-        document.getElementById("overview-cards").innerHTML = `
-          <div class="mini-card"><div class="label">tracked nicks</div><div class="num">${fmt(users.length)}</div></div>
-          <div class="mini-card"><div class="label">words logged</div><div class="num">${fmt(totals.words)}</div></div>
-          <div class="mini-card"><div class="label">joins</div><div class="num">${fmt(totals.joins)}</div></div>
-          <div class="mini-card"><div class="label">lols</div><div class="num">${fmt(totals.lol)}</div></div>
-          <div class="mini-card"><div class="label">degeneracy</div><div class="num">${fmt(totals.degeneracy)}</div></div>
-          <div class="mini-card"><div class="label">links</div><div class="num">${fmt(totals.links)}</div></div>
+        document.getElementById('overview-cards').innerHTML = `
+          <div class="mini-card"><div class="mini-label">tracked nicks</div><div class="mini-num">${fmt(users.length)}</div></div>
+          <div class="mini-card"><div class="mini-label">words logged</div><div class="mini-num">${fmt(totals.words)}</div></div>
+          <div class="mini-card"><div class="mini-label">joins</div><div class="mini-num">${fmt(totals.joins)}</div></div>
+          <div class="mini-card"><div class="mini-label">lols</div><div class="mini-num">${fmt(totals.lol)}</div></div>
+          <div class="mini-card"><div class="mini-label">degeneracy</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
+          <div class="mini-card"><div class="mini-label">links</div><div class="mini-num">${fmt(totals.links)}</div></div>
         `;
-
-        document.getElementById("overview-note").innerText =
-          `Top chatter right now: ${byWords[0]?.name || "n/a"} · Most degenerate: ${byDeg[0]?.name || "n/a"} · Biggest link gremlin: ${byLinks[0]?.name || "n/a"}`;
-      })
-      .catch(() => {
-        document.getElementById("chatters-list").innerHTML = `<div class="error">Could not load truth_seekers_user_stats.json</div>`;
       });
 
-    fetch("girl_config.json")
-      .then(res => res.json())
+    fetch('girl_config.json')
+      .then(response => response.json())
       .then(config => {
-        const displayName = config.bot_identity?.display_name || "girl";
         const admins = config.bot_config?.admins || [];
         const profiles = config.bot_config?.memory_and_history?.user_profiles || {};
-        const tokenUsage = config.bot_config?.token_usage?.daily || {};
+        const tokens = config.bot_config?.token_usage?.daily || {};
 
-        document.getElementById("bot-name").textContent = displayName;
-        document.getElementById("admin-count").textContent = fmt(admins.length);
-        document.getElementById("remembered-count").textContent = fmt(Object.keys(profiles).length);
-
-        document.getElementById("admins-list").innerHTML =
+        document.getElementById('admins-list').innerHTML =
           admins.length
-            ? admins.map(name => `<span class="pill">${name}</span>`).join("")
-            : `<span class="pill">no admins loaded</span>`;
+            ? admins.map(a => `<span class="pill">${a}</span>`).join('')
+            : '<span class="pill">none loaded</span>';
 
-        const profileItems = Object.entries(profiles)
-          .sort((a, b) => (b[1].chat_count || 0) - (a[1].chat_count || 0))
-          .slice(0, 20)
-          .map(([name, profile]) => `
-            <div class="memory-item">
-              <div class="m-name">${name}</div>
-              <div class="m-meta">
-                chats with girl: ${fmt(profile.chat_count || 0)}
+        document.getElementById('profiles-list').innerHTML =
+          Object.entries(profiles)
+            .sort((a, b) => (b[1].chat_count || 0) - (a[1].chat_count || 0))
+            .slice(0, 20)
+            .map(([name, p]) => `
+              <div class="memory-item">
+                <strong>${name}</strong><br>
+                chats with girl: ${fmt(p.chat_count || 0)}
               </div>
-            </div>
-          `).join("");
+            `).join('') || '<div class="memory-item">no remembered users loaded</div>';
 
-        document.getElementById("profiles-list").innerHTML =
-          profileItems || `<div class="memory-item"><div class="m-name">nobody yet</div></div>`;
-
-        const tokenEntries = Object.entries(tokenUsage).sort((a, b) => a[0].localeCompare(b[0]));
-        const latestEntry = tokenEntries[tokenEntries.length - 1];
-        document.getElementById("latest-token-day").textContent = latestEntry ? latestEntry[0] : "n/a";
-
-        document.getElementById("token-list").innerHTML =
-          tokenEntries.length
-            ? tokenEntries.slice(-10).reverse().map(([day, usage]) => `
-                <div class="memory-item">
-                  <div class="m-name">${day}</div>
-                  <div class="m-meta">
-                    total: ${fmt(usage.total_tokens || 0)} · prompt: ${fmt(usage.prompt_tokens || 0)} · completion: ${fmt(usage.completion_tokens || 0)}
-                  </div>
-                </div>
-              `).join("")
-            : `<div class="memory-item"><div class="m-name">no token data</div></div>`;
+        document.getElementById('tokens-list').innerHTML =
+          Object.entries(tokens)
+            .sort((a, b) => b[0].localeCompare(a[0]))
+            .slice(0, 10)
+            .map(([day, t]) => `
+              <div class="memory-item">
+                <strong>${day}</strong><br>
+                total ${fmt(t.total_tokens || 0)} · prompt ${fmt(t.prompt_tokens || 0)} · completion ${fmt(t.completion_tokens || 0)}
+              </div>
+            `).join('') || '<div class="memory-item">no token data loaded</div>';
       })
       .catch(() => {
-        document.getElementById("admins-list").innerHTML = `<span class="pill">add girl_config.json</span>`;
-        document.getElementById("profiles-list").innerHTML = `<div class="memory-item"><div class="m-name">girl_config.json not loaded</div></div>`;
-        document.getElementById("token-list").innerHTML = `<div class="memory-item"><div class="m-name">girl_config.json not loaded</div></div>`;
+        document.getElementById('admins-list').innerHTML = '<span class="pill">girl_config.json not uploaded yet</span>';
+        document.getElementById('profiles-list').innerHTML = '<div class="memory-item">girl_config.json not uploaded yet</div>';
+        document.getElementById('tokens-list').innerHTML = '<div class="memory-item">girl_config.json not uploaded yet</div>';
       });
   </script>
 </body>
