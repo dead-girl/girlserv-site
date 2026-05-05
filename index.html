@@ -74,7 +74,7 @@
 <body>
 
 <h1>GirlServ</h1>
-<p class="tagline">chanstats, grudges, favorites, chaos, and receipts. she is watching.</p>
+<p class="tagline" id="tagline">loading...</p>
 
 <div class="grid">
 
@@ -119,6 +119,22 @@
 function fmt(n) {
   return Number(n || 0).toLocaleString();
 }
+
+const taglines = [
+  "she is watching.",
+  "everything you say is logged.",
+  "you are being measured.",
+  "nobody escapes the logs.",
+  "your stats define you.",
+  "you talk too much.",
+  "i remember everything.",
+  "some of you should talk less.",
+  "i know who you are.",
+  "degeneracy detected."
+];
+
+document.getElementById("tagline").innerText =
+  taglines[Math.floor(Math.random() * taglines.length)];
 
 function renderList(id, users, field, label) {
   document.getElementById(id).innerHTML = users.map((u, i) => `
