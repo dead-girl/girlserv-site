@@ -43,67 +43,20 @@
       margin: auto;
     }
 
-    .hero {
+    .hero-image {
       border: 3px solid #000;
       border-radius: 26px;
-      padding: 28px;
-      background:
-        linear-gradient(135deg, rgba(255, 63, 143, 0.16), transparent 35%),
-        linear-gradient(315deg, rgba(79, 220, 255, 0.12), transparent 35%),
-        #12121e;
-      box-shadow: 8px 8px 0 #000;
-      position: relative;
       overflow: hidden;
+      box-shadow: 8px 8px 0 #000;
       margin-bottom: 18px;
+      background: #000;
     }
 
-    .hero::after {
-      content: "LOGGED";
-      position: absolute;
-      right: 18px;
-      top: 12px;
-      font-size: 70px;
-      font-weight: 900;
-      color: rgba(255,255,255,0.06);
-      transform: rotate(-8deg);
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
-
-    h1 {
-      margin: 0;
-      color: var(--pink);
-      font-size: clamp(48px, 8vw, 88px);
-      line-height: 0.9;
-      text-shadow: 4px 4px 0 #000;
-      letter-spacing: -3px;
-    }
-
-    .tagline {
-      margin-top: 10px;
-      color: var(--yellow);
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .stickers {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .sticker {
-      padding: 9px 13px;
-      border-radius: 999px;
-      border: 2px solid #000;
-      color: #111;
-      font-weight: bold;
-      box-shadow: 3px 3px 0 #000;
-    }
-
-    .sticker:nth-child(1) { background: var(--yellow); transform: rotate(-3deg); }
-    .sticker:nth-child(2) { background: var(--blue); transform: rotate(2deg); }
-    .sticker:nth-child(3) { background: var(--green); transform: rotate(-2deg); }
-    .sticker:nth-child(4) { background: var(--pink); color: white; transform: rotate(3deg); }
 
     .button-bar {
       display: grid;
@@ -453,16 +406,8 @@
 <body>
   <div class="wrap">
 
-    <section class="hero">
-      <h1>GirlServ</h1>
-      <div class="tagline" id="tagline">loading chaos...</div>
-
-      <div class="stickers">
-        <span class="sticker">#truth-seekers</span>
-        <span class="sticker">top 30 losers</span>
-        <span class="sticker">receipts loaded</span>
-        <span class="sticker">girl is watching</span>
-      </div>
+    <section class="hero-image">
+      <img src="girlserv-header.png" alt="GirlServ header">
     </section>
 
     <div class="button-bar">
@@ -578,22 +523,6 @@
     function fmt(n) {
       return Number(n || 0).toLocaleString();
     }
-
-    const taglines = [
-      "she is watching.",
-      "everything you say is logged.",
-      "girl saw that.",
-      "you are being measured.",
-      "nobody escapes the logs.",
-      "top 30 shame board loaded.",
-      "receipts are forever.",
-      "too much talking detected.",
-      "degeneracy detected.",
-      "welcome to the evidence locker."
-    ];
-
-    document.getElementById("tagline").innerText =
-      taglines[Math.floor(Math.random() * taglines.length)];
 
     function makeRows(users, field, label) {
       return users.map((u, index) => `
