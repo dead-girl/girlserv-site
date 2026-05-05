@@ -4,57 +4,141 @@
   <title>GirlServ</title>
   <style>
     body {
-      background: #0a0a0a;
-      color: #dcdcdc;
+      background: #09090b;
+      color: #e5e5e5;
       font-family: monospace;
-      padding: 20px;
+      padding: 24px;
+      max-width: 1000px;
+      margin: auto;
     }
-    h1 { color: #ff4d6d; }
-    a { color: #8be9fd; }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      color: #ffb3c1;
+      margin-top: 0;
+    }
+
+    a {
+      color: #8be9fd;
+    }
+
+    .tagline {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
     .box {
       border: 1px solid #333;
-      padding: 15px;
-      margin-top: 15px;
+      background: #111116;
+      padding: 18px;
+      border-radius: 10px;
     }
-    .user { color: #8be9fd; }
+
+    .stat {
+      font-size: 22px;
+      color: #8be9fd;
+    }
+
+    .user {
+      color: #8be9fd;
+      font-weight: bold;
+    }
+
+    .small {
+      color: #999;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
 
-<h1>GirlServ</h1>
-<p>she is watching</p>
-<p><a href="stats.html">view more stats</a></p>
+<h1 id="site-name">GirlServ</h1>
+<p class="tagline" id="tagline">loading chaos...</p>
 
-<div class="box">
-  <h2>Top Users</h2>
-  <div id="top-users"></div>
-</div>
+<p>
+  <a href="stats.html">full stats</a>
+</p>
 
-<div class="box">
-  <h2>Most Annoying</h2>
-  <div id="annoying"></div>
-</div>
+<div class="grid">
 
-<div class="box">
-  <h2>Status</h2>
-  <p id="status"></p>
+  <div class="box">
+    <h2>Channel Watch</h2>
+    <div id="channels"></div>
+  </div>
+
+  <div class="box">
+    <h2>Top Users</h2>
+    <div id="top-users"></div>
+  </div>
+
+  <div class="box">
+    <h2>girl Stats</h2>
+    <p>Tokens today: <span class="stat" id="tokens-today">0</span></p>
+    <p>Yesterday: <span class="stat" id="tokens-yesterday">0</span></p>
+    <p>All time: <span class="stat" id="tokens-all-time">0</span></p>
+    <p class="small">Last seen: <span id="girl-last-seen">loading...</span></p>
+  </div>
+
+  <div class="box">
+    <h2>RedRose Receipts</h2>
+    <p>Links seen: <span class="stat" id="links-seen">0</span></p>
+    <p>Titles grabbed: <span class="stat" id="titles-grabbed">0</span></p>
+    <p class="small">Last update: <span id="redrose-last-update">loading...</span></p>
+  </div>
+
 </div>
 
 <script>
 fetch('data.json')
   .then(res => res.json())
   .then(data => {
-    const top = document.getElementById('top-users');
-    data.top_users.forEach(u => {
-      top.innerHTML += `<p><span class="user">${u.name}</span> — ${u.messages} messages</p>`;
+    document.getElementById('site-name').innerText = data.bot.site_name;
+    document.getElementById('tagline').innerText = data.bot.tagline;
+
+    const channels = document.getElementById('channels');
+    channels.innerHTML = '';
+    data.channels.forEach(channel => {
+      channels.innerHTML += `
+        <p>
+          <span class="user">${channel.name}</span><br>
+          Messages: ${channel.messages}<br>
+          Joins: ${channel.joins}<br>
+          Top user: ${channel.top_user}
+        </p>
+      `;
     });
 
-    const annoying = document.getElementById('annoying');
-    data.annoying.forEach(u => {
-      annoying.innerHTML += `<p><span class="user">${u.name}</span> — ${u.flags} flags</p>`;
+    const topUsers = document.getElementById('top-users');
+    topUsers.innerHTML = '';
+    data.top_users.forEach(user => {
+      topUsers.innerHTML += `
+        <p>
+          <span class="user">${user.name}</span><br>
+          Messages: ${user.messages}<br>
+          Vibe: ${user.vibe}
+        </p>
+      `;
     });
 
-    document.getElementById('status').innerText = data.status;
+    document.getElementById('tokens-today').innerText = data.girl_stats.tokens_today;
+    document.getElementById('tokens-yesterday').innerText = data.girl_stats.tokens_yesterday;
+    document.getElementById('tokens-all-time').innerText = data.girl_stats.tokens_all_time;
+    document.getElementById('girl-last-seen').innerText = data.girl_stats.last_seen;
+
+    document.getElementById('links-seen').innerText = data.redrose_stats.links_seen;
+    document.getElementById('titles-grabbed').innerText = data.redrose_stats.titles_grabbed;
+    document.getElementById('redrose-last-update').innerText = data.redrose_stats.last_update;
   });
 </script>
 
