@@ -1,227 +1,681 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GirlServ</title>
   <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #141420;
+      --panel-2: #1b1b2b;
+      --ink: #f3f3f7;
+      --muted: #a8a8bb;
+      --pink: #ff4d8d;
+      --hotpink: #ff2f6d;
+      --blue: #58d6ff;
+      --yellow: #ffe066;
+      --green: #7cff8f;
+      --purple: #c28cff;
+      --border: #2c2c40;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background: #08080b;
-      color: #e8e8e8;
+      margin: 0;
       font-family: monospace;
-      padding: 24px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h1 {
-      color: #ff4d6d;
-      font-size: 46px;
-      margin-bottom: 4px;
-    }
-
-    h2 {
-      color: #ffb3c1;
-      margin-top: 0;
-    }
-
-    .tagline {
-      color: #aaa;
-      margin-bottom: 24px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 16px;
-    }
-
-    .box {
-      background: #111116;
-      border: 1px solid #2e2e38;
-      border-radius: 12px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,77,141,.12), transparent 20%),
+        radial-gradient(circle at 80% 10%, rgba(88,214,255,.10), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(194,140,255,.10), transparent 25%),
+        repeating-linear-gradient(
+          135deg,
+          #0a0a0f 0px,
+          #0a0a0f 18px,
+          #0d0d14 18px,
+          #0d0d14 36px
+        );
+      min-height: 100vh;
       padding: 18px;
     }
 
-    .wide {
-      grid-column: 1 / -1;
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
-    .user {
-      color: #8be9fd;
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #141420 0%, #101018 100%);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      font-weight: bold;
+      opacity: 0.12;
+      pointer-events: none;
+      transform: rotate(-10deg);
+    }
+
+    .hero::before {
+      content: "CHAOS";
+      right: 20px;
+      top: 10px;
+      font-size: 60px;
+      color: var(--pink);
+    }
+
+    .hero::after {
+      content: "LOGGED";
+      left: 20px;
+      bottom: 10px;
+      font-size: 48px;
+      color: var(--blue);
+      transform: rotate(8deg);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 0.95;
+      color: var(--pink);
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .sticker-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .sticker {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 2px solid #000;
+      font-weight: bold;
+      box-shadow: 3px 3px 0 rgba(0,0,0,.45);
+      transform: rotate(var(--r));
+    }
+
+    .s1 { background: var(--yellow); color: #111; --r: -4deg; }
+    .s2 { background: var(--blue); color: #111; --r: 2deg; }
+    .s3 { background: var(--pink); color: #fff; --r: -2deg; }
+    .s4 { background: var(--green); color: #111; --r: 3deg; }
+    .s5 { background: var(--purple); color: #fff; --r: -3deg; }
+
+    .top3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .podium {
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      border: 2px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+    }
+
+    .podium.first {
+      border-color: var(--yellow);
+      transform: translateY(-6px);
+    }
+
+    .podium.second {
+      border-color: var(--blue);
+    }
+
+    .podium.third {
+      border-color: var(--pink);
+    }
+
+    .place {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .big-rank {
+      font-size: 42px;
+      font-weight: bold;
+      line-height: 1;
+      margin: 6px 0 10px;
+    }
+
+    .podium .name {
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--ink);
+      word-break: break-word;
+    }
+
+    .podium .score {
+      margin-top: 12px;
+      font-size: 30px;
+      color: var(--yellow);
       font-weight: bold;
     }
 
-    .stat {
-      color: #ff4d6d;
-      font-weight: bold;
+    .podium .meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-    .tiny {
-      color: #888;
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 8px 0 18px;
+    }
+
+    .tab-btn {
+      appearance: none;
+      border: 2px solid #000;
+      background: #202032;
+      color: white;
+      font-family: monospace;
+      font-weight: bold;
+      padding: 12px 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: .18s ease;
+      box-shadow: 3px 3px 0 rgba(0,0,0,.45);
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: var(--pink);
+      color: white;
+    }
+
+    .panel {
+      display: none;
+      background: rgba(17,17,27,.88);
+      border: 2px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .panel h2 {
+      margin: 0 0 6px;
+      color: var(--blue);
+      font-size: 28px;
+    }
+
+    .panel-note {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .leaderboard {
+      display: grid;
+      gap: 10px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 60px 1fr 160px;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #171726;
+      border: 1px solid #26263a;
+    }
+
+    .row:nth-child(odd) {
+      background: #1b1b2c;
+    }
+
+    .rank {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--yellow);
+    }
+
+    .username {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--ink);
+      word-break: break-word;
+    }
+
+    .subline {
+      color: var(--muted);
       font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .value {
+      text-align: right;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--pink);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      background: #171726;
+      border: 1px solid #2a2a3d;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .mini-card .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mini-card .num {
+      font-size: 30px;
+      color: var(--blue);
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .pill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .pill {
-      display: inline-block;
-      border: 1px solid #333;
+      background: #222238;
+      border: 1px solid #34344b;
+      color: var(--yellow);
+      padding: 8px 12px;
       border-radius: 999px;
-      padding: 5px 10px;
-      margin: 3px;
-      background: #181820;
-      color: #ffb3c1;
+      font-size: 13px;
+    }
+
+    .memory-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .memory-item {
+      background: #171726;
+      border: 1px solid #2a2a3d;
+      padding: 12px 14px;
+      border-radius: 14px;
+    }
+
+    .memory-item .m-name {
+      font-weight: bold;
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .memory-item .m-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    .error {
+      color: #ff9db5;
+      padding: 12px 0;
+    }
+
+    @media (max-width: 900px) {
+      .top3 {
+        grid-template-columns: 1fr;
+      }
+
+      .row {
+        grid-template-columns: 50px 1fr;
+      }
+
+      .value {
+        text-align: left;
+        grid-column: 2;
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
 
-<h1>GirlServ</h1>
-<p class="tagline" id="tagline">loading...</p>
+    <section class="hero">
+      <h1>GirlServ</h1>
+      <div class="subtitle" id="tagline">loading chaos...</div>
 
-<div class="grid">
+      <div class="sticker-row">
+        <span class="sticker s1">#truth-seekers</span>
+        <span class="sticker s2">top 30</span>
+        <span class="sticker s3">receipts</span>
+        <span class="sticker s4">degeneracy</span>
+        <span class="sticker s5">girl remembers</span>
+      </div>
+    </section>
 
-  <div class="box">
-    <h2>Top Talkers</h2>
-    <div id="top-talkers">loading...</div>
+    <section class="top3" id="top3">
+      <div class="podium second">
+        <div class="place">2nd chatter</div>
+        <div class="big-rank">#2</div>
+        <div class="name">loading...</div>
+        <div class="score">0 words</div>
+        <div class="meta">loading...</div>
+      </div>
+
+      <div class="podium first">
+        <div class="place">1st chatter</div>
+        <div class="big-rank">#1</div>
+        <div class="name">loading...</div>
+        <div class="score">0 words</div>
+        <div class="meta">loading...</div>
+      </div>
+
+      <div class="podium third">
+        <div class="place">3rd chatter</div>
+        <div class="big-rank">#3</div>
+        <div class="name">loading...</div>
+        <div class="score">0 words</div>
+        <div class="meta">loading...</div>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button class="tab-btn active" data-panel="chatters">Top 30 Chatters</button>
+      <button class="tab-btn" data-panel="degenerates">Degeneracy</button>
+      <button class="tab-btn" data-panel="lol">LOL Lords</button>
+      <button class="tab-btn" data-panel="links">Link Gremlins</button>
+      <button class="tab-btn" data-panel="joins">Door Slammers</button>
+      <button class="tab-btn" data-panel="overview">Overview</button>
+      <button class="tab-btn" data-panel="memory">girl remembers</button>
+    </div>
+
+    <section class="panel active" id="panel-chatters">
+      <h2>Top 30 Chatters</h2>
+      <div class="panel-note">ranked by words spoken</div>
+      <div class="leaderboard" id="chatters-list">loading...</div>
+    </section>
+
+    <section class="panel" id="panel-degenerates">
+      <h2>Most Degenerate</h2>
+      <div class="panel-note">ranked by degeneracy points</div>
+      <div class="leaderboard" id="degenerates-list">loading...</div>
+    </section>
+
+    <section class="panel" id="panel-lol">
+      <h2>LOL Lords</h2>
+      <div class="panel-note">ranked by lol count</div>
+      <div class="leaderboard" id="lol-list">loading...</div>
+    </section>
+
+    <section class="panel" id="panel-links">
+      <h2>Link Gremlins</h2>
+      <div class="panel-note">ranked by links posted</div>
+      <div class="leaderboard" id="links-list">loading...</div>
+    </section>
+
+    <section class="panel" id="panel-joins">
+      <h2>Door Slammers</h2>
+      <div class="panel-note">ranked by joins</div>
+      <div class="leaderboard" id="joins-list">loading...</div>
+    </section>
+
+    <section class="panel" id="panel-overview">
+      <h2>Channel Overview</h2>
+      <div class="panel-note">the big ugly numbers</div>
+      <div class="mini-grid" id="overview-cards">loading...</div>
+      <div class="footer-note" id="overview-note"></div>
+    </section>
+
+    <section class="panel" id="panel-memory">
+      <h2>girl remembers</h2>
+      <div class="panel-note">admins, remembered users, and recent token usage</div>
+
+      <div class="mini-grid">
+        <div class="mini-card">
+          <div class="label">display name</div>
+          <div class="num" id="bot-name">girl</div>
+        </div>
+        <div class="mini-card">
+          <div class="label">admin count</div>
+          <div class="num" id="admin-count">0</div>
+        </div>
+        <div class="mini-card">
+          <div class="label">remembered users</div>
+          <div class="num" id="remembered-count">0</div>
+        </div>
+        <div class="mini-card">
+          <div class="label">latest token day</div>
+          <div class="num" id="latest-token-day" style="font-size:20px;">n/a</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:18px;color:var(--yellow);">Admins</h3>
+      <div class="pill-wrap" id="admins-list"></div>
+
+      <h3 style="margin-top:18px;color:var(--yellow);">Remembered Users</h3>
+      <div class="memory-list" id="profiles-list"></div>
+
+      <h3 style="margin-top:18px;color:var(--yellow);">Recent Token Usage</h3>
+      <div class="memory-list" id="token-list"></div>
+    </section>
+
   </div>
 
-  <div class="box">
-    <h2>Most Degenerate</h2>
-    <div id="top-degenerate">loading...</div>
-  </div>
+  <script>
+    const taglines = [
+      "she is watching.",
+      "everything you say is logged.",
+      "you are being measured.",
+      "nobody escapes the logs.",
+      "your stats define you.",
+      "i remember everything.",
+      "too much talking detected.",
+      "receipts, chaos, and grudges.",
+      "girl saw that.",
+      "degeneracy detected."
+    ];
 
-  <div class="box">
-    <h2>LOL Lords</h2>
-    <div id="top-lol">loading...</div>
-  </div>
+    document.getElementById("tagline").innerText =
+      taglines[Math.floor(Math.random() * taglines.length)];
 
-  <div class="box">
-    <h2>Door Slammers</h2>
-    <div id="top-joins">loading...</div>
-  </div>
+    function fmt(n) {
+      return Number(n || 0).toLocaleString();
+    }
 
-  <div class="box">
-    <h2>Link Gremlins</h2>
-    <div id="top-links">loading...</div>
-  </div>
+    function createRows(users, field, label) {
+      return users.map((u, i) => `
+        <div class="row">
+          <div class="rank">#${i + 1}</div>
+          <div>
+            <div class="username">${u.name}</div>
+            <div class="subline">
+              words ${fmt(u.words)} · joins ${fmt(u.joins)} · lol ${fmt(u.lol)} · degeneracy ${fmt(u.degeneracy)} · links ${fmt(u.links)}
+            </div>
+          </div>
+          <div class="value">${fmt(u[field])} ${label}</div>
+        </div>
+      `).join("");
+    }
 
-  <div class="box">
-    <h2>Channel Totals</h2>
-    <div id="totals">loading...</div>
-  </div>
+    function setTop3(users) {
+      if (users.length < 3) return;
 
-  <div class="box wide">
-    <h2>girl remembers</h2>
-    <div id="profiles">Add girl_config.json later to show remembered users, admins, and token usage here.</div>
-  </div>
+      const ordered = [users[1], users[0], users[2]];
+      const cards = document.querySelectorAll("#top3 .podium");
 
-</div>
+      ordered.forEach((u, index) => {
+        if (!u || !cards[index]) return;
+        const rankNum = index === 0 ? 2 : index === 1 ? 1 : 3;
+        cards[index].querySelector(".name").textContent = u.name;
+        cards[index].querySelector(".score").textContent = `${fmt(u.words)} words`;
+        cards[index].querySelector(".meta").innerHTML =
+          `joins ${fmt(u.joins)} · lol ${fmt(u.lol)} · degeneracy ${fmt(u.degeneracy)} · links ${fmt(u.links)}`;
+      });
+    }
 
-<script>
-function fmt(n) {
-  return Number(n || 0).toLocaleString();
-}
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(`panel-${btn.dataset.panel}`).classList.add("active");
+      });
+    });
 
-const taglines = [
-  "she is watching.",
-  "everything you say is logged.",
-  "you are being measured.",
-  "nobody escapes the logs.",
-  "your stats define you.",
-  "you talk too much.",
-  "i remember everything.",
-  "some of you should talk less.",
-  "i know who you are.",
-  "degeneracy detected."
-];
+    fetch("truth_seekers_user_stats.json")
+      .then(res => res.json())
+      .then(data => {
+        const users = Object.entries(data).map(([name, stats]) => ({
+          name,
+          words: stats.words || 0,
+          joins: stats.joins || 0,
+          lol: stats.lol || 0,
+          degeneracy: stats.degeneracy || 0,
+          links: stats.links || 0
+        }));
 
-document.getElementById("tagline").innerText =
-  taglines[Math.floor(Math.random() * taglines.length)];
+        const byWords = [...users].sort((a, b) => b.words - a.words);
+        const byDeg = [...users].sort((a, b) => b.degeneracy - a.degeneracy);
+        const byLol = [...users].sort((a, b) => b.lol - a.lol);
+        const byLinks = [...users].sort((a, b) => b.links - a.links);
+        const byJoins = [...users].sort((a, b) => b.joins - a.joins);
 
-function renderList(id, users, field, label) {
-  document.getElementById(id).innerHTML = users.map((u, i) => `
-    <p>
-      #${i + 1} <span class="user">${u.name}</span><br>
-      <span class="stat">${fmt(u[field])}</span> ${label}
-    </p>
-  `).join('');
-}
+        setTop3(byWords.slice(0, 3));
 
-fetch('truth_seekers_user_stats.json')
-  .then(res => res.json())
-  .then(data => {
-    const users = Object.entries(data).map(([name, s]) => ({
-      name,
-      words: s.words || 0,
-      joins: s.joins || 0,
-      lol: s.lol || 0,
-      degeneracy: s.degeneracy || 0,
-      links: s.links || 0
-    }));
+        document.getElementById("chatters-list").innerHTML = createRows(byWords.slice(0, 30), "words", "words");
+        document.getElementById("degenerates-list").innerHTML = createRows(byDeg.slice(0, 30), "degeneracy", "deg");
+        document.getElementById("lol-list").innerHTML = createRows(byLol.slice(0, 30), "lol", "lol");
+        document.getElementById("links-list").innerHTML = createRows(byLinks.slice(0, 30), "links", "links");
+        document.getElementById("joins-list").innerHTML = createRows(byJoins.slice(0, 30), "joins", "joins");
 
-    renderList('top-talkers', [...users].sort((a,b) => b.words - a.words).slice(0, 7), 'words', 'words');
-    renderList('top-degenerate', [...users].sort((a,b) => b.degeneracy - a.degeneracy).slice(0, 7), 'degeneracy', 'degeneracy points');
-    renderList('top-lol', [...users].sort((a,b) => b.lol - a.lol).slice(0, 7), 'lol', 'lols');
-    renderList('top-joins', [...users].sort((a,b) => b.joins - a.joins).slice(0, 7), 'joins', 'joins');
-    renderList('top-links', [...users].sort((a,b) => b.links - a.links).slice(0, 7), 'links', 'links');
+        const totals = users.reduce((acc, u) => {
+          acc.words += u.words;
+          acc.joins += u.joins;
+          acc.lol += u.lol;
+          acc.degeneracy += u.degeneracy;
+          acc.links += u.links;
+          return acc;
+        }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
 
-    const totals = users.reduce((a, u) => {
-      a.words += u.words;
-      a.joins += u.joins;
-      a.lol += u.lol;
-      a.degeneracy += u.degeneracy;
-      a.links += u.links;
-      return a;
-    }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
+        document.getElementById("overview-cards").innerHTML = `
+          <div class="mini-card"><div class="label">tracked nicks</div><div class="num">${fmt(users.length)}</div></div>
+          <div class="mini-card"><div class="label">words logged</div><div class="num">${fmt(totals.words)}</div></div>
+          <div class="mini-card"><div class="label">joins</div><div class="num">${fmt(totals.joins)}</div></div>
+          <div class="mini-card"><div class="label">lols</div><div class="num">${fmt(totals.lol)}</div></div>
+          <div class="mini-card"><div class="label">degeneracy</div><div class="num">${fmt(totals.degeneracy)}</div></div>
+          <div class="mini-card"><div class="label">links</div><div class="num">${fmt(totals.links)}</div></div>
+        `;
 
-    document.getElementById('totals').innerHTML = `
-      <p><span class="stat">${fmt(users.length)}</span> tracked nicks</p>
-      <p><span class="stat">${fmt(totals.words)}</span> words logged</p>
-      <p><span class="stat">${fmt(totals.joins)}</span> joins</p>
-      <p><span class="stat">${fmt(totals.lol)}</span> lols</p>
-      <p><span class="stat">${fmt(totals.degeneracy)}</span> degeneracy points</p>
-      <p><span class="stat">${fmt(totals.links)}</span> links</p>
-    `;
-  });
+        document.getElementById("overview-note").innerText =
+          `Top chatter right now: ${byWords[0]?.name || "n/a"} · Most degenerate: ${byDeg[0]?.name || "n/a"} · Biggest link gremlin: ${byLinks[0]?.name || "n/a"}`;
+      })
+      .catch(() => {
+        document.getElementById("chatters-list").innerHTML = `<div class="error">Could not load truth_seekers_user_stats.json</div>`;
+      });
 
-fetch('girl_config.json')
-  .then(res => res.json())
-  .then(config => {
-    const admins = config.bot_config?.admins || [];
-    const profiles = config.bot_config?.memory_and_history?.user_profiles || {};
-    const tokens = config.bot_config?.token_usage?.daily || {};
+    fetch("girl_config.json")
+      .then(res => res.json())
+      .then(config => {
+        const displayName = config.bot_identity?.display_name || "girl";
+        const admins = config.bot_config?.admins || [];
+        const profiles = config.bot_config?.memory_and_history?.user_profiles || {};
+        const tokenUsage = config.bot_config?.token_usage?.daily || {};
 
-    const profileRows = Object.entries(profiles)
-      .sort((a,b) => (b[1].chat_count || 0) - (a[1].chat_count || 0))
-      .map(([name, p]) => `
-        <p>
-          <span class="user">${name}</span><br>
-          chats with girl: <span class="stat">${fmt(p.chat_count)}</span>
-        </p>
-      `).join('');
+        document.getElementById("bot-name").textContent = displayName;
+        document.getElementById("admin-count").textContent = fmt(admins.length);
+        document.getElementById("remembered-count").textContent = fmt(Object.keys(profiles).length);
 
-    const tokenRows = Object.entries(tokens)
-      .slice(-5)
-      .map(([day, t]) => `
-        <p>${day}: <span class="stat">${fmt(t.total_tokens)}</span> tokens</p>
-      `).join('');
+        document.getElementById("admins-list").innerHTML =
+          admins.length
+            ? admins.map(name => `<span class="pill">${name}</span>`).join("")
+            : `<span class="pill">no admins loaded</span>`;
 
-    document.getElementById('profiles').innerHTML = `
-      <p class="tiny">admins</p>
-      <p>${admins.map(a => `<span class="pill">${a}</span>`).join('')}</p>
+        const profileItems = Object.entries(profiles)
+          .sort((a, b) => (b[1].chat_count || 0) - (a[1].chat_count || 0))
+          .slice(0, 20)
+          .map(([name, profile]) => `
+            <div class="memory-item">
+              <div class="m-name">${name}</div>
+              <div class="m-meta">
+                chats with girl: ${fmt(profile.chat_count || 0)}
+              </div>
+            </div>
+          `).join("");
 
-      <h3>Remembered Users</h3>
-      ${profileRows || '<p>no remembered users yet</p>'}
+        document.getElementById("profiles-list").innerHTML =
+          profileItems || `<div class="memory-item"><div class="m-name">nobody yet</div></div>`;
 
-      <h3>Recent Token Usage</h3>
-      ${tokenRows || '<p>no token data yet</p>'}
-    `;
-  })
-  .catch(() => {
-    document.getElementById('profiles').innerHTML = `
-      <p>Add <span class="user">girl_config.json</span> later and this box will automatically show:</p>
-      <p><span class="pill">admins</span><span class="pill">remembered users</span><span class="pill">chat counts</span><span class="pill">token usage</span></p>
-    `;
-  });
-</script>
+        const tokenEntries = Object.entries(tokenUsage).sort((a, b) => a[0].localeCompare(b[0]));
+        const latestEntry = tokenEntries[tokenEntries.length - 1];
+        document.getElementById("latest-token-day").textContent = latestEntry ? latestEntry[0] : "n/a";
 
+        document.getElementById("token-list").innerHTML =
+          tokenEntries.length
+            ? tokenEntries.slice(-10).reverse().map(([day, usage]) => `
+                <div class="memory-item">
+                  <div class="m-name">${day}</div>
+                  <div class="m-meta">
+                    total: ${fmt(usage.total_tokens || 0)} · prompt: ${fmt(usage.prompt_tokens || 0)} · completion: ${fmt(usage.completion_tokens || 0)}
+                  </div>
+                </div>
+              `).join("")
+            : `<div class="memory-item"><div class="m-name">no token data</div></div>`;
+      })
+      .catch(() => {
+        document.getElementById("admins-list").innerHTML = `<span class="pill">add girl_config.json</span>`;
+        document.getElementById("profiles-list").innerHTML = `<div class="memory-item"><div class="m-name">girl_config.json not loaded</div></div>`;
+        document.getElementById("token-list").innerHTML = `<div class="memory-item"><div class="m-name">girl_config.json not loaded</div></div>`;
+      });
+  </script>
 </body>
 </html>
