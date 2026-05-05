@@ -4,18 +4,18 @@
   <title>GirlServ</title>
   <style>
     body {
-      background: #09090b;
-      color: #e5e5e5;
+      background: #08080b;
+      color: #e8e8e8;
       font-family: monospace;
       padding: 24px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
     }
 
     h1 {
       color: #ff4d6d;
-      font-size: 42px;
-      margin-bottom: 5px;
+      font-size: 46px;
+      margin-bottom: 4px;
     }
 
     h2 {
@@ -23,31 +23,26 @@
       margin-top: 0;
     }
 
-    a {
-      color: #8be9fd;
-    }
-
     .tagline {
       color: #aaa;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 16px;
     }
 
     .box {
-      border: 1px solid #333;
       background: #111116;
+      border: 1px solid #2e2e38;
+      border-radius: 12px;
       padding: 18px;
-      border-radius: 10px;
     }
 
-    .stat {
-      font-size: 22px;
-      color: #8be9fd;
+    .wide {
+      grid-column: 1 / -1;
     }
 
     .user {
@@ -55,90 +50,160 @@
       font-weight: bold;
     }
 
-    .small {
-      color: #999;
-      font-size: 13px;
+    .stat {
+      color: #ff4d6d;
+      font-weight: bold;
+    }
+
+    .tiny {
+      color: #888;
+      font-size: 12px;
+    }
+
+    .pill {
+      display: inline-block;
+      border: 1px solid #333;
+      border-radius: 999px;
+      padding: 5px 10px;
+      margin: 3px;
+      background: #181820;
+      color: #ffb3c1;
     }
   </style>
 </head>
 <body>
 
-<h1 id="site-name">GirlServ</h1>
-<p class="tagline" id="tagline">loading chaos...</p>
-
-<p>
-  <a href="stats.html">full stats</a>
-</p>
+<h1>GirlServ</h1>
+<p class="tagline">chanstats, grudges, favorites, chaos, and receipts. she is watching.</p>
 
 <div class="grid">
 
   <div class="box">
-    <h2>Channel Watch</h2>
-    <div id="channels"></div>
+    <h2>Top Talkers</h2>
+    <div id="top-talkers">loading...</div>
   </div>
 
   <div class="box">
-    <h2>Top Users</h2>
-    <div id="top-users"></div>
+    <h2>Most Degenerate</h2>
+    <div id="top-degenerate">loading...</div>
   </div>
 
   <div class="box">
-    <h2>girl Stats</h2>
-    <p>Tokens today: <span class="stat" id="tokens-today">0</span></p>
-    <p>Yesterday: <span class="stat" id="tokens-yesterday">0</span></p>
-    <p>All time: <span class="stat" id="tokens-all-time">0</span></p>
-    <p class="small">Last seen: <span id="girl-last-seen">loading...</span></p>
+    <h2>LOL Lords</h2>
+    <div id="top-lol">loading...</div>
   </div>
 
   <div class="box">
-    <h2>RedRose Receipts</h2>
-    <p>Links seen: <span class="stat" id="links-seen">0</span></p>
-    <p>Titles grabbed: <span class="stat" id="titles-grabbed">0</span></p>
-    <p class="small">Last update: <span id="redrose-last-update">loading...</span></p>
+    <h2>Door Slammers</h2>
+    <div id="top-joins">loading...</div>
+  </div>
+
+  <div class="box">
+    <h2>Link Gremlins</h2>
+    <div id="top-links">loading...</div>
+  </div>
+
+  <div class="box">
+    <h2>Channel Totals</h2>
+    <div id="totals">loading...</div>
+  </div>
+
+  <div class="box wide">
+    <h2>girl remembers</h2>
+    <div id="profiles">Add girl_config.json later to show remembered users, admins, and token usage here.</div>
   </div>
 
 </div>
 
 <script>
-fetch('data.json')
+function fmt(n) {
+  return Number(n || 0).toLocaleString();
+}
+
+function renderList(id, users, field, label) {
+  document.getElementById(id).innerHTML = users.map((u, i) => `
+    <p>
+      #${i + 1} <span class="user">${u.name}</span><br>
+      <span class="stat">${fmt(u[field])}</span> ${label}
+    </p>
+  `).join('');
+}
+
+fetch('truth_seekers_user_stats.json')
   .then(res => res.json())
   .then(data => {
-    document.getElementById('site-name').innerText = data.bot.site_name;
-    document.getElementById('tagline').innerText = data.bot.tagline;
+    const users = Object.entries(data).map(([name, s]) => ({
+      name,
+      words: s.words || 0,
+      joins: s.joins || 0,
+      lol: s.lol || 0,
+      degeneracy: s.degeneracy || 0,
+      links: s.links || 0
+    }));
 
-    const channels = document.getElementById('channels');
-    channels.innerHTML = '';
-    data.channels.forEach(channel => {
-      channels.innerHTML += `
+    renderList('top-talkers', [...users].sort((a,b) => b.words - a.words).slice(0, 7), 'words', 'words');
+    renderList('top-degenerate', [...users].sort((a,b) => b.degeneracy - a.degeneracy).slice(0, 7), 'degeneracy', 'degeneracy points');
+    renderList('top-lol', [...users].sort((a,b) => b.lol - a.lol).slice(0, 7), 'lol', 'lols');
+    renderList('top-joins', [...users].sort((a,b) => b.joins - a.joins).slice(0, 7), 'joins', 'joins');
+    renderList('top-links', [...users].sort((a,b) => b.links - a.links).slice(0, 7), 'links', 'links');
+
+    const totals = users.reduce((a, u) => {
+      a.words += u.words;
+      a.joins += u.joins;
+      a.lol += u.lol;
+      a.degeneracy += u.degeneracy;
+      a.links += u.links;
+      return a;
+    }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
+
+    document.getElementById('totals').innerHTML = `
+      <p><span class="stat">${fmt(users.length)}</span> tracked nicks</p>
+      <p><span class="stat">${fmt(totals.words)}</span> words logged</p>
+      <p><span class="stat">${fmt(totals.joins)}</span> joins</p>
+      <p><span class="stat">${fmt(totals.lol)}</span> lols</p>
+      <p><span class="stat">${fmt(totals.degeneracy)}</span> degeneracy points</p>
+      <p><span class="stat">${fmt(totals.links)}</span> links</p>
+    `;
+  });
+
+fetch('girl_config.json')
+  .then(res => res.json())
+  .then(config => {
+    const admins = config.bot_config?.admins || [];
+    const profiles = config.bot_config?.memory_and_history?.user_profiles || {};
+    const tokens = config.bot_config?.token_usage?.daily || {};
+
+    const profileRows = Object.entries(profiles)
+      .sort((a,b) => (b[1].chat_count || 0) - (a[1].chat_count || 0))
+      .map(([name, p]) => `
         <p>
-          <span class="user">${channel.name}</span><br>
-          Messages: ${channel.messages}<br>
-          Joins: ${channel.joins}<br>
-          Top user: ${channel.top_user}
+          <span class="user">${name}</span><br>
+          chats with girl: <span class="stat">${fmt(p.chat_count)}</span>
         </p>
-      `;
-    });
+      `).join('');
 
-    const topUsers = document.getElementById('top-users');
-    topUsers.innerHTML = '';
-    data.top_users.forEach(user => {
-      topUsers.innerHTML += `
-        <p>
-          <span class="user">${user.name}</span><br>
-          Messages: ${user.messages}<br>
-          Vibe: ${user.vibe}
-        </p>
-      `;
-    });
+    const tokenRows = Object.entries(tokens)
+      .slice(-5)
+      .map(([day, t]) => `
+        <p>${day}: <span class="stat">${fmt(t.total_tokens)}</span> tokens</p>
+      `).join('');
 
-    document.getElementById('tokens-today').innerText = data.girl_stats.tokens_today;
-    document.getElementById('tokens-yesterday').innerText = data.girl_stats.tokens_yesterday;
-    document.getElementById('tokens-all-time').innerText = data.girl_stats.tokens_all_time;
-    document.getElementById('girl-last-seen').innerText = data.girl_stats.last_seen;
+    document.getElementById('profiles').innerHTML = `
+      <p class="tiny">admins</p>
+      <p>${admins.map(a => `<span class="pill">${a}</span>`).join('')}</p>
 
-    document.getElementById('links-seen').innerText = data.redrose_stats.links_seen;
-    document.getElementById('titles-grabbed').innerText = data.redrose_stats.titles_grabbed;
-    document.getElementById('redrose-last-update').innerText = data.redrose_stats.last_update;
+      <h3>Remembered Users</h3>
+      ${profileRows || '<p>no remembered users yet</p>'}
+
+      <h3>Recent Token Usage</h3>
+      ${tokenRows || '<p>no token data yet</p>'}
+    `;
+  })
+  .catch(() => {
+    document.getElementById('profiles').innerHTML = `
+      <p>Add <span class="user">girl_config.json</span> later and this box will automatically show:</p>
+      <p><span class="pill">admins</span><span class="pill">remembered users</span><span class="pill">chat counts</span><span class="pill">token usage</span></p>
+    `;
   });
 </script>
 
