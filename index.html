@@ -122,70 +122,118 @@
   stroke-linejoin: round;
 }
 
-    .top3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 20px;
-    }
+.winner-carousel {
+  margin: 18px 0 18px;
+  border: 3px solid #000;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 63, 143, 0.18), transparent 35%),
+    linear-gradient(315deg, rgba(79, 220, 255, 0.14), transparent 35%),
+    var(--panel);
+  box-shadow: 7px 7px 0 #000;
+  position: relative;
+}
 
-    .podium {
-      background: var(--panel);
-      border: 3px solid #000;
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow: 6px 6px 0 #000;
-      min-height: 175px;
-    }
+.winner-track {
+  display: flex;
+  transition: transform 0.55s ease;
+}
 
-    .podium.first {
-      background: linear-gradient(180deg, rgba(255, 228, 92, 0.18), var(--panel));
-      border-color: var(--yellow);
-    }
+.winner-slide {
+  min-width: 100%;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 120px 1fr 230px;
+  gap: 18px;
+  align-items: center;
+}
 
-    .podium.second {
-      background: linear-gradient(180deg, rgba(79, 220, 255, 0.16), var(--panel));
-      border-color: var(--blue);
-    }
+.winner-badge {
+  width: 105px;
+  height: 105px;
+  border-radius: 999px;
+  border: 3px solid #000;
+  background: var(--yellow);
+  color: #111;
+  display: grid;
+  place-items: center;
+  box-shadow: 5px 5px 0 #000;
+  font-size: 34px;
+  font-weight: 900;
+  transform: rotate(-5deg);
+}
 
-    .podium.third {
-      background: linear-gradient(180deg, rgba(255, 63, 143, 0.16), var(--panel));
-      border-color: var(--pink);
-    }
+.winner-info h2 {
+  margin: 0;
+  color: var(--pink);
+  font-size: 34px;
+  text-shadow: 2px 2px 0 #000;
+}
 
-    .place {
-      color: var(--muted);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+.winner-user {
+  margin-top: 6px;
+  font-size: 30px;
+  font-weight: 900;
+  color: white;
+  word-break: break-word;
+}
 
-    .rank-big {
-      font-size: 38px;
-      font-weight: 900;
-      color: var(--yellow);
-      margin: 5px 0;
-    }
+.winner-line {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-    .podium-name {
-      font-size: 24px;
-      font-weight: 900;
-      word-break: break-word;
-      color: white;
-    }
+.winner-score {
+  background: #202036;
+  border: 2px solid #000;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 4px 4px 0 #000;
+}
 
-    .podium-score {
-      color: var(--blue);
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 8px;
-    }
+.winner-score .score-num {
+  color: var(--blue);
+  font-size: 32px;
+  font-weight: 900;
+}
 
-    .podium-meta {
-      color: var(--muted);
-      margin-top: 8px;
-      font-size: 13px;
-    }
+.winner-score .score-label {
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.winner-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 0 16px;
+}
+
+.winner-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  border: 2px solid #000;
+  background: var(--muted);
+}
+
+.winner-dot.active {
+  background: var(--pink);
+}
+
+@media (max-width: 850px) {
+  .winner-slide {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .winner-badge {
+    margin: auto;
+  }
+}
 
     .panel {
       display: none;
@@ -493,31 +541,82 @@
   </button>
 </div>
 
-    <section class="top3" id="top3">
-      <div class="podium second">
-        <div class="place">second most online</div>
-        <div class="rank-big">#2</div>
-        <div class="podium-name">loading...</div>
-        <div class="podium-score">0 words</div>
-        <div class="podium-meta">loading...</div>
+<section class="winner-carousel" id="winner-carousel">
+  <div class="winner-track" id="winner-track">
+    <div class="winner-slide">
+      <div class="winner-badge">#1</div>
+      <div class="winner-info">
+        <h2>Top Chatter</h2>
+        <div class="winner-user" id="winner-words-name">loading...</div>
+        <div class="winner-line" id="winner-words-meta">loading...</div>
       </div>
+      <div class="winner-score">
+        <div class="score-num" id="winner-words-score">0</div>
+        <div class="score-label">words</div>
+      </div>
+    </div>
 
-      <div class="podium first">
-        <div class="place">top chatter</div>
-        <div class="rank-big">#1</div>
-        <div class="podium-name">loading...</div>
-        <div class="podium-score">0 words</div>
-        <div class="podium-meta">loading...</div>
+    <div class="winner-slide">
+      <div class="winner-badge">#1</div>
+      <div class="winner-info">
+        <h2>Most Degenerate</h2>
+        <div class="winner-user" id="winner-degen-name">loading...</div>
+        <div class="winner-line" id="winner-degen-meta">loading...</div>
       </div>
+      <div class="winner-score">
+        <div class="score-num" id="winner-degen-score">0</div>
+        <div class="score-label">degeneracy</div>
+      </div>
+    </div>
 
-      <div class="podium third">
-        <div class="place">third place gremlin</div>
-        <div class="rank-big">#3</div>
-        <div class="podium-name">loading...</div>
-        <div class="podium-score">0 words</div>
-        <div class="podium-meta">loading...</div>
+    <div class="winner-slide">
+      <div class="winner-badge">#1</div>
+      <div class="winner-info">
+        <h2>LOL Lord</h2>
+        <div class="winner-user" id="winner-lol-name">loading...</div>
+        <div class="winner-line" id="winner-lol-meta">loading...</div>
       </div>
-    </section>
+      <div class="winner-score">
+        <div class="score-num" id="winner-lol-score">0</div>
+        <div class="score-label">lols</div>
+      </div>
+    </div>
+
+    <div class="winner-slide">
+      <div class="winner-badge">#1</div>
+      <div class="winner-info">
+        <h2>Link Gremlin</h2>
+        <div class="winner-user" id="winner-links-name">loading...</div>
+        <div class="winner-line" id="winner-links-meta">loading...</div>
+      </div>
+      <div class="winner-score">
+        <div class="score-num" id="winner-links-score">0</div>
+        <div class="score-label">links</div>
+      </div>
+    </div>
+
+    <div class="winner-slide">
+      <div class="winner-badge">#1</div>
+      <div class="winner-info">
+        <h2>Door Slammer</h2>
+        <div class="winner-user" id="winner-joins-name">loading...</div>
+        <div class="winner-line" id="winner-joins-meta">loading...</div>
+      </div>
+      <div class="winner-score">
+        <div class="score-num" id="winner-joins-score">0</div>
+        <div class="score-label">joins</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="winner-dots" id="winner-dots">
+    <span class="winner-dot active"></span>
+    <span class="winner-dot"></span>
+    <span class="winner-dot"></span>
+    <span class="winner-dot"></span>
+    <span class="winner-dot"></span>
+  </div>
+</section>
 
     <section class="panel active" id="panel-chatters">
       <h2>Top Chatter</h2>
@@ -649,22 +748,48 @@
       }).join('');
     }
 
-    function fillTop3(users) {
-      const cards = document.querySelectorAll('#top3 .podium');
-      const displayOrder = [users[1], users[0], users[2]];
+function winnerMeta(u) {
+  return 'words ' + fmt(u.words) +
+    ' · joins ' + fmt(u.joins) +
+    ' · lol ' + fmt(u.lol) +
+    ' · degeneracy ' + fmt(u.degeneracy) +
+    ' · links ' + fmt(u.links);
+}
 
-      displayOrder.forEach((u, i) => {
-        if (!u) return;
+function setWinner(prefix, user, field) {
+  document.getElementById('winner-' + prefix + '-name').innerText = user.name;
+  document.getElementById('winner-' + prefix + '-score').innerText = fmt(user[field]);
+  document.getElementById('winner-' + prefix + '-meta').innerText = winnerMeta(user);
+}
 
-        cards[i].querySelector('.podium-name').innerText = u.name;
-        cards[i].querySelector('.podium-score').innerText = fmt(u.words) + ' words';
-        cards[i].querySelector('.podium-meta').innerText =
-          'joins ' + fmt(u.joins) +
-          ' · lol ' + fmt(u.lol) +
-          ' · degeneracy ' + fmt(u.degeneracy) +
-          ' · links ' + fmt(u.links);
-      });
+let winnerSlideIndex = 0;
+let winnerDirection = 1;
+
+function startWinnerCarousel() {
+  const track = document.getElementById('winner-track');
+  const dots = document.querySelectorAll('.winner-dot');
+  const total = dots.length;
+
+  setInterval(() => {
+    winnerSlideIndex += winnerDirection;
+
+    if (winnerSlideIndex >= total - 1) {
+      winnerSlideIndex = total - 1;
+      winnerDirection = -1;
     }
+
+    if (winnerSlideIndex <= 0) {
+      winnerSlideIndex = 0;
+      winnerDirection = 1;
+    }
+
+    track.style.transform = 'translateX(-' + (winnerSlideIndex * 100) + '%)';
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === winnerSlideIndex);
+    });
+  }, 3200);
+}
 
     fetch('truth_seekers_user_stats.json')
       .then(response => response.json())
@@ -684,8 +809,13 @@
         const byLinks = [...users].sort((a, b) => b.links - a.links);
         const byJoins = [...users].sort((a, b) => b.joins - a.joins);
 
-        fillTop3(byWords.slice(0, 3));
-
+setWinner('words', byWords[0], 'words');
+setWinner('degen', byDegeneracy[0], 'degeneracy');
+setWinner('lol', byLol[0], 'lol');
+setWinner('links', byLinks[0], 'links');
+setWinner('joins', byJoins[0], 'joins');
+startWinnerCarousel();
+        
         const top30 = byWords.slice(0, 30);
         document.getElementById('chatters-left').innerHTML =
           makeChatterCards(top30.slice(0, 15), 1);
