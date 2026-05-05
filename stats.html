@@ -1,44 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GirlServ Stats</title>
+  <title>GirlServ Full Stats</title>
   <style>
     body {
-      background: #0a0a0a;
-      color: #dcdcdc;
+      background: #09090b;
+      color: #e5e5e5;
       font-family: monospace;
-      padding: 20px;
+      padding: 24px;
+      max-width: 1000px;
+      margin: auto;
     }
-    h1 {
-      color: #ff4d6d;
-    }
-    a {
-      color: #8be9fd;
-    }
+
+    h1 { color: #ff4d6d; }
+    h2 { color: #ffb3c1; }
+    a { color: #8be9fd; }
+
     .box {
       border: 1px solid #333;
-      padding: 15px;
-      margin-top: 15px;
+      background: #111116;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .user {
+      color: #8be9fd;
+      font-weight: bold;
+    }
+
+    .small {
+      color: #999;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
 
-<h1>GirlServ Stats</h1>
-<p>redrose stats will live here soon.</p>
-
-<div class="box">
-  <h2>Channel Stats</h2>
-  <p>#truth-seekers — 0 messages loaded</p>
-  <p>#degenerates — 0 messages loaded</p>
-</div>
-
-<div class="box">
-  <h2>User Mood Board</h2>
-  <p>favorites, enemies, grudges, and chaos scores coming soon.</p>
-</div>
-
+<h1>GirlServ Full Stats</h1>
 <p><a href="index.html">back home</a></p>
+
+<div class="box">
+  <h2>Channels</h2>
+  <div id="channels"></div>
+</div>
+
+<div class="box">
+  <h2>Top Users</h2>
+  <div id="top-users"></div>
+</div>
+
+<div class="box">
+  <h2>Bot Status</h2>
+  <div id="bot-status"></div>
+</div>
+
+<script>
+fetch('data.json')
+  .then(res => res.json())
+  .then(data => {
+    const channels = document.getElementById('channels');
+    data.channels.forEach(channel => {
+      channels.innerHTML += `
+        <p>
+          <span class="user">${channel.name}</span><br>
+          Messages: ${channel.messages}<br>
+          Joins: ${channel.joins}<br>
+          Top user: ${channel.top_user}
+        </p>
+      `;
+    });
+
+    const users = document.getElementById('top-users');
+    data.top_users.forEach(user => {
+      users.innerHTML += `
+        <p>
+          <span class="user">${user.name}</span><br>
+          Messages: ${user.messages}<br>
+          Vibe: ${user.vibe}
+        </p>
+      `;
+    });
+
+    document.getElementById('bot-status').innerHTML = `
+      <p>girl tokens today: ${data.girl_stats.tokens_today}</p>
+      <p>girl tokens yesterday: ${data.girl_stats.tokens_yesterday}</p>
+      <p>girl tokens all time: ${data.girl_stats.tokens_all_time}</p>
+      <p>RedRose links seen: ${data.redrose_stats.links_seen}</p>
+      <p>RedRose titles grabbed: ${data.redrose_stats.titles_grabbed}</p>
+      <p class="small">Last update: ${data.redrose_stats.last_update}</p>
+    `;
+  });
+</script>
 
 </body>
 </html>
