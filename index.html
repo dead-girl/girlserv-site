@@ -443,13 +443,54 @@
     </section>
 
 <div class="button-bar">
-  <button class="view-btn active" onclick="showPanel('chatters', this)">💬 Top Chatter</button>
-  <button class="view-btn" onclick="showPanel('degeneracy', this)">🔥 Degeneracy</button>
-  <button class="view-btn" onclick="showPanel('lol', this)">👑 LOL Lords</button>
-  <button class="view-btn" onclick="showPanel('links', this)">🔗 Link Gremlins</button>
-  <button class="view-btn" onclick="showPanel('joins', this)">🚪 Door Slammers</button>
-  <button class="view-btn" onclick="showPanel('overview', this)">📊 Overview</button>
-  <button class="view-btn" onclick="showPanel('memory', this)">💗 girl Remembers</button>
+  <button class="view-btn active" onclick="showPanel('chatters', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 5h16v10H8l-4 4V5z"/></svg>
+    </span>
+    <span>Top Chatter</span>
+  </button>
+
+  <button class="view-btn" onclick="showPanel('degeneracy', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M13 3s1 3-2 6c-2 2-3 3-3 5a4 4 0 0 0 8 0c0-2-1-3-2-5-1-2-1-3-1-6z"/></svg>
+    </span>
+    <span>Degeneracy</span>
+  </button>
+
+  <button class="view-btn" onclick="showPanel('lol', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M6 18h12l1-8H5l1 8z"/><path d="M8 10V7l4-2 4 2v3"/></svg>
+    </span>
+    <span>LOL Lords</span>
+  </button>
+
+  <button class="view-btn" onclick="showPanel('links', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M10 14l4-4"/><path d="M7 17l-2 2a3 3 0 0 1-4-4l2-2"/><path d="M17 7l2-2a3 3 0 1 1 4 4l-2 2"/><path d="M8 16l8-8"/></svg>
+    </span>
+    <span>Link Gremlins</span>
+  </button>
+
+  <button class="view-btn" onclick="showPanel('joins', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 3h10v18H4z"/><path d="M14 12h6"/><path d="M17 9l3 3-3 3"/></svg>
+    </span>
+    <span>Door Slammers</span>
+  </button>
+
+  <button class="view-btn" onclick="showPanel('overview', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20V8"/></svg>
+    </span>
+    <span>Overview</span>
+  </button>
+
+  <button class="view-btn" onclick="showPanel('memory', this)">
+    <span class="btn-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z"/></svg>
+    </span>
+    <span>girl Remembers</span>
+  </button>
 </div>
 
     <section class="top3" id="top3">
