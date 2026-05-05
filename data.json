@@ -1,0 +1,14 @@
+{
+  "channels": {
+    "#truth-seekers": 1234,
+    "#degenerates": 567
+  },
+  "top_users": [
+    { "name": "dead_girl", "messages": 999 },
+    { "name": "someone_else", "messages": 420 }
+  ],
+  "annoying": [
+    { "name": "random_user", "flags": 37 }
+  ],
+  "status": "online in #truth-seekers"
+}
