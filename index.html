@@ -1739,6 +1739,64 @@
       }
     }
 
+    /* TOP CHATTERS EXPANDED + MEDALS */
+    #panel-chatters .chatter-card.open {
+      grid-column: 1 / -1;
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
+        #151521;
+      border-color: var(--yellow);
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    #panel-chatters .chatter-card.open .extra-layout {
+      grid-template-columns: 92px minmax(0, 1fr);
+      align-items: center;
+    }
+
+    #panel-chatters .chatter-card.open .extra-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    #panel-chatters .award-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    #panel-chatters .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #f6e7bf;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 #000;
+      transform: rotate(-1deg);
+    }
+
+    #panel-chatters .award-badge:nth-child(2n) {
+      background: #d6edf7;
+      transform: rotate(1deg);
+    }
+
+    #panel-chatters .award-badge:nth-child(3n) {
+      background: #f1d7e5;
+    }
+
+    @media (max-width: 760px) {
+      #panel-chatters .chatter-card.open .extra-layout,
+      #panel-chatters .chatter-card.open .extra-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -1762,8 +1820,8 @@
     <section class="panel active" id="panel-chatters">
       <div class="home-layout">
         <div class="board">
-          <div class="board-title">★ Top Chatter ♡</div>
-          <div class="board-subnote">words logged in all channels ♡</div>
+          <div class="board-title">★ Top Chatters ♡</div>
+          <div class="board-subnote">word crimes logged ♡</div>
 
           <div class="top-chatters-grid">
             <div>
@@ -1779,7 +1837,7 @@
 
         <div class="sidebar-stack">
           <div class="board">
-            <div class="board-title">☆ Top 3</div>
+            <div class="board-title">☆ #truth-seekers</div>
             <div class="top3-grid" id="top3-grid">
               <div class="top3-card rank2">
                 <div class="top3-badge">#2</div>
@@ -1981,6 +2039,43 @@
       return String(name || '').trim().toLowerCase();
     }
 
+    function canonicalNick(name) {
+      const normalized = normalizeName(name);
+      if (normalized === 'rdr_') return 'rdr';
+      return normalized;
+    }
+
+    function displayNick(name) {
+      if (canonicalNick(name) === 'rdr') return 'rdr';
+      return name;
+    }
+
+    function mergeUserStats(rawData) {
+      const merged = new Map();
+
+      Object.entries(rawData).forEach(([name, stats]) => {
+        const key = canonicalNick(name);
+        const existing = merged.get(key) || {
+          name: displayNick(name),
+          words: 0,
+          joins: 0,
+          lol: 0,
+          degeneracy: 0,
+          links: 0
+        };
+
+        existing.words += stats.words || 0;
+        existing.joins += stats.joins || 0;
+        existing.lol += stats.lol || 0;
+        existing.degeneracy += stats.degeneracy || 0;
+        existing.links += stats.links || 0;
+
+        merged.set(key, existing);
+      });
+
+      return [...merged.values()];
+    }
+
     function assignAvatars(users) {
       avatarMap.clear();
 
@@ -2024,9 +2119,48 @@
       `).join('');
     }
 
-    function makeChatterCards(users, startRank) {
+    function rankingMap(users, field) {
+      const map = new Map();
+      [...users]
+        .sort((a, b) => (b[field] || 0) - (a[field] || 0))
+        .slice(0, 3)
+        .forEach((user, index) => {
+          map.set(normalizeName(user.name), index + 1);
+        });
+      return map;
+    }
+
+    function medalForRank(rank) {
+      if (rank === 1) return '🥇';
+      if (rank === 2) return '🥈';
+      if (rank === 3) return '🥉';
+      return '🏅';
+    }
+
+    function userAwards(user, awardMaps) {
+      const key = normalizeName(user.name);
+      const labels = [
+        ['words', 'Top Chatter'],
+        ['lol', 'LOL Lord'],
+        ['links', 'Link Gremlin'],
+        ['joins', 'Door Slammer'],
+        ['degeneracy', 'Chaos Gremlin']
+      ];
+
+      return labels
+        .filter(([field]) => awardMaps[field] && awardMaps[field].has(key))
+        .map(([field, label]) => {
+          const rank = awardMaps[field].get(key);
+          return `<span class="award-badge">${medalForRank(rank)} #${rank} ${label}</span>`;
+        })
+        .join('');
+    }
+
+    function makeChatterCards(users, startRank, totalWords = 0, awardMaps = {}) {
       return users.map((u, index) => {
         const rank = startRank + index;
+        const contribution = totalWords ? ((u.words * 100) / totalWords).toFixed(2) + '%' : '0.00%';
+        const awards = userAwards(u, awardMaps) || '<span class="award-badge">☆ no current trophies</span>';
 
         return `
           <div class="chatter-card">
@@ -2039,30 +2173,22 @@
             <div class="chatter-extra">
               <div class="extra-layout">
                 <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
-                <div class="extra-grid">
-                  <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
+                <div>
+                  <div class="extra-grid">
+                    <div class="extra-stat"><div class="extra-label">Words</div><div class="extra-value">${fmt(u.words)}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Word Share</div><div class="extra-value">${contribution}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
+                    <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
+                  </div>
+                  <div class="award-strip">${awards}</div>
                 </div>
               </div>
             </div>
           </div>
         `;
       }).join('');
-    }
-
-    function toggleDegenRemaining(button) {
-      const card = button.closest('.degen-remaining-card');
-      const wasOpen = card.classList.contains('open');
-
-      document.querySelectorAll('.degen-remaining-card.open').forEach(openCard => {
-        openCard.classList.remove('open');
-      });
-
-      if (!wasOpen) {
-        card.classList.add('open');
-      }
     }
 
     function degenLabel(index) {
@@ -2437,43 +2563,48 @@
       dots.forEach((dot, i) => dot.classList.toggle('active', i === featuredIndex));
     }
 
-    function startFeaturedCarousel(users) {
-      featuredUsers = users.slice(0, 3);
-      featuredIndex = 0;
-      renderFeaturedUser();
-      setInterval(() => {
-        featuredIndex = (featuredIndex + 1) % featuredUsers.length;
-        renderFeaturedUser();
-      }, 3200);
-    }
+    function startFeaturedCarousel(rankings) {
+      const categories = [
+        { title: 'Top Chatter', field: 'words', suffix: 'words' },
+        { title: 'Chaos Gremlin', field: 'degeneracy', suffix: 'receipts' },
+        { title: 'LOL Lord', field: 'lol', suffix: 'lols' },
+        { title: 'Link Gremlin', field: 'links', suffix: 'links' },
+        { title: 'Door Slammer', field: 'joins', suffix: 'joins' }
+      ];
 
-    function buildOverviewCardsHtml(users, totals) {
-      return `
-        <div class="mini-card"><div class="mini-label">Tracked Nicks</div><div class="mini-num">${fmt(users.length)}</div></div>
-        <div class="mini-card"><div class="mini-label">Words Logged</div><div class="mini-num">${fmt(totals.words)}</div></div>
-        <div class="mini-card"><div class="mini-label">Joins</div><div class="mini-num">${fmt(totals.joins)}</div></div>
-        <div class="mini-card"><div class="mini-label">LOLs</div><div class="mini-num">${fmt(totals.lol)}</div></div>
-        <div class="mini-card"><div class="mini-label">Degeneracy</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
-        <div class="mini-card"><div class="mini-label">Links</div><div class="mini-num">${fmt(totals.links)}</div></div>
-      `;
+      const area = document.getElementById('featured-user-area');
+      if (!area) return;
+
+      area.innerHTML = categories.map(cat => {
+        const user = rankings[cat.field] && rankings[cat.field][0];
+        if (!user) return '';
+
+        return `
+          <div class="featured-user-card">
+            <div class="featured-left">
+              <div class="featured-avatar">${avatarImg(user.name, 'featured-avatar-img', user.name + ' avatar')}</div>
+            </div>
+            <div class="featured-right">
+              <div class="featured-kicker">${cat.title}</div>
+              <div class="featured-name">${user.name}</div>
+              <div class="featured-score">${fmt(user[cat.field])} ${cat.suffix}</div>
+              <div class="featured-note">current user to keep an eye on</div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
     fetch('truth_seekers_user_stats.json')
       .then(response => response.json())
       .then(data => {
-        const users = Object.entries(data)
-          .filter(([name]) => normalizeName(name) !== 'girl')
-          .map(([name, stats]) => ({
-            name,
-            words: stats.words || 0,
-            joins: stats.joins || 0,
-            lol: stats.lol || 0,
-            degeneracy: stats.degeneracy || 0,
-            links: stats.links || 0
-          }));
+        const users = mergeUserStats(data)
+          .filter(user => normalizeName(user.name) !== 'girl');
 
         const byWords = [...users].sort((a, b) => b.words - a.words);
         assignAvatars(byWords);
+
+        const totalWords = users.reduce((sum, user) => sum + (user.words || 0), 0);
 
         const byDegeneracy = [...users]
           .filter(user => user.words >= 1000)
@@ -2488,12 +2619,28 @@
         const byLinks = [...users].sort((a, b) => b.links - a.links);
         const byJoins = [...users].sort((a, b) => b.joins - a.joins);
 
+        const rankings = {
+          words: byWords,
+          degeneracy: byDegeneracy,
+          lol: byLol,
+          links: byLinks,
+          joins: byJoins
+        };
+
+        const awardMaps = {
+          words: rankingMap(users, 'words'),
+          degeneracy: rankingMap(users, 'degeneracy'),
+          lol: rankingMap(users, 'lol'),
+          links: rankingMap(users, 'links'),
+          joins: rankingMap(users, 'joins')
+        };
+
         const top30 = byWords.slice(0, 30);
-        document.getElementById('chatters-left').innerHTML = makeChatterCards(top30.slice(0, 15), 1);
-        document.getElementById('chatters-right').innerHTML = makeChatterCards(top30.slice(15, 30), 16);
+        document.getElementById('chatters-left').innerHTML = makeChatterCards(top30.slice(0, 15), 1, totalWords, awardMaps);
+        document.getElementById('chatters-right').innerHTML = makeChatterCards(top30.slice(15, 30), 16, totalWords, awardMaps);
 
         fillTop3(byWords);
-        startFeaturedCarousel(byWords);
+        startFeaturedCarousel(rankings);
 
         document.getElementById('degen-top9').innerHTML = makeDegenCards(byDegeneracy.slice(0, 9));
         document.getElementById('degen-remaining').innerHTML = makeDegenRemainingRows(byDegeneracy.slice(9, 30), 10);
