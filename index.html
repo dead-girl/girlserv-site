@@ -1024,26 +1024,70 @@
     }
 
     #panel-joins .door-card {
-      background: #0f0f17;
-      border: 2px dashed rgba(255, 63, 143, 0.45);
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.09), transparent 40%),
+        linear-gradient(315deg, rgba(79,220,255,0.08), transparent 40%),
+        #0f0f17;
+      border: 2px dashed rgba(255, 63, 143, 0.38);
       border-radius: 18px;
       padding: 10px;
       position: relative;
       box-shadow: 4px 4px 0 #000;
       min-width: 0;
-      overflow: hidden;
+      overflow: visible;
     }
 
     #panel-joins .door-card.open {
-      background:
-        linear-gradient(135deg, rgba(255,63,143,0.16), transparent 40%),
-        linear-gradient(315deg, rgba(79,220,255,0.12), transparent 40%),
-        #141420;
       border-color: var(--yellow);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    #panel-joins .door-rank-badge {
+      position: absolute;
+      top: -8px;
+      left: 10px;
+      z-index: 4;
+      background: var(--pink);
+      color: white;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 #000;
+      transform: rotate(-6deg);
+    }
+
+    #panel-joins .door-stage {
+      position: relative;
+      min-height: 250px;
+      perspective: 1200px;
+    }
+
+    #panel-joins .door-extra {
+      position: absolute;
+      inset: 0;
+      padding: 14px 10px 10px;
+      background: #f6e7bf;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 14px;
+      box-shadow: 3px 3px 0 #000;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    #panel-joins .door-card.open .door-extra {
+      opacity: 1;
     }
 
     #panel-joins .door-button {
+      position: absolute;
+      inset: 0;
       width: 100%;
+      height: 100%;
       border: 0;
       background: transparent;
       padding: 0;
@@ -1052,39 +1096,49 @@
       color: white;
       text-align: center;
       display: block;
+      z-index: 2;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 0.34s ease;
     }
 
-    #panel-joins .door-img-wrap {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.08), transparent 45%),
-        rgba(255,255,255,0.03);
-      margin-bottom: 8px;
-      overflow: hidden;
-    }
-
-    #panel-joins .door-img {
-      width: 92%;
-      height: 92%;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.45));
-      transition: transform 0.16s ease;
+    #panel-joins .door-card.open .door-button {
+      transform: rotateY(-62deg) translateX(-10px);
     }
 
     #panel-joins .door-button:hover .door-img {
       transform: translateY(-3px) rotate(-1deg);
     }
 
-    #panel-joins .door-rank {
-      color: var(--pink);
-      font-weight: 900;
-      font-size: 13px;
-      margin-bottom: 3px;
+    #panel-joins .door-front {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 12px 6px 8px;
+      backface-visibility: hidden;
+    }
+
+    #panel-joins .door-img-wrap {
+      width: 100%;
+      flex: 1 1 auto;
+      display: grid;
+      place-items: center;
+      margin-bottom: 6px;
+      overflow: visible;
+      background: transparent;
+      border-radius: 0;
+    }
+
+    #panel-joins .door-img {
+      width: 96%;
+      height: 96%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.45));
+      transition: transform 0.16s ease;
     }
 
     #panel-joins .door-name {
@@ -1092,7 +1146,9 @@
       font-weight: 900;
       font-size: 14px;
       overflow-wrap: anywhere;
-      min-height: 32px;
+      min-height: 30px;
+      line-height: 1.12;
+      text-shadow: 1px 1px 0 #000;
     }
 
     #panel-joins .door-joins-pill {
@@ -1108,27 +1164,21 @@
       box-shadow: 2px 2px 0 #000;
     }
 
-    #panel-joins .door-extra {
-      display: none;
-      margin-top: 10px;
-      padding: 10px;
-      background: #f6e7bf;
-      color: #111;
-      border: 2px solid #000;
-      border-radius: 12px;
-      box-shadow: 3px 3px 0 #000;
-    }
-
-    #panel-joins .door-card.open .door-extra {
-      display: block;
-    }
-
     #panel-joins .door-extra-title {
       font-size: 12px;
       font-weight: 900;
       color: #8d104c;
       text-transform: uppercase;
       margin-bottom: 7px;
+    }
+
+    #panel-joins .door-extra-name {
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: #111;
+      word-break: break-word;
+      padding-right: 6px;
     }
 
     #panel-joins .door-extra-grid {
@@ -1214,6 +1264,10 @@
     @media (max-width: 760px) {
       #panel-joins .door-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #panel-joins .door-stage {
+        min-height: 235px;
       }
 
       #panel-joins .door-note-grid {
@@ -1763,23 +1817,28 @@
 
         return `
           <div class="door-card">
-            <button class="door-button" onclick="toggleDoor(this)">
-              <div class="door-img-wrap">
-                <img class="door-img" src="${doorForRank(rank)}" alt="Door sticker ${rank}">
+            <div class="door-rank-badge">#${rank}</div>
+            <div class="door-stage">
+              <div class="door-extra">
+                <div class="door-extra-title">door file</div>
+                <div class="door-extra-name">${u.name}</div>
+                <div class="door-extra-grid">
+                  <div class="door-extra-stat"><div class="door-extra-label">Mood</div><div class="door-extra-value">${doorMood(index)}</div></div>
+                  <div class="door-extra-stat"><div class="door-extra-label">Slams</div><div class="door-extra-value">${fmt(u.joins)}</div></div>
+                  <div class="door-extra-stat"><div class="door-extra-label">Rank</div><div class="door-extra-value">#${rank}</div></div>
+                  <div class="door-extra-stat"><div class="door-extra-label">Status</div><div class="door-extra-value">watched</div></div>
+                </div>
               </div>
-              <div class="door-rank">#${rank}</div>
-              <div class="door-name">${u.name}</div>
-              <div class="door-joins-pill">${fmt(u.joins)} joins</div>
-            </button>
 
-            <div class="door-extra">
-              <div class="door-extra-title">door file</div>
-              <div class="door-extra-grid">
-                <div class="door-extra-stat"><div class="door-extra-label">Mood</div><div class="door-extra-value">${doorMood(index)}</div></div>
-                <div class="door-extra-stat"><div class="door-extra-label">Slams</div><div class="door-extra-value">${fmt(u.joins)}</div></div>
-                <div class="door-extra-stat"><div class="door-extra-label">Rank</div><div class="door-extra-value">#${rank}</div></div>
-                <div class="door-extra-stat"><div class="door-extra-label">Status</div><div class="door-extra-value">watched</div></div>
-              </div>
+              <button class="door-button" onclick="toggleDoor(this)">
+                <div class="door-front">
+                  <div class="door-img-wrap">
+                    <img class="door-img" src="${doorForRank(rank)}" alt="Door sticker ${rank}">
+                  </div>
+                  <div class="door-name">${u.name}</div>
+                  <div class="door-joins-pill">${fmt(u.joins)} joins</div>
+                </div>
+              </button>
             </div>
           </div>
         `;
