@@ -656,18 +656,38 @@
     function fmt(n) { return Number(n || 0).toLocaleString(); }
 
     const avatarMap = new Map();
+    const avatarOverrides = {
+      'dead_girl': 'avatars/custom-dead_girl.png',
+      'girard': 'avatars/custom-girard.png',
+      'dumbgoy': 'avatars/custom-dumbgoy.png',
+      'girl': 'avatars/custom-girl.png'
+    };
+
+    function normalizeName(name) {
+      return String(name || '').trim().toLowerCase();
+    }
 
     function assignAvatars(users) {
       avatarMap.clear();
 
-      users.forEach((user, index) => {
-        const avatarNumber = (index % 30) + 1;
-        avatarMap.set(user.name, avatarNumber);
+      let avatarIndex = 1;
+      users.forEach((user) => {
+        const normalized = normalizeName(user.name);
+        if (avatarOverrides[normalized]) return;
+
+        avatarMap.set(normalized, avatarIndex);
+        avatarIndex += 1;
+        if (avatarIndex > 30) avatarIndex = 1;
       });
     }
 
     function avatarForUser(name) {
-      const assignedNumber = avatarMap.get(name) || 1;
+      const normalized = normalizeName(name);
+      if (avatarOverrides[normalized]) {
+        return avatarOverrides[normalized];
+      }
+
+      const assignedNumber = avatarMap.get(normalized) || 1;
       return 'avatars/avatar-' + String(assignedNumber).padStart(2, '0') + '.png';
     }
 
