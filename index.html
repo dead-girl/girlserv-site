@@ -1739,7 +1739,7 @@
       }
     }
 
-    /* TOP CHATTERS EXPANDED + MEDALS */
+    /* TOP CHATTERS FIX */
     #panel-chatters .chatter-card.open {
       grid-column: 1 / -1;
       background:
@@ -1778,23 +1778,66 @@
       font-size: 11px;
       font-weight: 900;
       box-shadow: 2px 2px 0 #000;
-      transform: rotate(-1deg);
     }
 
-    #panel-chatters .award-badge:nth-child(2n) {
-      background: #d6edf7;
-      transform: rotate(1deg);
+    #panel-chatters #featured-user-area {
+      display: block;
+      overflow: visible;
     }
 
-    #panel-chatters .award-badge:nth-child(3n) {
-      background: #f1d7e5;
+    #panel-chatters .watch-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
     }
 
-    @media (max-width: 760px) {
-      #panel-chatters .chatter-card.open .extra-layout,
-      #panel-chatters .chatter-card.open .extra-grid {
-        grid-template-columns: 1fr;
-      }
+    #panel-chatters .watch-card {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      background: #151521;
+      border: 2px dashed rgba(255, 63, 143, 0.55);
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    #panel-chatters .watch-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #fff;
+      outline: 2px solid #000;
+      background: #111;
+    }
+
+    #panel-chatters .watch-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #panel-chatters .watch-kicker {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    #panel-chatters .watch-name {
+      color: white;
+      font-size: 15px;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-chatters .watch-score {
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 900;
     }
 
   </style>
@@ -2124,9 +2167,7 @@
       [...users]
         .sort((a, b) => (b[field] || 0) - (a[field] || 0))
         .slice(0, 3)
-        .forEach((user, index) => {
-          map.set(normalizeName(user.name), index + 1);
-        });
+        .forEach((user, index) => map.set(normalizeName(user.name), index + 1));
       return map;
     }
 
@@ -2575,24 +2616,25 @@
       const area = document.getElementById('featured-user-area');
       if (!area) return;
 
-      area.innerHTML = categories.map(cat => {
-        const user = rankings[cat.field] && rankings[cat.field][0];
-        if (!user) return '';
+      area.innerHTML = `
+        <div class="watch-grid">
+          ${categories.map(cat => {
+            const user = rankings[cat.field] && rankings[cat.field][0];
+            if (!user) return '';
 
-        return `
-          <div class="featured-user-card">
-            <div class="featured-left">
-              <div class="featured-avatar">${avatarImg(user.name, 'featured-avatar-img', user.name + ' avatar')}</div>
-            </div>
-            <div class="featured-right">
-              <div class="featured-kicker">${cat.title}</div>
-              <div class="featured-name">${user.name}</div>
-              <div class="featured-score">${fmt(user[cat.field])} ${cat.suffix}</div>
-              <div class="featured-note">current user to keep an eye on</div>
-            </div>
-          </div>
-        `;
-      }).join('');
+            return `
+              <div class="watch-card">
+                <div class="watch-avatar">${avatarImg(user.name, 'watch-avatar-img', user.name + ' avatar')}</div>
+                <div>
+                  <div class="watch-kicker">${cat.title}</div>
+                  <div class="watch-name">${user.name}</div>
+                  <div class="watch-score">${fmt(user[cat.field])} ${cat.suffix}</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
     }
 
     fetch('truth_seekers_user_stats.json')
@@ -2714,4 +2756,3 @@
   </script>
 </body>
 </html>
- 
