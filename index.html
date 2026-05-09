@@ -645,6 +645,57 @@
       }
     }
 
+    /* DEG TAB STACKED + PERCENT OVERRIDES */
+    #panel-degeneracy .degen-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    #panel-degeneracy .degen-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    #panel-degeneracy .degen-side-list {
+      width: 100%;
+      min-width: 0;
+    }
+
+    #panel-degeneracy .degen-remaining-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    #panel-degeneracy .degen-remaining-card {
+      margin-bottom: 0;
+    }
+
+    #panel-degeneracy .degen-remaining-head {
+      grid-template-columns: 44px minmax(0, 1fr) 82px;
+    }
+
+    #panel-degeneracy .degen-score,
+    #panel-degeneracy .degen-remaining-score {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 980px) {
+      #panel-degeneracy .degen-remaining-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      #panel-degeneracy .degen-card-grid,
+      #panel-degeneracy .degen-remaining-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -734,14 +785,14 @@
       <div class="degen-layout">
         <div class="board">
           <div class="board-title">☠ Top 9 Degenerates ♡</div>
-          <div class="board-subnote">the worst offenders, pinned to the wall</div>
+          <div class="board-subnote">degeneracy % = raw degen × 100 / total words</div>
           <div class="degen-card-grid" id="degen-top9">loading...</div>
         </div>
 
         <div class="degen-side-list">
           <div class="degen-side-title">Remaining Degen 30</div>
-          <div class="panel-note">#10 through #30 — click a row for extra stats</div>
-          <div id="degen-remaining">loading...</div>
+          <div class="panel-note">#10 through #30 by degeneracy percentage — click a row for extra stats</div>
+          <div class="degen-remaining-list" id="degen-remaining">loading...</div>
         </div>
       </div>
     </section>
@@ -800,6 +851,15 @@
     }
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
+
+    function degenPercent(user) {
+      if (!user.words) return 0;
+      return (user.degeneracy * 100) / user.words;
+    }
+
+    function fmtPercent(n) {
+      return Number(n || 0).toFixed(2) + '%';
+    }
 
     const avatarMap = new Map();
     const avatarOverrides = {
@@ -912,7 +972,7 @@
             <div>
               <div class="degen-rank">#${index + 1}</div>
               <div class="degen-name">${u.name}</div>
-              <div class="degen-score">${fmt(u.degeneracy)} degen</div>
+              <div class="degen-score">${fmtPercent(u.degenPercent)}</div>
               <div class="degen-tag">${degenLabel(index)}</div>
             </div>
           </div>
@@ -934,7 +994,7 @@
             <button class="degen-remaining-head" onclick="toggleDegenRemaining(this)">
               <div class="degen-remaining-rank">#${rank}</div>
               <div class="degen-remaining-name">${u.name}</div>
-              <div class="degen-remaining-score">${fmt(u.degeneracy)}</div>
+              <div class="degen-remaining-score">${fmtPercent(u.degenPercent)}</div>
             </button>
 
             <div class="degen-remaining-extra">
@@ -942,7 +1002,7 @@
                 <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
                 <div class="extra-grid">
                   <div class="extra-stat"><div class="extra-label">Words</div><div class="extra-value">${fmt(u.words)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Raw Degen</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
                   <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
                 </div>
@@ -1036,10 +1096,14 @@
           links: stats.links || 0
         }));
 
+        users.forEach(user => {
+          user.degenPercent = degenPercent(user);
+        });
+
         const byWords = [...users].sort((a, b) => b.words - a.words);
         assignAvatars(byWords);
 
-        const byDegeneracy = [...users].sort((a, b) => b.degeneracy - a.degeneracy);
+        const byDegeneracy = [...byWords.slice(0, 30)].sort((a, b) => b.degenPercent - a.degenPercent);
         const byLol = [...users].sort((a, b) => b.lol - a.lol);
         const byLinks = [...users].sort((a, b) => b.links - a.links);
         const byJoins = [...users].sort((a, b) => b.joins - a.joins);
