@@ -1739,107 +1739,6 @@
       }
     }
 
-    /* TOP CHATTERS FIX */
-    #panel-chatters .chatter-card.open {
-      grid-column: 1 / -1;
-      background:
-        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
-        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
-        #151521;
-      border-color: var(--yellow);
-      box-shadow: 5px 5px 0 #000;
-    }
-
-    #panel-chatters .chatter-card.open .extra-layout {
-      grid-template-columns: 92px minmax(0, 1fr);
-      align-items: center;
-    }
-
-    #panel-chatters .chatter-card.open .extra-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    #panel-chatters .award-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    #panel-chatters .award-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #f6e7bf;
-      color: #111;
-      border: 2px solid #000;
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 11px;
-      font-weight: 900;
-      box-shadow: 2px 2px 0 #000;
-    }
-
-    #panel-chatters #featured-user-area {
-      display: block;
-      overflow: visible;
-    }
-
-    #panel-chatters .watch-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    #panel-chatters .watch-card {
-      display: grid;
-      grid-template-columns: 64px minmax(0, 1fr);
-      gap: 10px;
-      align-items: center;
-      background: #151521;
-      border: 2px dashed rgba(255, 63, 143, 0.55);
-      border-radius: 14px;
-      padding: 8px;
-      box-shadow: 3px 3px 0 #000;
-    }
-
-    #panel-chatters .watch-avatar {
-      width: 58px;
-      height: 58px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid #fff;
-      outline: 2px solid #000;
-      background: #111;
-    }
-
-    #panel-chatters .watch-avatar-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    #panel-chatters .watch-kicker {
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    #panel-chatters .watch-name {
-      color: white;
-      font-size: 15px;
-      font-weight: 900;
-      overflow-wrap: anywhere;
-    }
-
-    #panel-chatters .watch-score {
-      color: var(--yellow);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
     /* USERS TO KEEP AN EYE ON CAROUSEL */
     #panel-chatters .overview-carousel {
       overflow: hidden;
@@ -1929,6 +1828,99 @@
       margin-top: 10px;
     }
 
+    /* TOP CHATTERS FULL WIDTH EXPANSION */
+    #panel-chatters .chatter-card.open .chatter-head {
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
+        #151521;
+      border-color: var(--yellow);
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    #panel-chatters .chatter-card .chatter-extra {
+      display: none !important;
+    }
+
+    #panel-chatters .chatter-expanded-full {
+      display: none;
+      margin-top: 14px;
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
+        #151521;
+      border: 2px dashed rgba(255, 221, 120, 0.75);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    #panel-chatters .chatter-expanded-full.open {
+      display: block;
+    }
+
+    #panel-chatters .chatter-expanded-title {
+      color: var(--yellow);
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    #panel-chatters .chatter-expanded-full .extra-layout {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+    }
+
+    #panel-chatters .chatter-expanded-full .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(95px, 1fr));
+      gap: 8px;
+    }
+
+    #panel-chatters .award-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    #panel-chatters .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #f6e7bf;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    #panel-chatters .award-badge:nth-child(2n) {
+      background: #d6edf7;
+    }
+
+    #panel-chatters .award-badge:nth-child(3n) {
+      background: #f1d7e5;
+    }
+
+    @media (max-width: 900px) {
+      #panel-chatters .chatter-expanded-full .extra-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      #panel-chatters .chatter-expanded-full .extra-layout,
+      #panel-chatters .chatter-expanded-full .extra-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -1965,6 +1957,8 @@
               <div id="chatters-right"></div>
             </div>
           </div>
+
+          <div class="chatter-expanded-full" id="chatter-expanded-full"></div>
         </div>
 
         <div class="sidebar-stack">
@@ -2129,7 +2123,27 @@
 
     function toggleChatter(button) {
       const card = button.closest('.chatter-card');
-      card.classList.toggle('open');
+      const fullPanel = document.getElementById('chatter-expanded-full');
+      const template = card.querySelector('.chatter-expanded-template');
+
+      if (!fullPanel || !template) return;
+
+      const wasOpen = card.classList.contains('open');
+
+      document.querySelectorAll('#panel-chatters .chatter-card.open').forEach(openCard => {
+        openCard.classList.remove('open');
+      });
+
+      if (wasOpen) {
+        fullPanel.classList.remove('open');
+        fullPanel.innerHTML = '';
+        return;
+      }
+
+      card.classList.add('open');
+      fullPanel.innerHTML = template.innerHTML;
+      fullPanel.classList.add('open');
+      fullPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
@@ -2269,6 +2283,17 @@
       return '🏅';
     }
 
+    function categoryEmoji(field) {
+      const emojis = {
+        words: '💬',
+        lol: '😂',
+        links: '🔗',
+        joins: '🚪',
+        degeneracy: '☠️'
+      };
+      return emojis[field] || '🏅';
+    }
+
     function userAwards(user, awardMaps) {
       const key = normalizeName(user.name);
       const labels = [
@@ -2283,7 +2308,7 @@
         .filter(([field]) => awardMaps[field] && awardMaps[field].has(key))
         .map(([field, label]) => {
           const rank = awardMaps[field].get(key);
-          return `<span class="award-badge">${medalForRank(rank)} #${rank} ${label}</span>`;
+          return `<span class="award-badge">${categoryEmoji(field)} #${rank} ${label}</span>`;
         })
         .join('');
     }
@@ -2292,17 +2317,18 @@
       return users.map((u, index) => {
         const rank = startRank + index;
         const contribution = totalWords ? ((u.words * 100) / totalWords).toFixed(2) + '%' : '0.00%';
-        const awards = userAwards(u, awardMaps) || '<span class="award-badge">☆ no current trophies</span>';
+        const awards = userAwards(u, awardMaps);
 
         return `
-          <div class="chatter-card">
+          <div class="chatter-card" data-user-key="${normalizeName(u.name)}">
             <button class="chatter-head" onclick="toggleChatter(this)">
               <div class="chatter-rank">#${rank}</div>
               <div class="chatter-name">${u.name}</div>
               <div class="chatter-words">${fmt(u.words)}</div>
             </button>
 
-            <div class="chatter-extra">
+            <template class="chatter-expanded-template">
+              <div class="chatter-expanded-title">#${rank} ${u.name}</div>
               <div class="extra-layout">
                 <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
                 <div>
@@ -2314,10 +2340,10 @@
                     <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
                     <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
                   </div>
-                  <div class="award-strip">${awards}</div>
+                  ${awards ? `<div class="award-strip">${awards}</div>` : ''}
                 </div>
               </div>
-            </div>
+            </template>
           </div>
         `;
       }).join('');
