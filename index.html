@@ -785,13 +785,13 @@
       <div class="degen-layout">
         <div class="board">
           <div class="board-title">☠ Top 9 Degenerates ♡</div>
-          <div class="board-subnote">degeneracy % = raw degen × 100 / total words</div>
+          <div class="board-subnote">each share of the top 30 degeneracy pool</div>
           <div class="degen-card-grid" id="degen-top9">loading...</div>
         </div>
 
         <div class="degen-side-list">
           <div class="degen-side-title">Remaining Degen 30</div>
-          <div class="panel-note">#10 through #30 by degeneracy percentage — click a row for extra stats</div>
+          <div class="panel-note">#10 through #30 — percentage share of the top 30 degen pool</div>
           <div class="degen-remaining-list" id="degen-remaining">loading...</div>
         </div>
       </div>
@@ -852,13 +852,18 @@
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
 
-    function degenPercent(user) {
-      if (!user.words) return 0;
-      return (user.degeneracy * 100) / user.words;
-    }
-
     function fmtPercent(n) {
       return Number(n || 0).toFixed(2) + '%';
+    }
+
+    function assignDegenShare(users) {
+      const totalDegen = users.reduce((sum, user) => sum + (user.degeneracy || 0), 0);
+
+      users.forEach(user => {
+        user.degenPercent = totalDegen
+          ? ((user.degeneracy || 0) * 100) / totalDegen
+          : 0;
+      });
     }
 
     const avatarMap = new Map();
@@ -1096,14 +1101,14 @@
           links: stats.links || 0
         }));
 
-        users.forEach(user => {
-          user.degenPercent = degenPercent(user);
-        });
-
         const byWords = [...users].sort((a, b) => b.words - a.words);
         assignAvatars(byWords);
 
-        const byDegeneracy = [...byWords.slice(0, 30)].sort((a, b) => b.degenPercent - a.degenPercent);
+        const byDegeneracy = [...users]
+          .sort((a, b) => b.degeneracy - a.degeneracy)
+          .slice(0, 30);
+
+        assignDegenShare(byDegeneracy);
         const byLol = [...users].sort((a, b) => b.lol - a.lol);
         const byLinks = [...users].sort((a, b) => b.links - a.links);
         const byJoins = [...users].sort((a, b) => b.joins - a.joins);
