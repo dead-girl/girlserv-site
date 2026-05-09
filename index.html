@@ -595,9 +595,19 @@
     </section>
 
     <section class="panel" id="panel-degeneracy">
-      <h2>Degeneracy Board</h2>
-      <div class="panel-note">ranked by degeneracy points</div>
-      <div class="leaderboard" id="degeneracy-list">loading...</div>
+      <div class="degen-layout">
+        <div class="board">
+          <div class="board-title">☠ Top 9 Degenerates ♡</div>
+          <div class="board-subnote">click a card to expose the damage</div>
+          <div class="degen-card-grid" id="degen-top9">loading...</div>
+        </div>
+
+        <div class="degen-side-list">
+          <div class="degen-side-title">Remaining Degen 30</div>
+          <div class="panel-note">#10 through #30</div>
+          <div id="degen-remaining">loading...</div>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="panel-lol">
@@ -738,6 +748,61 @@
       }).join('');
     }
 
+    function toggleDegenCard(button) {
+      const card = button.closest('.degen-card');
+      card.classList.toggle('open');
+    }
+
+    function degenLabel(index) {
+      const labels = [
+        'absolute menace',
+        'terminally online',
+        'chaos goblin',
+        'questionable aura',
+        'server hazard',
+        'certified problem',
+        'unwell vibes',
+        'public nuisance',
+        'needs supervision'
+      ];
+      return labels[index % labels.length];
+    }
+
+    function makeDegenCards(users) {
+      return users.map((u, index) => `
+        <div class="degen-card">
+          <button class="degen-card-head" onclick="toggleDegenCard(this)">
+            <div class="degen-photo">${avatarImg(u.name, 'degen-photo-img', u.name + ' avatar')}</div>
+            <div>
+              <div class="degen-rank">#${index + 1}</div>
+              <div class="degen-name">${u.name}</div>
+              <div class="degen-score">${fmt(u.degeneracy)} degen</div>
+              <div class="degen-tag">${degenLabel(index)}</div>
+            </div>
+          </button>
+
+          <div class="degen-extra">
+            <div class="degen-extra-grid">
+              <div class="degen-extra-stat"><div class="degen-extra-label">Words</div><div class="degen-extra-value">${fmt(u.words)}</div></div>
+              <div class="degen-extra-stat"><div class="degen-extra-label">Joins</div><div class="degen-extra-value">${fmt(u.joins)}</div></div>
+              <div class="degen-extra-stat"><div class="degen-extra-label">LOLs</div><div class="degen-extra-value">${fmt(u.lol)}</div></div>
+              <div class="degen-extra-stat"><div class="degen-extra-label">Links</div><div class="degen-extra-value">${fmt(u.links)}</div></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function makeDegenRemainingRows(users, startRank) {
+      return users.map((u, index) => `
+        <div class="degen-small-row">
+          <div class="degen-small-rank">#${startRank + index}</div>
+          <div class="degen-small-name">${u.name}</div>
+          <div class="degen-small-score">${fmt(u.degeneracy)}</div>
+        </div>
+      `).join('');
+    }
+
     function fillTop3(byWords) {
       const second = byWords[1];
       const first = byWords[0];
@@ -836,7 +901,8 @@
         fillTop3(byWords);
         startFeaturedCarousel(byWords);
 
-        document.getElementById('degeneracy-list').innerHTML = makeRows(byDegeneracy.slice(0, 30), 'degeneracy', 'deg');
+        document.getElementById('degen-top9').innerHTML = makeDegenCards(byDegeneracy.slice(0, 9));
+        document.getElementById('degen-remaining').innerHTML = makeDegenRemainingRows(byDegeneracy.slice(9, 30), 10);
         document.getElementById('lol-list').innerHTML = makeRows(byLol.slice(0, 30), 'lol', 'lol');
         document.getElementById('links-list').innerHTML = makeRows(byLinks.slice(0, 30), 'links', 'links');
         document.getElementById('joins-list').innerHTML = makeRows(byJoins.slice(0, 30), 'joins', 'joins');
