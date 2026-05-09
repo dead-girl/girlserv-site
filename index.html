@@ -1275,6 +1275,145 @@
       }
     }
 
+    /* DOOR SWING VISIBILITY FIX */
+    #panel-joins .door-grid {
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    #panel-joins .door-card {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      overflow: visible;
+      transition: grid-column 0.22s ease, transform 0.18s ease;
+    }
+
+    #panel-joins .door-card.open {
+      grid-column: span 2;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      z-index: 5;
+    }
+
+    #panel-joins .door-rank-badge {
+      top: 4px;
+      left: 8px;
+      z-index: 7;
+    }
+
+    #panel-joins .door-stage {
+      min-height: 205px;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    #panel-joins .door-card.open .door-stage {
+      min-height: 225px;
+    }
+
+    #panel-joins .door-extra {
+      left: 42%;
+      right: 0;
+      top: 16px;
+      bottom: 16px;
+      opacity: 0;
+      transform: translateX(-12px) scale(0.95);
+      transition: opacity 0.18s ease, transform 0.22s ease;
+      z-index: 1;
+      padding: 14px 10px 10px;
+      overflow: hidden;
+    }
+
+    #panel-joins .door-card.open .door-extra {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    #panel-joins .door-button {
+      width: 56%;
+      max-width: 160px;
+      left: 0;
+      right: auto;
+      top: 0;
+      bottom: 0;
+      transform-origin: left center;
+      transition: transform 0.34s ease, width 0.22s ease;
+    }
+
+    #panel-joins .door-card.open .door-button {
+      transform: rotateY(-68deg) translateX(-4px);
+      width: 50%;
+    }
+
+    #panel-joins .door-front {
+      padding: 8px 4px 6px;
+    }
+
+    #panel-joins .door-img {
+      width: 88%;
+      height: 88%;
+    }
+
+    #panel-joins .door-name {
+      font-size: 12px;
+      min-height: 26px;
+    }
+
+    #panel-joins .door-joins-pill {
+      font-size: 11px;
+      padding: 3px 7px;
+    }
+
+    #panel-joins .door-extra-title {
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    #panel-joins .door-extra-name {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    #panel-joins .door-extra-grid {
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+
+    #panel-joins .door-extra-stat {
+      padding: 5px;
+    }
+
+    #panel-joins .door-extra-value {
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      #panel-joins .door-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #panel-joins .door-card.open {
+        grid-column: 1 / -1;
+      }
+
+      #panel-joins .door-stage,
+      #panel-joins .door-card.open .door-stage {
+        min-height: 230px;
+      }
+
+      #panel-joins .door-button {
+        width: 48%;
+      }
+
+      #panel-joins .door-extra {
+        left: 42%;
+      }
+    }
+
   </style>
 </head>
 
