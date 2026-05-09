@@ -980,7 +980,7 @@
             <div>
               <div class="degen-rank">#${index + 1}</div>
               <div class="degen-name">${u.name}</div>
-              <div class="degen-score">${fmtPercent(u.degenPercent)}</div>
+              <div class="degen-score">${fmtPercent(u.degenPercent)} chaos</div>
               <div class="degen-tag">${degenLabel(index)}</div>
             </div>
           </div>
@@ -1113,7 +1113,7 @@
           .filter(user => user.words >= 1000)
           .map(user => ({
             ...user,
-            chaosPercent: chaosPercent(user),
+            degenPercent: chaosPercent(user),
             activity: activityLabel(user.words)
           }))
           .sort((a, b) => b.degenPercent - a.degenPercent)
@@ -1146,6 +1146,14 @@
 
         const overviewHtml = buildOverviewCardsHtml(users, totals);
         document.getElementById('overview-cards-full').innerHTML = overviewHtml;
+      })
+      .catch(error => {
+        console.error('Could not load stats:', error);
+        const errorMessage = '<div class="memory-item">Could not load stats. Check truth_seekers_user_stats.json and browser console.</div>';
+        ['chatters-left', 'chatters-right', 'degen-top9', 'degen-remaining', 'lol-list', 'links-list', 'joins-list', 'overview-cards', 'overview-cards-full'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = errorMessage;
+        });
       });
 
     fetch('girl_config.json')
