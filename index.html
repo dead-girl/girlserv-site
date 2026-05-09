@@ -637,6 +637,14 @@
       #panel-degeneracy .degen-layout {
         grid-template-columns: 1fr;
       }
+
+      .lol-tile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .lol-list-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 700px) {
@@ -798,9 +806,19 @@
     </section>
 
     <section class="panel" id="panel-lol">
-      <h2>LOL Lords</h2>
-      <div class="panel-note">ranked by lol count</div>
-      <div class="leaderboard" id="lol-list">loading...</div>
+      <div class="lol-layout">
+        <div class="board">
+          <div class="board-title">👑 LOL Lords ♡</div>
+          <div class="board-subnote">top 10 chronic laughers, pinned for evidence</div>
+          <div class="lol-tile-grid" id="lol-top10">loading...</div>
+        </div>
+
+        <div class="lol-remaining-list">
+          <div class="lol-remaining-title">Remaining LOL 30</div>
+          <div class="panel-note">#11 through #30 by LOL count</div>
+          <div class="lol-list-grid" id="lol-remaining">loading...</div>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="panel-links">
@@ -847,15 +865,7 @@
 
     function toggleChatter(button) {
       const card = button.closest('.chatter-card');
-      const wasOpen = card.classList.contains('open');
-
-      document.querySelectorAll('.chatter-card.open').forEach(openCard => {
-        openCard.classList.remove('open');
-      });
-
-      if (!wasOpen) {
-        card.classList.add('open');
-      }
+      card.classList.toggle('open');
     }
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
@@ -1072,6 +1082,27 @@
       }).join('');
     }
 
+    function makeLolTiles(users) {
+      return users.map((u, index) => `
+        <div class="lol-tile">
+          <div class="lol-rank">#${index + 1}</div>
+          <div class="lol-photo">${avatarImg(u.name, 'lol-photo-img', u.name + ' avatar')}</div>
+          <div class="lol-name">${u.name}</div>
+          <div class="lol-score">${fmt(u.lol)} lols</div>
+        </div>
+      `).join('');
+    }
+
+    function makeLolRemainingRows(users, startRank) {
+      return users.map((u, index) => `
+        <div class="lol-small-row">
+          <div class="lol-small-rank">#${startRank + index}</div>
+          <div class="lol-small-name">${u.name}</div>
+          <div class="lol-small-score">${fmt(u.lol)}</div>
+        </div>
+      `).join('');
+    }
+
     function fillTop3(byWords) {
       const second = byWords[1];
       const first = byWords[0];
@@ -1182,7 +1213,8 @@
 
         document.getElementById('degen-top9').innerHTML = makeDegenCards(byDegeneracy.slice(0, 9));
         document.getElementById('degen-remaining').innerHTML = makeDegenRemainingRows(byDegeneracy.slice(9, 30), 10);
-        document.getElementById('lol-list').innerHTML = makeRows(byLol.slice(0, 30), 'lol', 'lol');
+        document.getElementById('lol-top10').innerHTML = makeLolTiles(byLol.slice(0, 10));
+        document.getElementById('lol-remaining').innerHTML = makeLolRemainingRows(byLol.slice(10, 30), 11);
         document.getElementById('links-list').innerHTML = makeRows(byLinks.slice(0, 30), 'links', 'links');
         document.getElementById('joins-list').innerHTML = makeRows(byJoins.slice(0, 30), 'joins', 'joins');
 
