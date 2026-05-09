@@ -704,6 +704,77 @@
       }
     }
 
+    /* LOL LORDS FINAL OVERRIDES */
+    #panel-lol .lol-layout {
+      display: grid;
+      gap: 16px;
+    }
+
+    #panel-lol .lol-tile-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    #panel-lol .lol-tile {
+      min-width: 0;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    #panel-lol .lol-photo {
+      width: 76px;
+      height: 76px;
+      min-width: 76px;
+      min-height: 76px;
+      max-width: 76px;
+      max-height: 76px;
+    }
+
+    #panel-lol .lol-photo img {
+      width: 76px;
+      height: 76px;
+      object-fit: cover;
+      display: block;
+    }
+
+    #panel-lol .lol-list-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    #panel-lol .lol-small-row {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr) 95px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    #panel-degeneracy .degen-focused-extra {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1050px) {
+      #panel-lol .lol-tile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #panel-lol .lol-list-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      #panel-lol .lol-tile-grid,
+      #panel-degeneracy .degen-focused-extra {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -809,13 +880,13 @@
       <div class="lol-layout">
         <div class="board">
           <div class="board-title">👑 LOL Lords ♡</div>
-          <div class="board-subnote">top 10 chronic laughers, pinned for evidence</div>
+          <div class="board-subnote">top 10 chronic laughers</div>
           <div class="lol-tile-grid" id="lol-top10">loading...</div>
         </div>
 
         <div class="lol-remaining-list">
           <div class="lol-remaining-title">Remaining LOL 30</div>
-          <div class="panel-note">#11 through #30 by LOL count</div>
+          <div class="panel-note">#11 through #30 — LOL amount only</div>
           <div class="lol-list-grid" id="lol-remaining">loading...</div>
         </div>
       </div>
@@ -1069,11 +1140,10 @@
             <div class="degen-remaining-extra">
               <div class="extra-layout">
                 <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
-                <div class="extra-grid">
+                <div class="extra-grid degen-focused-extra">
+                  <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmtPercent(u.degenPercent)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Vibe</div><div class="extra-value">${degenVibe(index)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Receipts</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
                 </div>
               </div>
             </div>
