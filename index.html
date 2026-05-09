@@ -775,6 +775,242 @@
       }
     }
 
+    /* LINK GREMLINS TAB */
+    #panel-links .links-layout {
+      display: grid;
+      gap: 16px;
+    }
+
+    #panel-links .wanted-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    #panel-links .wanted-card {
+      background: #f6e7bf;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 4px 4px 0 #000;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    #panel-links .wanted-card:nth-child(2n) { background: #d6edf7; transform: rotate(1deg); }
+    #panel-links .wanted-card:nth-child(3n) { background: #f1d7e5; transform: rotate(-1deg); }
+
+    #panel-links .wanted-card::before {
+      content: "LINK CRIME";
+      position: absolute;
+      top: 10px;
+      left: -28px;
+      background: rgba(255, 63, 143, 0.9);
+      color: #fff;
+      border: 2px solid #000;
+      padding: 4px 26px;
+      font-size: 10px;
+      font-weight: 900;
+      transform: rotate(-28deg);
+      letter-spacing: 1px;
+    }
+
+    #panel-links .wanted-rank {
+      color: #8d104c;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    #panel-links .wanted-photo {
+      width: 82px;
+      height: 82px;
+      margin: 10px auto 8px;
+      border: 2px solid #fff;
+      outline: 2px solid rgba(0,0,0,0.25);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+    }
+
+    #panel-links .wanted-photo img {
+      width: 82px;
+      height: 82px;
+      object-fit: cover;
+      display: block;
+    }
+
+    #panel-links .wanted-name {
+      font-size: 15px;
+      font-weight: 900;
+      word-break: break-word;
+      min-height: 34px;
+    }
+
+    #panel-links .wanted-score {
+      display: inline-block;
+      margin-top: 8px;
+      background: #111;
+      color: var(--yellow);
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+    }
+
+    #panel-links .wanted-tag {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--pink);
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      transform: rotate(-2deg);
+    }
+
+    #panel-links .evidence-board {
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.10), transparent 35%),
+        linear-gradient(315deg, rgba(79,220,255,0.10), transparent 35%),
+        #0f0f17;
+      border: 2px dashed rgba(255, 63, 143, 0.55);
+      border-radius: 18px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #panel-links .evidence-board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(32deg, transparent 47%, rgba(255,63,143,0.28) 48%, rgba(255,63,143,0.28) 49%, transparent 50%),
+        linear-gradient(148deg, transparent 55%, rgba(79,220,255,0.22) 56%, rgba(79,220,255,0.22) 57%, transparent 58%);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    #panel-links .evidence-title {
+      position: relative;
+      z-index: 1;
+      color: var(--pink);
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    #panel-links .evidence-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #panel-links .evidence-note {
+      color: #111;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+      font-weight: 900;
+      min-height: 94px;
+    }
+
+    #panel-links .evidence-note:nth-child(1) { background: #f1d7e5; transform: rotate(-1deg); }
+    #panel-links .evidence-note:nth-child(2) { background: #d6edf7; transform: rotate(1deg); }
+    #panel-links .evidence-note:nth-child(3) { background: #f6e7bf; transform: rotate(-2deg); }
+    #panel-links .evidence-note:nth-child(4) { background: #e8f2dd; transform: rotate(1deg); }
+
+    #panel-links .evidence-label {
+      font-size: 12px;
+      color: #5b4050;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    #panel-links .evidence-value {
+      font-size: 24px;
+      color: #111;
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    #panel-links .link-remaining-list {
+      background: #0f0f17;
+      border: 2px dashed rgba(79, 220, 255, 0.55);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    #panel-links .link-remaining-title {
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    #panel-links .link-list-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    #panel-links .link-small-row {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 95px;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 10px;
+      background: #151521;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+
+    #panel-links .link-small-rank {
+      color: var(--pink);
+      font-weight: 900;
+    }
+
+    #panel-links .link-small-name {
+      color: #fff;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-links .link-small-score {
+      color: var(--yellow);
+      font-weight: 900;
+      text-align: right;
+    }
+
+    @media (max-width: 1050px) {
+      #panel-links .wanted-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #panel-links .evidence-grid,
+      #panel-links .link-list-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      #panel-links .wanted-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -893,9 +1129,24 @@
     </section>
 
     <section class="panel" id="panel-links">
-      <h2>Link Gremlins</h2>
-      <div class="panel-note">ranked by links posted</div>
-      <div class="leaderboard" id="links-list">loading...</div>
+      <div class="links-layout">
+        <div class="board">
+          <div class="board-title">🔗 Link Gremlins</div>
+          <div class="board-subnote">top 5 suspicious URL offenders</div>
+          <div class="wanted-grid" id="links-top5">loading...</div>
+        </div>
+
+        <div class="evidence-board">
+          <div class="evidence-title">evidence board</div>
+          <div class="evidence-grid" id="link-evidence">loading...</div>
+        </div>
+
+        <div class="link-remaining-list">
+          <div class="link-remaining-title">Remaining Link Gremlins</div>
+          <div class="panel-note">#6 through #30 — links only</div>
+          <div class="link-list-grid" id="links-remaining">loading...</div>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="panel-joins">
@@ -1173,6 +1424,66 @@
       `).join('');
     }
 
+    function linkTag(index) {
+      const tags = [
+        'URL menace',
+        'tab hoarder',
+        'copy-paste criminal',
+        'link goblin',
+        'suspicious poster'
+      ];
+      return tags[index % tags.length];
+    }
+
+    function makeLinkWantedCards(users) {
+      return users.map((u, index) => `
+        <div class="wanted-card">
+          <div class="wanted-rank">#${index + 1}</div>
+          <div class="wanted-photo">${avatarImg(u.name, 'wanted-photo-img', u.name + ' avatar')}</div>
+          <div class="wanted-name">${u.name}</div>
+          <div class="wanted-score">${fmt(u.links)} links</div>
+          <div class="wanted-tag">${linkTag(index)}</div>
+        </div>
+      `).join('');
+    }
+
+    function makeLinkRemainingRows(users, startRank) {
+      return users.map((u, index) => `
+        <div class="link-small-row">
+          <div class="link-small-rank">#${startRank + index}</div>
+          <div class="link-small-name">${u.name}</div>
+          <div class="link-small-score">${fmt(u.links)}</div>
+        </div>
+      `).join('');
+    }
+
+    function buildLinkEvidence(users, byLinks) {
+      const top = byLinks[0];
+      const totalLinks = users.reduce((sum, user) => sum + (user.links || 0), 0);
+      const gremlins = byLinks.filter(user => user.links > 0).length;
+      const average = gremlins ? Math.round(totalLinks / gremlins) : 0;
+      const topShare = totalLinks && top ? ((top.links * 100) / totalLinks).toFixed(1) + '%' : '0%';
+
+      return `
+        <div class="evidence-note">
+          <div class="evidence-label">total links dropped</div>
+          <div class="evidence-value">${fmt(totalLinks)}</div>
+        </div>
+        <div class="evidence-note">
+          <div class="evidence-label">most suspicious</div>
+          <div class="evidence-value">${top ? top.name : 'n/a'}</div>
+        </div>
+        <div class="evidence-note">
+          <div class="evidence-label">average gremlin load</div>
+          <div class="evidence-value">${fmt(average)}</div>
+        </div>
+        <div class="evidence-note">
+          <div class="evidence-label">top gremlin share</div>
+          <div class="evidence-value">${topShare}</div>
+        </div>
+      `;
+    }
+
     function fillTop3(byWords) {
       const second = byWords[1];
       const first = byWords[0];
@@ -1285,7 +1596,9 @@
         document.getElementById('degen-remaining').innerHTML = makeDegenRemainingRows(byDegeneracy.slice(9, 30), 10);
         document.getElementById('lol-top10').innerHTML = makeLolTiles(byLol.slice(0, 10));
         document.getElementById('lol-remaining').innerHTML = makeLolRemainingRows(byLol.slice(10, 30), 11);
-        document.getElementById('links-list').innerHTML = makeRows(byLinks.slice(0, 30), 'links', 'links');
+        document.getElementById('links-top5').innerHTML = makeLinkWantedCards(byLinks.slice(0, 5));
+        document.getElementById('link-evidence').innerHTML = buildLinkEvidence(users, byLinks);
+        document.getElementById('links-remaining').innerHTML = makeLinkRemainingRows(byLinks.slice(5, 30), 6);
         document.getElementById('joins-list').innerHTML = makeRows(byJoins.slice(0, 30), 'joins', 'joins');
 
         const totals = users.reduce((acc, u) => {
