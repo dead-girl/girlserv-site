@@ -1092,14 +1092,16 @@
     fetch('truth_seekers_user_stats.json')
       .then(response => response.json())
       .then(data => {
-        const users = Object.entries(data).map(([name, stats]) => ({
-          name,
-          words: stats.words || 0,
-          joins: stats.joins || 0,
-          lol: stats.lol || 0,
-          degeneracy: stats.degeneracy || 0,
-          links: stats.links || 0
-        }));
+        const users = Object.entries(data)
+          .filter(([name]) => normalizeName(name) !== 'girl')
+          .map(([name, stats]) => ({
+            name,
+            words: stats.words || 0,
+            joins: stats.joins || 0,
+            lol: stats.lol || 0,
+            degeneracy: stats.degeneracy || 0,
+            links: stats.links || 0
+          }));
 
         const byWords = [...users].sort((a, b) => b.words - a.words);
         assignAvatars(byWords);
