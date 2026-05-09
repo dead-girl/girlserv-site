@@ -1597,6 +1597,148 @@
       }
     }
 
+    /* DOOR PROFILE + OPEN THUMB FINAL */
+    #panel-joins .door-feature {
+      min-height: 360px;
+    }
+
+    #panel-joins .door-profile-card {
+      position: absolute;
+      top: 58px;
+      left: 42px;
+      width: min(330px, 34%);
+      bottom: 34px;
+      background: #f1d7e5;
+      color: #111;
+      border: 3px solid #000;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 7px 7px 0 #000;
+      z-index: 2;
+      transform: rotate(-2deg);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+    }
+
+    #panel-joins .door-profile-card::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 42px;
+      width: 78px;
+      height: 24px;
+      background: rgba(79, 220, 255, 0.76);
+      border: 1px solid rgba(0,0,0,0.25);
+      transform: rotate(-7deg);
+    }
+
+    #panel-joins .door-profile-title {
+      color: #8d104c;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #panel-joins .door-profile-img-wrap {
+      display: grid;
+      place-items: center;
+      min-height: 0;
+    }
+
+    #panel-joins .door-profile-img {
+      width: min(190px, 90%);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border: 3px solid #fff;
+      outline: 3px solid #000;
+      border-radius: 18px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+      background: #111;
+    }
+
+    #panel-joins .door-profile-name {
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 900;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    #panel-joins .door-file-paper {
+      left: auto;
+      width: min(560px, 54%);
+      top: 52px;
+      right: 34px;
+      bottom: 34px;
+      transform: rotate(1deg);
+    }
+
+    #panel-joins .feature-door-button,
+    #panel-joins .feature-door-img {
+      display: none !important;
+    }
+
+    #panel-joins .door-thumb {
+      perspective: 700px;
+      overflow: visible;
+    }
+
+    #panel-joins .door-thumb img {
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 0.34s ease, filter 0.18s ease;
+    }
+
+    #panel-joins .door-thumb.active img {
+      transform: rotateY(-58deg) scale(1.06);
+      filter: drop-shadow(5px 6px 0 rgba(0,0,0,0.5));
+    }
+
+    #panel-joins .door-thumb.active::after {
+      content: "file open";
+      position: absolute;
+      right: 2px;
+      bottom: 2px;
+      background: #f6e7bf;
+      color: #111;
+      border: 1px solid #000;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 2px 6px;
+      box-shadow: 1px 1px 0 #000;
+      transform: rotate(-3deg);
+    }
+
+    @media (max-width: 760px) {
+      #panel-joins .door-feature {
+        min-height: 660px;
+      }
+
+      #panel-joins .door-profile-card {
+        top: 52px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        height: 250px;
+        bottom: auto;
+      }
+
+      #panel-joins .door-profile-img {
+        width: 130px;
+      }
+
+      #panel-joins .door-file-paper {
+        top: 330px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        bottom: 18px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1742,11 +1884,8 @@
           <div class="board-subnote">pick a door. girl opens the file.</div>
 
           <div class="door-feature" id="door-feature">
+            <div class="door-profile-card" id="door-profile-card">loading...</div>
             <div class="door-file-paper" id="door-file-paper">loading...</div>
-
-            <button class="feature-door-button open" id="feature-door-button" onclick="toggleFeatureDoor()">
-              <img class="feature-door-img" id="feature-door-img" src="doors/door-01.png" alt="Selected door">
-            </button>
           </div>
 
           <div class="door-selector-title">choose a door</div>
@@ -2144,7 +2283,14 @@
       if (!selectedDoorUser) return;
 
       const rank = selectedDoorIndex + 1;
-      document.getElementById('feature-door-img').src = doorForRank(rank);
+
+      document.getElementById('door-profile-card').innerHTML = `
+        <div class="door-profile-title">selected door slammer</div>
+        <div class="door-profile-img-wrap">
+          ${avatarImg(selectedDoorUser.name, 'door-profile-img', selectedDoorUser.name + ' avatar')}
+        </div>
+        <div class="door-profile-name">${selectedDoorUser.name}</div>
+      `;
 
       document.getElementById('door-file-paper').innerHTML = `
         <div class="file-kicker">door file #${rank}</div>
@@ -2161,24 +2307,17 @@
       document.querySelectorAll('#panel-joins .door-thumb').forEach((button, index) => {
         button.classList.toggle('active', index === selectedDoorIndex);
       });
-
-      const doorButton = document.getElementById('feature-door-button');
-      doorButton.classList.toggle('open', featureDoorOpen);
     }
 
     function toggleFeatureDoor() {
-      featureDoorOpen = !featureDoorOpen;
-      document.getElementById('feature-door-button').classList.toggle('open', featureDoorOpen);
+      return;
     }
 
     function selectDoor(index) {
       selectedDoorIndex = index;
-      featureDoorOpen = true;
       selectedDoorUser = doorUsers[index];
       renderDoorFeature();
     }
-
-    let doorUsers = [];
 
     function makeDoorSelector(users) {
       doorUsers = users.slice(0, 30);
