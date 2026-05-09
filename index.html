@@ -1738,13 +1738,32 @@
         bottom: 18px;
       }
     }
-
-    /* USERS TO KEEP AN EYE ON CAROUSEL */
+    /* USERS TO KEEP AN EYE ON 3-CARD CAROUSEL */
     #panel-chatters .overview-carousel {
       overflow: hidden;
+      min-height: 290px;
+    }
+
+    #panel-chatters #featured-user-area {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    #panel-chatters .watch-carousel-window {
+      overflow: hidden;
+      width: 100%;
+      padding: 12px 2px 4px;
+    }
+
+    #panel-chatters .watch-carousel-track {
+      display: flex;
+      gap: 12px;
+      transition: transform 0.9s cubic-bezier(.22,.9,.25,1);
+      will-change: transform;
     }
 
     #panel-chatters .watch-carousel-card {
+      flex: 0 0 calc((100% - 24px) / 3);
       background: var(--paper2);
       color: #111;
       border: 2px solid #c7b398;
@@ -1753,17 +1772,21 @@
       text-align: center;
       box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
       position: relative;
-      min-height: 238px;
+      min-height: 220px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      animation: watchPop 0.24s ease;
     }
 
-    @keyframes watchPop {
-      from { transform: translateX(12px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+    #panel-chatters .watch-carousel-card:nth-child(2n) {
+      background: #d6edf7;
+      transform: rotate(1deg);
+    }
+
+    #panel-chatters .watch-carousel-card:nth-child(3n) {
+      background: #f1d7e5;
+      transform: rotate(-1deg);
     }
 
     #panel-chatters .watch-carousel-ribbon {
@@ -1783,8 +1806,8 @@
     }
 
     #panel-chatters .watch-carousel-photo {
-      width: 92px;
-      height: 92px;
+      width: 82px;
+      height: 82px;
       margin: 20px auto 10px;
       border: 3px solid #fff;
       outline: 2px solid #d1a9b8;
@@ -1801,7 +1824,7 @@
     }
 
     #panel-chatters .watch-carousel-name {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
       word-break: break-word;
       line-height: 1.1;
@@ -1813,7 +1836,7 @@
       background: #ffb6d1;
       color: #111;
       font-weight: 900;
-      font-size: 15px;
+      font-size: 14px;
       padding: 6px 10px;
       border-radius: 8px;
     }
@@ -1828,98 +1851,13 @@
       margin-top: 10px;
     }
 
-    /* TOP CHATTERS FULL WIDTH EXPANSION */
-    #panel-chatters .chatter-card.open .chatter-head {
-      background:
-        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
-        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
-        #151521;
-      border-color: var(--yellow);
-      box-shadow: 4px 4px 0 #000;
-    }
-
-    #panel-chatters .chatter-card .chatter-extra {
-      display: none !important;
-    }
-
-    #panel-chatters .chatter-expanded-full {
-      display: none;
-      margin-top: 14px;
-      background:
-        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
-        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
-        #151521;
-      border: 2px dashed rgba(255, 221, 120, 0.75);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 5px 5px 0 #000;
-    }
-
-    #panel-chatters .chatter-expanded-full.open {
-      display: block;
-    }
-
-    #panel-chatters .chatter-expanded-title {
-      color: var(--yellow);
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-
-    #panel-chatters .chatter-expanded-full .extra-layout {
-      display: grid;
-      grid-template-columns: 96px minmax(0, 1fr);
-      gap: 14px;
-      align-items: center;
-    }
-
-    #panel-chatters .chatter-expanded-full .extra-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(95px, 1fr));
-      gap: 8px;
-    }
-
-    #panel-chatters .award-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    #panel-chatters .award-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #f6e7bf;
-      color: #111;
-      border: 2px solid #000;
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 11px;
-      font-weight: 900;
-      box-shadow: 2px 2px 0 #000;
-    }
-
-    #panel-chatters .award-badge:nth-child(2n) {
-      background: #d6edf7;
-    }
-
-    #panel-chatters .award-badge:nth-child(3n) {
-      background: #f1d7e5;
-    }
-
-    @media (max-width: 900px) {
-      #panel-chatters .chatter-expanded-full .extra-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
     @media (max-width: 760px) {
-      #panel-chatters .chatter-expanded-full .extra-layout,
-      #panel-chatters .chatter-expanded-full .extra-grid {
-        grid-template-columns: 1fr;
+      #panel-chatters .watch-carousel-card {
+        flex-basis: 100%;
       }
     }
+
+
 
   </style>
 </head>
@@ -1947,6 +1885,8 @@
           <div class="board-title">★ Top Chatters ♡</div>
           <div class="board-subnote">word crimes logged ♡</div>
 
+          <div class="chatter-expanded-full" id="chatter-expanded-full"></div>
+
           <div class="top-chatters-grid">
             <div>
               <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
@@ -1957,8 +1897,6 @@
               <div id="chatters-right"></div>
             </div>
           </div>
-
-          <div class="chatter-expanded-full" id="chatter-expanded-full"></div>
         </div>
 
         <div class="sidebar-stack">
@@ -1995,7 +1933,7 @@
           <div class="board">
             <div class="board-title">♡ Users to keep an eye on</div>
             <div class="overview-carousel">
-              <div class="overview-carousel-title">category winners carousel</div>
+              
               <div id="featured-user-area">loading...</div>
               <div class="featured-dots" id="featured-dots">
                 <span class="featured-dot active"></span>
@@ -2128,22 +2066,10 @@
 
       if (!fullPanel || !template) return;
 
-      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
 
-      document.querySelectorAll('#panel-chatters .chatter-card.open').forEach(openCard => {
-        openCard.classList.remove('open');
-      });
-
-      if (wasOpen) {
-        fullPanel.classList.remove('open');
-        fullPanel.innerHTML = '';
-        return;
-      }
-
-      card.classList.add('open');
       fullPanel.innerHTML = template.innerHTML;
       fullPanel.classList.add('open');
-      fullPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
@@ -2326,6 +2252,18 @@
               <div class="chatter-name">${u.name}</div>
               <div class="chatter-words">${fmt(u.words)}</div>
             </button>
+
+            <div class="chatter-extra">
+              <div class="extra-layout">
+                <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
+                <div class="extra-grid">
+                  <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
+                </div>
+              </div>
+            </div>
 
             <template class="chatter-expanded-template">
               <div class="chatter-expanded-title">#${rank} ${u.name}</div>
@@ -2735,20 +2673,33 @@
     let watchCarouselIndex = 0;
     let watchCarouselItems = [];
 
-    function renderWatchCarousel() {
-      const area = document.getElementById('featured-user-area');
-      const dots = document.querySelectorAll('#featured-dots .featured-dot');
-      if (!area || !watchCarouselItems.length) return;
-
-      const item = watchCarouselItems[watchCarouselIndex];
-
-      area.innerHTML = `
+    function watchCardHtml(item) {
+      return `
         <div class="watch-carousel-card">
           <div class="watch-carousel-ribbon">${item.title}</div>
           <div class="watch-carousel-photo">${avatarImg(item.user.name, 'watch-carousel-img', item.user.name + ' avatar')}</div>
           <div class="watch-carousel-name">${item.user.name}</div>
           <div class="watch-carousel-score">${fmt(item.user[item.field])} ${item.suffix}</div>
           <div class="watch-carousel-note">user to keep an eye on</div>
+        </div>
+      `;
+    }
+
+    function renderWatchCarousel() {
+      const area = document.getElementById('featured-user-area');
+      const dots = document.querySelectorAll('#featured-dots .featured-dot');
+      if (!area || !watchCarouselItems.length) return;
+
+      const visibleItems = [0, 1, 2].map(offset => {
+        const index = (watchCarouselIndex + offset) % watchCarouselItems.length;
+        return watchCarouselItems[index];
+      });
+
+      area.innerHTML = `
+        <div class="watch-carousel-window">
+          <div class="watch-carousel-track">
+            ${visibleItems.map(watchCardHtml).join('')}
+          </div>
         </div>
       `;
 
@@ -2786,7 +2737,7 @@
         if (!watchCarouselItems.length) return;
         watchCarouselIndex = (watchCarouselIndex + 1) % watchCarouselItems.length;
         renderWatchCarousel();
-      }, 3200);
+      }, 10000);
     }
 
     fetch('truth_seekers_user_stats.json')
