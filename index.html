@@ -972,6 +972,33 @@
       return labels[index % labels.length];
     }
 
+    function degenVibe(index) {
+      const vibes = [
+        'annoyance',
+        'problematic',
+        'troublemaker',
+        'troll',
+        'menace',
+        'gremlin',
+        'chaotic',
+        'feral',
+        'unhinged',
+        'nuisance',
+        'suspect',
+        'cursed',
+        'reckless',
+        'volatile',
+        'messy',
+        'sinister',
+        'questionable',
+        'toxic',
+        'lawless',
+        'dramatic',
+        'villainous'
+      ];
+      return vibes[index % vibes.length];
+    }
+
     function makeDegenCards(users) {
       return users.map((u, index) => `
         <div class="degen-card">
@@ -1009,7 +1036,7 @@
               <div class="extra-layout">
                 <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
                 <div class="extra-grid">
-                  <div class="extra-stat"><div class="extra-label">Activity</div><div class="extra-value">${u.activity || activityLabel(u.words)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Vibe</div><div class="extra-value">${degenVibe(index)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Receipts</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
                   <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
