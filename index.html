@@ -509,6 +509,142 @@
       .extra-grid { grid-template-columns: repeat(2, 1fr); }
       .top3-grid { grid-template-columns: 1fr; }
     }
+    /* DEG TAB FINAL OVERRIDES */
+    #panel-degeneracy .degen-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.85fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    #panel-degeneracy .degen-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    #panel-degeneracy .degen-card {
+      min-width: 0;
+      padding: 10px;
+    }
+
+    #panel-degeneracy .degen-card-head {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    #panel-degeneracy .degen-photo {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      min-height: 64px;
+      max-width: 64px;
+      max-height: 64px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    #panel-degeneracy .degen-photo img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      display: block;
+    }
+
+    #panel-degeneracy .degen-name {
+      font-size: 14px;
+      line-height: 1.15;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-degeneracy .degen-score {
+      font-size: 12px;
+      padding: 3px 7px;
+    }
+
+    #panel-degeneracy .degen-tag {
+      font-size: 11px;
+      padding: 3px 7px;
+    }
+
+    #panel-degeneracy .degen-side-list {
+      min-width: 0;
+    }
+
+    #panel-degeneracy .degen-remaining-card {
+      background: #11111b;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    #panel-degeneracy .degen-remaining-head {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+      color: white;
+      font-family: monospace;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 88px;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 8px;
+      text-align: left;
+    }
+
+    #panel-degeneracy .degen-remaining-head:hover {
+      background: rgba(255,255,255,0.06);
+    }
+
+    #panel-degeneracy .degen-remaining-rank {
+      color: var(--pink);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    #panel-degeneracy .degen-remaining-name {
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-degeneracy .degen-remaining-score {
+      color: var(--yellow);
+      font-size: 14px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    #panel-degeneracy .degen-remaining-extra {
+      display: none;
+      padding: 10px;
+      background: linear-gradient(180deg, #f1dce4, #f6e7ec);
+      color: #111;
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    #panel-degeneracy .degen-remaining-card.open .degen-remaining-extra {
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      #panel-degeneracy .degen-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      #panel-degeneracy .degen-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -782,6 +918,11 @@
           </div>
         </div>
       `).join('');
+    }
+
+    function toggleDegenRemaining(button) {
+      const card = button.closest('.degen-remaining-card');
+      card.classList.toggle('open');
     }
 
     function makeDegenRemainingRows(users, startRank) {
