@@ -10,6 +10,7 @@
       --bg: #07070d;
       --panel: #151521;
       --panel2: #1d1d2f;
+      --panel3: #111119;
       --text: #f4f4f8;
       --muted: #a7a7b8;
       --pink: #ff3f8f;
@@ -19,11 +20,16 @@
       --purple: #bf8cff;
       --orange: #ff9f43;
       --border: #303047;
+      --paper: #f3e6ea;
+      --paper2: #f2efe7;
+      --paper3: #d6edf7;
+      --paper4: #e8f2dd;
+      --paper5: #f6e7bf;
+      --paper6: #f1d8ea;
+      --paper7: #dcebf8;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -48,7 +54,7 @@
       border-radius: 26px;
       overflow: hidden;
       box-shadow: 8px 8px 0 #000;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       background: #000;
     }
 
@@ -58,163 +64,47 @@
       height: auto;
     }
 
-.button-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin: 8px 0 18px;
-  justify-content: center;
-}
+    .button-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 16px;
+      justify-content: center;
+    }
 
-.view-btn {
-  border: 2px solid #000;
-  border-radius: 13px;
-  padding: 9px 12px;
-  cursor: pointer;
-  font-family: monospace;
-  font-size: 13px;
-  font-weight: 900;
-  color: white;
-  background: var(--pink);
-  box-shadow: 3px 3px 0 #000;
-  transition: transform 0.12s ease, filter 0.12s ease;
-  min-width: auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
+    .view-btn {
+      border: 2px solid #000;
+      border-radius: 13px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+      background: var(--panel2);
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.12s ease, background 0.12s ease, filter 0.12s ease;
+      min-width: auto;
+    }
 
-.view-btn:nth-child(1) { background: var(--pink); }
-.view-btn:nth-child(2) { background: var(--purple); }
-.view-btn:nth-child(3) { background: var(--blue); color: #071018; }
-.view-btn:nth-child(4) { background: var(--pink); }
-.view-btn:nth-child(5) { background: var(--purple); }
-.view-btn:nth-child(6) { background: var(--blue); color: #071018; }
-.view-btn:nth-child(7) { background: var(--pink); }
+    .view-btn:nth-child(1) { background: var(--pink); }
+    .view-btn:nth-child(2) { background: var(--purple); }
+    .view-btn:nth-child(3) { background: var(--blue); color: #071018; }
+    .view-btn:nth-child(4) { background: var(--pink); }
+    .view-btn:nth-child(5) { background: var(--purple); }
+    .view-btn:nth-child(6) { background: var(--blue); color: #071018; }
+    .view-btn:nth-child(7) { background: var(--pink); }
 
-.view-btn:hover {
-  transform: translateY(-2px) rotate(-1deg);
-  filter: brightness(1.1);
-}
+    .view-btn:hover {
+      transform: translateY(-2px) rotate(-1deg);
+      filter: brightness(1.08);
+    }
 
-.view-btn.active {
-  outline: 2px dashed var(--yellow);
-  outline-offset: 3px;
-  transform: translateY(-2px) rotate(1deg);
-}
-
-.winner-carousel {
-  margin: 18px 0 18px;
-  border: 3px solid #000;
-  border-radius: 24px;
-  overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(255, 63, 143, 0.18), transparent 35%),
-    linear-gradient(315deg, rgba(79, 220, 255, 0.14), transparent 35%),
-    var(--panel);
-  box-shadow: 7px 7px 0 #000;
-  position: relative;
-}
-
-.winner-track {
-  display: flex;
-  transition: transform 0.55s ease;
-}
-
-.winner-slide {
-  min-width: 100%;
-  padding: 22px;
-  display: grid;
-  grid-template-columns: 120px 1fr 230px;
-  gap: 18px;
-  align-items: center;
-}
-
-.winner-badge {
-  width: 105px;
-  height: 105px;
-  border-radius: 999px;
-  border: 3px solid #000;
-  background: var(--yellow);
-  color: #111;
-  display: grid;
-  place-items: center;
-  box-shadow: 5px 5px 0 #000;
-  font-size: 34px;
-  font-weight: 900;
-  transform: rotate(-5deg);
-}
-
-.winner-info h2 {
-  margin: 0;
-  color: var(--pink);
-  font-size: 34px;
-  text-shadow: 2px 2px 0 #000;
-}
-
-.winner-user {
-  margin-top: 6px;
-  font-size: 30px;
-  font-weight: 900;
-  color: white;
-  word-break: break-word;
-}
-
-.winner-line {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.winner-score {
-  background: #202036;
-  border: 2px solid #000;
-  border-radius: 18px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 4px 4px 0 #000;
-}
-
-.winner-score .score-num {
-  color: var(--blue);
-  font-size: 32px;
-  font-weight: 900;
-}
-
-.winner-score .score-label {
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.winner-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 0 16px;
-}
-
-.winner-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 999px;
-  border: 2px solid #000;
-  background: var(--muted);
-}
-
-.winner-dot.active {
-  background: var(--pink);
-}
-
-@media (max-width: 850px) {
-  .winner-slide {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .winner-badge {
-    margin: auto;
-  }
-}
+    .view-btn.active {
+      outline: 2px dashed var(--yellow);
+      outline-offset: 3px;
+      transform: translateY(-2px) rotate(1deg);
+    }
 
     .panel {
       display: none;
@@ -226,9 +116,7 @@
       margin-bottom: 30px;
     }
 
-    .panel.active {
-      display: block;
-    }
+    .panel.active { display: block; }
 
     .panel h2 {
       margin: 0 0 4px;
@@ -242,68 +130,143 @@
       margin-bottom: 16px;
     }
 
+    .home-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(300px, 0.9fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .board {
+      background: #0f0f17;
+      border: 2px dashed rgba(255, 63, 143, 0.55);
+      border-radius: 18px;
+      padding: 14px;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .board-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+
+    .board-subnote {
+      display: inline-block;
+      background: var(--paper2);
+      color: #111;
+      border: 1px solid #999;
+      padding: 5px 10px;
+      border-radius: 2px;
+      transform: rotate(-2deg);
+      margin-bottom: 12px;
+      margin-left: 8px;
+    }
+
     .top-chatters-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
     }
 
+    .chatter-col-header {
+      display: grid;
+      grid-template-columns: 48px 1fr 130px;
+      gap: 10px;
+      padding: 0 10px 8px;
+      color: var(--pink);
+      font-weight: 900;
+      font-size: 13px;
+      border-bottom: 1px dashed rgba(255, 63, 143, 0.4);
+      margin-bottom: 8px;
+    }
+
     .chatter-card {
-      background: #1a1a2b;
-      border: 2px solid #000;
-      border-radius: 16px;
-      margin-bottom: 10px;
+      background: #11111b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      margin-bottom: 8px;
       overflow: hidden;
-      box-shadow: 3px 3px 0 #000;
     }
 
     .chatter-head {
       width: 100%;
       border: 0;
       cursor: pointer;
-      background: #202036;
+      background: transparent;
       color: white;
       font-family: monospace;
       display: grid;
-      grid-template-columns: 54px 1fr 150px;
-      gap: 12px;
+      grid-template-columns: 48px 1fr 130px;
+      gap: 10px;
       align-items: center;
-      padding: 13px;
+      padding: 10px;
       text-align: left;
     }
 
-    .chatter-head:hover {
-      background: #2b2b49;
-    }
+    .chatter-head:hover { background: rgba(255,255,255,0.04); }
 
     .chatter-rank {
-      color: var(--yellow);
-      font-size: 22px;
+      color: var(--pink);
+      font-size: 18px;
       font-weight: 900;
     }
 
     .chatter-name {
       color: white;
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 900;
       word-break: break-word;
     }
 
     .chatter-words {
       text-align: right;
-      color: var(--pink);
-      font-size: 18px;
+      color: #fff;
+      font-size: 16px;
       font-weight: 900;
     }
 
     .chatter-extra {
       display: none;
-      padding: 12px 14px 14px;
-      background: #151525;
-      border-top: 1px solid var(--border);
+      padding: 12px;
+      background: linear-gradient(180deg, #f1dce4, #f6e7ec);
+      color: #111;
+      border-top: 1px solid rgba(0,0,0,0.12);
     }
 
-    .chatter-card.open .chatter-extra {
+    .chatter-card.open .chatter-extra { display: block; }
+
+    .extra-layout {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .mini-avatar {
+      width: 74px;
+      height: 74px;
+      border: 2px solid #c7a3b2;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #201423, #4f2a59);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .mini-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -314,25 +277,260 @@
     }
 
     .extra-stat {
-      background: #222238;
-      border: 1px solid #34344b;
-      border-radius: 12px;
-      padding: 10px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      padding: 10px 6px;
       text-align: center;
     }
 
     .extra-label {
-      color: var(--muted);
-      font-size: 11px;
+      color: #5a4c58;
+      font-size: 10px;
       text-transform: uppercase;
+      font-weight: 900;
     }
 
     .extra-value {
-      color: var(--blue);
+      color: #111;
       font-size: 18px;
       font-weight: 900;
       margin-top: 4px;
     }
+
+    .sidebar-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .top3-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: end;
+    }
+
+    .top3-card {
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
+      position: relative;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .top3-card.rank1 { min-height: 255px; background: #f1e6df; }
+    .top3-card.rank2 { transform: rotate(-1deg); }
+    .top3-card.rank3 { transform: rotate(1deg); }
+
+    .top3-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-7deg);
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+    }
+
+    .top3-photo {
+      width: 86px;
+      height: 86px;
+      margin: 18px auto 10px;
+      border: 3px solid #fff;
+      outline: 2px solid #d1a9b8;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2b2033, #4c3550);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .top3-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .top3-name {
+      font-size: 14px;
+      font-weight: 900;
+      margin-top: 4px;
+      word-break: break-word;
+    }
+
+    .top3-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .top3-label {
+      font-size: 12px;
+      color: #444;
+      margin-top: 6px;
+    }
+
+    .good-job-note {
+      margin-top: 12px;
+      text-align: center;
+      color: #111;
+      background: var(--paper5);
+      border: 1px solid #b9a457;
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transform: rotate(-2deg);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mini-card {
+      color: #111;
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+    }
+
+    .mini-card:nth-child(1) { background: var(--paper6); }
+    .mini-card:nth-child(2) { background: #ead9ee; }
+    .mini-card:nth-child(3) { background: var(--paper4); }
+    .mini-card:nth-child(4) { background: var(--paper5); }
+    .mini-card:nth-child(5) { background: #f2d3e8; }
+    .mini-card:nth-child(6) { background: var(--paper7); }
+
+    .mini-label {
+      color: #333;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .mini-num {
+      color: #111;
+      font-size: 28px;
+      font-weight: 900;
+      margin-top: 8px;
+    }
+
+    .overview-carousel {
+      margin-top: 14px;
+      background: rgba(255,255,255,0.2);
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px;
+      color: #111;
+      min-height: 170px;
+    }
+
+    .overview-carousel-title {
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #6e2a55;
+    }
+
+    .featured-user {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .featured-photo {
+      width: 84px;
+      height: 84px;
+      border-radius: 8px;
+      border: 2px solid #fff;
+      outline: 2px solid #d1a9b8;
+      background: linear-gradient(135deg, #2b2033, #4c3550);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .featured-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-name {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .featured-rank {
+      font-size: 13px;
+      font-weight: 900;
+      color: #8a2f62;
+      margin-bottom: 4px;
+    }
+
+    .featured-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .featured-stat {
+      background: rgba(255,255,255,0.45);
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .featured-stat strong {
+      display: block;
+      font-size: 17px;
+    }
+
+    .featured-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .featured-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(0,0,0,0.3);
+    }
+
+    .featured-dot.active { background: var(--pink); }
 
     .leaderboard {
       display: grid;
@@ -350,9 +548,7 @@
       border-radius: 16px;
     }
 
-    .row:nth-child(odd) {
-      background: #202036;
-    }
+    .row:nth-child(odd) { background: #202036; }
 
     .row:hover {
       outline: 2px solid var(--pink);
@@ -385,34 +581,6 @@
       font-weight: 900;
     }
 
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 14px;
-    }
-
-    .mini-card {
-      background: #1b1b2f;
-      border: 2px solid #000;
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 4px 4px 0 #000;
-    }
-
-    .mini-label {
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 12px;
-    }
-
-    .mini-num {
-      color: var(--yellow);
-      font-size: 32px;
-      font-weight: 900;
-      margin-top: 8px;
-    }
-
     .memory-item {
       background: #1b1b2f;
       border: 1px solid var(--border);
@@ -433,22 +601,25 @@
       box-shadow: 2px 2px 0 #000;
     }
 
-    @media (max-width: 850px) {
-      .top3,
-      .top-chatters-grid {
+    @media (max-width: 980px) {
+      .home-layout {
         grid-template-columns: 1fr;
       }
 
-      .row {
-        grid-template-columns: 48px 1fr;
+      .top3-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .top-chatters-grid,
+      .mini-grid,
+      .featured-stats {
+        grid-template-columns: 1fr;
       }
 
-      .value {
-        grid-column: 2;
-        text-align: left;
-      }
-
-      .chatter-head {
+      .chatter-head,
+      .chatter-col-header {
         grid-template-columns: 44px 1fr;
       }
 
@@ -457,8 +628,18 @@
         text-align: left;
       }
 
+      .extra-layout,
+      .featured-user,
+      .winner-slide {
+        grid-template-columns: 1fr;
+      }
+
       .extra-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .top3-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -471,100 +652,80 @@
       <img src="girlserv-header.png" alt="GirlServ header">
     </section>
 
-<section class="winner-carousel" id="winner-carousel">
-  <div class="winner-track" id="winner-track">
-    <div class="winner-slide">
-      <div class="winner-badge">#1</div>
-      <div class="winner-info">
-        <h2>Top Chatter</h2>
-        <div class="winner-user" id="winner-words-name">loading...</div>
-        <div class="winner-line" id="winner-words-meta">loading...</div>
-      </div>
-      <div class="winner-score">
-        <div class="score-num" id="winner-words-score">0</div>
-        <div class="score-label">words</div>
-      </div>
+    <div class="button-bar">
+      <button class="view-btn active" onclick="showPanel('chatters', this)">Top Chatter</button>
+      <button class="view-btn" onclick="showPanel('degeneracy', this)">Degeneracy</button>
+      <button class="view-btn" onclick="showPanel('lol', this)">LOL Lords</button>
+      <button class="view-btn" onclick="showPanel('links', this)">Link Gremlins</button>
+      <button class="view-btn" onclick="showPanel('joins', this)">Door Slammers</button>
+      <button class="view-btn" onclick="showPanel('overview', this)">Overview</button>
+      <button class="view-btn" onclick="showPanel('memory', this)">girl Remembers</button>
     </div>
-
-    <div class="winner-slide">
-      <div class="winner-badge">#1</div>
-      <div class="winner-info">
-        <h2>Most Degenerate</h2>
-        <div class="winner-user" id="winner-degen-name">loading...</div>
-        <div class="winner-line" id="winner-degen-meta">loading...</div>
-      </div>
-      <div class="winner-score">
-        <div class="score-num" id="winner-degen-score">0</div>
-        <div class="score-label">degeneracy</div>
-      </div>
-    </div>
-
-    <div class="winner-slide">
-      <div class="winner-badge">#1</div>
-      <div class="winner-info">
-        <h2>LOL Lord</h2>
-        <div class="winner-user" id="winner-lol-name">loading...</div>
-        <div class="winner-line" id="winner-lol-meta">loading...</div>
-      </div>
-      <div class="winner-score">
-        <div class="score-num" id="winner-lol-score">0</div>
-        <div class="score-label">lols</div>
-      </div>
-    </div>
-
-    <div class="winner-slide">
-      <div class="winner-badge">#1</div>
-      <div class="winner-info">
-        <h2>Link Gremlin</h2>
-        <div class="winner-user" id="winner-links-name">loading...</div>
-        <div class="winner-line" id="winner-links-meta">loading...</div>
-      </div>
-      <div class="winner-score">
-        <div class="score-num" id="winner-links-score">0</div>
-        <div class="score-label">links</div>
-      </div>
-    </div>
-
-    <div class="winner-slide">
-      <div class="winner-badge">#1</div>
-      <div class="winner-info">
-        <h2>Door Slammer</h2>
-        <div class="winner-user" id="winner-joins-name">loading...</div>
-        <div class="winner-line" id="winner-joins-meta">loading...</div>
-      </div>
-      <div class="winner-score">
-        <div class="score-num" id="winner-joins-score">0</div>
-        <div class="score-label">joins</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="winner-dots" id="winner-dots">
-    <span class="winner-dot active"></span>
-    <span class="winner-dot"></span>
-    <span class="winner-dot"></span>
-    <span class="winner-dot"></span>
-    <span class="winner-dot"></span>
-  </div>
-</section>
-
-
-<div class="button-bar">
-  <button class="view-btn active" onclick="showPanel('chatters', this)">Top Chatter</button>
-  <button class="view-btn" onclick="showPanel('degeneracy', this)">Degeneracy</button>
-  <button class="view-btn" onclick="showPanel('lol', this)">LOL Lords</button>
-  <button class="view-btn" onclick="showPanel('links', this)">Link Gremlins</button>
-  <button class="view-btn" onclick="showPanel('joins', this)">Door Slammers</button>
-  <button class="view-btn" onclick="showPanel('overview', this)">Overview</button>
-  <button class="view-btn" onclick="showPanel('memory', this)">girl Remembers</button>
-</div>
 
     <section class="panel active" id="panel-chatters">
-      <h2>Top Chatter</h2>
-      <div class="panel-note">top 30 ranked by word count — click a name for the receipts</div>
-      <div class="top-chatters-grid">
-        <div id="chatters-left"></div>
-        <div id="chatters-right"></div>
+      <div class="home-layout">
+        <div class="board">
+          <div class="board-title">★ Top Chatter ♡</div>
+          <div class="board-subnote">words logged in all channels ♡</div>
+
+          <div class="top-chatters-grid">
+            <div>
+              <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
+              <div id="chatters-left"></div>
+            </div>
+            <div>
+              <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
+              <div id="chatters-right"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-stack">
+          <div class="board">
+            <div class="board-title">☆ Top 3</div>
+            <div class="top3-grid" id="top3-grid">
+              <div class="top3-card rank2">
+                <div class="top3-badge">#2</div>
+                <div class="top3-photo" id="top3-photo-2">image</div>
+                <div class="top3-name" id="top3-name-2">loading...</div>
+                <div class="top3-score" id="top3-score-2">0</div>
+                <div class="top3-label">words</div>
+              </div>
+
+              <div class="top3-card rank1">
+                <div class="top3-badge">#1</div>
+                <div class="top3-photo" id="top3-photo-1">image</div>
+                <div class="top3-name" id="top3-name-1">loading...</div>
+                <div class="top3-score" id="top3-score-1">0</div>
+                <div class="top3-label">words</div>
+              </div>
+
+              <div class="top3-card rank3">
+                <div class="top3-badge">#3</div>
+                <div class="top3-photo" id="top3-photo-3">image</div>
+                <div class="top3-name" id="top3-name-3">loading...</div>
+                <div class="top3-score" id="top3-score-3">0</div>
+                <div class="top3-label">words</div>
+              </div>
+            </div>
+            <div style="text-align:center;"><span class="good-job-note">good job besties! :)</span></div>
+          </div>
+
+          <div class="board">
+            <div class="board-title"># Overview (Live)</div>
+            <div class="mini-grid" id="overview-cards">loading...</div>
+
+            <div class="overview-carousel">
+              <div class="overview-carousel-title">Top 3 user spotlight</div>
+              <div id="featured-user-area">loading...</div>
+              <div class="featured-dots" id="featured-dots">
+                <span class="featured-dot active"></span>
+                <span class="featured-dot"></span>
+                <span class="featured-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -595,7 +756,7 @@
     <section class="panel" id="panel-overview">
       <h2>Overview</h2>
       <div class="panel-note">the whole ugly pile</div>
-      <div class="mini-grid" id="overview-cards">loading...</div>
+      <div class="mini-grid" id="overview-cards-full">loading...</div>
     </section>
 
     <section class="panel" id="panel-memory">
@@ -616,14 +777,8 @@
 
   <script>
     function showPanel(panelName, button) {
-      document.querySelectorAll('.panel').forEach(panel => {
-        panel.classList.remove('active');
-      });
-
-      document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
+      document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById('panel-' + panelName).classList.add('active');
       button.classList.add('active');
     }
@@ -655,32 +810,36 @@
     function makeChatterCards(users, startRank) {
       return users.map((u, index) => {
         const rank = startRank + index;
+        const avatarLabel = `avatar-${rank}.png`;
 
         return `
           <div class="chatter-card">
             <button class="chatter-head" onclick="toggleChatter(this)">
               <div class="chatter-rank">#${rank}</div>
               <div class="chatter-name">${u.name}</div>
-              <div class="chatter-words">${fmt(u.words)} words</div>
+              <div class="chatter-words">${fmt(u.words)}</div>
             </button>
 
             <div class="chatter-extra">
-              <div class="extra-grid">
-                <div class="extra-stat">
-                  <div class="extra-label">joins</div>
-                  <div class="extra-value">${fmt(u.joins)}</div>
-                </div>
-                <div class="extra-stat">
-                  <div class="extra-label">lols</div>
-                  <div class="extra-value">${fmt(u.lol)}</div>
-                </div>
-                <div class="extra-stat">
-                  <div class="extra-label">links</div>
-                  <div class="extra-value">${fmt(u.links)}</div>
-                </div>
-                <div class="extra-stat">
-                  <div class="extra-label">degen</div>
-                  <div class="extra-value">${fmt(u.degeneracy)}</div>
+              <div class="extra-layout">
+                <div class="mini-avatar">${avatarLabel}</div>
+                <div class="extra-grid">
+                  <div class="extra-stat">
+                    <div class="extra-label">Joins</div>
+                    <div class="extra-value">${fmt(u.joins)}</div>
+                  </div>
+                  <div class="extra-stat">
+                    <div class="extra-label">LOLs</div>
+                    <div class="extra-value">${fmt(u.lol)}</div>
+                  </div>
+                  <div class="extra-stat">
+                    <div class="extra-label">Links</div>
+                    <div class="extra-value">${fmt(u.links)}</div>
+                  </div>
+                  <div class="extra-stat">
+                    <div class="extra-label">Degeneracy</div>
+                    <div class="extra-value">${fmt(u.degeneracy)}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -689,54 +848,79 @@
       }).join('');
     }
 
-function winnerMeta(u) {
-  return 'words ' + fmt(u.words) +
-    ' · joins ' + fmt(u.joins) +
-    ' · lol ' + fmt(u.lol) +
-    ' · degeneracy ' + fmt(u.degeneracy) +
-    ' · links ' + fmt(u.links);
-}
+    function fillTop3(byWords) {
+      const second = byWords[1];
+      const first = byWords[0];
+      const third = byWords[2];
 
-function setWinner(prefix, user, field) {
-  document.getElementById('winner-' + prefix + '-name').innerText = user.name;
-  document.getElementById('winner-' + prefix + '-score').innerText = fmt(user[field]);
-  document.getElementById('winner-' + prefix + '-meta').innerText = winnerMeta(user);
-}
-
-let winnerSlideIndex = 0;
-let winnerDirection = 1;
-
-function startWinnerCarousel() {
-  const track = document.getElementById('winner-track');
-  const dots = document.querySelectorAll('.winner-dot');
-  const total = dots.length;
-
-  setInterval(() => {
-    winnerSlideIndex += winnerDirection;
-
-    if (winnerSlideIndex >= total - 1) {
-      winnerSlideIndex = total - 1;
-      winnerDirection = -1;
+      if (second) {
+        document.getElementById('top3-name-2').innerText = second.name;
+        document.getElementById('top3-score-2').innerText = fmt(second.words);
+      }
+      if (first) {
+        document.getElementById('top3-name-1').innerText = first.name;
+        document.getElementById('top3-score-1').innerText = fmt(first.words);
+      }
+      if (third) {
+        document.getElementById('top3-name-3').innerText = third.name;
+        document.getElementById('top3-score-3').innerText = fmt(third.words);
+      }
     }
 
-    if (winnerSlideIndex <= 0) {
-      winnerSlideIndex = 0;
-      winnerDirection = 1;
+    let featuredIndex = 0;
+    let featuredUsers = [];
+
+    function renderFeaturedUser() {
+      if (!featuredUsers.length) return;
+      const user = featuredUsers[featuredIndex];
+
+      document.getElementById('featured-user-area').innerHTML = `
+        <div class="featured-user">
+          <div class="featured-photo">top${featuredIndex + 1}.png</div>
+          <div>
+            <div class="featured-rank">#${featuredIndex + 1} Top Chatter</div>
+            <div class="featured-name">${user.name}</div>
+            <div style="margin-top:4px;">${fmt(user.words)} words logged</div>
+            <div class="featured-stats">
+              <div class="featured-stat"><small>Joins</small><strong>${fmt(user.joins)}</strong></div>
+              <div class="featured-stat"><small>LOLs</small><strong>${fmt(user.lol)}</strong></div>
+              <div class="featured-stat"><small>Links</small><strong>${fmt(user.links)}</strong></div>
+              <div class="featured-stat"><small>Degen</small><strong>${fmt(user.degeneracy)}</strong></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const dots = document.querySelectorAll('.featured-dot');
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === featuredIndex));
     }
 
-    track.style.transform = 'translateX(-' + (winnerSlideIndex * 100) + '%)';
+    function startFeaturedCarousel(users) {
+      featuredUsers = users.slice(0, 3);
+      featuredIndex = 0;
+      renderFeaturedUser();
+      setInterval(() => {
+        featuredIndex = (featuredIndex + 1) % featuredUsers.length;
+        renderFeaturedUser();
+      }, 3200);
+    }
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === winnerSlideIndex);
-    });
-  }, 3200);
-}
+    function buildOverviewCardsHtml(users, totals) {
+      return `
+        <div class="mini-card"><div class="mini-label">Tracked Nicks</div><div class="mini-num">${fmt(users.length)}</div></div>
+        <div class="mini-card"><div class="mini-label">Words Logged</div><div class="mini-num">${fmt(totals.words)}</div></div>
+        <div class="mini-card"><div class="mini-label">Joins</div><div class="mini-num">${fmt(totals.joins)}</div></div>
+        <div class="mini-card"><div class="mini-label">LOLs</div><div class="mini-num">${fmt(totals.lol)}</div></div>
+        <div class="mini-card"><div class="mini-label">Degeneracy</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
+        <div class="mini-card"><div class="mini-label">Links</div><div class="mini-num">${fmt(totals.links)}</div></div>
+      `;
+    }
 
     fetch('truth_seekers_user_stats.json')
       .then(response => response.json())
       .then(data => {
         const users = Object.entries(data).map(([name, stats]) => ({
-          name: name,
+          name,
           words: stats.words || 0,
           joins: stats.joins || 0,
           lol: stats.lol || 0,
@@ -750,31 +934,17 @@ function startWinnerCarousel() {
         const byLinks = [...users].sort((a, b) => b.links - a.links);
         const byJoins = [...users].sort((a, b) => b.joins - a.joins);
 
-setWinner('words', byWords[0], 'words');
-setWinner('degen', byDegeneracy[0], 'degeneracy');
-setWinner('lol', byLol[0], 'lol');
-setWinner('links', byLinks[0], 'links');
-setWinner('joins', byJoins[0], 'joins');
-startWinnerCarousel();
-        
         const top30 = byWords.slice(0, 30);
-        document.getElementById('chatters-left').innerHTML =
-          makeChatterCards(top30.slice(0, 15), 1);
+        document.getElementById('chatters-left').innerHTML = makeChatterCards(top30.slice(0, 15), 1);
+        document.getElementById('chatters-right').innerHTML = makeChatterCards(top30.slice(15, 30), 16);
 
-        document.getElementById('chatters-right').innerHTML =
-          makeChatterCards(top30.slice(15, 30), 16);
+        fillTop3(byWords);
+        startFeaturedCarousel(byWords);
 
-        document.getElementById('degeneracy-list').innerHTML =
-          makeRows(byDegeneracy.slice(0, 30), 'degeneracy', 'deg');
-
-        document.getElementById('lol-list').innerHTML =
-          makeRows(byLol.slice(0, 30), 'lol', 'lol');
-
-        document.getElementById('links-list').innerHTML =
-          makeRows(byLinks.slice(0, 30), 'links', 'links');
-
-        document.getElementById('joins-list').innerHTML =
-          makeRows(byJoins.slice(0, 30), 'joins', 'joins');
+        document.getElementById('degeneracy-list').innerHTML = makeRows(byDegeneracy.slice(0, 30), 'degeneracy', 'deg');
+        document.getElementById('lol-list').innerHTML = makeRows(byLol.slice(0, 30), 'lol', 'lol');
+        document.getElementById('links-list').innerHTML = makeRows(byLinks.slice(0, 30), 'links', 'links');
+        document.getElementById('joins-list').innerHTML = makeRows(byJoins.slice(0, 30), 'joins', 'joins');
 
         const totals = users.reduce((acc, u) => {
           acc.words += u.words;
@@ -785,14 +955,9 @@ startWinnerCarousel();
           return acc;
         }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
 
-        document.getElementById('overview-cards').innerHTML = `
-          <div class="mini-card"><div class="mini-label">tracked nicks</div><div class="mini-num">${fmt(users.length)}</div></div>
-          <div class="mini-card"><div class="mini-label">words logged</div><div class="mini-num">${fmt(totals.words)}</div></div>
-          <div class="mini-card"><div class="mini-label">joins</div><div class="mini-num">${fmt(totals.joins)}</div></div>
-          <div class="mini-card"><div class="mini-label">lols</div><div class="mini-num">${fmt(totals.lol)}</div></div>
-          <div class="mini-card"><div class="mini-label">degeneracy</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
-          <div class="mini-card"><div class="mini-label">links</div><div class="mini-num">${fmt(totals.links)}</div></div>
-        `;
+        const overviewHtml = buildOverviewCardsHtml(users, totals);
+        document.getElementById('overview-cards').innerHTML = overviewHtml;
+        document.getElementById('overview-cards-full').innerHTML = overviewHtml;
       });
 
     fetch('girl_config.json')
