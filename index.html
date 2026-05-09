@@ -916,7 +916,7 @@
           <div>
             <div class="name">${u.name}</div>
             <div class="details">
-              words ${fmt(u.words)} · joins ${fmt(u.joins)} · lol ${fmt(u.lol)} · chaoseracy ${fmt(u.degeneracy)} · links ${fmt(u.links)}
+              words ${fmt(u.words)} · joins ${fmt(u.joins)} · lol ${fmt(u.lol)} · degeneracy ${fmt(u.degeneracy)} · links ${fmt(u.links)}
             </div>
           </div>
           <div class="value">${fmt(u[field])} ${label}</div>
@@ -957,7 +957,7 @@
       card.classList.toggle('open');
     }
 
-    function chaosLabel(index) {
+    function degenLabel(index) {
       const labels = [
         'absolute menace',
         'terminally online',
@@ -1102,7 +1102,7 @@
             words: stats.words || 0,
             joins: stats.joins || 0,
             lol: stats.lol || 0,
-            chaoseracy: stats.degeneracy || 0,
+            degeneracy: stats.degeneracy || 0,
             links: stats.links || 0
           }));
 
@@ -1142,7 +1142,7 @@
           acc.degeneracy += u.degeneracy;
           acc.links += u.links;
           return acc;
-        }, { words: 0, joins: 0, lol: 0, chaoseracy: 0, links: 0 });
+        }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
 
         const overviewHtml = buildOverviewCardsHtml(users, totals);
         document.getElementById('overview-cards-full').innerHTML = overviewHtml;
