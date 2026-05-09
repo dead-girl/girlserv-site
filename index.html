@@ -655,6 +655,20 @@
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
 
+    function avatarForUser(name) {
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) {
+        hash = ((hash << 5) - hash) + name.charCodeAt(i);
+        hash |= 0;
+      }
+      const num = (Math.abs(hash) % 30) + 1;
+      return 'avatars/avatar-' + String(num).padStart(2, '0') + '.png';
+    }
+
+    function avatarImg(name, className, altText) {
+      return `<img class="${className}" src="${avatarForUser(name)}" alt="${altText}">`;
+    }
+
     function makeRows(users, field, label) {
       return users.map((u, index) => `
         <div class="row">
@@ -673,7 +687,6 @@
     function makeChatterCards(users, startRank) {
       return users.map((u, index) => {
         const rank = startRank + index;
-        const avatarLabel = `avatar-${rank}.png`;
 
         return `
           <div class="chatter-card">
@@ -685,7 +698,7 @@
 
             <div class="chatter-extra">
               <div class="extra-layout">
-                <div class="mini-avatar">${avatarLabel}</div>
+                <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
                 <div class="extra-grid">
                   <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
                   <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
@@ -707,14 +720,17 @@
       if (second) {
         document.getElementById('top3-name-2').innerText = second.name;
         document.getElementById('top3-score-2').innerText = fmt(second.words);
+        document.getElementById('top3-photo-2').innerHTML = avatarImg(second.name, 'top3-photo-img', second.name + ' avatar');
       }
       if (first) {
         document.getElementById('top3-name-1').innerText = first.name;
         document.getElementById('top3-score-1').innerText = fmt(first.words);
+        document.getElementById('top3-photo-1').innerHTML = avatarImg(first.name, 'top3-photo-img', first.name + ' avatar');
       }
       if (third) {
         document.getElementById('top3-name-3').innerText = third.name;
         document.getElementById('top3-score-3').innerText = fmt(third.words);
+        document.getElementById('top3-photo-3').innerHTML = avatarImg(third.name, 'top3-photo-img', third.name + ' avatar');
       }
     }
 
@@ -727,7 +743,7 @@
 
       document.getElementById('featured-user-area').innerHTML = `
         <div class="featured-user">
-          <div class="featured-photo">top${featuredIndex + 1}.png</div>
+          <div class="featured-photo">${avatarImg(user.name, 'featured-photo-img', user.name + ' avatar')}</div>
           <div>
             <div class="featured-rank">#${featuredIndex + 1} Top Chatter</div>
             <div class="featured-name">${user.name}</div>
