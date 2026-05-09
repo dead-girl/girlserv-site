@@ -847,7 +847,15 @@
 
     function toggleChatter(button) {
       const card = button.closest('.chatter-card');
-      card.classList.toggle('open');
+      const wasOpen = card.classList.contains('open');
+
+      document.querySelectorAll('.chatter-card.open').forEach(openCard => {
+        openCard.classList.remove('open');
+      });
+
+      if (!wasOpen) {
+        card.classList.add('open');
+      }
     }
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
@@ -954,7 +962,15 @@
 
     function toggleDegenRemaining(button) {
       const card = button.closest('.degen-remaining-card');
-      card.classList.toggle('open');
+      const wasOpen = card.classList.contains('open');
+
+      document.querySelectorAll('.degen-remaining-card.open').forEach(openCard => {
+        openCard.classList.remove('open');
+      });
+
+      if (!wasOpen) {
+        card.classList.add('open');
+      }
     }
 
     function degenLabel(index) {
@@ -1017,7 +1033,15 @@
 
     function toggleDegenRemaining(button) {
       const card = button.closest('.degen-remaining-card');
-      card.classList.toggle('open');
+      const wasOpen = card.classList.contains('open');
+
+      document.querySelectorAll('.degen-remaining-card.open').forEach(openCard => {
+        openCard.classList.remove('open');
+      });
+
+      if (!wasOpen) {
+        card.classList.add('open');
+      }
     }
 
     function makeDegenRemainingRows(users, startRank) {
