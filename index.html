@@ -1011,6 +1011,216 @@
       }
     }
 
+    /* DOOR SLAMMERS TAB */
+    #panel-joins .doors-layout {
+      display: grid;
+      gap: 16px;
+    }
+
+    #panel-joins .door-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    #panel-joins .door-card {
+      background: #0f0f17;
+      border: 2px dashed rgba(255, 63, 143, 0.45);
+      border-radius: 18px;
+      padding: 10px;
+      position: relative;
+      box-shadow: 4px 4px 0 #000;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    #panel-joins .door-card.open {
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.16), transparent 40%),
+        linear-gradient(315deg, rgba(79,220,255,0.12), transparent 40%),
+        #141420;
+      border-color: var(--yellow);
+    }
+
+    #panel-joins .door-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      font-family: monospace;
+      color: white;
+      text-align: center;
+      display: block;
+    }
+
+    #panel-joins .door-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.08), transparent 45%),
+        rgba(255,255,255,0.03);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    #panel-joins .door-img {
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.45));
+      transition: transform 0.16s ease;
+    }
+
+    #panel-joins .door-button:hover .door-img {
+      transform: translateY(-3px) rotate(-1deg);
+    }
+
+    #panel-joins .door-rank {
+      color: var(--pink);
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    #panel-joins .door-name {
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+      min-height: 32px;
+    }
+
+    #panel-joins .door-joins-pill {
+      display: inline-block;
+      margin-top: 6px;
+      background: var(--blue);
+      color: #071018;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    #panel-joins .door-extra {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background: #f6e7bf;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    #panel-joins .door-card.open .door-extra {
+      display: block;
+    }
+
+    #panel-joins .door-extra-title {
+      font-size: 12px;
+      font-weight: 900;
+      color: #8d104c;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    #panel-joins .door-extra-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    #panel-joins .door-extra-stat {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 9px;
+      padding: 7px;
+      text-align: center;
+    }
+
+    #panel-joins .door-extra-label {
+      color: #5b4050;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    #panel-joins .door-extra-value {
+      color: #111;
+      font-size: 15px;
+      font-weight: 900;
+      margin-top: 3px;
+    }
+
+    #panel-joins .door-note-board {
+      background: #0f0f17;
+      border: 2px dashed rgba(79, 220, 255, 0.55);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    #panel-joins .door-note-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #panel-joins .door-note {
+      color: #111;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+      font-weight: 900;
+      min-height: 90px;
+    }
+
+    #panel-joins .door-note:nth-child(1) { background: #f1d7e5; transform: rotate(-1deg); }
+    #panel-joins .door-note:nth-child(2) { background: #d6edf7; transform: rotate(1deg); }
+    #panel-joins .door-note:nth-child(3) { background: #f6e7bf; transform: rotate(-1deg); }
+    #panel-joins .door-note:nth-child(4) { background: #e8f2dd; transform: rotate(1deg); }
+
+    #panel-joins .door-note-label {
+      font-size: 12px;
+      color: #5b4050;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    #panel-joins .door-note-value {
+      font-size: 22px;
+      color: #111;
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1100px) {
+      #panel-joins .door-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      #panel-joins .door-note-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      #panel-joins .door-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #panel-joins .door-note-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -1143,16 +1353,25 @@
 
         <div class="link-remaining-list">
           <div class="link-remaining-title">Remaining Link Gremlins</div>
-          <div class="panel-note">#6 through #30 — links only</div>
+          <div class="panel-note">#6 through #29 — links only</div>
           <div class="link-list-grid" id="links-remaining">loading...</div>
         </div>
       </div>
     </section>
 
     <section class="panel" id="panel-joins">
-      <h2>Door Slammers</h2>
-      <div class="panel-note">ranked by joins</div>
-      <div class="leaderboard" id="joins-list">loading...</div>
+      <div class="doors-layout">
+        <div class="board">
+          <div class="board-title">🚪 Door Slammers</div>
+          <div class="board-subnote">click a door to see who keeps entering dramatically</div>
+          <div class="door-grid" id="door-grid">loading...</div>
+        </div>
+
+        <div class="door-note-board">
+          <div class="board-title">door drama summary</div>
+          <div class="door-note-grid" id="door-summary">loading...</div>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="panel-overview">
@@ -1484,6 +1703,115 @@
       `;
     }
 
+    function doorForRank(rank) {
+      const doorNumber = ((rank - 1) % 30) + 1;
+      return 'doors/door-' + String(doorNumber).padStart(2, '0') + '.png';
+    }
+
+    function doorMood(index) {
+      const moods = [
+        'dramatic',
+        'restless',
+        'lurking',
+        'wandering',
+        'chaotic',
+        'nosy',
+        'mysterious',
+        'uninvited',
+        'suspicious',
+        'ghosting',
+        'returning',
+        'vanishing',
+        'hovering',
+        'loitering',
+        'plotting',
+        'peeking',
+        'slamming',
+        'sneaking',
+        'haunting',
+        'watching',
+        'bouncing',
+        'orbiting',
+        'appearing',
+        'escaping',
+        'reappearing',
+        'storming',
+        'lingering',
+        'creeping',
+        'checking',
+        'entering'
+      ];
+      return moods[index % moods.length];
+    }
+
+    function toggleDoor(button) {
+      const card = button.closest('.door-card');
+      const wasOpen = card.classList.contains('open');
+
+      document.querySelectorAll('#panel-joins .door-card.open').forEach(openCard => {
+        openCard.classList.remove('open');
+      });
+
+      if (!wasOpen) {
+        card.classList.add('open');
+      }
+    }
+
+    function makeDoorCards(users) {
+      return users.map((u, index) => {
+        const rank = index + 1;
+
+        return `
+          <div class="door-card">
+            <button class="door-button" onclick="toggleDoor(this)">
+              <div class="door-img-wrap">
+                <img class="door-img" src="${doorForRank(rank)}" alt="Door sticker ${rank}">
+              </div>
+              <div class="door-rank">#${rank}</div>
+              <div class="door-name">${u.name}</div>
+              <div class="door-joins-pill">${fmt(u.joins)} joins</div>
+            </button>
+
+            <div class="door-extra">
+              <div class="door-extra-title">door file</div>
+              <div class="door-extra-grid">
+                <div class="door-extra-stat"><div class="door-extra-label">Mood</div><div class="door-extra-value">${doorMood(index)}</div></div>
+                <div class="door-extra-stat"><div class="door-extra-label">Slams</div><div class="door-extra-value">${fmt(u.joins)}</div></div>
+                <div class="door-extra-stat"><div class="door-extra-label">Rank</div><div class="door-extra-value">#${rank}</div></div>
+                <div class="door-extra-stat"><div class="door-extra-label">Status</div><div class="door-extra-value">watched</div></div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function buildDoorSummary(users, byJoins) {
+      const top = byJoins[0];
+      const totalJoins = users.reduce((sum, user) => sum + (user.joins || 0), 0);
+      const activeDoors = byJoins.filter(user => user.joins > 0).length;
+      const average = activeDoors ? Math.round(totalJoins / activeDoors) : 0;
+
+      return `
+        <div class="door-note">
+          <div class="door-note-label">total door slams</div>
+          <div class="door-note-value">${fmt(totalJoins)}</div>
+        </div>
+        <div class="door-note">
+          <div class="door-note-label">loudest entrance</div>
+          <div class="door-note-value">${top ? top.name : 'n/a'}</div>
+        </div>
+        <div class="door-note">
+          <div class="door-note-label">active doors</div>
+          <div class="door-note-value">${fmt(activeDoors)}</div>
+        </div>
+        <div class="door-note">
+          <div class="door-note-label">average slams</div>
+          <div class="door-note-value">${fmt(average)}</div>
+        </div>
+      `;
+    }
+
     function fillTop3(byWords) {
       const second = byWords[1];
       const first = byWords[0];
@@ -1598,8 +1926,9 @@
         document.getElementById('lol-remaining').innerHTML = makeLolRemainingRows(byLol.slice(10, 30), 11);
         document.getElementById('links-top5').innerHTML = makeLinkWantedCards(byLinks.slice(0, 5));
         document.getElementById('link-evidence').innerHTML = buildLinkEvidence(users, byLinks);
-        document.getElementById('links-remaining').innerHTML = makeLinkRemainingRows(byLinks.slice(5, 30), 6);
-        document.getElementById('joins-list').innerHTML = makeRows(byJoins.slice(0, 30), 'joins', 'joins');
+        document.getElementById('links-remaining').innerHTML = makeLinkRemainingRows(byLinks.slice(5, 29), 6);
+        document.getElementById('door-grid').innerHTML = makeDoorCards(byJoins.slice(0, 30));
+        document.getElementById('door-summary').innerHTML = buildDoorSummary(users, byJoins);
 
         const totals = users.reduce((acc, u) => {
           acc.words += u.words;
