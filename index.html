@@ -655,14 +655,20 @@
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
 
+    const avatarMap = new Map();
+
+    function assignAvatars(users) {
+      avatarMap.clear();
+
+      users.forEach((user, index) => {
+        const avatarNumber = (index % 30) + 1;
+        avatarMap.set(user.name, avatarNumber);
+      });
+    }
+
     function avatarForUser(name) {
-      let hash = 0;
-      for (let i = 0; i < name.length; i++) {
-        hash = ((hash << 5) - hash) + name.charCodeAt(i);
-        hash |= 0;
-      }
-      const num = (Math.abs(hash) % 30) + 1;
-      return 'avatars/avatar-' + String(num).padStart(2, '0') + '.png';
+      const assignedNumber = avatarMap.get(name) || 1;
+      return 'avatars/avatar-' + String(assignedNumber).padStart(2, '0') + '.png';
     }
 
     function avatarImg(name, className, altText) {
@@ -796,6 +802,8 @@
         }));
 
         const byWords = [...users].sort((a, b) => b.words - a.words);
+        assignAvatars(byWords);
+
         const byDegeneracy = [...users].sort((a, b) => b.degeneracy - a.degeneracy);
         const byLol = [...users].sort((a, b) => b.lol - a.lol);
         const byLinks = [...users].sort((a, b) => b.links - a.links);
