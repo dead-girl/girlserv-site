@@ -1275,12 +1275,15 @@
       }
     }
 
-    /* DOOR FINAL FIX */
+    /* DOOR MOSAIC FINAL */
     #panel-joins .door-grid {
       display: grid !important;
-      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+      grid-auto-rows: 132px;
       gap: 14px !important;
-      align-items: start;
+      align-items: stretch;
+      max-width: 980px;
+      margin: 0 auto;
     }
 
     #panel-joins .door-card {
@@ -1295,15 +1298,30 @@
       transition: transform 0.22s ease;
     }
 
+    #panel-joins .door-card:nth-child(1) { grid-column: 2 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(2) { grid-column: 4 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(3) { grid-column: 6 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(4) { grid-column: 1 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(5) { grid-column: 3 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(6) { grid-column: 5 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(7) { grid-column: 2 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(8) { grid-column: 4 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(9) { grid-column: 6 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(10) { grid-column: 1 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(11) { grid-column: 3 / span 2; grid-row: span 2; }
+    #panel-joins .door-card:nth-child(12) { grid-column: 5 / span 2; grid-row: span 2; }
+
     #panel-joins .door-card.open {
-      transform: scale(1.08);
+      grid-column: span 3 !important;
+      grid-row: span 2;
+      transform: scale(1.02);
       z-index: 20;
     }
 
     #panel-joins .door-rank-badge {
       position: absolute;
-      top: -6px;
-      left: 6px;
+      top: -7px;
+      left: 7px;
       z-index: 30;
       background: var(--pink);
       color: white;
@@ -1318,22 +1336,27 @@
 
     #panel-joins .door-stage {
       position: relative;
-      min-height: 245px;
+      height: 100%;
+      min-height: 250px;
       perspective: 1200px;
+    }
+
+    #panel-joins .door-card.open .door-stage {
+      min-height: 265px;
     }
 
     #panel-joins .door-extra {
       position: absolute;
-      top: 8px;
+      top: 10px;
       right: 0;
-      bottom: 8px;
-      left: 38%;
+      bottom: 10px;
+      left: 42%;
       opacity: 0;
       transform: translateX(-8px);
       transition: opacity 0.2s ease, transform 0.24s ease;
       z-index: 1;
       pointer-events: none;
-      padding: 10px 8px 8px 22px;
+      padding: 14px 10px 10px 26px;
       background: #f6e7bf;
       border: 2px solid #000;
       border-radius: 14px;
@@ -1349,7 +1372,7 @@
     #panel-joins .door-button {
       position: absolute;
       inset: 0 auto 0 0;
-      width: 58%;
+      width: 65%;
       max-width: none;
       height: 100%;
       border: 0;
@@ -1363,11 +1386,12 @@
       z-index: 3;
       transform-origin: left center;
       transform-style: preserve-3d;
-      transition: transform 0.34s ease;
+      transition: transform 0.34s ease, width 0.22s ease;
     }
 
     #panel-joins .door-card.open .door-button {
-      transform: rotateY(-72deg);
+      width: 48%;
+      transform: rotateY(-74deg);
     }
 
     #panel-joins .door-front {
@@ -1393,20 +1417,16 @@
     }
 
     #panel-joins .door-img {
-      width: 82%;
-      height: 82%;
+      width: 88%;
+      height: 88%;
       object-fit: contain;
       display: block;
       filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.42));
       transition: transform 0.2s ease;
     }
 
-    #panel-joins .door-button:hover .door-img {
-      transform: translateY(-2px);
-    }
-
     #panel-joins .door-card.open .door-img {
-      transform: scale(1.1);
+      transform: scale(1.16);
     }
 
     #panel-joins .door-name {
@@ -1433,17 +1453,17 @@
     }
 
     #panel-joins .door-extra-title {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 900;
       color: #8d104c;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     #panel-joins .door-extra-name {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 900;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
       color: #111;
       line-height: 1.1;
       word-break: break-word;
@@ -1452,7 +1472,7 @@
 
     #panel-joins .door-extra-lines {
       display: grid;
-      gap: 6px;
+      gap: 7px;
     }
 
     #panel-joins .door-line {
@@ -1460,10 +1480,10 @@
       justify-content: space-between;
       gap: 8px;
       align-items: center;
-      background: rgba(255,255,255,0.48);
+      background: rgba(255,255,255,0.52);
       border: 1px solid rgba(0,0,0,0.14);
       border-radius: 8px;
-      padding: 5px 6px;
+      padding: 6px 7px;
       font-size: 10px;
       color: #5b4050;
       font-weight: 900;
@@ -1472,37 +1492,89 @@
 
     #panel-joins .door-line strong {
       color: #111;
-      font-size: 12px;
+      font-size: 13px;
       text-transform: none;
+      text-align: right;
+    }
+
+    #panel-joins .door-remaining-board {
+      background: #0f0f17;
+      border: 2px dashed rgba(79, 220, 255, 0.55);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    #panel-joins .door-remaining-title {
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    #panel-joins .door-remaining-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    #panel-joins .door-small-row {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 90px;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 10px;
+      background: #151521;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+
+    #panel-joins .door-small-rank {
+      color: var(--pink);
+      font-weight: 900;
+    }
+
+    #panel-joins .door-small-name {
+      color: #fff;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-joins .door-small-score {
+      color: var(--yellow);
+      font-weight: 900;
       text-align: right;
     }
 
     @media (max-width: 1100px) {
       #panel-joins .door-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        grid-auto-rows: 128px;
+      }
+
+      #panel-joins .door-card,
+      #panel-joins .door-card.open {
+        grid-column: span 2 !important;
+      }
+
+      #panel-joins .door-remaining-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 760px) {
-      #panel-joins .door-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      #panel-joins .door-grid,
+      #panel-joins .door-remaining-list {
+        grid-template-columns: 1fr !important;
       }
 
+      #panel-joins .door-card,
       #panel-joins .door-card.open {
-        transform: scale(1.03);
+        grid-column: 1 / -1 !important;
       }
 
-      #panel-joins .door-stage {
-        min-height: 235px;
-      }
-
-      #panel-joins .door-extra {
-        left: 34%;
-        padding-left: 18px;
-      }
-
-      #panel-joins .door-button {
-        width: 54%;
+      #panel-joins .door-stage,
+      #panel-joins .door-card.open .door-stage {
+        min-height: 255px;
       }
     }
 
@@ -1648,8 +1720,14 @@
       <div class="doors-layout">
         <div class="board">
           <div class="board-title">🚪 Door Slammers</div>
-          <div class="board-subnote">click a door to see who keeps entering dramatically</div>
+          <div class="board-subnote">top 12 dramatic entrances — click a door to open the file</div>
           <div class="door-grid" id="door-grid">loading...</div>
+        </div>
+
+        <div class="door-remaining-board">
+          <div class="door-remaining-title">Remaining Door Slammers</div>
+          <div class="panel-note">#13 through #30 — joins only</div>
+          <div class="door-remaining-list" id="door-remaining">loading...</div>
         </div>
 
         <div class="door-note-board">
@@ -2076,6 +2154,16 @@
       }).join('');
     }
 
+    function makeDoorRemainingRows(users, startRank) {
+      return users.map((u, index) => `
+        <div class="door-small-row">
+          <div class="door-small-rank">#${startRank + index}</div>
+          <div class="door-small-name">${u.name}</div>
+          <div class="door-small-score">${fmt(u.joins)}</div>
+        </div>
+      `).join('');
+    }
+
     function buildDoorSummary(users, byJoins) {
       const top = byJoins[0];
       const totalJoins = users.reduce((sum, user) => sum + (user.joins || 0), 0);
@@ -2217,7 +2305,8 @@
         document.getElementById('links-top5').innerHTML = makeLinkWantedCards(byLinks.slice(0, 5));
         document.getElementById('link-evidence').innerHTML = buildLinkEvidence(users, byLinks);
         document.getElementById('links-remaining').innerHTML = makeLinkRemainingRows(byLinks.slice(5, 29), 6);
-        document.getElementById('door-grid').innerHTML = makeDoorCards(byJoins.slice(0, 30));
+        document.getElementById('door-grid').innerHTML = makeDoorCards(byJoins.slice(0, 12));
+        document.getElementById('door-remaining').innerHTML = makeDoorRemainingRows(byJoins.slice(12, 30), 13);
         document.getElementById('door-summary').innerHTML = buildDoorSummary(users, byJoins);
 
         const totals = users.reduce((acc, u) => {
