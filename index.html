@@ -598,13 +598,13 @@
       <div class="degen-layout">
         <div class="board">
           <div class="board-title">☠ Top 9 Degenerates ♡</div>
-          <div class="board-subnote">click a card to expose the damage</div>
+          <div class="board-subnote">the worst offenders, pinned to the wall</div>
           <div class="degen-card-grid" id="degen-top9">loading...</div>
         </div>
 
         <div class="degen-side-list">
           <div class="degen-side-title">Remaining Degen 30</div>
-          <div class="panel-note">#10 through #30</div>
+          <div class="panel-note">#10 through #30 — click a row for extra stats</div>
           <div id="degen-remaining">loading...</div>
         </div>
       </div>
@@ -748,8 +748,8 @@
       }).join('');
     }
 
-    function toggleDegenCard(button) {
-      const card = button.closest('.degen-card');
+    function toggleDegenRemaining(button) {
+      const card = button.closest('.degen-remaining-card');
       card.classList.toggle('open');
     }
 
@@ -771,7 +771,7 @@
     function makeDegenCards(users) {
       return users.map((u, index) => `
         <div class="degen-card">
-          <button class="degen-card-head" onclick="toggleDegenCard(this)">
+          <div class="degen-card-head">
             <div class="degen-photo">${avatarImg(u.name, 'degen-photo-img', u.name + ' avatar')}</div>
             <div>
               <div class="degen-rank">#${index + 1}</div>
@@ -779,28 +779,37 @@
               <div class="degen-score">${fmt(u.degeneracy)} degen</div>
               <div class="degen-tag">${degenLabel(index)}</div>
             </div>
-          </button>
-
-          <div class="degen-extra">
-            <div class="degen-extra-grid">
-              <div class="degen-extra-stat"><div class="degen-extra-label">Words</div><div class="degen-extra-value">${fmt(u.words)}</div></div>
-              <div class="degen-extra-stat"><div class="degen-extra-label">Joins</div><div class="degen-extra-value">${fmt(u.joins)}</div></div>
-              <div class="degen-extra-stat"><div class="degen-extra-label">LOLs</div><div class="degen-extra-value">${fmt(u.lol)}</div></div>
-              <div class="degen-extra-stat"><div class="degen-extra-label">Links</div><div class="degen-extra-value">${fmt(u.links)}</div></div>
-            </div>
           </div>
         </div>
       `).join('');
     }
 
     function makeDegenRemainingRows(users, startRank) {
-      return users.map((u, index) => `
-        <div class="degen-small-row">
-          <div class="degen-small-rank">#${startRank + index}</div>
-          <div class="degen-small-name">${u.name}</div>
-          <div class="degen-small-score">${fmt(u.degeneracy)}</div>
-        </div>
-      `).join('');
+      return users.map((u, index) => {
+        const rank = startRank + index;
+
+        return `
+          <div class="degen-remaining-card">
+            <button class="degen-remaining-head" onclick="toggleDegenRemaining(this)">
+              <div class="degen-remaining-rank">#${rank}</div>
+              <div class="degen-remaining-name">${u.name}</div>
+              <div class="degen-remaining-score">${fmt(u.degeneracy)}</div>
+            </button>
+
+            <div class="degen-remaining-extra">
+              <div class="extra-layout">
+                <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
+                <div class="extra-grid">
+                  <div class="extra-stat"><div class="extra-label">Words</div><div class="extra-value">${fmt(u.words)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
     function fillTop3(byWords) {
