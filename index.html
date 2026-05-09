@@ -1840,6 +1840,95 @@
       font-weight: 900;
     }
 
+    /* USERS TO KEEP AN EYE ON CAROUSEL */
+    #panel-chatters .overview-carousel {
+      overflow: hidden;
+    }
+
+    #panel-chatters .watch-carousel-card {
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
+      position: relative;
+      min-height: 238px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      animation: watchPop 0.24s ease;
+    }
+
+    @keyframes watchPop {
+      from { transform: translateX(12px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    #panel-chatters .watch-carousel-ribbon {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-4deg);
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+      white-space: nowrap;
+    }
+
+    #panel-chatters .watch-carousel-photo {
+      width: 92px;
+      height: 92px;
+      margin: 20px auto 10px;
+      border: 3px solid #fff;
+      outline: 2px solid #d1a9b8;
+      border-radius: 10px;
+      background: #111;
+      overflow: hidden;
+    }
+
+    #panel-chatters .watch-carousel-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #panel-chatters .watch-carousel-name {
+      font-size: 16px;
+      font-weight: 900;
+      word-break: break-word;
+      line-height: 1.1;
+    }
+
+    #panel-chatters .watch-carousel-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    #panel-chatters .watch-carousel-note {
+      font-size: 12px;
+      color: #444;
+      margin-top: 7px;
+    }
+
+    #panel-chatters .featured-dots {
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 
@@ -1910,12 +1999,14 @@
           </div>
 
           <div class="board">
-            <div class="board-title">♡ Top 3 Spotlight</div>
+            <div class="board-title">♡ Users to keep an eye on</div>
             <div class="overview-carousel">
-              <div class="overview-carousel-title">top chatter carousel</div>
+              <div class="overview-carousel-title">category winners carousel</div>
               <div id="featured-user-area">loading...</div>
               <div class="featured-dots" id="featured-dots">
                 <span class="featured-dot active"></span>
+                <span class="featured-dot"></span>
+                <span class="featured-dot"></span>
                 <span class="featured-dot"></span>
                 <span class="featured-dot"></span>
               </div>
@@ -2604,6 +2695,42 @@
       dots.forEach((dot, i) => dot.classList.toggle('active', i === featuredIndex));
     }
 
+    function buildOverviewCardsHtml(users, totals) {
+      return `
+        <div class="mini-card"><div class="mini-label">Tracked Nicks</div><div class="mini-num">${fmt(users.length)}</div></div>
+        <div class="mini-card"><div class="mini-label">Words Logged</div><div class="mini-num">${fmt(totals.words)}</div></div>
+        <div class="mini-card"><div class="mini-label">Joins</div><div class="mini-num">${fmt(totals.joins)}</div></div>
+        <div class="mini-card"><div class="mini-label">LOLs</div><div class="mini-num">${fmt(totals.lol)}</div></div>
+        <div class="mini-card"><div class="mini-label">Chaos</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
+        <div class="mini-card"><div class="mini-label">Links</div><div class="mini-num">${fmt(totals.links)}</div></div>
+      `;
+    }
+
+    let watchCarouselIndex = 0;
+    let watchCarouselItems = [];
+
+    function renderWatchCarousel() {
+      const area = document.getElementById('featured-user-area');
+      const dots = document.querySelectorAll('#featured-dots .featured-dot');
+      if (!area || !watchCarouselItems.length) return;
+
+      const item = watchCarouselItems[watchCarouselIndex];
+
+      area.innerHTML = `
+        <div class="watch-carousel-card">
+          <div class="watch-carousel-ribbon">${item.title}</div>
+          <div class="watch-carousel-photo">${avatarImg(item.user.name, 'watch-carousel-img', item.user.name + ' avatar')}</div>
+          <div class="watch-carousel-name">${item.user.name}</div>
+          <div class="watch-carousel-score">${fmt(item.user[item.field])} ${item.suffix}</div>
+          <div class="watch-carousel-note">user to keep an eye on</div>
+        </div>
+      `;
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === watchCarouselIndex);
+      });
+    }
+
     function startFeaturedCarousel(rankings) {
       const categories = [
         { title: 'Top Chatter', field: 'words', suffix: 'words' },
@@ -2613,28 +2740,27 @@
         { title: 'Door Slammer', field: 'joins', suffix: 'joins' }
       ];
 
-      const area = document.getElementById('featured-user-area');
-      if (!area) return;
+      watchCarouselItems = categories
+        .map(cat => {
+          const user = rankings[cat.field] && rankings[cat.field][0];
+          if (!user) return null;
+          return { ...cat, user };
+        })
+        .filter(Boolean);
 
-      area.innerHTML = `
-        <div class="watch-grid">
-          ${categories.map(cat => {
-            const user = rankings[cat.field] && rankings[cat.field][0];
-            if (!user) return '';
+      watchCarouselIndex = 0;
+      renderWatchCarousel();
 
-            return `
-              <div class="watch-card">
-                <div class="watch-avatar">${avatarImg(user.name, 'watch-avatar-img', user.name + ' avatar')}</div>
-                <div>
-                  <div class="watch-kicker">${cat.title}</div>
-                  <div class="watch-name">${user.name}</div>
-                  <div class="watch-score">${fmt(user[cat.field])} ${cat.suffix}</div>
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      `;
+      const timerTarget = typeof window !== 'undefined' ? window : globalThis;
+      if (timerTarget.watchCarouselTimer) {
+        clearInterval(timerTarget.watchCarouselTimer);
+      }
+
+      timerTarget.watchCarouselTimer = setInterval(() => {
+        if (!watchCarouselItems.length) return;
+        watchCarouselIndex = (watchCarouselIndex + 1) % watchCarouselItems.length;
+        renderWatchCarousel();
+      }, 3200);
     }
 
     fetch('truth_seekers_user_stats.json')
@@ -2712,7 +2838,7 @@
         const errorMessage = '<div class="memory-item">Could not load stats. Check truth_seekers_user_stats.json and browser console.</div>';
         ['chatters-left', 'chatters-right', 'degen-top9', 'degen-remaining', 'lol-list', 'links-list', 'joins-list', 'door-selector-grid', 'door-remaining', 'door-summary', 'overview-cards', 'overview-cards-full'].forEach(id => {
           const el = document.getElementById(id);
-          if (el) el.innerHTML = errorMessage;
+          if (el && (!el.innerHTML || el.innerHTML.includes('loading'))) el.innerHTML = errorMessage;
         });
       });
 
