@@ -1857,9 +1857,7 @@
       }
     }
 
-
-
-    /* TOP CHATTERS SIDEBAR SELECTED */
+    /* SIDEBAR SELECTED USER POLISH */
     #panel-chatters .selected-user-board {
       background:
         linear-gradient(135deg, rgba(255,63,143,0.14), transparent 38%),
@@ -1886,18 +1884,24 @@
       font-weight: 900;
       margin-bottom: 10px;
       overflow-wrap: anywhere;
+      text-align: center;
     }
 
     #panel-chatters .chatter-expanded-full .extra-layout {
       display: grid;
-      grid-template-columns: 82px minmax(0, 1fr);
+      grid-template-columns: 1fr;
       gap: 12px;
       align-items: center;
     }
 
     #panel-chatters .chatter-expanded-full .mini-avatar {
-      width: 78px;
-      height: 78px;
+      width: 124px;
+      height: 124px;
+      margin: 0 auto;
+      border: 3px solid #fff;
+      outline: 3px solid #000;
+      border-radius: 16px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
     }
 
     #panel-chatters .chatter-expanded-full .extra-grid {
@@ -1907,7 +1911,7 @@
     }
 
     #panel-chatters .chatter-expanded-full .extra-stat {
-      padding: 7px;
+      padding: 8px;
     }
 
     #panel-chatters .chatter-expanded-full .extra-label {
@@ -1916,6 +1920,11 @@
 
     #panel-chatters .chatter-expanded-full .extra-value {
       font-size: 15px;
+    }
+
+    #panel-chatters .chatter-expanded-full .award-strip {
+      justify-content: center;
+      margin-top: 12px;
     }
 
     #panel-chatters .chatter-card.open .chatter-head {
@@ -1987,8 +1996,29 @@
     #panel-chatters .award-badge:nth-child(2n) { background: #d6edf7; }
     #panel-chatters .award-badge:nth-child(3n) { background: #f1d7e5; }
 
+    #panel-chatters .watch-wide-board {
+      margin-top: 14px;
+    }
+
+    #panel-chatters .watch-wide-board .overview-carousel {
+      min-height: 275px;
+    }
+
+    #panel-chatters .watch-wide-board .watch-carousel-card {
+      min-height: 225px;
+    }
+
+    #panel-chatters .watch-wide-board .watch-carousel-photo {
+      width: 96px;
+      height: 96px;
+    }
+
+    #panel-chatters .watch-wide-board .watch-carousel-name {
+      font-size: 17px;
+    }
+
     @media (max-width: 760px) {
-      #panel-chatters .chatter-expanded-full .extra-layout,
+      #panel-chatters .chatter-expanded-full .extra-grid,
       #panel-chatters .chatter-card .chatter-extra .extra-layout {
         grid-template-columns: 1fr;
       }
@@ -2066,24 +2096,22 @@
               </div>
             </div>
             <div style="text-align:center;"><span class="good-job-note">good job besties! :)</span></div>
-          </div>
+          </div>        </div>
+      </div>
 
-          <div class="board">
-            <div class="board-title">♡ Users to keep an eye on</div>
-            <div class="overview-carousel">
-              
-              <div id="featured-user-area">loading...</div>
-              <div class="featured-dots" id="featured-dots">
-                <span class="featured-dot active"></span>
-                <span class="featured-dot"></span>
-                <span class="featured-dot"></span>
-                <span class="featured-dot"></span>
-                <span class="featured-dot"></span>
-              </div>
+        <div class="board watch-wide-board">
+          <div class="board-title">♡ Users to keep an eye on</div>
+          <div class="overview-carousel">
+            <div id="featured-user-area">loading...</div>
+            <div class="featured-dots" id="featured-dots">
+              <span class="featured-dot active"></span>
+              <span class="featured-dot"></span>
+              <span class="featured-dot"></span>
+              <span class="featured-dot"></span>
+              <span class="featured-dot"></span>
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <section class="panel" id="panel-degeneracy">
