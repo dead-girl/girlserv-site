@@ -2286,6 +2286,10 @@
       transform: rotate(5deg) !important;
     }
 
+    #panel-chatters .watch-gun-prev img.gun-fallback-flip {
+      transform: scaleX(-1) rotate(5deg) !important;
+    }
+
   </style>
 </head>
 
@@ -2370,7 +2374,7 @@
           <div class="board-title users-watch-title">Users To Keep An Eye On</div>
           <div class="overview-carousel watch-carousel-shell">
             <button class="watch-gun-arrow watch-gun-prev" type="button" onclick="moveWatchCarousel(-1)" aria-label="Previous user spotlight">
-              <img src="assets/desert-eagle-left.png" alt="">
+              <img src="assets/desert-eagle-left.png" alt="" onerror="this.onerror=null; this.src='assets/desert-eagle-right.png'; this.classList.add('gun-fallback-flip');">
             </button>
 
             <div class="watch-carousel-main">
