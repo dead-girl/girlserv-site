@@ -2108,60 +2108,85 @@
       font-weight: 900;
     }
 
-    /* TOP 30 SMOOTH SLIDE EXPAND */
-    #panel-chatters .chatter-card .chatter-extra {
-      display: block !important;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      padding-top: 0;
-      padding-bottom: 0;
-      transform: translateY(-6px);
-      transition:
-        max-height 0.32s ease,
-        opacity 0.22s ease,
-        padding-top 0.32s ease,
-        padding-bottom 0.32s ease,
-        transform 0.32s ease;
+    /* TOP 30 HOVER EXPAND */
+    #panel-chatters .chatter-card:hover .chatter-extra {
+      display: block;
     }
 
-    #panel-chatters .chatter-card:hover .chatter-extra,
-    #panel-chatters .chatter-card.open .chatter-extra {
-      max-height: 240px;
-      opacity: 1;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      transform: translateY(0);
+    #panel-chatters .chatter-card:hover .chatter-head {
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.12), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.10), transparent 38%),
+        #151521;
+      border-color: rgba(255, 221, 120, 0.55);
     }
 
-    #panel-chatters .extra-label {
-      overflow-wrap: anywhere;
-      line-height: 1.1;
+    #panel-chatters .chatter-card.open:hover .chatter-head {
+      border-color: var(--yellow);
     }
 
-    #panel-chatters .extra-stat {
-      min-width: 0;
+    /* FINAL TOP CHATTER POLISH */
+    #panel-chatters .chatter-col-header {
+      grid-template-columns: 48px minmax(0, 1fr) 90px;
     }
 
-    #panel-chatters .extra-grid {
-      min-width: 0;
+    #panel-chatters .chatter-col-header span:nth-child(2) {
+      text-align: left;
     }
 
-    #panel-chatters .chatter-card {
-      min-width: 0;
+    #panel-chatters .chatter-col-header span:nth-child(3) {
+      text-align: right;
     }
 
-    #panel-chatters .top-chatters-grid {
-      min-width: 0;
+    #panel-chatters .chatter-head {
+      grid-template-columns: 48px minmax(0, 1fr) 90px;
     }
 
-    /* SMALL SCRAPBOOK GUN ARROW CAROUSEL FIX */
+    #panel-chatters .chatter-name {
+      text-align: left;
+    }
+
+    #panel-chatters .chatter-words {
+      text-align: right;
+    }
+
+    #panel-chatters .truth-heading {
+      text-align: center;
+    }
+
+    #panel-chatters .selected-user-topline {
+      margin-bottom: 10px;
+    }
+
+    #panel-chatters .selected-user-search {
+      background: #151521;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+      padding: 9px 12px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 3px 3px 0 #000;
+    }
+
+    #panel-chatters .selected-user-search::placeholder {
+      color: rgba(255,255,255,0.56);
+    }
+
+    #panel-chatters .selected-user-search:focus {
+      border-color: rgba(79, 220, 255, 0.75);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 3px 3px 0 rgba(79, 220, 255, 0.65);
+    }
+
+    /* USERS TO KEEP IMAGE ARROWS */
+    #panel-chatters .watch-wide-board > .users-watch-title {
+      text-align: center;
+      display: block;
+    }
+
     #panel-chatters .watch-carousel-shell {
-      display: grid !important;
-      grid-template-columns: 58px minmax(0, 1fr) 58px !important;
-      gap: 8px !important;
-      align-items: center !important;
-      overflow: visible !important;
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr) 96px;
+      gap: 12px;
+      align-items: center;
     }
 
     #panel-chatters .watch-carousel-main {
@@ -2170,85 +2195,74 @@
     }
 
     #panel-chatters .watch-gun-arrow {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 58px !important;
-      height: 58px !important;
-      min-width: 58px !important;
       border: 0;
       background: transparent;
       padding: 0;
-      margin: 0;
       cursor: pointer;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      align-self: center;
-      justify-self: center;
-      line-height: 0;
-      overflow: visible;
-      transition: transform 0.14s ease, filter 0.14s ease;
-      filter: drop-shadow(4px 5px 0 rgba(0,0,0,0.55));
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(4px 5px 0 rgba(0,0,0,0.45));
+      transition: transform 0.16s ease, filter 0.16s ease;
     }
 
-    #panel-chatters .watch-gun-prev {
-      transform: rotate(-9deg);
+    #panel-chatters .watch-gun-arrow:hover {
+      transform: translateY(-2px) rotate(-2deg) scale(1.05);
+      filter: drop-shadow(5px 6px 0 rgba(255,63,143,0.45));
     }
 
-    #panel-chatters .watch-gun-next {
-      transform: rotate(8deg);
+    #panel-chatters .watch-gun-arrow:active {
+      transform: translateY(1px) scale(0.98);
     }
 
     #panel-chatters .watch-gun-arrow img {
+      width: 92px;
+      max-width: 100%;
+      height: auto;
       display: block;
-      width: 54px !important;
-      max-width: 54px !important;
-      height: auto !important;
-      object-fit: contain;
       pointer-events: none;
     }
 
     #panel-chatters .watch-gun-prev img {
-      transform: scaleX(-1);
+      transform: rotate(-5deg);
     }
 
-    #panel-chatters .watch-gun-prev:hover {
-      transform: translateY(-2px) rotate(-12deg) scale(1.08);
-      filter: drop-shadow(5px 6px 0 rgba(0,0,0,0.62)) brightness(1.08);
-    }
-
-    #panel-chatters .watch-gun-next:hover {
-      transform: translateY(-2px) rotate(11deg) scale(1.08);
-      filter: drop-shadow(5px 6px 0 rgba(0,0,0,0.62)) brightness(1.08);
-    }
-
-    #panel-chatters .watch-gun-prev:active {
-      transform: translateY(1px) rotate(-7deg) scale(0.98);
-    }
-
-    #panel-chatters .watch-gun-next:active {
-      transform: translateY(1px) rotate(6deg) scale(0.98);
+    #panel-chatters .watch-gun-next img {
+      transform: rotate(5deg);
     }
 
     @media (max-width: 760px) {
       #panel-chatters .watch-carousel-shell {
-        grid-template-columns: 44px minmax(0, 1fr) 44px !important;
-        gap: 5px !important;
-        padding-left: 7px;
-        padding-right: 7px;
-      }
-
-      #panel-chatters .watch-gun-arrow {
-        width: 44px !important;
-        height: 44px !important;
-        min-width: 44px !important;
-        filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.55));
+        grid-template-columns: 54px minmax(0, 1fr) 54px;
+        gap: 6px;
       }
 
       #panel-chatters .watch-gun-arrow img {
-        width: 40px !important;
-        max-width: 40px !important;
+        width: 54px;
       }
+    }
+
+    /* REAL GUN ARROW FIX */
+    #panel-chatters .watch-gun-arrow,
+    #panel-chatters .watch-gun-arrow:hover,
+    #panel-chatters .watch-gun-arrow:focus {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      outline: none;
+    }
+
+    #panel-chatters .watch-gun-arrow img {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+
+    #panel-chatters .watch-gun-prev img {
+      transform: scaleX(-1) rotate(5deg) !important;
+    }
+
+    #panel-chatters .watch-gun-next img {
+      transform: rotate(5deg) !important;
     }
 
   </style>
@@ -2478,11 +2492,11 @@
           <div>
             <div class="extra-grid">
               <div class="extra-stat"><div class="extra-label">Words</div><div class="extra-value">${fmt(user.words)}</div></div>
-              <div class="extra-stat"><div class="extra-label">Contribution</div><div class="extra-value">${contribution}</div></div>
+              <div class="extra-stat"><div class="extra-label">Word Share</div><div class="extra-value">${contribution}</div></div>
               <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(user.joins)}</div></div>
               <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(user.lol)}</div></div>
               <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(user.links)}</div></div>
-              <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${degenPercentDisplay(user)}</div></div>
+              <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(user.degeneracy)}</div></div>
             </div>
             ${awards ? `<div class="award-strip">${awards}</div>` : ''}
           </div>
@@ -2596,10 +2610,6 @@
     function chaosPercent(user) {
       if (!user.words) return 0;
       return ((user.degeneracy || 0) * 100) / user.words;
-    }
-
-    function degenPercentDisplay(user) {
-      return chaosPercent(user).toFixed(2) + '%';
     }
 
     function activityLabel(words) {
@@ -2805,7 +2815,7 @@
                   <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
                   <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${degenPercentDisplay(u)}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
                 </div>
               </div>
             </div>
@@ -2817,11 +2827,11 @@
                 <div>
                   <div class="extra-grid">
                     <div class="extra-stat"><div class="extra-label">Words</div><div class="extra-value">${fmt(u.words)}</div></div>
-                    <div class="extra-stat"><div class="extra-label">Contribution</div><div class="extra-value">${contribution}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Word Share</div><div class="extra-value">${contribution}</div></div>
                     <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
                     <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
                     <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
-                    <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${degenPercentDisplay(u)}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
                   </div>
                   ${awards ? `<div class="award-strip">${awards}</div>` : ''}
                 </div>
