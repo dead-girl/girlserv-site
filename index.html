@@ -2024,6 +2024,90 @@
       }
     }
 
+    /* SELECTED USER SEARCH */
+    #panel-chatters .selected-user-topline {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    #panel-chatters .selected-search-wrap {
+      position: relative;
+    }
+
+    #panel-chatters .selected-user-search {
+      width: 100%;
+      background: #f6e7bf;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 #000;
+      outline: none;
+    }
+
+    #panel-chatters .selected-user-search:focus {
+      border-color: var(--pink);
+      box-shadow: 3px 3px 0 var(--pink);
+    }
+
+    #panel-chatters .selected-user-results {
+      display: none;
+      position: absolute;
+      top: calc(100% + 7px);
+      left: 0;
+      right: 0;
+      z-index: 80;
+      max-height: 220px;
+      overflow: auto;
+      background: #11111b;
+      border: 2px solid #000;
+      border-radius: 14px;
+      box-shadow: 4px 4px 0 #000;
+      padding: 6px;
+    }
+
+    #panel-chatters .selected-user-results.open {
+      display: grid;
+      gap: 5px;
+    }
+
+    #panel-chatters .selected-user-result {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #191927;
+      color: #fff;
+      border-radius: 10px;
+      padding: 7px 9px;
+      font-family: monospace;
+      font-weight: 900;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    #panel-chatters .selected-user-result:hover {
+      background: rgba(255, 63, 143, 0.22);
+    }
+
+    #panel-chatters .selected-user-result-score {
+      color: var(--yellow);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    #panel-chatters .selected-user-no-results {
+      color: #ddd;
+      padding: 8px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
   </style>
 </head>
 
@@ -2064,7 +2148,13 @@
 
         <div class="sidebar-stack">
           <div class="board selected-user-board">
-            <div class="board-title">Selected User</div>
+            <div class="selected-user-topline">
+              <div class="board-title">Selected User</div>
+              <div class="selected-search-wrap">
+                <input id="selected-user-search" class="selected-user-search" type="search" placeholder="search nick..." autocomplete="off">
+                <div id="selected-user-results" class="selected-user-results"></div>
+              </div>
+            </div>
             <div class="chatter-expanded-full open" id="chatter-expanded-full">loading...</div>
           </div>
 
@@ -2225,17 +2315,120 @@
       button.classList.add('active');
     }
 
+    function selectedUserHtml(user, rank, totalWords, awardMaps) {
+      const contribution = totalWords ? ((user.words * 100) / totalWords).toFixed(2) + '%' : '0.00%';
+      const awards = userAwards(user, awardMaps);
+
+      return `
+        <div class="chatter-expanded-title">#${rank} ${user.name}</div>
+        <div class="extra-layout">
+          <div class="mini-avatar">${avatarImg(user.name, 'mini-avatar-img', user.name + ' avatar')}</div>
+          <div>
+            <div class="extra-grid">
+              <div class="extra-stat"><div class="extra-label">Words</div><div class="extra-value">${fmt(user.words)}</div></div>
+              <div class="extra-stat"><div class="extra-label">Word Share</div><div class="extra-value">${contribution}</div></div>
+              <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(user.joins)}</div></div>
+              <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(user.lol)}</div></div>
+              <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(user.links)}</div></div>
+              <div class="extra-stat"><div class="extra-label">Chaos</div><div class="extra-value">${fmt(user.degeneracy)}</div></div>
+            </div>
+            ${awards ? `<div class="award-strip">${awards}</div>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    function showSelectedUser(user, rank) {
+      const fullPanel = document.getElementById('chatter-expanded-full');
+      if (!fullPanel || !user) return;
+
+      fullPanel.innerHTML = selectedUserHtml(user, rank, topChatterTotalWords, topChatterAwardMaps);
+      fullPanel.classList.add('open');
+    }
+
+    function setupSelectedUserSearch() {
+      const input = document.getElementById('selected-user-search');
+      const results = document.getElementById('selected-user-results');
+      if (!input || !results) return;
+
+      function closeResults() {
+        results.classList.remove('open');
+        results.innerHTML = '';
+      }
+
+      function renderResults(query) {
+        const q = normalizeName(query);
+        if (!q) {
+          closeResults();
+          return;
+        }
+
+        const matches = topChatterLookup
+          .filter(item => normalizeName(item.user.name).includes(q))
+          .slice(0, 8);
+
+        if (!matches.length) {
+          results.innerHTML = `<div class="selected-user-no-results">no nick found</div>`;
+          results.classList.add('open');
+          return;
+        }
+
+        results.innerHTML = matches.map(item => `
+          <button class="selected-user-result" type="button" data-rank="${item.rank}" data-name="${normalizeName(item.user.name)}">
+            <span>${item.user.name}</span>
+            <span class="selected-user-result-score">${fmt(item.user.words)} words</span>
+          </button>
+        `).join('');
+
+        results.classList.add('open');
+      }
+
+      input.addEventListener('input', () => renderResults(input.value));
+
+      input.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          const first = results.querySelector('.selected-user-result');
+          if (first) first.click();
+        }
+
+        if (event.key === 'Escape') {
+          closeResults();
+          input.blur();
+        }
+      });
+
+      results.addEventListener('click', event => {
+        const button = event.target.closest('.selected-user-result');
+        if (!button) return;
+
+        const rank = Number(button.dataset.rank);
+        const item = topChatterLookup.find(entry => entry.rank === rank);
+        if (!item) return;
+
+        showSelectedUser(item.user, item.rank);
+        input.value = item.user.name;
+        closeResults();
+      });
+
+      document.addEventListener('click', event => {
+        if (!event.target.closest('.selected-search-wrap')) {
+          closeResults();
+        }
+      });
+    }
+
     function toggleChatter(button) {
       const card = button.closest('.chatter-card');
-      const fullPanel = document.getElementById('chatter-expanded-full');
-      const template = card.querySelector('.chatter-expanded-template');
-
-      if (!fullPanel || !template) return;
+      const rank = Number(card.dataset.rank);
+      const item = topChatterLookup.find(entry => entry.rank === rank);
 
       card.classList.toggle('open');
 
-      fullPanel.innerHTML = template.innerHTML;
-      fullPanel.classList.add('open');
+      if (item) {
+        showSelectedUser(item.user, item.rank);
+        const input = document.getElementById('selected-user-search');
+        if (input) input.value = item.user.name;
+      }
     }
 
     function fmt(n) { return Number(n || 0).toLocaleString(); }
@@ -2258,6 +2451,9 @@
     }
 
     const avatarMap = new Map();
+    let topChatterLookup = [];
+    let topChatterTotalWords = 0;
+    let topChatterAwardMaps = {};
     const avatarOverrides = {
       'dead_girl': 'avatars/custom-dead_girl.png',
       'girard': 'avatars/custom-girard.png',
@@ -2430,7 +2626,7 @@
         const awards = userAwards(u, awardMaps);
 
         return `
-          <div class="chatter-card" data-user-key="${normalizeName(u.name)}">
+          <div class="chatter-card" data-user-key="${normalizeName(u.name)}" data-rank="${rank}">
             <button class="chatter-head" onclick="toggleChatter(this)">
               <div class="chatter-rank">#${rank}</div>
               <div class="chatter-name">${u.name}</div>
@@ -2968,12 +3164,18 @@
         document.getElementById('chatters-left').innerHTML = makeChatterCards(top30.slice(0, 15), 1, totalWords, awardMaps);
         document.getElementById('chatters-right').innerHTML = makeChatterCards(top30.slice(15, 30), 16, totalWords, awardMaps);
 
-        const firstChatterTemplate = document.querySelector('#panel-chatters .chatter-card .chatter-expanded-template');
-        const selectedPanel = document.getElementById('chatter-expanded-full');
-        if (firstChatterTemplate && selectedPanel) {
-          selectedPanel.innerHTML = firstChatterTemplate.innerHTML;
-          selectedPanel.classList.add('open');
+        topChatterLookup = top30.map((user, index) => ({
+          user,
+          rank: index + 1
+        }));
+        topChatterTotalWords = totalWords;
+        topChatterAwardMaps = awardMaps;
+
+        if (topChatterLookup[0]) {
+          showSelectedUser(topChatterLookup[0].user, topChatterLookup[0].rank);
         }
+
+        setupSelectedUserSearch();
 
         fillTop3(byWords);
         startFeaturedCarousel(rankings);
