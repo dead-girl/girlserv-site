@@ -2176,6 +2176,32 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 3px 3px 0 rgba(79, 220, 255, 0.65);
     }
 
+    /* USERS TO KEEP TITLE GUN ARROWS */
+    #panel-chatters .watch-wide-board > .board-title {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    #panel-chatters .watch-wide-board > .board-title::before,
+    #panel-chatters .watch-wide-board > .board-title::after {
+      content: "🔫";
+      display: inline-block;
+      font-size: 22px;
+      line-height: 1;
+      filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.45));
+    }
+
+    #panel-chatters .watch-wide-board > .board-title::before {
+      transform: scaleX(-1) rotate(-8deg);
+    }
+
+    #panel-chatters .watch-wide-board > .board-title::after {
+      transform: rotate(-8deg);
+    }
+
   </style>
 </head>
 
