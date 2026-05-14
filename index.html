@@ -2125,6 +2125,57 @@
       border-color: var(--yellow);
     }
 
+    /* FINAL TOP CHATTER POLISH */
+    #panel-chatters .chatter-col-header {
+      grid-template-columns: 48px minmax(0, 1fr) 90px;
+    }
+
+    #panel-chatters .chatter-col-header span:nth-child(2) {
+      text-align: left;
+    }
+
+    #panel-chatters .chatter-col-header span:nth-child(3) {
+      text-align: right;
+    }
+
+    #panel-chatters .chatter-head {
+      grid-template-columns: 48px minmax(0, 1fr) 90px;
+    }
+
+    #panel-chatters .chatter-name {
+      text-align: left;
+    }
+
+    #panel-chatters .chatter-words {
+      text-align: right;
+    }
+
+    #panel-chatters .truth-heading {
+      text-align: center;
+    }
+
+    #panel-chatters .selected-user-topline {
+      margin-bottom: 10px;
+    }
+
+    #panel-chatters .selected-user-search {
+      background: #151521;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+      padding: 9px 12px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 3px 3px 0 #000;
+    }
+
+    #panel-chatters .selected-user-search::placeholder {
+      color: rgba(255,255,255,0.56);
+    }
+
+    #panel-chatters .selected-user-search:focus {
+      border-color: rgba(79, 220, 255, 0.75);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 3px 3px 0 rgba(79, 220, 255, 0.65);
+    }
+
   </style>
 </head>
 
@@ -2166,7 +2217,6 @@
         <div class="sidebar-stack">
           <div class="board selected-user-board">
             <div class="selected-user-topline">
-              <div class="board-title">Selected User</div>
               <div class="selected-search-wrap">
                 <input id="selected-user-search" class="selected-user-search" type="search" placeholder="search nick..." autocomplete="off">
                 <div id="selected-user-results" class="selected-user-results"></div>
@@ -2176,7 +2226,7 @@
           </div>
 
           <div class="board">
-            <div class="board-title">☆ #truth-seekers</div>
+            <div class="board-title truth-heading">☆ #truth-seekers</div>
             <div class="top3-grid" id="top3-grid">
               <div class="top3-card rank2">
                 <div class="top3-badge">#2</div>
