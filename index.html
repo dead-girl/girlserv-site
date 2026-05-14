@@ -2108,9 +2108,30 @@
       font-weight: 900;
     }
 
-    /* TOP 30 HOVER EXPAND */
-    #panel-chatters .chatter-card:hover .chatter-extra {
-      display: block;
+    /* TOP 30 SMOOTH SLIDE EXPAND */
+    #panel-chatters .chatter-card .chatter-extra {
+      display: block !important;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding-top: 0;
+      padding-bottom: 0;
+      transform: translateY(-6px);
+      transition:
+        max-height 0.32s ease,
+        opacity 0.22s ease,
+        padding-top 0.32s ease,
+        padding-bottom 0.32s ease,
+        transform 0.32s ease;
+    }
+
+    #panel-chatters .chatter-card:hover .chatter-extra,
+    #panel-chatters .chatter-card.open .chatter-extra {
+      max-height: 240px;
+      opacity: 1;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      transform: translateY(0);
     }
 
     #panel-chatters .chatter-card:hover .chatter-head {
