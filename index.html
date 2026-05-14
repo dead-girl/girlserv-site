@@ -2155,39 +2155,75 @@
       min-width: 0;
     }
 
-    /* SMALL GUN ARROW SIZE FIX */
+    /* SMALL GUN ARROW CAROUSEL FIX */
     #panel-chatters .watch-carousel-shell {
-      grid-template-columns: 56px minmax(0, 1fr) 56px !important;
+      display: grid !important;
+      grid-template-columns: 58px minmax(0, 1fr) 58px !important;
       gap: 8px !important;
+      align-items: center !important;
+      overflow: visible !important;
+    }
+
+    #panel-chatters .watch-carousel-main {
+      min-width: 0;
+      overflow: hidden;
     }
 
     #panel-chatters .watch-gun-arrow {
-      width: 56px !important;
-      height: 56px !important;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 58px !important;
+      height: 58px !important;
+      min-width: 58px !important;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
       align-self: center;
       justify-self: center;
+      line-height: 0;
+      overflow: visible;
+      transition: transform 0.12s ease, filter 0.12s ease;
     }
 
     #panel-chatters .watch-gun-arrow img {
+      display: block;
       width: 54px !important;
       max-width: 54px !important;
       height: auto !important;
       object-fit: contain;
+      pointer-events: none;
+    }
+
+    #panel-chatters .watch-gun-prev img {
+      transform: scaleX(-1);
     }
 
     #panel-chatters .watch-gun-arrow:hover {
       transform: translateY(-1px) scale(1.08);
+      filter: brightness(1.08);
+    }
+
+    #panel-chatters .watch-gun-arrow:active {
+      transform: translateY(1px) scale(0.98);
     }
 
     @media (max-width: 760px) {
       #panel-chatters .watch-carousel-shell {
-        grid-template-columns: 42px minmax(0, 1fr) 42px !important;
+        grid-template-columns: 44px minmax(0, 1fr) 44px !important;
         gap: 5px !important;
+        padding-left: 7px;
+        padding-right: 7px;
       }
 
       #panel-chatters .watch-gun-arrow {
-        width: 42px !important;
-        height: 42px !important;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
       }
 
       #panel-chatters .watch-gun-arrow img {
