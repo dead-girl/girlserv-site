@@ -2155,6 +2155,47 @@
       min-width: 0;
     }
 
+    /* SMALL GUN ARROW SIZE FIX */
+    #panel-chatters .watch-carousel-shell {
+      grid-template-columns: 56px minmax(0, 1fr) 56px !important;
+      gap: 8px !important;
+    }
+
+    #panel-chatters .watch-gun-arrow {
+      width: 56px !important;
+      height: 56px !important;
+      align-self: center;
+      justify-self: center;
+    }
+
+    #panel-chatters .watch-gun-arrow img {
+      width: 54px !important;
+      max-width: 54px !important;
+      height: auto !important;
+      object-fit: contain;
+    }
+
+    #panel-chatters .watch-gun-arrow:hover {
+      transform: translateY(-1px) scale(1.08);
+    }
+
+    @media (max-width: 760px) {
+      #panel-chatters .watch-carousel-shell {
+        grid-template-columns: 42px minmax(0, 1fr) 42px !important;
+        gap: 5px !important;
+      }
+
+      #panel-chatters .watch-gun-arrow {
+        width: 42px !important;
+        height: 42px !important;
+      }
+
+      #panel-chatters .watch-gun-arrow img {
+        width: 40px !important;
+        max-width: 40px !important;
+      }
+    }
+
   </style>
 </head>
 
