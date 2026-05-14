@@ -2155,7 +2155,7 @@
       min-width: 0;
     }
 
-    /* SMALL GUN ARROW CAROUSEL FIX */
+    /* SMALL SCRAPBOOK GUN ARROW CAROUSEL FIX */
     #panel-chatters .watch-carousel-shell {
       display: grid !important;
       grid-template-columns: 58px minmax(0, 1fr) 58px !important;
@@ -2187,7 +2187,16 @@
       justify-self: center;
       line-height: 0;
       overflow: visible;
-      transition: transform 0.12s ease, filter 0.12s ease;
+      transition: transform 0.14s ease, filter 0.14s ease;
+      filter: drop-shadow(4px 5px 0 rgba(0,0,0,0.55));
+    }
+
+    #panel-chatters .watch-gun-prev {
+      transform: rotate(-9deg);
+    }
+
+    #panel-chatters .watch-gun-next {
+      transform: rotate(8deg);
     }
 
     #panel-chatters .watch-gun-arrow img {
@@ -2203,13 +2212,22 @@
       transform: scaleX(-1);
     }
 
-    #panel-chatters .watch-gun-arrow:hover {
-      transform: translateY(-1px) scale(1.08);
-      filter: brightness(1.08);
+    #panel-chatters .watch-gun-prev:hover {
+      transform: translateY(-2px) rotate(-12deg) scale(1.08);
+      filter: drop-shadow(5px 6px 0 rgba(0,0,0,0.62)) brightness(1.08);
     }
 
-    #panel-chatters .watch-gun-arrow:active {
-      transform: translateY(1px) scale(0.98);
+    #panel-chatters .watch-gun-next:hover {
+      transform: translateY(-2px) rotate(11deg) scale(1.08);
+      filter: drop-shadow(5px 6px 0 rgba(0,0,0,0.62)) brightness(1.08);
+    }
+
+    #panel-chatters .watch-gun-prev:active {
+      transform: translateY(1px) rotate(-7deg) scale(0.98);
+    }
+
+    #panel-chatters .watch-gun-next:active {
+      transform: translateY(1px) rotate(6deg) scale(0.98);
     }
 
     @media (max-width: 760px) {
@@ -2224,6 +2242,7 @@
         width: 44px !important;
         height: 44px !important;
         min-width: 44px !important;
+        filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.55));
       }
 
       #panel-chatters .watch-gun-arrow img {
