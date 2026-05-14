@@ -2521,7 +2521,7 @@
               <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(user.joins)}</div></div>
               <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(user.lol)}</div></div>
               <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(user.links)}</div></div>
-              <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${getUserPercentOfTotal(user, "chaos")}</div></div>
+              <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${fmtPercent(chaosPercent(user))}</div></div>
             </div>
             ${awards ? `<div class="award-strip">${awards}</div>` : ''}
           </div>
@@ -2547,20 +2547,7 @@
         results.innerHTML = '';
       }
 
-      
-    function getUserPercentOfTotal(user, field) {
-      const total = users.reduce((sum, u) => sum + num(u[field]), 0);
-      if (!total) return "0.00%";
-      return ((num(user[field]) / total) * 100).toFixed(2) + "%";
-    }
-
-    function getUserRankByField(user, field) {
-      const sorted = [...users].sort((a, b) => num(b[field]) - num(a[field]));
-      const index = sorted.findIndex(u => u.nick === user.nick);
-      return index >= 0 ? index + 1 : "-";
-    }
-
-    function renderResults(query) {
+      function renderResults(query) {
         const q = normalizeName(query);
         if (!q) {
           closeResults();
@@ -2645,7 +2632,7 @@
       return Number(n || 0).toFixed(2) + '%';
     }
 
-    function degeneracyPercent(user) {
+    function chaosPercent(user) {
       if (!user.words) return 0;
       return ((user.degeneracy || 0) * 100) / user.words;
     }
@@ -2853,7 +2840,7 @@
                   <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
                   <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
-                  <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${getUserPercentOfTotal(user, "chaos")}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${fmtPercent(chaosPercent(u))}</div></div>
                 </div>
               </div>
             </div>
@@ -2869,7 +2856,7 @@
                     <div class="extra-stat"><div class="extra-label">Joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
                     <div class="extra-stat"><div class="extra-label">LOLs</div><div class="extra-value">${fmt(u.lol)}</div></div>
                     <div class="extra-stat"><div class="extra-label">Links</div><div class="extra-value">${fmt(u.links)}</div></div>
-                    <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${getUserPercentOfTotal(user, "chaos")}</div></div>
+                    <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${fmtPercent(chaosPercent(u))}</div></div>
                   </div>
                   ${awards ? `<div class="award-strip">${awards}</div>` : ''}
                 </div>
@@ -2884,7 +2871,7 @@
       const labels = [
         'absolute menace',
         'terminally online',
-        'degeneracy goblin',
+        'chaos goblin',
         'questionable aura',
         'server hazard',
         'certified problem',
@@ -2967,7 +2954,7 @@
               <div class="extra-layout">
                 <div class="mini-avatar">${avatarImg(u.name, 'mini-avatar-img', u.name + ' avatar')}</div>
                 <div class="extra-grid degen-focused-extra">
-                  <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${getUserPercentOfTotal(user, "chaos")}</div></div>
+                  <div class="extra-stat"><div class="extra-label">Degeneracy</div><div class="extra-value">${fmtPercent(u.degenPercent)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Vibe</div><div class="extra-value">${degenVibe(index)}</div></div>
                   <div class="extra-stat"><div class="extra-label">Receipts</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
                 </div>
@@ -3258,7 +3245,7 @@
         <div class="mini-card"><div class="mini-label">Words Logged</div><div class="mini-num">${fmt(totals.words)}</div></div>
         <div class="mini-card"><div class="mini-label">Joins</div><div class="mini-num">${fmt(totals.joins)}</div></div>
         <div class="mini-card"><div class="mini-label">LOLs</div><div class="mini-num">${fmt(totals.lol)}</div></div>
-        <div class="mini-card"><div class="mini-label">Degeneracy</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
+        <div class="mini-card"><div class="mini-label">Degeneracy Receipts</div><div class="mini-num">${fmt(totals.degeneracy)}</div></div>
         <div class="mini-card"><div class="mini-label">Links</div><div class="mini-num">${fmt(totals.links)}</div></div>
       `;
     }
@@ -3365,7 +3352,7 @@
           .filter(user => user.words >= 1000)
           .map(user => ({
             ...user,
-            degenPercent: degeneracyPercent(user),
+            degenPercent: chaosPercent(user),
             activity: activityLabel(user.words)
           }))
           .sort((a, b) => b.degenPercent - a.degenPercent)
