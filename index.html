@@ -2782,6 +2782,15 @@
       return map;
     }
 
+
+    function rankingMapFromRankedList(rankedUsers, limit = 3) {
+      const map = new Map();
+      rankedUsers
+        .slice(0, limit)
+        .forEach((user, index) => map.set(normalizeName(user.name), index + 1));
+      return map;
+    }
+
     function medalForRank(rank) {
       if (rank === 1) return '🥇';
       if (rank === 2) return '🥈';
@@ -3371,7 +3380,7 @@
 
         const awardMaps = {
           words: rankingMap(users, 'words'),
-          degeneracy: rankingMap(users, 'degeneracy'),
+          degeneracy: rankingMapFromRankedList(byDegeneracy),
           lol: rankingMap(users, 'lol'),
           links: rankingMap(users, 'links'),
           joins: rankingMap(users, 'joins')
