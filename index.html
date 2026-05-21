@@ -3241,7 +3241,7 @@
       padding: 18px;
     }
 
-    #pet-panel-view #screen-pet {
+    #panel-pet #screen-pet {
       position: absolute;
       left: 80px;
       top: 120px;
@@ -3250,7 +3250,7 @@
       z-index: 3;
     }
 
-    #pet-panel-view .pet-panel {
+    #panel-pet .pet-panel {
       position: absolute;
       right: 18px;
       top: 18px;
@@ -3260,7 +3260,7 @@
       z-index: 4;
     }
 
-    #pet-panel-view .pet-panel.open {
+    #panel-pet .pet-panel.open {
       display: block;
     }
 
@@ -3283,6 +3283,7 @@
       <button class="view-btn" onclick="showPanel('overview', this)">Overview</button>
       <button class="view-btn" onclick="showPanel('lore', this)">Channel Lore</button>
       <button class="view-btn" onclick="showPanel('memory', this)">girl Remembers</button>
+      <button class="view-btn" onclick="showPanel('pet', this)">Pet Corner</button>
     </div>
 
     <section class="panel active" id="panel-chatters">
@@ -3536,128 +3537,91 @@
       <div id="tokens-list">loading...</div>
     </section>
 
-  </div>
-
-  
-    <section class="panel" id="pet-panel-view" data-view="pet">
+    <section class="panel" id="panel-pet">
       <div class="board pet-tab-board">
         <h2>✦ Pet Corner ♡</h2>
         <p class="muted">Blob pet is parked here for now. It will not roam over every page.</p>
+
         <div class="pet-tab-stage">
           <div id="screen-pet">
-      <div class="pet-bubble" id="pet-bubble">hi i am the receipt goblin ♡</div>
-      <div class="pet-stage">
-        <div class="pet-shadow"></div>
-        <div class="pet-creature" id="pet-creature" title="pet me">
-          <div class="pet-ear left"></div>
-          <div class="pet-ear right"></div>
-          <div class="pet-body"></div>
-          <div class="pet-eye left"></div>
-          <div class="pet-eye right"></div>
-          <div class="pet-blush left"></div>
-          <div class="pet-blush right"></div>
-          <div class="pet-mouth happy" id="pet-mouth"></div>
-          <div class="pet-feet">
-            <div class="pet-foot"></div>
-            <div class="pet-foot"></div>
+            <div class="pet-bubble" id="pet-bubble">blob is parked here ♡</div>
+            <div class="pet-stage">
+              <div class="pet-shadow"></div>
+              <div class="pet-creature" id="pet-creature" title="pet me">
+                <div class="pet-ear left"></div>
+                <div class="pet-ear right"></div>
+                <div class="pet-body"></div>
+                <div class="pet-eye left"></div>
+                <div class="pet-eye right"></div>
+                <div class="pet-blush left"></div>
+                <div class="pet-blush right"></div>
+                <div class="pet-mouth happy" id="pet-mouth"></div>
+                <div class="pet-feet">
+                  <div class="pet-foot"></div>
+                  <div class="pet-foot"></div>
+                </div>
+                <div class="pet-treat" id="pet-treat">🍓</div>
+                <div class="pet-ball" id="pet-ball">🎾</div>
+                <div class="pet-heart" id="pet-heart">💗</div>
+                <div class="pet-spark" id="pet-spark">✨</div>
+              </div>
+            </div>
           </div>
-          <div class="pet-treat" id="pet-treat">🍓</div>
-          <div class="pet-ball" id="pet-ball">🎾</div>
-          <div class="pet-heart" id="pet-heart">💗</div>
-          <div class="pet-spark" id="pet-spark">✨</div>
-          <div class="pet-accessory" id="pet-accessory"></div>
-          <div class="pet-toy" id="pet-toy"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <button id="pet-open-button" type="button" onclick="togglePetPanel()">pet menu</button>
-
-  <div id="pet-panel">
-    <div class="pet-panel-head">
-      <div class="pet-panel-title">Receipt Goblin Care</div>
-      <button class="pet-close" type="button" onclick="togglePetPanel(false)">x</button>
-    </div>
-
-    <div class="pet-points-row">
-      <span>Word Coins</span>
-      <span class="pet-points-pill" id="pet-points">0 pts</span>
-    </div>
-
-    <div class="pet-status-grid">
-      <div class="pet-status-row">
-        <div class="pet-status-label">fed</div>
-        <div class="pet-status-track"><div class="pet-status-fill" id="pet-fed-bar"></div></div>
-        <div class="pet-status-num" id="pet-fed-num">80</div>
-      </div>
-      <div class="pet-status-row">
-        <div class="pet-status-label">social</div>
-        <div class="pet-status-track"><div class="pet-status-fill" id="pet-social-bar"></div></div>
-        <div class="pet-status-num" id="pet-social-num">70</div>
-      </div>
-      <div class="pet-status-row">
-        <div class="pet-status-label">zoomies</div>
-        <div class="pet-status-track"><div class="pet-status-fill" id="pet-zoomies-bar"></div></div>
-        <div class="pet-status-num" id="pet-zoomies-num">60</div>
-      </div>
-      <div class="pet-status-row">
-        <div class="pet-status-label">ops trust</div>
-        <div class="pet-status-track"><div class="pet-status-fill" id="pet-trust-bar"></div></div>
-        <div class="pet-status-num" id="pet-trust-num">50</div>
-      </div>
-    </div>
-
-    <div class="pet-word-card">
-      <div class="pet-word-label">word of the day</div>
-      <div class="pet-word-main" id="pet-word-day">loading</div>
-      <div class="pet-word-note">later: real channel users who say this earn bonus coins for pet stuff</div>
-    </div>
-
-    <div class="pet-controls">
-      <button class="pet-btn" type="button" onclick="feedPet()">Feed</button>
-      <button class="pet-btn" type="button" onclick="ticklePet()">Tickle</button>
-      <button class="pet-btn" type="button" onclick="fetchPet()">Fetch</button>
-      <button class="pet-btn" type="button" onclick="petNap()">Nap</button>
-      <button class="pet-btn" type="button" onclick="petPing()">Ping</button>
-      <button class="pet-btn" type="button" onclick="petJumpToThing()">Jump</button>
-    </div>
-
-    <div class="pet-shop">
-      <div class="pet-shop-title">word coin shop</div>
-      <div class="pet-shop-grid">
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('snack', 8)">🍓 Berry Snack <small>8 coins · fed +25</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('ball', 14)">🎾 Fetch Ball <small>14 coins · toy unlock</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('bow', 18)">🎀 Bow <small>18 coins · clothes</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('crown', 28)">👑 Op Crown <small>28 coins · clothes</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('gremlin', 35)">🧪 Gremlin Evo <small>35 coins · green blob</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('night', 35)">🌙 Night Evo <small>35 coins · purple blob</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('fire', 42)">🔥 Fire Evo <small>42 coins · spicy blob</small></button>
-        <button class="pet-shop-btn" type="button" onclick="buyPetItem('bratty', 20)">😈 Bratty Mode <small>20 coins · personality</small></button>
-      </div>
-    </div>
-
-    <div class="pet-note">
-      Prototype shop is local to the browser for now. Next: real word-of-the-day coin awards from channel logs, sound effects, inventory, and screen-breaking toys.
-    </div>
-  </div>
           <div class="pet-panel open" id="pet-panel">
-      <div class="pet-panel-head">
-        <strong>pet corner</strong>
-      </div>
-      <div class="pet-actions">
-        <button type="button" onclick="feedPet()">feed</button>
-        <button type="button" onclick="ticklePet()">tickle</button>
-        <button type="button" onclick="fetchPet()">fetch</button>
-        <button type="button" onclick="petNap()">nap</button>
-        <button type="button" onclick="petPing()">ping</button>
-      </div>
-      <div class="pet-note">Blob pet is parked here for now so it does not cover every page.</div>
-    </div>
+            <div class="pet-panel-head">
+              <div class="pet-panel-title">Blob Care</div>
+            </div>
+
+            <div class="pet-points-row">
+              <span>Word Coins</span>
+              <span class="pet-points-pill" id="pet-points">0 coins</span>
+            </div>
+
+            <div class="pet-status-grid">
+              <div class="pet-status-row">
+                <div class="pet-status-label">fed</div>
+                <div class="pet-status-track"><div class="pet-status-fill" id="pet-fed-bar"></div></div>
+                <div class="pet-status-num" id="pet-fed-num">80</div>
+              </div>
+              <div class="pet-status-row">
+                <div class="pet-status-label">social</div>
+                <div class="pet-status-track"><div class="pet-status-fill" id="pet-social-bar"></div></div>
+                <div class="pet-status-num" id="pet-social-num">70</div>
+              </div>
+              <div class="pet-status-row">
+                <div class="pet-status-label">zoomies</div>
+                <div class="pet-status-track"><div class="pet-status-fill" id="pet-zoomies-bar"></div></div>
+                <div class="pet-status-num" id="pet-zoomies-num">45</div>
+              </div>
+              <div class="pet-status-row">
+                <div class="pet-status-label">ops trust</div>
+                <div class="pet-status-track"><div class="pet-status-fill" id="pet-trust-bar"></div></div>
+                <div class="pet-status-num" id="pet-trust-num">50</div>
+              </div>
+            </div>
+
+            <div class="pet-word-card">
+              <div class="pet-word-label">word of the day</div>
+              <div class="pet-word-main" id="pet-word-day">loading</div>
+              <div class="pet-word-note">parked for later while the pet game gets figured out</div>
+            </div>
+
+            <div class="pet-controls">
+              <button class="pet-btn" type="button" onclick="feedPet()">Feed</button>
+              <button class="pet-btn" type="button" onclick="ticklePet()">Tickle</button>
+              <button class="pet-btn" type="button" onclick="fetchPet()">Fetch</button>
+              <button class="pet-btn" type="button" onclick="petNap()">Nap</button>
+              <button class="pet-btn" type="button" onclick="petPing()">Ping</button>
+            </div>
+
+            <div class="pet-note">Pet is back to the simple CSS blob and only lives on this tab.</div>
+          </div>
         </div>
       </div>
     </section>
 
+  </div>
 <script>
     function showPanel(panelName, button) {
       document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
