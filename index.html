@@ -3008,6 +3008,161 @@
       line-height: 1.35;
     }
 
+    #screen-pet .pet-shadow {
+      transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    #screen-pet.perched .pet-shadow {
+      background: rgba(0, 0, 0, 0.42);
+      filter: blur(1.5px);
+      transform: translateY(2px) scaleX(1.15);
+    }
+
+    #screen-pet.falling-shadow .pet-shadow {
+      width: 76px;
+      height: 20px;
+      opacity: 0.18;
+      transform: translateY(10px) scaleX(1.35);
+    }
+
+    #screen-pet .pet-accessory {
+      position: absolute;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      font-size: 30px;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 5;
+      filter: drop-shadow(2px 2px 0 #000);
+    }
+
+    #screen-pet .pet-toy {
+      position: absolute;
+      left: -18px;
+      bottom: 8px;
+      font-size: 24px;
+      pointer-events: none;
+      z-index: 4;
+      filter: drop-shadow(2px 2px 0 #000);
+    }
+
+    #screen-pet.evo-gremlin .pet-body {
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,0.95), rgba(255,255,255,0) 18%),
+        linear-gradient(180deg, #c8ffb8 0%, #88ff9f 48%, #4fdc73 100%);
+    }
+
+    #screen-pet.evo-night .pet-body {
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,0.75), rgba(255,255,255,0) 18%),
+        linear-gradient(180deg, #b68cff 0%, #7b56d9 48%, #35206e 100%);
+    }
+
+    #screen-pet.evo-fire .pet-body {
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,0.85), rgba(255,255,255,0) 18%),
+        linear-gradient(180deg, #ffe45c 0%, #ff9f43 48%, #ff3f8f 100%);
+    }
+
+    .pet-shop {
+      margin-top: 12px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .pet-shop-title {
+      display: inline-block;
+      width: fit-content;
+      background: #f1d7e5;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 #000;
+      transform: rotate(-1deg);
+    }
+
+    .pet-shop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .pet-shop-btn {
+      background: #d9f7ff;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 8px;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .pet-shop-btn:nth-child(2n) {
+      background: #ffd0e6;
+    }
+
+    .pet-shop-btn:nth-child(3n) {
+      background: #fff2a7;
+    }
+
+    .pet-shop-btn:hover {
+      transform: translateY(-2px) rotate(-1deg);
+    }
+
+    .pet-shop-btn small {
+      display: block;
+      margin-top: 3px;
+      color: #6e2a55;
+      font-size: 10px;
+    }
+
+    .pet-poop {
+      position: fixed;
+      z-index: 9997;
+      pointer-events: auto;
+      font-size: 22px;
+      filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.45));
+      cursor: pointer;
+      animation: poopPlop 0.45s ease-out 1;
+    }
+
+    .pet-poop::after {
+      content: "+1 clean";
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      min-width: 58px;
+      background: #f6e7bf;
+      color: #111;
+      border: 1px solid #000;
+      border-radius: 999px;
+      padding: 2px 5px;
+      font-family: monospace;
+      font-size: 9px;
+      font-weight: 900;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .pet-poop:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes poopPlop {
+      0% { transform: translateY(-18px) scale(0.2) rotate(-12deg); opacity: 0; }
+      70% { transform: translateY(2px) scale(1.1) rotate(8deg); opacity: 1; }
+      100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+    }
+
     @keyframes petBob {
       0%, 100% { transform: translateY(0) rotate(-1deg); }
       50% { transform: translateY(-6px) rotate(1deg); }
@@ -4486,6 +4641,11 @@
       trust: 50,
       points: 0,
       wordOfDay: 'receipts',
+      evolution: 'blob',
+      accessory: '',
+      toy: '',
+      personality: 'sweet',
+      poopCount: 0,
       route: [],
       routeIndex: 0,
       pauseUntil: 0,
@@ -4496,6 +4656,127 @@
     };
 
     const petWords = ['receipts', 'goblin', 'jannie', 'zoomies', 'lore', 'bonk', 'ops', 'chaos', 'sparkle', 'snack'];
+
+    const petSaveKey = 'girlservReceiptGoblinV1';
+
+    function savePetState() {
+      try {
+        localStorage.setItem(petSaveKey, JSON.stringify({
+          fed: petState.fed,
+          social: petState.social,
+          zoomies: petState.zoomies,
+          trust: petState.trust,
+          points: petState.points,
+          evolution: petState.evolution,
+          accessory: petState.accessory,
+          toy: petState.toy,
+          personality: petState.personality,
+          poopCount: petState.poopCount
+        }));
+      } catch (error) {}
+    }
+
+    function loadPetState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(petSaveKey) || '{}');
+        ['fed', 'social', 'zoomies', 'trust', 'points', 'poopCount'].forEach(key => {
+          if (typeof saved[key] === 'number') petState[key] = saved[key];
+        });
+        ['evolution', 'accessory', 'toy', 'personality'].forEach(key => {
+          if (typeof saved[key] === 'string') petState[key] = saved[key];
+        });
+      } catch (error) {}
+    }
+
+    function applyPetLook() {
+      const pet = document.getElementById('screen-pet');
+      const accessory = document.getElementById('pet-accessory');
+      const toy = document.getElementById('pet-toy');
+      if (!pet) return;
+
+      pet.classList.remove('evo-gremlin', 'evo-night', 'evo-fire');
+      if (petState.evolution && petState.evolution !== 'blob') {
+        pet.classList.add('evo-' + petState.evolution);
+      }
+
+      const accessoryMap = {
+        bow: '🎀',
+        crown: '👑'
+      };
+
+      const toyMap = {
+        ball: '🎾'
+      };
+
+      if (accessory) accessory.textContent = accessoryMap[petState.accessory] || '';
+      if (toy) toy.textContent = toyMap[petState.toy] || '';
+    }
+
+    function buyPetItem(item, cost) {
+      if (petState.points < cost) {
+        setPetBubble('not enough word coins', 'flat');
+        return;
+      }
+
+      petState.points -= cost;
+
+      if (item === 'snack') {
+        updatePetStats({ fed: 25, social: 3 });
+        flashPetThing('pet-treat');
+        setPetBubble('premium snack!!', 'happy');
+      }
+
+      if (item === 'ball') {
+        petState.toy = 'ball';
+        updatePetStats({ zoomies: 12, social: 5 });
+        flashPetThing('pet-ball');
+        setPetBubble('new toy unlocked', 'happy');
+      }
+
+      if (item === 'bow' || item === 'crown') {
+        petState.accessory = item;
+        updatePetStats({ social: 4, trust: 3 });
+        setPetBubble(item === 'bow' ? 'i look adorable' : 'op crown acquired', 'happy');
+      }
+
+      if (item === 'gremlin' || item === 'night' || item === 'fire') {
+        petState.evolution = item;
+        updatePetStats({ trust: 8, zoomies: 5 });
+        setPetBubble('evolution complete!', 'ooh');
+        petSmallHop();
+      }
+
+      if (item === 'bratty') {
+        petState.personality = 'bratty';
+        updatePetStats({ social: 8, zoomies: 8, trust: -2 });
+        setPetBubble('i will cause problems', 'happy');
+      }
+
+      applyPetLook();
+      renderPetStats();
+      savePetState();
+    }
+
+    function dropPetPoop() {
+      const poop = document.createElement('div');
+      poop.className = 'pet-poop';
+      poop.textContent = '💩';
+      poop.style.left = Math.round(petState.x + 54) + 'px';
+      poop.style.top = Math.round(petState.y + 108) + 'px';
+      poop.title = 'click to clean';
+      poop.addEventListener('click', () => {
+        poop.remove();
+        petState.poopCount = Math.max(0, petState.poopCount - 1);
+        updatePetStats({ trust: 2, points: 1 });
+        setPetBubble('clean channel, happy goblin', 'happy');
+        savePetState();
+      });
+      document.body.appendChild(poop);
+      petState.poopCount += 1;
+      setPetBubble(petState.personality === 'bratty' ? 'left you a present' : 'oops...', 'ooh');
+      savePetState();
+    }
+
 
     function clampPetStat(value) {
       return Math.max(0, Math.min(100, Math.round(value)));
@@ -4508,6 +4789,7 @@
       petState.trust = clampPetStat(petState.trust + (delta.trust || 0));
       petState.points = Math.max(0, petState.points + (delta.points || 0));
       renderPetStats();
+      savePetState();
     }
 
     function renderPetStats() {
@@ -4526,7 +4808,7 @@
       });
 
       const points = document.getElementById('pet-points');
-      if (points) points.textContent = fmt(petState.points) + ' pts';
+      if (points) points.textContent = fmt(petState.points) + ' coins';
 
       const word = document.getElementById('pet-word-day');
       if (word) word.textContent = petState.wordOfDay;
@@ -4560,7 +4842,7 @@
     function feedPet() {
       flashPetThing('pet-treat');
       setPetBubble('snack acquired ♡', 'happy');
-      updatePetStats({ fed: 16, social: 3, zoomies: -4, points: 2 });
+      updatePetStats({ fed: 16, social: 3, zoomies: -4, points: 6 });
       petPause(1000);
     }
 
@@ -4568,7 +4850,7 @@
       flashPetThing('pet-heart');
       flashPetThing('pet-spark');
       setPetBubble('hehe stop!!', 'happy');
-      updatePetStats({ social: 12, zoomies: 5, trust: 3, points: 1 });
+      updatePetStats({ social: 12, zoomies: 5, trust: 3, points: 3 });
       petSmallHop();
       petPause(700);
     }
@@ -4576,7 +4858,7 @@
     function fetchPet() {
       flashPetThing('pet-ball');
       setPetBubble('fetch quest accepted', 'ooh');
-      updatePetStats({ zoomies: 10, social: 6, fed: -4, points: 3 });
+      updatePetStats({ zoomies: 10, social: 6, fed: -4, points: 5 });
       chooseNextPetTarget(true);
       setTimeout(() => setPetBubble('walking to the ball', 'happy'), 900);
     }
@@ -4589,7 +4871,7 @@
 
     function petPing() {
       setPetBubble('ping? pong. irc baby.', 'ooh');
-      updatePetStats({ social: 5, trust: 2, points: 1 });
+      updatePetStats({ social: 5, trust: 2, points: 2 });
       petPause(900);
     }
 
@@ -4778,6 +5060,7 @@
       pet.style.left = petState.x + 'px';
       pet.style.top = petState.y + 'px';
       creature.style.transform = petState.vx < 0 ? 'scaleX(-1)' : '';
+      pet.classList.toggle('falling-shadow', !petState.onLedge && Math.abs(petState.vy) > 0.8);
     }
 
     function animatePet(timestamp) {
@@ -4831,6 +5114,11 @@
         if (Math.random() < 0.00028) {
           updatePetStats({ fed: -1, social: -1, zoomies: -1 });
         }
+
+        if (petState.fed > 45 && petState.poopCount < 8 && Math.random() < 0.00018) {
+          dropPetPoop();
+          updatePetStats({ fed: -8, trust: -1 });
+        }
       }
 
       requestAnimationFrame(animatePet);
@@ -4872,7 +5160,9 @@
       const creature = document.getElementById('pet-creature');
       if (!pet || !creature) return;
 
+      loadPetState();
       pickWordOfDay();
+      applyPetLook();
       renderPetStats();
       buildPetRoute();
 
@@ -4963,6 +5253,8 @@
           <div class="pet-ball" id="pet-ball">🎾</div>
           <div class="pet-heart" id="pet-heart">💗</div>
           <div class="pet-spark" id="pet-spark">✨</div>
+          <div class="pet-accessory" id="pet-accessory"></div>
+          <div class="pet-toy" id="pet-toy"></div>
         </div>
       </div>
     </div>
@@ -4977,7 +5269,7 @@
     </div>
 
     <div class="pet-points-row">
-      <span>IRC Treat Points</span>
+      <span>Word Coins</span>
       <span class="pet-points-pill" id="pet-points">0 pts</span>
     </div>
 
@@ -5007,7 +5299,7 @@
     <div class="pet-word-card">
       <div class="pet-word-label">word of the day</div>
       <div class="pet-word-main" id="pet-word-day">loading</div>
-      <div class="pet-word-note">later: channel users who say this earn points for toys, snacks, and chaos tools</div>
+      <div class="pet-word-note">later: real channel users who say this earn bonus coins for pet stuff</div>
     </div>
 
     <div class="pet-controls">
@@ -5019,8 +5311,22 @@
       <button class="pet-btn" type="button" onclick="petJumpToThing()">Jump</button>
     </div>
 
+    <div class="pet-shop">
+      <div class="pet-shop-title">word coin shop</div>
+      <div class="pet-shop-grid">
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('snack', 8)">🍓 Berry Snack <small>8 coins · fed +25</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('ball', 14)">🎾 Fetch Ball <small>14 coins · toy unlock</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('bow', 18)">🎀 Bow <small>18 coins · clothes</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('crown', 28)">👑 Op Crown <small>28 coins · clothes</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('gremlin', 35)">🧪 Gremlin Evo <small>35 coins · green blob</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('night', 35)">🌙 Night Evo <small>35 coins · purple blob</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('fire', 42)">🔥 Fire Evo <small>42 coins · spicy blob</small></button>
+        <button class="pet-shop-btn" type="button" onclick="buyPetItem('bratty', 20)">😈 Bratty Mode <small>20 coins · personality</small></button>
+      </div>
+    </div>
+
     <div class="pet-note">
-      Planned next: sound effects, toy shop, food inventory, screen-breaking tools, and points from real channel logs.
+      Prototype shop is local to the browser for now. Next: real word-of-the-day coin awards from channel logs, sound effects, inventory, and screen-breaking toys.
     </div>
   </div>
 
