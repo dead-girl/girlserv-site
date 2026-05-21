@@ -2645,11 +2645,33 @@
 
     #screen-pet .pet-creature {
       position: relative;
-      width: 86px;
-      height: 86px;
+      width: 120px;
+      height: 120px;
       animation: petBob 1.7s ease-in-out infinite;
       cursor: grab;
       transform-origin: center bottom;
+    }
+
+    #screen-pet .pet-sprite {
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      width: 124px;
+      height: 124px;
+      object-fit: contain;
+      transform: translateX(-50%);
+      z-index: 8;
+      pointer-events: none;
+      filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.25));
+    }
+
+    #screen-pet.using-sprite .pet-ear,
+    #screen-pet.using-sprite .pet-body,
+    #screen-pet.using-sprite .pet-eye,
+    #screen-pet.using-sprite .pet-blush,
+    #screen-pet.using-sprite .pet-mouth,
+    #screen-pet.using-sprite .pet-feet {
+      display: none;
     }
 
     #screen-pet.walking .pet-creature {
@@ -3420,13 +3442,13 @@
 
     <section class="panel" id="panel-lore">
       <h2>Channel Lore</h2>
-      <div class="panel-note">experimental log goblin statistics from public channel receipts</div>
+      <div class="panel-note">experimental log goblin statistics from the exported #truth-seekers receipts</div>
 
       <div class="lore-layout">
         <div class="lore-hero">
           <div class="lore-title">the receipt machine is awake ♡</div>
           <div class="lore-sub">
-            This tab is a playground for public channel logs: word crimes, swear jars, quote roulette,
+            This tab is a playground for the raw channel logs: word crimes, swear jars, quote roulette,
             social magnets, op/jannie behaviour, nick shapeshifters, and other suspicious little patterns.
           </div>
           <div class="lore-meta-grid" id="lore-meta">
@@ -4646,6 +4668,9 @@
       toy: '',
       personality: 'sweet',
       poopCount: 0,
+      animation: 'wave',
+      animationIndex: 0,
+      animationTimer: 0,
       route: [],
       routeIndex: 0,
       pauseUntil: 0,
@@ -4656,6 +4681,46 @@
     };
 
     const petWords = ['receipts', 'goblin', 'jannie', 'zoomies', 'lore', 'bonk', 'ops', 'chaos', 'sparkle', 'snack'];
+
+
+    const petAnimations = {
+      wave: [
+        'assets/pet/girl/wave/wave_01.png',
+        'assets/pet/girl/wave/wave_02.png',
+        'assets/pet/girl/wave/wave_03.png',
+        'assets/pet/girl/wave/wave_04.png'
+      ]
+    };
+
+    function usePetSprite() {
+      const pet = document.getElementById('screen-pet');
+      if (pet) pet.classList.add('using-sprite');
+    }
+
+    function setPetAnimation(name) {
+      if (!petAnimations[name]) return;
+      petState.animation = name;
+      petState.animationIndex = 0;
+      updatePetSpriteFrame();
+    }
+
+    function updatePetSpriteFrame() {
+      const img = document.getElementById('pet-sprite');
+      const frames = petAnimations[petState.animation] || petAnimations.wave;
+      if (!img || !frames || !frames.length) return;
+      img.src = frames[petState.animationIndex % frames.length];
+    }
+
+    function tickPetSpriteAnimation(timestamp) {
+      if (!petState.animationTimer) petState.animationTimer = timestamp;
+      if (timestamp - petState.animationTimer > 180) {
+        petState.animationTimer = timestamp;
+        const frames = petAnimations[petState.animation] || petAnimations.wave;
+        petState.animationIndex = (petState.animationIndex + 1) % frames.length;
+        updatePetSpriteFrame();
+      }
+    }
+
 
     const petSaveKey = 'girlservReceiptGoblinV1';
 
@@ -5064,6 +5129,7 @@
     }
 
     function animatePet(timestamp) {
+      tickPetSpriteAnimation(timestamp);
       const pet = document.getElementById('screen-pet');
 
       if (!petState.dragging && pet) {
@@ -5161,6 +5227,8 @@
       if (!pet || !creature) return;
 
       loadPetState();
+      usePetSprite();
+      setPetAnimation('wave');
       pickWordOfDay();
       applyPetLook();
       renderPetStats();
@@ -5237,6 +5305,7 @@
       <div class="pet-stage">
         <div class="pet-shadow"></div>
         <div class="pet-creature" id="pet-creature" title="pet me">
+          <img id="pet-sprite" class="pet-sprite" src="assets/pet/girl/wave/wave_01.png" alt="pet">
           <div class="pet-ear left"></div>
           <div class="pet-ear right"></div>
           <div class="pet-body"></div>
