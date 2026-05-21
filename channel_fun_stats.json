@@ -1,0 +1,9637 @@
+{
+  "meta": {
+    "source": "#truth-seekers.txt",
+    "lines": 257169,
+    "messages": 232090,
+    "actions": 2475,
+    "usersWithMessages": 583
+  },
+  "topWords": [
+    {
+      "word": "girl",
+      "count": 15290
+    },
+    {
+      "word": "have",
+      "count": 10143
+    },
+    {
+      "word": "it's",
+      "count": 9238
+    },
+    {
+      "word": "com",
+      "count": 8615
+    },
+    {
+      "word": "time",
+      "count": 7207
+    },
+    {
+      "word": "about",
+      "count": 6981
+    },
+    {
+      "word": "dead",
+      "count": 6692
+    },
+    {
+      "word": "all",
+      "count": 6460
+    },
+    {
+      "word": "linked",
+      "count": 6132
+    },
+    {
+      "word": "fucking",
+      "count": 5846
+    },
+    {
+      "word": "you're",
+      "count": 5500
+    },
+    {
+      "word": "youtube",
+      "count": 5327
+    },
+    {
+      "word": "know",
+      "count": 5115
+    },
+    {
+      "word": "one",
+      "count": 4854
+    },
+    {
+      "word": "fuck",
+      "count": 4837
+    },
+    {
+      "word": "think",
+      "count": 4760
+    },
+    {
+      "word": "get",
+      "count": 4600
+    },
+    {
+      "word": "people",
+      "count": 4570
+    },
+    {
+      "word": "some",
+      "count": 4489
+    },
+    {
+      "word": "now",
+      "count": 4418
+    },
+    {
+      "word": "good",
+      "count": 4255
+    },
+    {
+      "word": "out",
+      "count": 4236
+    },
+    {
+      "word": "girard",
+      "count": 3995
+    },
+    {
+      "word": "shit",
+      "count": 3916
+    },
+    {
+      "word": "www",
+      "count": 3777
+    },
+    {
+      "word": "that's",
+      "count": 3755
+    },
+    {
+      "word": "there",
+      "count": 3672
+    },
+    {
+      "word": "more",
+      "count": 3634
+    },
+    {
+      "word": "too",
+      "count": 3455
+    },
+    {
+      "word": "watch",
+      "count": 3425
+    },
+    {
+      "word": "even",
+      "count": 3253
+    },
+    {
+      "word": "kowal",
+      "count": 3230
+    },
+    {
+      "word": "here",
+      "count": 3227
+    },
+    {
+      "word": "got",
+      "count": 3185
+    },
+    {
+      "word": "right",
+      "count": 3031
+    },
+    {
+      "word": "owo",
+      "count": 2978
+    },
+    {
+      "word": "off",
+      "count": 2940
+    },
+    {
+      "word": "want",
+      "count": 2925
+    },
+    {
+      "word": "see",
+      "count": 2843
+    },
+    {
+      "word": "has",
+      "count": 2794
+    },
+    {
+      "word": "make",
+      "count": 2767
+    },
+    {
+      "word": "had",
+      "count": 2746
+    },
+    {
+      "word": "status",
+      "count": 2641
+    },
+    {
+      "word": "only",
+      "count": 2633
+    },
+    {
+      "word": "well",
+      "count": 2435
+    },
+    {
+      "word": "something",
+      "count": 2432
+    },
+    {
+      "word": "ago",
+      "count": 2428
+    },
+    {
+      "word": "maybe",
+      "count": 2363
+    },
+    {
+      "word": "than",
+      "count": 2362
+    },
+    {
+      "word": "say",
+      "count": 2338
+    },
+    {
+      "word": "years",
+      "count": 2331
+    },
+    {
+      "word": "him",
+      "count": 2309
+    },
+    {
+      "word": "never",
+      "count": 2308
+    },
+    {
+      "word": "because",
+      "count": 2286
+    },
+    {
+      "word": "need",
+      "count": 2239
+    },
+    {
+      "word": "views",
+      "count": 2194
+    },
+    {
+      "word": "uploaded",
+      "count": 2152
+    },
+    {
+      "word": "nice",
+      "count": 2151
+    },
+    {
+      "word": "way",
+      "count": 2109
+    },
+    {
+      "word": "love",
+      "count": 2069
+    },
+    {
+      "word": "jpg",
+      "count": 2020
+    },
+    {
+      "word": "much",
+      "count": 1975
+    },
+    {
+      "word": "over",
+      "count": 1973
+    },
+    {
+      "word": "back",
+      "count": 1939
+    },
+    {
+      "word": "into",
+      "count": 1937
+    },
+    {
+      "word": "day",
+      "count": 1878
+    },
+    {
+      "word": "mean",
+      "count": 1872
+    },
+    {
+      "word": "real",
+      "count": 1857
+    },
+    {
+      "word": "thing",
+      "count": 1851
+    },
+    {
+      "word": "gay",
+      "count": 1786
+    },
+    {
+      "word": "man",
+      "count": 1749
+    },
+    {
+      "word": "other",
+      "count": 1740
+    },
+    {
+      "word": "though",
+      "count": 1714
+    },
+    {
+      "word": "gonna",
+      "count": 1711
+    },
+    {
+      "word": "said",
+      "count": 1680
+    },
+    {
+      "word": "still",
+      "count": 1669
+    },
+    {
+      "word": "any",
+      "count": 1661
+    },
+    {
+      "word": "xoog",
+      "count": 1660
+    },
+    {
+      "word": "ever",
+      "count": 1644
+    },
+    {
+      "word": "soulcareer",
+      "count": 1644
+    },
+    {
+      "word": "also",
+      "count": 1608
+    },
+    {
+      "word": "youtu",
+      "count": 1601
+    },
+    {
+      "word": "things",
+      "count": 1596
+    },
+    {
+      "word": "going",
+      "count": 1582
+    },
+    {
+      "word": "dumbgoy",
+      "count": 1562
+    },
+    {
+      "word": "made",
+      "count": 1548
+    },
+    {
+      "word": "better",
+      "count": 1523
+    },
+    {
+      "word": "tell",
+      "count": 1517
+    },
+    {
+      "word": "white",
+      "count": 1511
+    },
+    {
+      "word": "use",
+      "count": 1505
+    },
+    {
+      "word": "always",
+      "count": 1479
+    },
+    {
+      "word": "which",
+      "count": 1476
+    },
+    {
+      "word": "sure",
+      "count": 1465
+    },
+    {
+      "word": "charliekirk",
+      "count": 1462
+    },
+    {
+      "word": "keep",
+      "count": 1458
+    },
+    {
+      "word": "twitter",
+      "count": 1456
+    },
+    {
+      "word": "truth",
+      "count": 1425
+    },
+    {
+      "word": "take",
+      "count": 1422
+    },
+    {
+      "word": "world",
+      "count": 1414
+    },
+    {
+      "word": "life",
+      "count": 1410
+    }
+  ],
+  "topWordsByUser": {
+    "girl": [
+      {
+        "word": "fucking",
+        "count": 4404
+      },
+      {
+        "word": "you're",
+        "count": 3514
+      },
+      {
+        "word": "fuck",
+        "count": 3106
+      },
+      {
+        "word": "shit",
+        "count": 1423
+      },
+      {
+        "word": "off",
+        "count": 1411
+      },
+      {
+        "word": "about",
+        "count": 1402
+      },
+      {
+        "word": "it's",
+        "count": 1339
+      },
+      {
+        "word": "girard",
+        "count": 1305
+      },
+      {
+        "word": "owo",
+        "count": 1167
+      },
+      {
+        "word": "know",
+        "count": 1112
+      },
+      {
+        "word": "some",
+        "count": 1051
+      },
+      {
+        "word": "girl",
+        "count": 959
+      },
+      {
+        "word": "faggot",
+        "count": 900
+      },
+      {
+        "word": "more",
+        "count": 897
+      },
+      {
+        "word": "fag",
+        "count": 891
+      },
+      {
+        "word": "all",
+        "count": 888
+      },
+      {
+        "word": "soulcareer",
+        "count": 838
+      },
+      {
+        "word": "right",
+        "count": 834
+      },
+      {
+        "word": "incel",
+        "count": 829
+      },
+      {
+        "word": "now",
+        "count": 786
+      }
+    ],
+    "RedRose": [
+      {
+        "word": "linked",
+        "count": 6082
+      },
+      {
+        "word": "com",
+        "count": 4257
+      },
+      {
+        "word": "time",
+        "count": 4010
+      },
+      {
+        "word": "youtube",
+        "count": 3829
+      },
+      {
+        "word": "views",
+        "count": 2106
+      },
+      {
+        "word": "uploaded",
+        "count": 2100
+      },
+      {
+        "word": "www",
+        "count": 1931
+      },
+      {
+        "word": "ago",
+        "count": 1821
+      },
+      {
+        "word": "watch",
+        "count": 1400
+      },
+      {
+        "word": "twitter",
+        "count": 1364
+      },
+      {
+        "word": "jpg",
+        "count": 1295
+      },
+      {
+        "word": "years",
+        "count": 1285
+      },
+      {
+        "word": "status",
+        "count": 1244
+      },
+      {
+        "word": "meant",
+        "count": 867
+      },
+      {
+        "word": "girl",
+        "count": 804
+      },
+      {
+        "word": "youtu",
+        "count": 737
+      },
+      {
+        "word": "imgur",
+        "count": 679
+      },
+      {
+        "word": "girard",
+        "count": 607
+      },
+      {
+        "word": "dead",
+        "count": 525
+      },
+      {
+        "word": "found",
+        "count": 505
+      }
+    ],
+    "dead_girl": [
+      {
+        "word": "have",
+        "count": 2064
+      },
+      {
+        "word": "it's",
+        "count": 1650
+      },
+      {
+        "word": "about",
+        "count": 845
+      },
+      {
+        "word": "all",
+        "count": 784
+      },
+      {
+        "word": "girl",
+        "count": 761
+      },
+      {
+        "word": "kowal",
+        "count": 737
+      },
+      {
+        "word": "think",
+        "count": 713
+      },
+      {
+        "word": "here",
+        "count": 707
+      },
+      {
+        "word": "too",
+        "count": 691
+      },
+      {
+        "word": "people",
+        "count": 681
+      },
+      {
+        "word": "that's",
+        "count": 667
+      },
+      {
+        "word": "get",
+        "count": 659
+      },
+      {
+        "word": "know",
+        "count": 643
+      },
+      {
+        "word": "though",
+        "count": 581
+      },
+      {
+        "word": "one",
+        "count": 579
+      },
+      {
+        "word": "dunno",
+        "count": 562
+      },
+      {
+        "word": "out",
+        "count": 495
+      },
+      {
+        "word": "there",
+        "count": 485
+      },
+      {
+        "word": "now",
+        "count": 477
+      },
+      {
+        "word": "want",
+        "count": 474
+      }
+    ],
+    "Kowal": [
+      {
+        "word": "it's",
+        "count": 645
+      },
+      {
+        "word": "com",
+        "count": 622
+      },
+      {
+        "word": "have",
+        "count": 609
+      },
+      {
+        "word": "girl",
+        "count": 561
+      },
+      {
+        "word": "status",
+        "count": 488
+      },
+      {
+        "word": "xcancel",
+        "count": 457
+      },
+      {
+        "word": "about",
+        "count": 402
+      },
+      {
+        "word": "all",
+        "count": 395
+      },
+      {
+        "word": "charliekirk",
+        "count": 373
+      },
+      {
+        "word": "people",
+        "count": 348
+      },
+      {
+        "word": "one",
+        "count": 317
+      },
+      {
+        "word": "even",
+        "count": 299
+      },
+      {
+        "word": "more",
+        "count": 232
+      },
+      {
+        "word": "that's",
+        "count": 231
+      },
+      {
+        "word": "than",
+        "count": 230
+      },
+      {
+        "word": "white",
+        "count": 224
+      },
+      {
+        "word": "because",
+        "count": 223
+      },
+      {
+        "word": "good",
+        "count": 219
+      },
+      {
+        "word": "had",
+        "count": 205
+      },
+      {
+        "word": "think",
+        "count": 202
+      }
+    ],
+    "Girard": [
+      {
+        "word": "girl",
+        "count": 1069
+      },
+      {
+        "word": "it's",
+        "count": 659
+      },
+      {
+        "word": "have",
+        "count": 544
+      },
+      {
+        "word": "dead",
+        "count": 478
+      },
+      {
+        "word": "com",
+        "count": 473
+      },
+      {
+        "word": "all",
+        "count": 419
+      },
+      {
+        "word": "love",
+        "count": 396
+      },
+      {
+        "word": "know",
+        "count": 359
+      },
+      {
+        "word": "about",
+        "count": 332
+      },
+      {
+        "word": "get",
+        "count": 286
+      },
+      {
+        "word": "status",
+        "count": 285
+      },
+      {
+        "word": "think",
+        "count": 275
+      },
+      {
+        "word": "youtu",
+        "count": 275
+      },
+      {
+        "word": "shit",
+        "count": 260
+      },
+      {
+        "word": "one",
+        "count": 257
+      },
+      {
+        "word": "now",
+        "count": 224
+      },
+      {
+        "word": "good",
+        "count": 214
+      },
+      {
+        "word": "puretrance",
+        "count": 200
+      },
+      {
+        "word": "cause",
+        "count": 188
+      },
+      {
+        "word": "make",
+        "count": 186
+      }
+    ],
+    "xOOG": [
+      {
+        "word": "all",
+        "count": 475
+      },
+      {
+        "word": "have",
+        "count": 467
+      },
+      {
+        "word": "good",
+        "count": 328
+      },
+      {
+        "word": "people",
+        "count": 325
+      },
+      {
+        "word": "girl",
+        "count": 310
+      },
+      {
+        "word": "there",
+        "count": 307
+      },
+      {
+        "word": "now",
+        "count": 274
+      },
+      {
+        "word": "out",
+        "count": 243
+      },
+      {
+        "word": "about",
+        "count": 238
+      },
+      {
+        "word": "some",
+        "count": 233
+      },
+      {
+        "word": "one",
+        "count": 216
+      },
+      {
+        "word": "see",
+        "count": 209
+      },
+      {
+        "word": "charliekirk",
+        "count": 206
+      },
+      {
+        "word": "you're",
+        "count": 205
+      },
+      {
+        "word": "jews",
+        "count": 199
+      },
+      {
+        "word": "which",
+        "count": 188
+      },
+      {
+        "word": "had",
+        "count": 181
+      },
+      {
+        "word": "world",
+        "count": 181
+      },
+      {
+        "word": "com",
+        "count": 174
+      },
+      {
+        "word": "dead",
+        "count": 165
+      }
+    ],
+    "owo": [
+      {
+        "word": "girl",
+        "count": 1153
+      },
+      {
+        "word": "it's",
+        "count": 420
+      },
+      {
+        "word": "have",
+        "count": 409
+      },
+      {
+        "word": "about",
+        "count": 276
+      },
+      {
+        "word": "good",
+        "count": 272
+      },
+      {
+        "word": "think",
+        "count": 206
+      },
+      {
+        "word": "one",
+        "count": 203
+      },
+      {
+        "word": "get",
+        "count": 203
+      },
+      {
+        "word": "all",
+        "count": 202
+      },
+      {
+        "word": "you're",
+        "count": 196
+      },
+      {
+        "word": "people",
+        "count": 195
+      },
+      {
+        "word": "out",
+        "count": 195
+      },
+      {
+        "word": "time",
+        "count": 190
+      },
+      {
+        "word": "dead",
+        "count": 186
+      },
+      {
+        "word": "know",
+        "count": 173
+      },
+      {
+        "word": "want",
+        "count": 172
+      },
+      {
+        "word": "see",
+        "count": 158
+      },
+      {
+        "word": "that's",
+        "count": 149
+      },
+      {
+        "word": "some",
+        "count": 143
+      },
+      {
+        "word": "now",
+        "count": 142
+      }
+    ],
+    "ShadowMantis": [
+      {
+        "word": "usa",
+        "count": 370
+      },
+      {
+        "word": "whites",
+        "count": 350
+      },
+      {
+        "word": "it's",
+        "count": 328
+      },
+      {
+        "word": "jews",
+        "count": 277
+      },
+      {
+        "word": "xoog",
+        "count": 272
+      },
+      {
+        "word": "girl",
+        "count": 248
+      },
+      {
+        "word": "about",
+        "count": 207
+      },
+      {
+        "word": "kowal",
+        "count": 205
+      },
+      {
+        "word": "white",
+        "count": 203
+      },
+      {
+        "word": "jesus",
+        "count": 200
+      },
+      {
+        "word": "people",
+        "count": 189
+      },
+      {
+        "word": "have",
+        "count": 185
+      },
+      {
+        "word": "only",
+        "count": 182
+      },
+      {
+        "word": "because",
+        "count": 177
+      },
+      {
+        "word": "even",
+        "count": 171
+      },
+      {
+        "word": "imo",
+        "count": 166
+      },
+      {
+        "word": "see",
+        "count": 161
+      },
+      {
+        "word": "good",
+        "count": 158
+      },
+      {
+        "word": "you're",
+        "count": 152
+      },
+      {
+        "word": "israel",
+        "count": 150
+      }
+    ],
+    "SoulCareer": [
+      {
+        "word": "girl",
+        "count": 1071
+      },
+      {
+        "word": "have",
+        "count": 418
+      },
+      {
+        "word": "maybe",
+        "count": 411
+      },
+      {
+        "word": "dead",
+        "count": 397
+      },
+      {
+        "word": "about",
+        "count": 335
+      },
+      {
+        "word": "some",
+        "count": 302
+      },
+      {
+        "word": "people",
+        "count": 245
+      },
+      {
+        "word": "get",
+        "count": 232
+      },
+      {
+        "word": "there",
+        "count": 232
+      },
+      {
+        "word": "want",
+        "count": 229
+      },
+      {
+        "word": "one",
+        "count": 219
+      },
+      {
+        "word": "out",
+        "count": 218
+      },
+      {
+        "word": "think",
+        "count": 216
+      },
+      {
+        "word": "owo",
+        "count": 201
+      },
+      {
+        "word": "make",
+        "count": 195
+      },
+      {
+        "word": "more",
+        "count": 159
+      },
+      {
+        "word": "way",
+        "count": 159
+      },
+      {
+        "word": "had",
+        "count": 153
+      },
+      {
+        "word": "even",
+        "count": 141
+      },
+      {
+        "word": "because",
+        "count": 139
+      }
+    ],
+    "dumbgoy": [
+      {
+        "word": "have",
+        "count": 412
+      },
+      {
+        "word": "it's",
+        "count": 395
+      },
+      {
+        "word": "that's",
+        "count": 233
+      },
+      {
+        "word": "good",
+        "count": 225
+      },
+      {
+        "word": "all",
+        "count": 205
+      },
+      {
+        "word": "out",
+        "count": 195
+      },
+      {
+        "word": "some",
+        "count": 194
+      },
+      {
+        "word": "one",
+        "count": 192
+      },
+      {
+        "word": "girl",
+        "count": 189
+      },
+      {
+        "word": "too",
+        "count": 185
+      },
+      {
+        "word": "think",
+        "count": 185
+      },
+      {
+        "word": "shit",
+        "count": 180
+      },
+      {
+        "word": "com",
+        "count": 178
+      },
+      {
+        "word": "had",
+        "count": 170
+      },
+      {
+        "word": "get",
+        "count": 168
+      },
+      {
+        "word": "time",
+        "count": 157
+      },
+      {
+        "word": "know",
+        "count": 155
+      },
+      {
+        "word": "watch",
+        "count": 149
+      },
+      {
+        "word": "now",
+        "count": 149
+      },
+      {
+        "word": "got",
+        "count": 148
+      }
+    ],
+    "CharlieKirk": [
+      {
+        "word": "truth",
+        "count": 428
+      },
+      {
+        "word": "it's",
+        "count": 403
+      },
+      {
+        "word": "that's",
+        "count": 382
+      },
+      {
+        "word": "faith",
+        "count": 354
+      },
+      {
+        "word": "values",
+        "count": 306
+      },
+      {
+        "word": "about",
+        "count": 269
+      },
+      {
+        "word": "god",
+        "count": 188
+      },
+      {
+        "word": "focus",
+        "count": 180
+      },
+      {
+        "word": "people",
+        "count": 178
+      },
+      {
+        "word": "family",
+        "count": 154
+      },
+      {
+        "word": "stand",
+        "count": 153
+      },
+      {
+        "word": "freedom",
+        "count": 145
+      },
+      {
+        "word": "have",
+        "count": 145
+      },
+      {
+        "word": "every",
+        "count": 133
+      },
+      {
+        "word": "life",
+        "count": 126
+      },
+      {
+        "word": "one",
+        "count": 125
+      },
+      {
+        "word": "must",
+        "count": 121
+      },
+      {
+        "word": "all",
+        "count": 121
+      },
+      {
+        "word": "need",
+        "count": 119
+      },
+      {
+        "word": "has",
+        "count": 119
+      }
+    ],
+    "linuxyo": [
+      {
+        "word": "it's",
+        "count": 390
+      },
+      {
+        "word": "girl",
+        "count": 375
+      },
+      {
+        "word": "dead",
+        "count": 325
+      },
+      {
+        "word": "com",
+        "count": 266
+      },
+      {
+        "word": "have",
+        "count": 236
+      },
+      {
+        "word": "think",
+        "count": 230
+      },
+      {
+        "word": "www",
+        "count": 227
+      },
+      {
+        "word": "watch",
+        "count": 213
+      },
+      {
+        "word": "youtube",
+        "count": 201
+      },
+      {
+        "word": "that's",
+        "count": 184
+      },
+      {
+        "word": "all",
+        "count": 177
+      },
+      {
+        "word": "about",
+        "count": 170
+      },
+      {
+        "word": "countchocula",
+        "count": 164
+      },
+      {
+        "word": "good",
+        "count": 139
+      },
+      {
+        "word": "people",
+        "count": 135
+      },
+      {
+        "word": "kowal",
+        "count": 124
+      },
+      {
+        "word": "some",
+        "count": 121
+      },
+      {
+        "word": "cause",
+        "count": 109
+      },
+      {
+        "word": "true",
+        "count": 109
+      },
+      {
+        "word": "more",
+        "count": 107
+      }
+    ],
+    "truthwillout": [
+      {
+        "word": "girl",
+        "count": 999
+      },
+      {
+        "word": "have",
+        "count": 291
+      },
+      {
+        "word": "dead",
+        "count": 287
+      },
+      {
+        "word": "think",
+        "count": 235
+      },
+      {
+        "word": "know",
+        "count": 208
+      },
+      {
+        "word": "about",
+        "count": 186
+      },
+      {
+        "word": "all",
+        "count": 164
+      },
+      {
+        "word": "good",
+        "count": 155
+      },
+      {
+        "word": "irc",
+        "count": 137
+      },
+      {
+        "word": "fart",
+        "count": 131
+      },
+      {
+        "word": "now",
+        "count": 130
+      },
+      {
+        "word": "love",
+        "count": 126
+      },
+      {
+        "word": "owo",
+        "count": 122
+      },
+      {
+        "word": "want",
+        "count": 107
+      },
+      {
+        "word": "right",
+        "count": 95
+      },
+      {
+        "word": "heh",
+        "count": 94
+      },
+      {
+        "word": "help",
+        "count": 94
+      },
+      {
+        "word": "michaelrules",
+        "count": 90
+      },
+      {
+        "word": "get",
+        "count": 84
+      },
+      {
+        "word": "people",
+        "count": 84
+      }
+    ],
+    "PureTrance": [
+      {
+        "word": "girl",
+        "count": 625
+      },
+      {
+        "word": "dead",
+        "count": 510
+      },
+      {
+        "word": "girard",
+        "count": 362
+      },
+      {
+        "word": "com",
+        "count": 312
+      },
+      {
+        "word": "have",
+        "count": 233
+      },
+      {
+        "word": "watch",
+        "count": 167
+      },
+      {
+        "word": "www",
+        "count": 154
+      },
+      {
+        "word": "imgur",
+        "count": 145
+      },
+      {
+        "word": "youtube",
+        "count": 119
+      },
+      {
+        "word": "all",
+        "count": 109
+      },
+      {
+        "word": "out",
+        "count": 104
+      },
+      {
+        "word": "about",
+        "count": 104
+      },
+      {
+        "word": "know",
+        "count": 100
+      },
+      {
+        "word": "get",
+        "count": 97
+      },
+      {
+        "word": "think",
+        "count": 95
+      },
+      {
+        "word": "good",
+        "count": 95
+      },
+      {
+        "word": "kowal",
+        "count": 92
+      },
+      {
+        "word": "thats",
+        "count": 90
+      },
+      {
+        "word": "one",
+        "count": 89
+      },
+      {
+        "word": "nitter",
+        "count": 89
+      }
+    ],
+    "osnap": [
+      {
+        "word": "some",
+        "count": 169
+      },
+      {
+        "word": "have",
+        "count": 169
+      },
+      {
+        "word": "girl",
+        "count": 133
+      },
+      {
+        "word": "shit",
+        "count": 133
+      },
+      {
+        "word": "all",
+        "count": 126
+      },
+      {
+        "word": "out",
+        "count": 121
+      },
+      {
+        "word": "com",
+        "count": 120
+      },
+      {
+        "word": "had",
+        "count": 106
+      },
+      {
+        "word": "get",
+        "count": 103
+      },
+      {
+        "word": "about",
+        "count": 97
+      },
+      {
+        "word": "one",
+        "count": 91
+      },
+      {
+        "word": "www",
+        "count": 88
+      },
+      {
+        "word": "fucking",
+        "count": 88
+      },
+      {
+        "word": "watch",
+        "count": 86
+      },
+      {
+        "word": "people",
+        "count": 81
+      },
+      {
+        "word": "good",
+        "count": 78
+      },
+      {
+        "word": "man",
+        "count": 75
+      },
+      {
+        "word": "got",
+        "count": 75
+      },
+      {
+        "word": "there",
+        "count": 74
+      },
+      {
+        "word": "thats",
+        "count": 72
+      }
+    ],
+    "redubious": [
+      {
+        "word": "it's",
+        "count": 278
+      },
+      {
+        "word": "com",
+        "count": 240
+      },
+      {
+        "word": "have",
+        "count": 187
+      },
+      {
+        "word": "girl",
+        "count": 173
+      },
+      {
+        "word": "one",
+        "count": 135
+      },
+      {
+        "word": "all",
+        "count": 135
+      },
+      {
+        "word": "status",
+        "count": 128
+      },
+      {
+        "word": "people",
+        "count": 123
+      },
+      {
+        "word": "about",
+        "count": 110
+      },
+      {
+        "word": "think",
+        "count": 100
+      },
+      {
+        "word": "know",
+        "count": 98
+      },
+      {
+        "word": "food",
+        "count": 91
+      },
+      {
+        "word": "has",
+        "count": 90
+      },
+      {
+        "word": "youtu",
+        "count": 89
+      },
+      {
+        "word": "there",
+        "count": 83
+      },
+      {
+        "word": "that's",
+        "count": 81
+      },
+      {
+        "word": "dead",
+        "count": 77
+      },
+      {
+        "word": "out",
+        "count": 76
+      },
+      {
+        "word": "nigger",
+        "count": 74
+      },
+      {
+        "word": "watch",
+        "count": 72
+      }
+    ],
+    "CountChocula": [
+      {
+        "word": "have",
+        "count": 204
+      },
+      {
+        "word": "it's",
+        "count": 175
+      },
+      {
+        "word": "girl",
+        "count": 164
+      },
+      {
+        "word": "think",
+        "count": 141
+      },
+      {
+        "word": "know",
+        "count": 132
+      },
+      {
+        "word": "about",
+        "count": 130
+      },
+      {
+        "word": "one",
+        "count": 101
+      },
+      {
+        "word": "people",
+        "count": 94
+      },
+      {
+        "word": "all",
+        "count": 84
+      },
+      {
+        "word": "going",
+        "count": 80
+      },
+      {
+        "word": "linuxyo",
+        "count": 75
+      },
+      {
+        "word": "dead",
+        "count": 74
+      },
+      {
+        "word": "ever",
+        "count": 73
+      },
+      {
+        "word": "out",
+        "count": 70
+      },
+      {
+        "word": "there",
+        "count": 68
+      },
+      {
+        "word": "that's",
+        "count": 67
+      },
+      {
+        "word": "kowal",
+        "count": 65
+      },
+      {
+        "word": "time",
+        "count": 62
+      },
+      {
+        "word": "get",
+        "count": 60
+      },
+      {
+        "word": "mean",
+        "count": 59
+      }
+    ],
+    "SummerSkies": [
+      {
+        "word": "girl",
+        "count": 278
+      },
+      {
+        "word": "dead",
+        "count": 186
+      },
+      {
+        "word": "have",
+        "count": 177
+      },
+      {
+        "word": "about",
+        "count": 105
+      },
+      {
+        "word": "good",
+        "count": 97
+      },
+      {
+        "word": "get",
+        "count": 94
+      },
+      {
+        "word": "fuck",
+        "count": 92
+      },
+      {
+        "word": "thats",
+        "count": 91
+      },
+      {
+        "word": "know",
+        "count": 84
+      },
+      {
+        "word": "out",
+        "count": 83
+      },
+      {
+        "word": "youre",
+        "count": 76
+      },
+      {
+        "word": "yea",
+        "count": 71
+      },
+      {
+        "word": "now",
+        "count": 67
+      },
+      {
+        "word": "got",
+        "count": 66
+      },
+      {
+        "word": "some",
+        "count": 65
+      },
+      {
+        "word": "girard",
+        "count": 65
+      },
+      {
+        "word": "one",
+        "count": 63
+      },
+      {
+        "word": "because",
+        "count": 63
+      },
+      {
+        "word": "dumbgoy",
+        "count": 63
+      },
+      {
+        "word": "gonna",
+        "count": 61
+      }
+    ],
+    "Mysteria": [
+      {
+        "word": "it's",
+        "count": 247
+      },
+      {
+        "word": "have",
+        "count": 202
+      },
+      {
+        "word": "had",
+        "count": 107
+      },
+      {
+        "word": "never",
+        "count": 99
+      },
+      {
+        "word": "all",
+        "count": 90
+      },
+      {
+        "word": "girl",
+        "count": 86
+      },
+      {
+        "word": "that's",
+        "count": 85
+      },
+      {
+        "word": "use",
+        "count": 82
+      },
+      {
+        "word": "about",
+        "count": 82
+      },
+      {
+        "word": "though",
+        "count": 77
+      },
+      {
+        "word": "got",
+        "count": 70
+      },
+      {
+        "word": "some",
+        "count": 68
+      },
+      {
+        "word": "well",
+        "count": 68
+      },
+      {
+        "word": "know",
+        "count": 67
+      },
+      {
+        "word": "com",
+        "count": 64
+      },
+      {
+        "word": "too",
+        "count": 63
+      },
+      {
+        "word": "only",
+        "count": 63
+      },
+      {
+        "word": "time",
+        "count": 62
+      },
+      {
+        "word": "there",
+        "count": 61
+      },
+      {
+        "word": "dead",
+        "count": 60
+      }
+    ],
+    "rdr": [
+      {
+        "word": "girl",
+        "count": 346
+      },
+      {
+        "word": "dead",
+        "count": 225
+      },
+      {
+        "word": "have",
+        "count": 134
+      },
+      {
+        "word": "it's",
+        "count": 95
+      },
+      {
+        "word": "all",
+        "count": 88
+      },
+      {
+        "word": "get",
+        "count": 84
+      },
+      {
+        "word": "one",
+        "count": 75
+      },
+      {
+        "word": "got",
+        "count": 67
+      },
+      {
+        "word": "kowal",
+        "count": 62
+      },
+      {
+        "word": "man",
+        "count": 61
+      },
+      {
+        "word": "good",
+        "count": 59
+      },
+      {
+        "word": "think",
+        "count": 57
+      },
+      {
+        "word": "there",
+        "count": 53
+      },
+      {
+        "word": "had",
+        "count": 52
+      },
+      {
+        "word": "about",
+        "count": 46
+      },
+      {
+        "word": "some",
+        "count": 46
+      },
+      {
+        "word": "whoa",
+        "count": 45
+      },
+      {
+        "word": "out",
+        "count": 41
+      },
+      {
+        "word": "know",
+        "count": 40
+      },
+      {
+        "word": "you're",
+        "count": 40
+      }
+    ],
+    "GiRaRd": [
+      {
+        "word": "girl",
+        "count": 197
+      },
+      {
+        "word": "it's",
+        "count": 117
+      },
+      {
+        "word": "dead",
+        "count": 108
+      },
+      {
+        "word": "com",
+        "count": 101
+      },
+      {
+        "word": "have",
+        "count": 86
+      },
+      {
+        "word": "charliekirk",
+        "count": 84
+      },
+      {
+        "word": "status",
+        "count": 79
+      },
+      {
+        "word": "know",
+        "count": 77
+      },
+      {
+        "word": "all",
+        "count": 76
+      },
+      {
+        "word": "think",
+        "count": 65
+      },
+      {
+        "word": "one",
+        "count": 60
+      },
+      {
+        "word": "about",
+        "count": 57
+      },
+      {
+        "word": "make",
+        "count": 52
+      },
+      {
+        "word": "shit",
+        "count": 44
+      },
+      {
+        "word": "xoog",
+        "count": 42
+      },
+      {
+        "word": "get",
+        "count": 37
+      },
+      {
+        "word": "out",
+        "count": 37
+      },
+      {
+        "word": "owo",
+        "count": 36
+      },
+      {
+        "word": "say",
+        "count": 36
+      },
+      {
+        "word": "cause",
+        "count": 35
+      }
+    ],
+    "fart": [
+      {
+        "word": "please",
+        "count": 116
+      },
+      {
+        "word": "nick",
+        "count": 109
+      },
+      {
+        "word": "truthwillout",
+        "count": 107
+      },
+      {
+        "word": "highlight",
+        "count": 107
+      },
+      {
+        "word": "have",
+        "count": 91
+      },
+      {
+        "word": "girl",
+        "count": 76
+      },
+      {
+        "word": "it's",
+        "count": 74
+      },
+      {
+        "word": "chat",
+        "count": 67
+      },
+      {
+        "word": "girard",
+        "count": 62
+      },
+      {
+        "word": "dead",
+        "count": 59
+      },
+      {
+        "word": "kowal",
+        "count": 57
+      },
+      {
+        "word": "one",
+        "count": 52
+      },
+      {
+        "word": "get",
+        "count": 49
+      },
+      {
+        "word": "all",
+        "count": 39
+      },
+      {
+        "word": "you're",
+        "count": 38
+      },
+      {
+        "word": "that's",
+        "count": 37
+      },
+      {
+        "word": "shit",
+        "count": 35
+      },
+      {
+        "word": "monologue",
+        "count": 35
+      },
+      {
+        "word": "people",
+        "count": 34
+      },
+      {
+        "word": "others",
+        "count": 34
+      }
+    ],
+    "Mr-Snick": [
+      {
+        "word": "it's",
+        "count": 107
+      },
+      {
+        "word": "have",
+        "count": 95
+      },
+      {
+        "word": "people",
+        "count": 51
+      },
+      {
+        "word": "one",
+        "count": 50
+      },
+      {
+        "word": "about",
+        "count": 48
+      },
+      {
+        "word": "that's",
+        "count": 45
+      },
+      {
+        "word": "know",
+        "count": 40
+      },
+      {
+        "word": "get",
+        "count": 39
+      },
+      {
+        "word": "more",
+        "count": 35
+      },
+      {
+        "word": "time",
+        "count": 35
+      },
+      {
+        "word": "has",
+        "count": 35
+      },
+      {
+        "word": "you're",
+        "count": 33
+      },
+      {
+        "word": "shit",
+        "count": 33
+      },
+      {
+        "word": "all",
+        "count": 32
+      },
+      {
+        "word": "some",
+        "count": 31
+      },
+      {
+        "word": "out",
+        "count": 31
+      },
+      {
+        "word": "because",
+        "count": 29
+      },
+      {
+        "word": "much",
+        "count": 28
+      },
+      {
+        "word": "good",
+        "count": 27
+      },
+      {
+        "word": "need",
+        "count": 27
+      }
+    ],
+    "ventures": [
+      {
+        "word": "have",
+        "count": 91
+      },
+      {
+        "word": "com",
+        "count": 78
+      },
+      {
+        "word": "all",
+        "count": 59
+      },
+      {
+        "word": "mean",
+        "count": 52
+      },
+      {
+        "word": "girl",
+        "count": 39
+      },
+      {
+        "word": "than",
+        "count": 36
+      },
+      {
+        "word": "here",
+        "count": 34
+      },
+      {
+        "word": "about",
+        "count": 33
+      },
+      {
+        "word": "watch",
+        "count": 33
+      },
+      {
+        "word": "more",
+        "count": 33
+      },
+      {
+        "word": "one",
+        "count": 33
+      },
+      {
+        "word": "know",
+        "count": 32
+      },
+      {
+        "word": "jews",
+        "count": 32
+      },
+      {
+        "word": "people",
+        "count": 30
+      },
+      {
+        "word": "www",
+        "count": 29
+      },
+      {
+        "word": "youtube",
+        "count": 29
+      },
+      {
+        "word": "good",
+        "count": 28
+      },
+      {
+        "word": "there",
+        "count": 28
+      },
+      {
+        "word": "has",
+        "count": 26
+      },
+      {
+        "word": "out",
+        "count": 25
+      }
+    ],
+    "FLatin": [
+      {
+        "word": "it's",
+        "count": 73
+      },
+      {
+        "word": "have",
+        "count": 69
+      },
+      {
+        "word": "all",
+        "count": 59
+      },
+      {
+        "word": "shit",
+        "count": 48
+      },
+      {
+        "word": "puretrance",
+        "count": 48
+      },
+      {
+        "word": "think",
+        "count": 40
+      },
+      {
+        "word": "get",
+        "count": 36
+      },
+      {
+        "word": "cause",
+        "count": 36
+      },
+      {
+        "word": "know",
+        "count": 36
+      },
+      {
+        "word": "one",
+        "count": 35
+      },
+      {
+        "word": "about",
+        "count": 34
+      },
+      {
+        "word": "com",
+        "count": 33
+      },
+      {
+        "word": "charliekirk",
+        "count": 33
+      },
+      {
+        "word": "youtu",
+        "count": 32
+      },
+      {
+        "word": "linuxyo",
+        "count": 30
+      },
+      {
+        "word": "good",
+        "count": 29
+      },
+      {
+        "word": "him",
+        "count": 28
+      },
+      {
+        "word": "never",
+        "count": 27
+      },
+      {
+        "word": "girl",
+        "count": 27
+      },
+      {
+        "word": "see",
+        "count": 26
+      }
+    ],
+    "blaag": [
+      {
+        "word": "girl",
+        "count": 89
+      },
+      {
+        "word": "dumbgoy",
+        "count": 81
+      },
+      {
+        "word": "have",
+        "count": 78
+      },
+      {
+        "word": "it's",
+        "count": 59
+      },
+      {
+        "word": "dead",
+        "count": 55
+      },
+      {
+        "word": "some",
+        "count": 40
+      },
+      {
+        "word": "all",
+        "count": 40
+      },
+      {
+        "word": "good",
+        "count": 36
+      },
+      {
+        "word": "tho",
+        "count": 33
+      },
+      {
+        "word": "well",
+        "count": 33
+      },
+      {
+        "word": "think",
+        "count": 33
+      },
+      {
+        "word": "too",
+        "count": 32
+      },
+      {
+        "word": "even",
+        "count": 31
+      },
+      {
+        "word": "here",
+        "count": 31
+      },
+      {
+        "word": "that's",
+        "count": 30
+      },
+      {
+        "word": "get",
+        "count": 29
+      },
+      {
+        "word": "gay",
+        "count": 29
+      },
+      {
+        "word": "know",
+        "count": 27
+      },
+      {
+        "word": "damn",
+        "count": 25
+      },
+      {
+        "word": "one",
+        "count": 25
+      }
+    ],
+    "GiRard": [
+      {
+        "word": "girl",
+        "count": 96
+      },
+      {
+        "word": "it's",
+        "count": 73
+      },
+      {
+        "word": "com",
+        "count": 71
+      },
+      {
+        "word": "dead",
+        "count": 62
+      },
+      {
+        "word": "status",
+        "count": 53
+      },
+      {
+        "word": "have",
+        "count": 52
+      },
+      {
+        "word": "all",
+        "count": 43
+      },
+      {
+        "word": "youtu",
+        "count": 39
+      },
+      {
+        "word": "know",
+        "count": 39
+      },
+      {
+        "word": "shit",
+        "count": 38
+      },
+      {
+        "word": "think",
+        "count": 34
+      },
+      {
+        "word": "dumbgoy",
+        "count": 27
+      },
+      {
+        "word": "get",
+        "count": 26
+      },
+      {
+        "word": "good",
+        "count": 24
+      },
+      {
+        "word": "now",
+        "count": 24
+      },
+      {
+        "word": "got",
+        "count": 22
+      },
+      {
+        "word": "never",
+        "count": 22
+      },
+      {
+        "word": "there",
+        "count": 22
+      },
+      {
+        "word": "puretrance",
+        "count": 21
+      },
+      {
+        "word": "cause",
+        "count": 21
+      }
+    ],
+    "Hestia": [
+      {
+        "word": "girl",
+        "count": 48
+      },
+      {
+        "word": "have",
+        "count": 47
+      },
+      {
+        "word": "fart",
+        "count": 46
+      },
+      {
+        "word": "it's",
+        "count": 36
+      },
+      {
+        "word": "all",
+        "count": 36
+      },
+      {
+        "word": "bot",
+        "count": 35
+      },
+      {
+        "word": "about",
+        "count": 35
+      },
+      {
+        "word": "too",
+        "count": 29
+      },
+      {
+        "word": "one",
+        "count": 28
+      },
+      {
+        "word": "also",
+        "count": 26
+      },
+      {
+        "word": "people",
+        "count": 24
+      },
+      {
+        "word": "after",
+        "count": 24
+      },
+      {
+        "word": "even",
+        "count": 24
+      },
+      {
+        "word": "dead",
+        "count": 23
+      },
+      {
+        "word": "get",
+        "count": 23
+      },
+      {
+        "word": "think",
+        "count": 22
+      },
+      {
+        "word": "watch",
+        "count": 22
+      },
+      {
+        "word": "though",
+        "count": 21
+      },
+      {
+        "word": "maybe",
+        "count": 20
+      },
+      {
+        "word": "only",
+        "count": 20
+      }
+    ],
+    "stonecold": [
+      {
+        "word": "have",
+        "count": 58
+      },
+      {
+        "word": "girl",
+        "count": 40
+      },
+      {
+        "word": "it's",
+        "count": 34
+      },
+      {
+        "word": "all",
+        "count": 32
+      },
+      {
+        "word": "shit",
+        "count": 31
+      },
+      {
+        "word": "get",
+        "count": 29
+      },
+      {
+        "word": "even",
+        "count": 28
+      },
+      {
+        "word": "that's",
+        "count": 26
+      },
+      {
+        "word": "com",
+        "count": 26
+      },
+      {
+        "word": "good",
+        "count": 24
+      },
+      {
+        "word": "know",
+        "count": 24
+      },
+      {
+        "word": "too",
+        "count": 24
+      },
+      {
+        "word": "now",
+        "count": 22
+      },
+      {
+        "word": "fuck",
+        "count": 22
+      },
+      {
+        "word": "irccloud",
+        "count": 21
+      },
+      {
+        "word": "usercontent",
+        "count": 20
+      },
+      {
+        "word": "cdn",
+        "count": 20
+      },
+      {
+        "word": "file",
+        "count": 20
+      },
+      {
+        "word": "out",
+        "count": 20
+      },
+      {
+        "word": "got",
+        "count": 20
+      }
+    ],
+    "mkgoo": [
+      {
+        "word": "com",
+        "count": 93
+      },
+      {
+        "word": "old",
+        "count": 72
+      },
+      {
+        "word": "video",
+        "count": 72
+      },
+      {
+        "word": "bitchute",
+        "count": 68
+      },
+      {
+        "word": "have",
+        "count": 34
+      },
+      {
+        "word": "girl",
+        "count": 30
+      },
+      {
+        "word": "all",
+        "count": 27
+      },
+      {
+        "word": "jews",
+        "count": 24
+      },
+      {
+        "word": "know",
+        "count": 22
+      },
+      {
+        "word": "it's",
+        "count": 21
+      },
+      {
+        "word": "one",
+        "count": 19
+      },
+      {
+        "word": "about",
+        "count": 19
+      },
+      {
+        "word": "here",
+        "count": 19
+      },
+      {
+        "word": "out",
+        "count": 19
+      },
+      {
+        "word": "never",
+        "count": 19
+      },
+      {
+        "word": "ignore",
+        "count": 18
+      },
+      {
+        "word": "there",
+        "count": 18
+      },
+      {
+        "word": "only",
+        "count": 17
+      },
+      {
+        "word": "fucking",
+        "count": 17
+      },
+      {
+        "word": "shit",
+        "count": 17
+      }
+    ],
+    "Skipp_OSX": [
+      {
+        "word": "all",
+        "count": 53
+      },
+      {
+        "word": "have",
+        "count": 51
+      },
+      {
+        "word": "it's",
+        "count": 44
+      },
+      {
+        "word": "white",
+        "count": 42
+      },
+      {
+        "word": "holocaust",
+        "count": 35
+      },
+      {
+        "word": "there",
+        "count": 30
+      },
+      {
+        "word": "that's",
+        "count": 30
+      },
+      {
+        "word": "hate",
+        "count": 30
+      },
+      {
+        "word": "because",
+        "count": 27
+      },
+      {
+        "word": "know",
+        "count": 26
+      },
+      {
+        "word": "racial",
+        "count": 25
+      },
+      {
+        "word": "must",
+        "count": 24
+      },
+      {
+        "word": "good",
+        "count": 24
+      },
+      {
+        "word": "about",
+        "count": 24
+      },
+      {
+        "word": "right",
+        "count": 24
+      },
+      {
+        "word": "out",
+        "count": 23
+      },
+      {
+        "word": "true",
+        "count": 22
+      },
+      {
+        "word": "one",
+        "count": 21
+      },
+      {
+        "word": "jesus",
+        "count": 21
+      },
+      {
+        "word": "well",
+        "count": 20
+      }
+    ],
+    "desc": [
+      {
+        "word": "about",
+        "count": 44
+      },
+      {
+        "word": "god",
+        "count": 41
+      },
+      {
+        "word": "have",
+        "count": 34
+      },
+      {
+        "word": "all",
+        "count": 30
+      },
+      {
+        "word": "com",
+        "count": 30
+      },
+      {
+        "word": "it's",
+        "count": 30
+      },
+      {
+        "word": "you're",
+        "count": 28
+      },
+      {
+        "word": "owo",
+        "count": 28
+      },
+      {
+        "word": "shit",
+        "count": 25
+      },
+      {
+        "word": "one",
+        "count": 25
+      },
+      {
+        "word": "desc",
+        "count": 24
+      },
+      {
+        "word": "that's",
+        "count": 22
+      },
+      {
+        "word": "girl",
+        "count": 22
+      },
+      {
+        "word": "status",
+        "count": 21
+      },
+      {
+        "word": "know",
+        "count": 19
+      },
+      {
+        "word": "anything",
+        "count": 19
+      },
+      {
+        "word": "out",
+        "count": 19
+      },
+      {
+        "word": "get",
+        "count": 19
+      },
+      {
+        "word": "even",
+        "count": 18
+      },
+      {
+        "word": "now",
+        "count": 17
+      }
+    ],
+    "michaelrules365": [
+      {
+        "word": "girl",
+        "count": 296
+      },
+      {
+        "word": "dead",
+        "count": 121
+      },
+      {
+        "word": "truthwillout",
+        "count": 93
+      },
+      {
+        "word": "now",
+        "count": 88
+      },
+      {
+        "word": "nigger",
+        "count": 88
+      },
+      {
+        "word": "weed",
+        "count": 83
+      },
+      {
+        "word": "right",
+        "count": 73
+      },
+      {
+        "word": "linuxyo",
+        "count": 52
+      },
+      {
+        "word": "get",
+        "count": 41
+      },
+      {
+        "word": "blazing",
+        "count": 40
+      },
+      {
+        "word": "nice",
+        "count": 38
+      },
+      {
+        "word": "kowal",
+        "count": 37
+      },
+      {
+        "word": "high",
+        "count": 37
+      },
+      {
+        "word": "blazed",
+        "count": 35
+      },
+      {
+        "word": "have",
+        "count": 34
+      },
+      {
+        "word": "nigga",
+        "count": 24
+      },
+      {
+        "word": "xoog",
+        "count": 23
+      },
+      {
+        "word": "it's",
+        "count": 22
+      },
+      {
+        "word": "smoking",
+        "count": 20
+      },
+      {
+        "word": "fuck",
+        "count": 18
+      }
+    ],
+    "opsec": [
+      {
+        "word": "www",
+        "count": 52
+      },
+      {
+        "word": "com",
+        "count": 52
+      },
+      {
+        "word": "dead",
+        "count": 47
+      },
+      {
+        "word": "linuxyo",
+        "count": 45
+      },
+      {
+        "word": "youtube",
+        "count": 44
+      },
+      {
+        "word": "all",
+        "count": 41
+      },
+      {
+        "word": "girl",
+        "count": 41
+      },
+      {
+        "word": "watch",
+        "count": 30
+      },
+      {
+        "word": "charliekirk",
+        "count": 29
+      },
+      {
+        "word": "here",
+        "count": 28
+      },
+      {
+        "word": "flatin",
+        "count": 28
+      },
+      {
+        "word": "out",
+        "count": 26
+      },
+      {
+        "word": "fuck",
+        "count": 24
+      },
+      {
+        "word": "it's",
+        "count": 23
+      },
+      {
+        "word": "shit",
+        "count": 22
+      },
+      {
+        "word": "youtu",
+        "count": 22
+      },
+      {
+        "word": "fucking",
+        "count": 20
+      },
+      {
+        "word": "have",
+        "count": 19
+      },
+      {
+        "word": "you're",
+        "count": 18
+      },
+      {
+        "word": "there",
+        "count": 17
+      }
+    ],
+    "Teth": [
+      {
+        "word": "girl",
+        "count": 211
+      },
+      {
+        "word": "dead",
+        "count": 84
+      },
+      {
+        "word": "soulcareer",
+        "count": 45
+      },
+      {
+        "word": "have",
+        "count": 42
+      },
+      {
+        "word": "owo",
+        "count": 36
+      },
+      {
+        "word": "gay",
+        "count": 26
+      },
+      {
+        "word": "faggots",
+        "count": 24
+      },
+      {
+        "word": "about",
+        "count": 24
+      },
+      {
+        "word": "faggot",
+        "count": 22
+      },
+      {
+        "word": "trannies",
+        "count": 22
+      },
+      {
+        "word": "you're",
+        "count": 21
+      },
+      {
+        "word": "all",
+        "count": 20
+      },
+      {
+        "word": "it's",
+        "count": 19
+      },
+      {
+        "word": "retarded",
+        "count": 18
+      },
+      {
+        "word": "people",
+        "count": 18
+      },
+      {
+        "word": "think",
+        "count": 17
+      },
+      {
+        "word": "kill",
+        "count": 17
+      },
+      {
+        "word": "dumbgoy",
+        "count": 17
+      },
+      {
+        "word": "some",
+        "count": 15
+      },
+      {
+        "word": "know",
+        "count": 15
+      }
+    ],
+    "Christistheway": [
+      {
+        "word": "owo",
+        "count": 43
+      },
+      {
+        "word": "have",
+        "count": 39
+      },
+      {
+        "word": "faggot",
+        "count": 33
+      },
+      {
+        "word": "now",
+        "count": 31
+      },
+      {
+        "word": "watchpeopledie",
+        "count": 30
+      },
+      {
+        "word": "some",
+        "count": 27
+      },
+      {
+        "word": "post",
+        "count": 26
+      },
+      {
+        "word": "bed",
+        "count": 23
+      },
+      {
+        "word": "all",
+        "count": 21
+      },
+      {
+        "word": "worthless",
+        "count": 21
+      },
+      {
+        "word": "goofy",
+        "count": 21
+      },
+      {
+        "word": "football",
+        "count": 18
+      },
+      {
+        "word": "even",
+        "count": 17
+      },
+      {
+        "word": "about",
+        "count": 17
+      },
+      {
+        "word": "laid",
+        "count": 17
+      },
+      {
+        "word": "relaxing",
+        "count": 17
+      },
+      {
+        "word": "down",
+        "count": 17
+      },
+      {
+        "word": "life",
+        "count": 16
+      },
+      {
+        "word": "into",
+        "count": 16
+      },
+      {
+        "word": "folks",
+        "count": 16
+      }
+    ],
+    "dog_whistle": [
+      {
+        "word": "girl",
+        "count": 57
+      },
+      {
+        "word": "nigger",
+        "count": 45
+      },
+      {
+        "word": "ass",
+        "count": 44
+      },
+      {
+        "word": "fucking",
+        "count": 44
+      },
+      {
+        "word": "gay",
+        "count": 42
+      },
+      {
+        "word": "faggot",
+        "count": 42
+      },
+      {
+        "word": "take",
+        "count": 41
+      },
+      {
+        "word": "hear",
+        "count": 35
+      },
+      {
+        "word": "xoog",
+        "count": 35
+      },
+      {
+        "word": "aids",
+        "count": 34
+      },
+      {
+        "word": "youtu",
+        "count": 33
+      },
+      {
+        "word": "org",
+        "count": 32
+      },
+      {
+        "word": "cdn",
+        "count": 31
+      },
+      {
+        "word": "have",
+        "count": 26
+      },
+      {
+        "word": "pol",
+        "count": 25
+      },
+      {
+        "word": "dog",
+        "count": 22
+      },
+      {
+        "word": "all",
+        "count": 21
+      },
+      {
+        "word": "shit",
+        "count": 20
+      },
+      {
+        "word": "get",
+        "count": 20
+      },
+      {
+        "word": "dead",
+        "count": 19
+      }
+    ],
+    "sanduser": [
+      {
+        "word": "lgbt",
+        "count": 34
+      },
+      {
+        "word": "kowal",
+        "count": 34
+      },
+      {
+        "word": "shadowmantis",
+        "count": 30
+      },
+      {
+        "word": "www",
+        "count": 26
+      },
+      {
+        "word": "youtube",
+        "count": 26
+      },
+      {
+        "word": "com",
+        "count": 26
+      },
+      {
+        "word": "we'll",
+        "count": 24
+      },
+      {
+        "word": "faggot",
+        "count": 23
+      },
+      {
+        "word": "have",
+        "count": 23
+      },
+      {
+        "word": "watch",
+        "count": 22
+      },
+      {
+        "word": "over",
+        "count": 22
+      },
+      {
+        "word": "it's",
+        "count": 20
+      },
+      {
+        "word": "shit",
+        "count": 20
+      },
+      {
+        "word": "him",
+        "count": 19
+      },
+      {
+        "word": "now",
+        "count": 19
+      },
+      {
+        "word": "about",
+        "count": 19
+      },
+      {
+        "word": "hasan",
+        "count": 18
+      },
+      {
+        "word": "cast",
+        "count": 17
+      },
+      {
+        "word": "all",
+        "count": 17
+      },
+      {
+        "word": "zack",
+        "count": 16
+      }
+    ],
+    "nameling": [
+      {
+        "word": "girl",
+        "count": 40
+      },
+      {
+        "word": "have",
+        "count": 39
+      },
+      {
+        "word": "get",
+        "count": 31
+      },
+      {
+        "word": "irc",
+        "count": 28
+      },
+      {
+        "word": "bot",
+        "count": 27
+      },
+      {
+        "word": "it's",
+        "count": 24
+      },
+      {
+        "word": "one",
+        "count": 24
+      },
+      {
+        "word": "about",
+        "count": 22
+      },
+      {
+        "word": "somebody",
+        "count": 19
+      },
+      {
+        "word": "think",
+        "count": 19
+      },
+      {
+        "word": "you're",
+        "count": 18
+      },
+      {
+        "word": "people",
+        "count": 18
+      },
+      {
+        "word": "going",
+        "count": 17
+      },
+      {
+        "word": "channel",
+        "count": 17
+      },
+      {
+        "word": "now",
+        "count": 15
+      },
+      {
+        "word": "real",
+        "count": 15
+      },
+      {
+        "word": "fuck",
+        "count": 15
+      },
+      {
+        "word": "dead",
+        "count": 13
+      },
+      {
+        "word": "url",
+        "count": 13
+      },
+      {
+        "word": "years",
+        "count": 12
+      }
+    ],
+    "[mezmur]": [
+      {
+        "word": "girl",
+        "count": 79
+      },
+      {
+        "word": "damn",
+        "count": 56
+      },
+      {
+        "word": "dead",
+        "count": 50
+      },
+      {
+        "word": "it's",
+        "count": 45
+      },
+      {
+        "word": "have",
+        "count": 26
+      },
+      {
+        "word": "one",
+        "count": 21
+      },
+      {
+        "word": "soulcareer",
+        "count": 20
+      },
+      {
+        "word": "about",
+        "count": 18
+      },
+      {
+        "word": "good",
+        "count": 18
+      },
+      {
+        "word": "here",
+        "count": 17
+      },
+      {
+        "word": "see",
+        "count": 17
+      },
+      {
+        "word": "get",
+        "count": 16
+      },
+      {
+        "word": "some",
+        "count": 13
+      },
+      {
+        "word": "too",
+        "count": 13
+      },
+      {
+        "word": "because",
+        "count": 12
+      },
+      {
+        "word": "more",
+        "count": 12
+      },
+      {
+        "word": "time",
+        "count": 12
+      },
+      {
+        "word": "that's",
+        "count": 12
+      },
+      {
+        "word": "you're",
+        "count": 12
+      },
+      {
+        "word": "want",
+        "count": 12
+      }
+    ],
+    "cheslav": [
+      {
+        "word": "that's",
+        "count": 39
+      },
+      {
+        "word": "people",
+        "count": 39
+      },
+      {
+        "word": "all",
+        "count": 32
+      },
+      {
+        "word": "it's",
+        "count": 31
+      },
+      {
+        "word": "you're",
+        "count": 26
+      },
+      {
+        "word": "have",
+        "count": 25
+      },
+      {
+        "word": "get",
+        "count": 17
+      },
+      {
+        "word": "out",
+        "count": 17
+      },
+      {
+        "word": "know",
+        "count": 14
+      },
+      {
+        "word": "right",
+        "count": 13
+      },
+      {
+        "word": "life",
+        "count": 13
+      },
+      {
+        "word": "dead",
+        "count": 12
+      },
+      {
+        "word": "kill",
+        "count": 12
+      },
+      {
+        "word": "some",
+        "count": 11
+      },
+      {
+        "word": "god",
+        "count": 11
+      },
+      {
+        "word": "there",
+        "count": 10
+      },
+      {
+        "word": "say",
+        "count": 9
+      },
+      {
+        "word": "shit",
+        "count": 9
+      },
+      {
+        "word": "remember",
+        "count": 9
+      },
+      {
+        "word": "about",
+        "count": 9
+      }
+    ],
+    "ni69er": [
+      {
+        "word": "girl",
+        "count": 53
+      },
+      {
+        "word": "have",
+        "count": 30
+      },
+      {
+        "word": "all",
+        "count": 25
+      },
+      {
+        "word": "out",
+        "count": 24
+      },
+      {
+        "word": "dead",
+        "count": 19
+      },
+      {
+        "word": "people",
+        "count": 19
+      },
+      {
+        "word": "know",
+        "count": 17
+      },
+      {
+        "word": "think",
+        "count": 16
+      },
+      {
+        "word": "balls",
+        "count": 16
+      },
+      {
+        "word": "dog",
+        "count": 15
+      },
+      {
+        "word": "one",
+        "count": 13
+      },
+      {
+        "word": "eating",
+        "count": 13
+      },
+      {
+        "word": "that's",
+        "count": 12
+      },
+      {
+        "word": "about",
+        "count": 12
+      },
+      {
+        "word": "toilet",
+        "count": 12
+      },
+      {
+        "word": "roleplay",
+        "count": 12
+      },
+      {
+        "word": "it's",
+        "count": 11
+      },
+      {
+        "word": "shit",
+        "count": 11
+      },
+      {
+        "word": "kowal",
+        "count": 11
+      },
+      {
+        "word": "now",
+        "count": 10
+      }
+    ],
+    "Tiger": [
+      {
+        "word": "girl",
+        "count": 133
+      },
+      {
+        "word": "it's",
+        "count": 33
+      },
+      {
+        "word": "dead",
+        "count": 28
+      },
+      {
+        "word": "have",
+        "count": 21
+      },
+      {
+        "word": "has",
+        "count": 18
+      },
+      {
+        "word": "thx",
+        "count": 17
+      },
+      {
+        "word": "about",
+        "count": 17
+      },
+      {
+        "word": "which",
+        "count": 16
+      },
+      {
+        "word": "people",
+        "count": 16
+      },
+      {
+        "word": "language",
+        "count": 12
+      },
+      {
+        "word": "country",
+        "count": 12
+      },
+      {
+        "word": "what's",
+        "count": 12
+      },
+      {
+        "word": "now",
+        "count": 11
+      },
+      {
+        "word": "look",
+        "count": 11
+      },
+      {
+        "word": "out",
+        "count": 11
+      },
+      {
+        "word": "there",
+        "count": 11
+      },
+      {
+        "word": "korean",
+        "count": 11
+      },
+      {
+        "word": "mean",
+        "count": 11
+      },
+      {
+        "word": "know",
+        "count": 10
+      },
+      {
+        "word": "hours",
+        "count": 10
+      }
+    ],
+    "fester": [
+      {
+        "word": "have",
+        "count": 42
+      },
+      {
+        "word": "it's",
+        "count": 27
+      },
+      {
+        "word": "nigger",
+        "count": 26
+      },
+      {
+        "word": "think",
+        "count": 23
+      },
+      {
+        "word": "know",
+        "count": 22
+      },
+      {
+        "word": "people",
+        "count": 20
+      },
+      {
+        "word": "kowal",
+        "count": 19
+      },
+      {
+        "word": "good",
+        "count": 16
+      },
+      {
+        "word": "all",
+        "count": 14
+      },
+      {
+        "word": "about",
+        "count": 13
+      },
+      {
+        "word": "girl",
+        "count": 13
+      },
+      {
+        "word": "stuff",
+        "count": 13
+      },
+      {
+        "word": "never",
+        "count": 13
+      },
+      {
+        "word": "mean",
+        "count": 12
+      },
+      {
+        "word": "one",
+        "count": 12
+      },
+      {
+        "word": "out",
+        "count": 12
+      },
+      {
+        "word": "dead",
+        "count": 12
+      },
+      {
+        "word": "had",
+        "count": 12
+      },
+      {
+        "word": "weird",
+        "count": 11
+      },
+      {
+        "word": "nice",
+        "count": 11
+      }
+    ],
+    "absentia": [
+      {
+        "word": "fucking",
+        "count": 91
+      },
+      {
+        "word": "heil",
+        "count": 90
+      },
+      {
+        "word": "nigger",
+        "count": 55
+      },
+      {
+        "word": "jews",
+        "count": 53
+      },
+      {
+        "word": "hitler",
+        "count": 52
+      },
+      {
+        "word": "redubious",
+        "count": 50
+      },
+      {
+        "word": "sieg",
+        "count": 50
+      },
+      {
+        "word": "put",
+        "count": 41
+      },
+      {
+        "word": "all",
+        "count": 40
+      },
+      {
+        "word": "fries",
+        "count": 39
+      },
+      {
+        "word": "bag",
+        "count": 39
+      },
+      {
+        "word": "girl",
+        "count": 29
+      },
+      {
+        "word": "owo",
+        "count": 21
+      },
+      {
+        "word": "think",
+        "count": 17
+      },
+      {
+        "word": "have",
+        "count": 17
+      },
+      {
+        "word": "now",
+        "count": 15
+      },
+      {
+        "word": "death",
+        "count": 15
+      },
+      {
+        "word": "wanna",
+        "count": 15
+      },
+      {
+        "word": "high",
+        "count": 15
+      },
+      {
+        "word": "hop",
+        "count": 14
+      }
+    ],
+    "nil": [
+      {
+        "word": "views",
+        "count": 39
+      },
+      {
+        "word": "youtube",
+        "count": 35
+      },
+      {
+        "word": "comments",
+        "count": 35
+      },
+      {
+        "word": "duration",
+        "count": 34
+      },
+      {
+        "word": "uploader",
+        "count": 34
+      },
+      {
+        "word": "uploaded",
+        "count": 34
+      },
+      {
+        "word": "likes",
+        "count": 34
+      },
+      {
+        "word": "favorites",
+        "count": 34
+      },
+      {
+        "word": "dislikes",
+        "count": 32
+      },
+      {
+        "word": "image",
+        "count": 25
+      },
+      {
+        "word": "woodwose",
+        "count": 24
+      },
+      {
+        "word": "more",
+        "count": 23
+      },
+      {
+        "word": "meant",
+        "count": 23
+      },
+      {
+        "word": "say",
+        "count": 23
+      },
+      {
+        "word": "error",
+        "count": 21
+      },
+      {
+        "word": "kib",
+        "count": 21
+      },
+      {
+        "word": "drymon",
+        "count": 19
+      },
+      {
+        "word": "retrieving",
+        "count": 19
+      },
+      {
+        "word": "title",
+        "count": 19
+      },
+      {
+        "word": "check",
+        "count": 19
+      }
+    ],
+    "truthr": [
+      {
+        "word": "girl",
+        "count": 217
+      },
+      {
+        "word": "dead",
+        "count": 67
+      },
+      {
+        "word": "com",
+        "count": 63
+      },
+      {
+        "word": "girard",
+        "count": 45
+      },
+      {
+        "word": "status",
+        "count": 32
+      },
+      {
+        "word": "www",
+        "count": 27
+      },
+      {
+        "word": "youtube",
+        "count": 27
+      },
+      {
+        "word": "watch",
+        "count": 27
+      },
+      {
+        "word": "have",
+        "count": 24
+      },
+      {
+        "word": "there",
+        "count": 16
+      },
+      {
+        "word": "alright",
+        "count": 13
+      },
+      {
+        "word": "nice",
+        "count": 12
+      },
+      {
+        "word": "good",
+        "count": 12
+      },
+      {
+        "word": "about",
+        "count": 12
+      },
+      {
+        "word": "going",
+        "count": 12
+      },
+      {
+        "word": "puretrance",
+        "count": 10
+      },
+      {
+        "word": "people",
+        "count": 10
+      },
+      {
+        "word": "over",
+        "count": 9
+      },
+      {
+        "word": "has",
+        "count": 8
+      },
+      {
+        "word": "all",
+        "count": 8
+      }
+    ],
+    "chicken_nugger": [
+      {
+        "word": "nigger",
+        "count": 48
+      },
+      {
+        "word": "cattle",
+        "count": 38
+      },
+      {
+        "word": "rue",
+        "count": 37
+      },
+      {
+        "word": "got",
+        "count": 35
+      },
+      {
+        "word": "girl",
+        "count": 30
+      },
+      {
+        "word": "have",
+        "count": 28
+      },
+      {
+        "word": "fucking",
+        "count": 28
+      },
+      {
+        "word": "dead",
+        "count": 22
+      },
+      {
+        "word": "here",
+        "count": 20
+      },
+      {
+        "word": "guys",
+        "count": 18
+      },
+      {
+        "word": "com",
+        "count": 18
+      },
+      {
+        "word": "kowal",
+        "count": 18
+      },
+      {
+        "word": "herd",
+        "count": 18
+      },
+      {
+        "word": "think",
+        "count": 17
+      },
+      {
+        "word": "masaomi",
+        "count": 17
+      },
+      {
+        "word": "watch",
+        "count": 16
+      },
+      {
+        "word": "about",
+        "count": 16
+      },
+      {
+        "word": "www",
+        "count": 15
+      },
+      {
+        "word": "excellent",
+        "count": 14
+      },
+      {
+        "word": "fuck",
+        "count": 13
+      }
+    ],
+    "Ubibim": [
+      {
+        "word": "com",
+        "count": 33
+      },
+      {
+        "word": "girl",
+        "count": 29
+      },
+      {
+        "word": "www",
+        "count": 24
+      },
+      {
+        "word": "youtube",
+        "count": 23
+      },
+      {
+        "word": "watch",
+        "count": 23
+      },
+      {
+        "word": "lgbt",
+        "count": 18
+      },
+      {
+        "word": "dumbgoy",
+        "count": 17
+      },
+      {
+        "word": "game",
+        "count": 17
+      },
+      {
+        "word": "faggot",
+        "count": 16
+      },
+      {
+        "word": "gay",
+        "count": 15
+      },
+      {
+        "word": "never",
+        "count": 15
+      },
+      {
+        "word": "far",
+        "count": 14
+      },
+      {
+        "word": "trump",
+        "count": 14
+      },
+      {
+        "word": "even",
+        "count": 13
+      },
+      {
+        "word": "have",
+        "count": 13
+      },
+      {
+        "word": "know",
+        "count": 12
+      },
+      {
+        "word": "got",
+        "count": 12
+      },
+      {
+        "word": "play",
+        "count": 12
+      },
+      {
+        "word": "people",
+        "count": 11
+      },
+      {
+        "word": "homo",
+        "count": 11
+      }
+    ],
+    "sadf": [
+      {
+        "word": "people",
+        "count": 35
+      },
+      {
+        "word": "some",
+        "count": 29
+      },
+      {
+        "word": "yea",
+        "count": 25
+      },
+      {
+        "word": "prob",
+        "count": 24
+      },
+      {
+        "word": "have",
+        "count": 24
+      },
+      {
+        "word": "it's",
+        "count": 23
+      },
+      {
+        "word": "want",
+        "count": 20
+      },
+      {
+        "word": "think",
+        "count": 20
+      },
+      {
+        "word": "get",
+        "count": 18
+      },
+      {
+        "word": "maybe",
+        "count": 17
+      },
+      {
+        "word": "islamic",
+        "count": 16
+      },
+      {
+        "word": "west",
+        "count": 15
+      },
+      {
+        "word": "islam",
+        "count": 14
+      },
+      {
+        "word": "out",
+        "count": 13
+      },
+      {
+        "word": "sure",
+        "count": 13
+      },
+      {
+        "word": "though",
+        "count": 13
+      },
+      {
+        "word": "well",
+        "count": 12
+      },
+      {
+        "word": "plan",
+        "count": 11
+      },
+      {
+        "word": "thing",
+        "count": 11
+      },
+      {
+        "word": "even",
+        "count": 11
+      }
+    ]
+  },
+  "swearLords": [
+    {
+      "nick": "girl",
+      "count": 20651,
+      "top": [
+        [
+          "fuck",
+          8147
+        ],
+        [
+          "fucking",
+          4405
+        ],
+        [
+          "fag",
+          2563
+        ],
+        [
+          "shit",
+          1655
+        ],
+        [
+          "faggot",
+          939
+        ]
+      ]
+    },
+    {
+      "nick": "dead_girl",
+      "count": 1789,
+      "top": [
+        [
+          "fuck",
+          636
+        ],
+        [
+          "shit",
+          455
+        ],
+        [
+          "fucking",
+          170
+        ],
+        [
+          "ass",
+          113
+        ],
+        [
+          "retard",
+          47
+        ]
+      ]
+    },
+    {
+      "nick": "Kowal",
+      "count": 1303,
+      "top": [
+        [
+          "shit",
+          246
+        ],
+        [
+          "fuck",
+          193
+        ],
+        [
+          "nigger",
+          176
+        ],
+        [
+          "retard",
+          150
+        ],
+        [
+          "retarded",
+          115
+        ]
+      ]
+    },
+    {
+      "nick": "Girard",
+      "count": 968,
+      "top": [
+        [
+          "shit",
+          275
+        ],
+        [
+          "fuck",
+          194
+        ],
+        [
+          "ass",
+          99
+        ],
+        [
+          "fag",
+          59
+        ],
+        [
+          "fucking",
+          52
+        ]
+      ]
+    },
+    {
+      "nick": "xOOG",
+      "count": 893,
+      "top": [
+        [
+          "fuck",
+          285
+        ],
+        [
+          "fucking",
+          136
+        ],
+        [
+          "nigger",
+          135
+        ],
+        [
+          "shit",
+          48
+        ],
+        [
+          "fucked",
+          38
+        ]
+      ]
+    },
+    {
+      "nick": "ShadowMantis",
+      "count": 889,
+      "top": [
+        [
+          "retard",
+          288
+        ],
+        [
+          "retarded",
+          138
+        ],
+        [
+          "whore",
+          74
+        ],
+        [
+          "nigger",
+          66
+        ],
+        [
+          "shit",
+          61
+        ]
+      ]
+    },
+    {
+      "nick": "dumbgoy",
+      "count": 784,
+      "top": [
+        [
+          "fuck",
+          250
+        ],
+        [
+          "shit",
+          201
+        ],
+        [
+          "nigger",
+          67
+        ],
+        [
+          "fucking",
+          52
+        ],
+        [
+          "ass",
+          37
+        ]
+      ]
+    },
+    {
+      "nick": "RedRose",
+      "count": 702,
+      "top": [
+        [
+          "fuck",
+          136
+        ],
+        [
+          "ass",
+          116
+        ],
+        [
+          "bitch",
+          74
+        ],
+        [
+          "fucking",
+          71
+        ],
+        [
+          "shit",
+          67
+        ]
+      ]
+    },
+    {
+      "nick": "osnap",
+      "count": 635,
+      "top": [
+        [
+          "fuck",
+          150
+        ],
+        [
+          "shit",
+          148
+        ],
+        [
+          "fucking",
+          89
+        ],
+        [
+          "ass",
+          50
+        ],
+        [
+          "bitch",
+          34
+        ]
+      ]
+    },
+    {
+      "nick": "linuxyo",
+      "count": 425,
+      "top": [
+        [
+          "shit",
+          100
+        ],
+        [
+          "fuck",
+          92
+        ],
+        [
+          "fucking",
+          52
+        ],
+        [
+          "ass",
+          31
+        ],
+        [
+          "retard",
+          26
+        ]
+      ]
+    },
+    {
+      "nick": "PureTrance",
+      "count": 425,
+      "top": [
+        [
+          "fuck",
+          86
+        ],
+        [
+          "shit",
+          76
+        ],
+        [
+          "fag",
+          52
+        ],
+        [
+          "retard",
+          38
+        ],
+        [
+          "ass",
+          37
+        ]
+      ]
+    },
+    {
+      "nick": "redubious",
+      "count": 379,
+      "top": [
+        [
+          "nigger",
+          100
+        ],
+        [
+          "fuck",
+          73
+        ],
+        [
+          "shit",
+          47
+        ],
+        [
+          "ass",
+          40
+        ],
+        [
+          "fucking",
+          32
+        ]
+      ]
+    },
+    {
+      "nick": "dog_whistle",
+      "count": 336,
+      "top": [
+        [
+          "fuck",
+          56
+        ],
+        [
+          "ass",
+          46
+        ],
+        [
+          "nigger",
+          45
+        ],
+        [
+          "fag",
+          44
+        ],
+        [
+          "fucking",
+          44
+        ]
+      ]
+    },
+    {
+      "nick": "absentia",
+      "count": 294,
+      "top": [
+        [
+          "fuck",
+          108
+        ],
+        [
+          "fucking",
+          91
+        ],
+        [
+          "nigger",
+          63
+        ],
+        [
+          "ass",
+          6
+        ],
+        [
+          "fag",
+          6
+        ]
+      ]
+    },
+    {
+      "nick": "CountChocula",
+      "count": 290,
+      "top": [
+        [
+          "fuck",
+          52
+        ],
+        [
+          "shit",
+          47
+        ],
+        [
+          "nigger",
+          46
+        ],
+        [
+          "ass",
+          33
+        ],
+        [
+          "damn",
+          21
+        ]
+      ]
+    },
+    {
+      "nick": "Teth",
+      "count": 284,
+      "top": [
+        [
+          "fag",
+          72
+        ],
+        [
+          "faggot",
+          57
+        ],
+        [
+          "fuck",
+          27
+        ],
+        [
+          "retard",
+          23
+        ],
+        [
+          "nigger",
+          21
+        ]
+      ]
+    },
+    {
+      "nick": "owo",
+      "count": 280,
+      "top": [
+        [
+          "fuck",
+          72
+        ],
+        [
+          "ass",
+          42
+        ],
+        [
+          "shit",
+          33
+        ],
+        [
+          "fucking",
+          21
+        ],
+        [
+          "bitch",
+          15
+        ]
+      ]
+    },
+    {
+      "nick": "SummerSkies",
+      "count": 267,
+      "top": [
+        [
+          "fuck",
+          145
+        ],
+        [
+          "shit",
+          57
+        ],
+        [
+          "ass",
+          14
+        ],
+        [
+          "damn",
+          10
+        ],
+        [
+          "bitch",
+          8
+        ]
+      ]
+    },
+    {
+      "nick": "truthwillout",
+      "count": 235,
+      "top": [
+        [
+          "fuck",
+          76
+        ],
+        [
+          "ass",
+          51
+        ],
+        [
+          "shit",
+          33
+        ],
+        [
+          "fucking",
+          19
+        ],
+        [
+          "shitty",
+          11
+        ]
+      ]
+    },
+    {
+      "nick": "mkgoo",
+      "count": 210,
+      "top": [
+        [
+          "bitch",
+          73
+        ],
+        [
+          "fuck",
+          31
+        ],
+        [
+          "shit",
+          21
+        ],
+        [
+          "fucking",
+          17
+        ],
+        [
+          "fag",
+          17
+        ]
+      ]
+    },
+    {
+      "nick": "rdr",
+      "count": 202,
+      "top": [
+        [
+          "fuck",
+          59
+        ],
+        [
+          "fucking",
+          28
+        ],
+        [
+          "damn",
+          25
+        ],
+        [
+          "shit",
+          23
+        ],
+        [
+          "ass",
+          16
+        ]
+      ]
+    },
+    {
+      "nick": "opsec",
+      "count": 201,
+      "top": [
+        [
+          "fuck",
+          49
+        ],
+        [
+          "shit",
+          28
+        ],
+        [
+          "fag",
+          26
+        ],
+        [
+          "fucking",
+          20
+        ],
+        [
+          "ass",
+          17
+        ]
+      ]
+    },
+    {
+      "nick": "GiRaRd",
+      "count": 200,
+      "top": [
+        [
+          "shit",
+          50
+        ],
+        [
+          "fuck",
+          36
+        ],
+        [
+          "ass",
+          23
+        ],
+        [
+          "fucking",
+          15
+        ],
+        [
+          "dick",
+          11
+        ]
+      ]
+    },
+    {
+      "nick": "jail_bait",
+      "count": 199,
+      "top": [
+        [
+          "fuck",
+          87
+        ],
+        [
+          "fag",
+          42
+        ],
+        [
+          "fucking",
+          31
+        ],
+        [
+          "faggot",
+          11
+        ],
+        [
+          "shit",
+          6
+        ]
+      ]
+    },
+    {
+      "nick": "michaelrules365",
+      "count": 186,
+      "top": [
+        [
+          "nigger",
+          105
+        ],
+        [
+          "nigga",
+          26
+        ],
+        [
+          "fuck",
+          20
+        ],
+        [
+          "fag",
+          15
+        ],
+        [
+          "dick",
+          4
+        ]
+      ]
+    },
+    {
+      "nick": "Mysteria",
+      "count": 180,
+      "top": [
+        [
+          "shit",
+          50
+        ],
+        [
+          "fuck",
+          37
+        ],
+        [
+          "ass",
+          19
+        ],
+        [
+          "damn",
+          12
+        ],
+        [
+          "piss",
+          8
+        ]
+      ]
+    },
+    {
+      "nick": "SoulCareer",
+      "count": 179,
+      "top": [
+        [
+          "ass",
+          61
+        ],
+        [
+          "fuck",
+          28
+        ],
+        [
+          "shit",
+          17
+        ],
+        [
+          "dick",
+          11
+        ],
+        [
+          "fag",
+          9
+        ]
+      ]
+    },
+    {
+      "nick": "ventures",
+      "count": 172,
+      "top": [
+        [
+          "fuck",
+          52
+        ],
+        [
+          "nigger",
+          33
+        ],
+        [
+          "ass",
+          16
+        ],
+        [
+          "shit",
+          16
+        ],
+        [
+          "fucking",
+          15
+        ]
+      ]
+    },
+    {
+      "nick": "stonecold",
+      "count": 163,
+      "top": [
+        [
+          "fuck",
+          46
+        ],
+        [
+          "shit",
+          33
+        ],
+        [
+          "fucking",
+          17
+        ],
+        [
+          "ass",
+          14
+        ],
+        [
+          "nigger",
+          8
+        ]
+      ]
+    },
+    {
+      "nick": "Mr-Snick",
+      "count": 163,
+      "top": [
+        [
+          "fuck",
+          62
+        ],
+        [
+          "shit",
+          35
+        ],
+        [
+          "fucking",
+          25
+        ],
+        [
+          "ass",
+          16
+        ],
+        [
+          "retard",
+          3
+        ]
+      ]
+    }
+  ],
+  "conversationMagnets": [
+    {
+      "nick": "dead_girl",
+      "score": 29999
+    },
+    {
+      "nick": "https",
+      "score": 26012
+    },
+    {
+      "nick": "girl",
+      "score": 23290
+    },
+    {
+      "nick": "Girard",
+      "score": 13695
+    },
+    {
+      "nick": "Kowal",
+      "score": 10600
+    },
+    {
+      "nick": "RedRose",
+      "score": 8964
+    },
+    {
+      "nick": "xOOG",
+      "score": 7582
+    },
+    {
+      "nick": "dumbgoy",
+      "score": 7385
+    },
+    {
+      "nick": "owo",
+      "score": 7185
+    },
+    {
+      "nick": "SoulCareer",
+      "score": 5693
+    },
+    {
+      "nick": "PureTrance",
+      "score": 5430
+    },
+    {
+      "nick": "truthwillout",
+      "score": 4786
+    },
+    {
+      "nick": "linuxyo",
+      "score": 4481
+    },
+    {
+      "nick": "CharlieKirk",
+      "score": 4212
+    },
+    {
+      "nick": "ShadowMantis",
+      "score": 4134
+    },
+    {
+      "nick": "Mysteria",
+      "score": 3155
+    },
+    {
+      "nick": "rdr",
+      "score": 3133
+    },
+    {
+      "nick": "SummerSkies",
+      "score": 3054
+    },
+    {
+      "nick": "redubious",
+      "score": 2852
+    },
+    {
+      "nick": "CountChocula",
+      "score": 2814
+    },
+    {
+      "nick": "yeah",
+      "score": 2268
+    },
+    {
+      "nick": "osnap",
+      "score": 2219
+    },
+    {
+      "nick": "GiRaRd",
+      "score": 2187
+    },
+    {
+      "nick": "Oh",
+      "score": 1840
+    },
+    {
+      "nick": "it",
+      "score": 1720
+    },
+    {
+      "nick": "fart",
+      "score": 1670
+    },
+    {
+      "nick": "meant",
+      "score": 1632
+    },
+    {
+      "nick": "you",
+      "score": 1588
+    },
+    {
+      "nick": "michaelrules365",
+      "score": 1566
+    },
+    {
+      "nick": "off",
+      "score": 1496
+    }
+  ],
+  "talkEdges": [
+    {
+      "from": "RedRose",
+      "to": "https",
+      "weight": 12644
+    },
+    {
+      "from": "Girard",
+      "to": "dead_girl",
+      "weight": 2934
+    },
+    {
+      "from": "owo",
+      "to": "girl",
+      "weight": 2860
+    },
+    {
+      "from": "dead_girl",
+      "to": "Girard",
+      "weight": 2531
+    },
+    {
+      "from": "girl",
+      "to": "Girard",
+      "weight": 2391
+    },
+    {
+      "from": "dead_girl",
+      "to": "girl",
+      "weight": 2165
+    },
+    {
+      "from": "dead_girl",
+      "to": "dumbgoy",
+      "weight": 2111
+    },
+    {
+      "from": "girl",
+      "to": "dead_girl",
+      "weight": 2096
+    },
+    {
+      "from": "dumbgoy",
+      "to": "dead_girl",
+      "weight": 1944
+    },
+    {
+      "from": "girl",
+      "to": "SoulCareer",
+      "weight": 1890
+    },
+    {
+      "from": "PureTrance",
+      "to": "dead_girl",
+      "weight": 1856
+    },
+    {
+      "from": "truthwillout",
+      "to": "girl",
+      "weight": 1849
+    },
+    {
+      "from": "girl",
+      "to": "owo",
+      "weight": 1829
+    },
+    {
+      "from": "Girard",
+      "to": "girl",
+      "weight": 1655
+    },
+    {
+      "from": "RedRose",
+      "to": "meant",
+      "weight": 1620
+    },
+    {
+      "from": "girl",
+      "to": "Oh",
+      "weight": 1608
+    },
+    {
+      "from": "Girard",
+      "to": "https",
+      "weight": 1582
+    },
+    {
+      "from": "RedRose",
+      "to": "dead_girl",
+      "weight": 1460
+    },
+    {
+      "from": "girl",
+      "to": "Kowal",
+      "weight": 1455
+    },
+    {
+      "from": "SoulCareer",
+      "to": "dead_girl",
+      "weight": 1423
+    },
+    {
+      "from": "SoulCareer",
+      "to": "girl",
+      "weight": 1407
+    },
+    {
+      "from": "Kowal",
+      "to": "https",
+      "weight": 1390
+    },
+    {
+      "from": "Kowal",
+      "to": "girl",
+      "weight": 1390
+    },
+    {
+      "from": "owo",
+      "to": "dead_girl",
+      "weight": 1375
+    },
+    {
+      "from": "girl",
+      "to": "off",
+      "weight": 1342
+    },
+    {
+      "from": "dead_girl",
+      "to": "owo",
+      "weight": 1327
+    },
+    {
+      "from": "dead_girl",
+      "to": "xOOG",
+      "weight": 1283
+    },
+    {
+      "from": "xOOG",
+      "to": "dead_girl",
+      "weight": 1232
+    },
+    {
+      "from": "dead_girl",
+      "to": "RedRose",
+      "weight": 1230
+    },
+    {
+      "from": "girl",
+      "to": "truthwillout",
+      "weight": 1230
+    },
+    {
+      "from": "dead_girl",
+      "to": "PureTrance",
+      "weight": 1208
+    },
+    {
+      "from": "PureTrance",
+      "to": "Girard",
+      "weight": 1184
+    },
+    {
+      "from": "dead_girl",
+      "to": "SoulCareer",
+      "weight": 1134
+    },
+    {
+      "from": "Kowal",
+      "to": "CharlieKirk",
+      "weight": 1082
+    },
+    {
+      "from": "truthwillout",
+      "to": "dead_girl",
+      "weight": 1077
+    },
+    {
+      "from": "Girard",
+      "to": "RedRose",
+      "weight": 1056
+    },
+    {
+      "from": "girl",
+      "to": "yeah",
+      "weight": 1050
+    },
+    {
+      "from": "linuxyo",
+      "to": "dead_girl",
+      "weight": 1005
+    },
+    {
+      "from": "PureTrance",
+      "to": "https",
+      "weight": 954
+    },
+    {
+      "from": "ShadowMantis",
+      "to": "xOOG",
+      "weight": 953
+    },
+    {
+      "from": "Girard",
+      "to": "PureTrance",
+      "weight": 909
+    },
+    {
+      "from": "dead_girl",
+      "to": "https",
+      "weight": 890
+    },
+    {
+      "from": "Girard",
+      "to": "Kowal",
+      "weight": 888
+    },
+    {
+      "from": "ShadowMantis",
+      "to": "Kowal",
+      "weight": 885
+    },
+    {
+      "from": "dead_girl",
+      "to": "truthwillout",
+      "weight": 848
+    },
+    {
+      "from": "Mysteria",
+      "to": "dead_girl",
+      "weight": 837
+    },
+    {
+      "from": "Kowal",
+      "to": "RedRose",
+      "weight": 836
+    },
+    {
+      "from": "SummerSkies",
+      "to": "dead_girl",
+      "weight": 830
+    },
+    {
+      "from": "dead_girl",
+      "to": "Mysteria",
+      "weight": 825
+    },
+    {
+      "from": "dead_girl",
+      "to": "linuxyo",
+      "weight": 816
+    },
+    {
+      "from": "rdr",
+      "to": "dead_girl",
+      "weight": 816
+    },
+    {
+      "from": "dumbgoy",
+      "to": "https",
+      "weight": 810
+    },
+    {
+      "from": "RedRose",
+      "to": "Girard",
+      "weight": 796
+    },
+    {
+      "from": "RedRose",
+      "to": "girl",
+      "weight": 789
+    },
+    {
+      "from": "girl",
+      "to": "xOOG",
+      "weight": 789
+    },
+    {
+      "from": "girl",
+      "to": "you",
+      "weight": 776
+    },
+    {
+      "from": "xOOG",
+      "to": "https",
+      "weight": 772
+    },
+    {
+      "from": "RedRose",
+      "to": "Kowal",
+      "weight": 769
+    },
+    {
+      "from": "dead_girl",
+      "to": "rdr",
+      "weight": 755
+    },
+    {
+      "from": "Kowal",
+      "to": "Girard",
+      "weight": 745
+    },
+    {
+      "from": "redubious",
+      "to": "https",
+      "weight": 716
+    },
+    {
+      "from": "dead_girl",
+      "to": "SummerSkies",
+      "weight": 707
+    },
+    {
+      "from": "dead_girl",
+      "to": "Kowal",
+      "weight": 689
+    },
+    {
+      "from": "linuxyo",
+      "to": "https",
+      "weight": 674
+    },
+    {
+      "from": "Kowal",
+      "to": "ShadowMantis",
+      "weight": 666
+    },
+    {
+      "from": "Kowal",
+      "to": "dead_girl",
+      "weight": 648
+    },
+    {
+      "from": "Girard",
+      "to": "dumbgoy",
+      "weight": 614
+    },
+    {
+      "from": "linuxyo",
+      "to": "Kowal",
+      "weight": 602
+    },
+    {
+      "from": "xOOG",
+      "to": "girl",
+      "weight": 602
+    },
+    {
+      "from": "ShadowMantis",
+      "to": "dead_girl",
+      "weight": 599
+    },
+    {
+      "from": "Kowal",
+      "to": "owo",
+      "weight": 592
+    },
+    {
+      "from": "girl",
+      "to": "truthr",
+      "weight": 585
+    },
+    {
+      "from": "xOOG",
+      "to": "CharlieKirk",
+      "weight": 584
+    },
+    {
+      "from": "girl",
+      "to": "it",
+      "weight": 572
+    },
+    {
+      "from": "Girard",
+      "to": "xOOG",
+      "weight": 571
+    },
+    {
+      "from": "xOOG",
+      "to": "ShadowMantis",
+      "weight": 559
+    },
+    {
+      "from": "PureTrance",
+      "to": "RedRose",
+      "weight": 556
+    },
+    {
+      "from": "girl",
+      "to": "GiRaRd",
+      "weight": 553
+    },
+    {
+      "from": "girl",
+      "to": "ShadowMantis",
+      "weight": 548
+    },
+    {
+      "from": "owo",
+      "to": "Kowal",
+      "weight": 544
+    },
+    {
+      "from": "RedRose",
+      "to": "Linked",
+      "weight": 542
+    },
+    {
+      "from": "RedRose",
+      "to": "Channel",
+      "weight": 542
+    },
+    {
+      "from": "redubious",
+      "to": "dead_girl",
+      "weight": 534
+    },
+    {
+      "from": "dumbgoy",
+      "to": "Girard",
+      "weight": 525
+    },
+    {
+      "from": "girl",
+      "to": "Ice`",
+      "weight": 522
+    },
+    {
+      "from": "girl",
+      "to": "powermail",
+      "weight": 500
+    },
+    {
+      "from": "Kowal",
+      "to": "yeah",
+      "weight": 498
+    },
+    {
+      "from": "Kowal",
+      "to": "linuxyo",
+      "weight": 497
+    },
+    {
+      "from": "CountChocula",
+      "to": "dead_girl",
+      "weight": 496
+    },
+    {
+      "from": "GiRaRd",
+      "to": "dead_girl",
+      "weight": 476
+    },
+    {
+      "from": "dead_girl",
+      "to": "redubious",
+      "weight": 470
+    },
+    {
+      "from": "dumbgoy",
+      "to": "RedRose",
+      "weight": 455
+    },
+    {
+      "from": "xOOG",
+      "to": "Girard",
+      "weight": 452
+    },
+    {
+      "from": "linuxyo",
+      "to": "CountChocula",
+      "weight": 451
+    },
+    {
+      "from": "girl",
+      "to": "Madafaka",
+      "weight": 451
+    },
+    {
+      "from": "girl",
+      "to": "Yeah",
+      "weight": 450
+    },
+    {
+      "from": "dumbgoy",
+      "to": "girl",
+      "weight": 447
+    },
+    {
+      "from": "girl",
+      "to": "michaelrules365",
+      "weight": 438
+    },
+    {
+      "from": "girl",
+      "to": "Well",
+      "weight": 436
+    },
+    {
+      "from": "girl",
+      "to": "dumbgoy",
+      "weight": 431
+    },
+    {
+      "from": "girl",
+      "to": "shit",
+      "weight": 426
+    },
+    {
+      "from": "xOOG",
+      "to": "RedRose",
+      "weight": 420
+    },
+    {
+      "from": "CharlieKirk",
+      "to": "Kowal",
+      "weight": 418
+    },
+    {
+      "from": "girl",
+      "to": "hey",
+      "weight": 418
+    },
+    {
+      "from": "girl",
+      "to": "me",
+      "weight": 418
+    },
+    {
+      "from": "girl",
+      "to": "dru",
+      "weight": 414
+    },
+    {
+      "from": "Kowal",
+      "to": "xOOG",
+      "weight": 408
+    },
+    {
+      "from": "dead_girl",
+      "to": "CountChocula",
+      "weight": 407
+    },
+    {
+      "from": "girl",
+      "to": "SummerSkies",
+      "weight": 403
+    },
+    {
+      "from": "michaelrules365",
+      "to": "girl",
+      "weight": 402
+    },
+    {
+      "from": "RedRose",
+      "to": "xOOG",
+      "weight": 401
+    },
+    {
+      "from": "dead_girl",
+      "to": "ShadowMantis",
+      "weight": 399
+    },
+    {
+      "from": "RedRose",
+      "to": "dumbgoy",
+      "weight": 399
+    },
+    {
+      "from": "ShadowMantis",
+      "to": "girl",
+      "weight": 390
+    },
+    {
+      "from": "RedRose",
+      "to": "PureTrance",
+      "weight": 390
+    },
+    {
+      "from": "girl",
+      "to": "RedRose",
+      "weight": 386
+    },
+    {
+      "from": "xOOG",
+      "to": "Kowal",
+      "weight": 385
+    },
+    {
+      "from": "girl",
+      "to": "ap",
+      "weight": 379
+    },
+    {
+      "from": "truthr",
+      "to": "girl",
+      "weight": 375
+    },
+    {
+      "from": "dead_girl",
+      "to": "GiRaRd",
+      "weight": 375
+    },
+    {
+      "from": "girl",
+      "to": "redubious",
+      "weight": 374
+    },
+    {
+      "from": "CountChocula",
+      "to": "linuxyo",
+      "weight": 371
+    },
+    {
+      "from": "girl",
+      "to": "dog_whistle",
+      "weight": 368
+    },
+    {
+      "from": "owo",
+      "to": "CharlieKirk",
+      "weight": 367
+    },
+    {
+      "from": "GiRaRd",
+      "to": "girl",
+      "weight": 366
+    },
+    {
+      "from": "redubious",
+      "to": "RedRose",
+      "weight": 358
+    },
+    {
+      "from": "osnap",
+      "to": "https",
+      "weight": 358
+    },
+    {
+      "from": "GiRard",
+      "to": "dead_girl",
+      "weight": 350
+    },
+    {
+      "from": "dead_girl",
+      "to": "osnap",
+      "weight": 347
+    },
+    {
+      "from": "dead_girl",
+      "to": "CharlieKirk",
+      "weight": 346
+    },
+    {
+      "from": "PureTrance",
+      "to": "FLatin",
+      "weight": 344
+    },
+    {
+      "from": "osnap",
+      "to": "dead_girl",
+      "weight": 343
+    },
+    {
+      "from": "SoulCareer",
+      "to": "owo",
+      "weight": 342
+    },
+    {
+      "from": "osnap",
+      "to": "girl",
+      "weight": 339
+    },
+    {
+      "from": "girl",
+      "to": "know",
+      "weight": 338
+    },
+    {
+      "from": "girl",
+      "to": "Owo",
+      "weight": 336
+    },
+    {
+      "from": "linuxyo",
+      "to": "RedRose",
+      "weight": 335
+    },
+    {
+      "from": "michaelrules365",
+      "to": "dead_girl",
+      "weight": 332
+    },
+    {
+      "from": "Teth",
+      "to": "girl",
+      "weight": 332
+    },
+    {
+      "from": "redubious",
+      "to": "girl",
+      "weight": 331
+    },
+    {
+      "from": "owo",
+      "to": "SoulCareer",
+      "weight": 330
+    },
+    {
+      "from": "girl",
+      "to": "Fuck",
+      "weight": 326
+    },
+    {
+      "from": "girl",
+      "to": "somebody___",
+      "weight": 325
+    },
+    {
+      "from": "girl",
+      "to": "Christistheway",
+      "weight": 319
+    },
+    {
+      "from": "Ice`",
+      "to": "girl",
+      "weight": 317
+    },
+    {
+      "from": "girl",
+      "to": "up",
+      "weight": 316
+    },
+    {
+      "from": "girl",
+      "to": "hell",
+      "weight": 312
+    },
+    {
+      "from": "girl",
+      "to": "Teth",
+      "weight": 308
+    },
+    {
+      "from": "girl",
+      "to": "PureTrance",
+      "weight": 307
+    },
+    {
+      "from": "truthwillout",
+      "to": "owo",
+      "weight": 305
+    }
+  ],
+  "randomQuotes": [
+    {
+      "nick": "owo",
+      "quote": "something good will come of it",
+      "ts": "2025-09-19 19:45:04"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "YouTube: Nine Inch Nails - Hurt Lyrics Video",
+      "ts": "2025-09-19 19:49:30"
+    },
+    {
+      "nick": "owo",
+      "quote": "i barely knew who he was except for recently watching one of his campus videos where he was talking about abortion",
+      "ts": "2025-09-19 19:50:14"
+    },
+    {
+      "nick": "owo",
+      "quote": "all i knew was that he was a great prolife advocate",
+      "ts": "2025-09-19 19:50:25"
+    },
+    {
+      "nick": "owo",
+      "quote": "i guess he must have been getting more and more popular recently",
+      "ts": "2025-09-19 19:50:59"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "the world needed more men like him, not celebrations of the loss of such men",
+      "ts": "2025-09-19 19:51:05"
+    },
+    {
+      "nick": "owo",
+      "quote": "for us both to have heard of him finally when he'd been around a while",
+      "ts": "2025-09-19 19:51:09"
+    },
+    {
+      "nick": "owo",
+      "quote": "haha i only just saw RedRose",
+      "ts": "2025-09-19 20:07:04"
+    },
+    {
+      "nick": "owo",
+      "quote": "haha that was the main thing i saw",
+      "ts": "2025-09-19 20:07:39"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "just added about Charlie though at the end",
+      "ts": "2025-09-19 20:07:39"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "and then BillGates ofc :P",
+      "ts": "2025-09-19 20:08:14"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "and then I wanted the OG ops",
+      "ts": "2025-09-19 20:08:20"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "-watitdew cause I hate him",
+      "ts": "2025-09-19 20:08:30"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "yeah apparently he was involved when Kowal mass kicked the channel",
+      "ts": "2025-09-19 20:09:58"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "is this afree speech channel?",
+      "ts": "2025-09-19 20:40:46"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "based on the #truth model but not governed by only transgender users",
+      "ts": "2025-09-19 20:41:40"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "the T in LGBT stands for terrorism",
+      "ts": "2025-09-19 20:42:03"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "i remember leeloo was constantly being abused every day lol",
+      "ts": "2025-09-19 20:42:20"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "and leeloo diligently argued back all day every day",
+      "ts": "2025-09-19 20:43:24"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "whilst being called sick, mentally ill, disgusting, perverted, etc ec",
+      "ts": "2025-09-19 20:43:37"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "find me somebody to loooove",
+      "ts": "2025-09-19 20:43:45"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "hey aradesh and somebody___ and owo",
+      "ts": "2025-09-19 20:44:22"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "how's everyone this glorious Friday afternoon?",
+      "ts": "2025-09-19 20:44:34"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "lazy. i front loaded my day with things, so now don't feel like doing much",
+      "ts": "2025-09-19 20:45:43"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "but if I plan things too late I get paralysed into waiting for that things time to come up",
+      "ts": "2025-09-19 20:51:12"
+    },
+    {
+      "nick": "owo",
+      "quote": "hey Kowal good to see you",
+      "ts": "2025-09-19 22:16:36"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "hey owo, likewise. How's it going?",
+      "ts": "2025-09-19 22:19:50"
+    },
+    {
+      "nick": "owo",
+      "quote": "i just tried oil paints for the first time",
+      "ts": "2025-09-19 22:21:12"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I want to paint rocks to add to the rock snake",
+      "ts": "2025-09-19 22:22:28"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "owo: would oil paints be good for painting snails?",
+      "ts": "2025-09-19 22:22:59"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "i want to draw england flags on all my garden snails",
+      "ts": "2025-09-19 22:23:14"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Would PAINTING be good for snails even though?",
+      "ts": "2025-09-19 22:23:21"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "darn look at this one https://visualflood.com/wp-content/uploads/2021/12/snail-shells-decorated-with-gorgeous-patterns-by-lisa-orlans-1.jpg",
+      "ts": "2025-09-19 22:26:10"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "Visualflood: No title found",
+      "ts": "2025-09-19 22:26:12"
+    },
+    {
+      "nick": "owo",
+      "quote": "aradesh: maybe not, because they take forever to dry",
+      "ts": "2025-09-19 22:34:49"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "if you spread them thin they dry faster and last a hell of a lot longer",
+      "ts": "2025-09-19 22:35:26"
+    },
+    {
+      "nick": "owo",
+      "quote": "you could use nail polish probably",
+      "ts": "2025-09-19 22:37:02"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "He says heil Hitler linuxyo he is working :P",
+      "ts": "2025-09-19 23:25:09"
+    },
+    {
+      "nick": "owo",
+      "quote": "i was watching a news video about the 2026 World Cup",
+      "ts": "2025-09-19 23:35:05"
+    },
+    {
+      "nick": "owo",
+      "quote": "it's taking place in Kansas City where i live",
+      "ts": "2025-09-19 23:35:15"
+    },
+    {
+      "nick": "owo",
+      "quote": "they said there are 21,830 hotel rooms within 2.5 hours of kansas city",
+      "ts": "2025-09-19 23:35:29"
+    },
+    {
+      "nick": "owo",
+      "quote": "and 600,000 visitors expected for the world cup",
+      "ts": "2025-09-19 23:35:37"
+    },
+    {
+      "nick": "linuxyo",
+      "quote": "nice to see you Kowal i hope you're well o/",
+      "ts": "2025-09-19 23:38:33"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "I hear you think I am upset with you",
+      "ts": "2025-09-19 23:38:51"
+    },
+    {
+      "nick": "linuxyo",
+      "quote": "that's good to know. i know you were hiding under other nicks before and i said something that revealed it was you without thinking.",
+      "ts": "2025-09-19 23:39:22"
+    },
+    {
+      "nick": "owo",
+      "quote": ">information on how to volunteer for the World Cup",
+      "ts": "2025-09-19 23:39:33"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "I haven't been on even under alts for a while",
+      "ts": "2025-09-19 23:39:40"
+    },
+    {
+      "nick": "linuxyo",
+      "quote": "Kowal: a month ago or so, i think",
+      "ts": "2025-09-19 23:39:42"
+    },
+    {
+      "nick": "owo",
+      "quote": "how many billions of dollars does FIFA have?",
+      "ts": "2025-09-19 23:39:46"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "it's always obvious when I am, so I'd never be mad",
+      "ts": "2025-09-19 23:39:48"
+    },
+    {
+      "nick": "owo",
+      "quote": "and they want us to volunteer?",
+      "ts": "2025-09-19 23:39:49"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "idk if it's more or less than the NFL, but NFL has more money than God",
+      "ts": "2025-09-19 23:40:18"
+    },
+    {
+      "nick": "linuxyo",
+      "quote": "Kowal: thanks for clearing that up. i was a little conflicted about it. you're a good dude and i don't want to cause problems for you.",
+      "ts": "2025-09-19 23:40:20"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "and they expect local volunteers for the superbowl",
+      "ts": "2025-09-19 23:40:29"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "even if I am on an alt, everyone who matters always finds out anyway",
+      "ts": "2025-09-19 23:40:53"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "anyway, just wanted to clear the air",
+      "ts": "2025-09-19 23:41:08"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Oh shit I forgot to switch the title bot to the server",
+      "ts": "2025-09-20 01:03:24"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "YouTube: blink-182 - ONE MORE TIME (Official Video)",
+      "ts": "2025-09-20 01:48:18"
+    },
+    {
+      "nick": "SummerSkies",
+      "quote": "dead_girl do you not join #good anymore?",
+      "ts": "2025-09-20 21:17:45"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Oh I just forgot actually SummerSkies",
+      "ts": "2025-09-20 21:23:26"
+    },
+    {
+      "nick": "SummerSkies",
+      "quote": "owo: that song i sent that one time,",
+      "ts": "2025-09-20 21:24:28"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "Soundcloud: Stream Sky Skating by Summer Skies | Listen online for free on SoundCloud",
+      "ts": "2025-09-20 21:25:11"
+    },
+    {
+      "nick": "owo",
+      "quote": "am i allowed to tell people to join this channel of my own volition?",
+      "ts": "2025-09-21 03:32:09"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I dunno if that worked I set fantasy and invite to 0 so anyone can do it, but I never know whether it works or not lolol",
+      "ts": "2025-09-21 05:54:35"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I am truly shocked that MooMoo is on the side of justifying Charlie Kirks death..",
+      "ts": "2025-09-21 11:29:21"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "People celebrating his death really draws a defining line in the sand between \"us\" and \"them\"",
+      "ts": "2025-09-21 11:30:01"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "YouTube: MIKA, RedOne - Kick Ass (We Are Young) (Official Music Video)",
+      "ts": "2025-09-21 17:00:42"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Lol it's supposed to be a joke, Ghoul",
+      "ts": "2025-09-21 17:04:07"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "This is an alternate dimension of #truth :P",
+      "ts": "2025-09-21 17:05:35"
+    },
+    {
+      "nick": "SummerSkies",
+      "quote": "[05:29.22] <+dead_girl> I am truly shocked that MooMoo is on the side of justifying Charlie Kirks death..",
+      "ts": "2025-09-21 17:43:28"
+    },
+    {
+      "nick": "SummerSkies",
+      "quote": "ive tried to tell momoo before",
+      "ts": "2025-09-21 17:43:33"
+    },
+    {
+      "nick": "SummerSkies",
+      "quote": "it is physically unhealthy to be that politically extreme",
+      "ts": "2025-09-21 17:43:40"
+    },
+    {
+      "nick": "SummerSkies",
+      "quote": "i am convinced i know some people whos lives have been shortened by their frustration with political outcomes.",
+      "ts": "2025-09-21 17:44:02"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I cannot understand these things",
+      "ts": "2025-09-21 17:44:05"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Imagine thinking his children deserve this",
+      "ts": "2025-09-21 17:44:18"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I've just been watching them discuss it today and it's just crazy that people genuinely think this way",
+      "ts": "2025-09-21 17:46:07"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "so, there are no first hand records of jesus.",
+      "ts": "2025-09-21 22:42:09"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "all seems a bit flimsy to base a huge religion on!",
+      "ts": "2025-09-21 22:42:53"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "not according to biblical historians",
+      "ts": "2025-09-21 23:05:06"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "they say that peter is the earliest source, but he only became a christian after his death",
+      "ts": "2025-09-21 23:05:30"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "though paul claims to have met jesus's brother",
+      "ts": "2025-09-21 23:05:43"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "and of the gospels the earliest is mark, believed to have been written around the end of the 1st century",
+      "ts": "2025-09-21 23:06:12"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "already generations after his death",
+      "ts": "2025-09-21 23:06:57"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "interesting thing about mark, it didn't have jesus resurrection in the earliest versions. just the tomb being found empty.",
+      "ts": "2025-09-21 23:07:32"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "and the descriptions of the resurrection become more vivid in later books",
+      "ts": "2025-09-21 23:09:08"
+    },
+    {
+      "nick": "HumilityExercise",
+      "quote": "anger at God can only be resolved by communicating with him directly",
+      "ts": "2025-09-21 23:18:38"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "important!!! https://usercontent.irccloud-cdn.com/file/7esUhNeW/1000093522.jpg",
+      "ts": "2025-09-22 01:41:33"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "Usercontent: No title found",
+      "ts": "2025-09-22 01:42:09"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Imagine being s tranny and sitting around saying things like Erika Kirk looks plastic or fake",
+      "ts": "2025-09-22 09:38:57"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "These are the same people claiming you can't tell if people are transgender 🙄",
+      "ts": "2025-09-22 09:39:35"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "09:41:58 ​<% MooMoo> ​Christian is becoming more a more synonymous with straight evil - it's an ironic turn of events.",
+      "ts": "2025-09-22 09:42:42"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Imagine having absolutely 0 idea",
+      "ts": "2025-09-22 09:43:00"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "09:35:18 ​<+ EastLight> ​I hope the PSYOP includes charlie's slut-wife going to visit the \"shooter\" in jail whom she \"forgives\"",
+      "ts": "2025-09-22 09:59:16"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "09:37:12 ​<% MooMoo> ​She looks like a plastic monster that married a fascist...",
+      "ts": "2025-09-22 10:00:29"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "09:37:57 ​<+ EastLight> ​She does seem to be caked in foundation, concealer, blush",
+      "ts": "2025-09-22 10:00:29"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "people going crazy on x because tucker carlson said that jesus's murders ate hummus",
+      "ts": "2025-09-22 13:06:37"
+    },
+    {
+      "nick": "aradesh",
+      "quote": "where did humility exercise go",
+      "ts": "2025-09-22 13:07:33"
+    },
+    {
+      "nick": "owo",
+      "quote": "i don't think anyone in history has ever been as violently insane as trannies",
+      "ts": "2025-09-22 16:10:45"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "Kowal keeps buying me sour sweets and they wreck my mouth :<",
+      "ts": "2025-09-23 07:41:10"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I even told him, I was like \"please don't ever buy me sour sweets again, they wreck my mouth\" :'(",
+      "ts": "2025-09-23 07:41:50"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "dead_girl: too bad there's no cure for that like there is for autism",
+      "ts": "2025-09-23 08:37:32"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "i will not stand for this senseless violence!",
+      "ts": "2025-09-23 10:52:28"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "you clearly were not bullied enough as a kid",
+      "ts": "2025-09-23 10:52:58"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "i was bullied a lot but i'm unsure on whether it was too much or too little. something went wrong, i know that much.",
+      "ts": "2025-09-23 10:53:21"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "now that my autism is cured i see everything so clearly",
+      "ts": "2025-09-23 10:54:14"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "YouTube: blink-182 - ONE MORE TIME (Official Video)",
+      "ts": "2025-09-23 11:04:25"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "the autism is returning. Try it, DaddyTrumpCuredMyAutism",
+      "ts": "2025-09-23 14:55:32"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I cant I have just been punching him to try fix him, Kowal",
+      "ts": "2025-09-23 14:56:36"
+    },
+    {
+      "nick": "Kowal",
+      "quote": ">TPUSA has announced its new nationwide campus tour, featuring Tucker Carlson and Michael Knowles among others",
+      "ts": "2025-09-23 15:04:46"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I already like this channel",
+      "ts": "2025-09-23 15:07:37"
+    },
+    {
+      "nick": "drymon",
+      "quote": "oh no, what the heck are you doing in this channel",
+      "ts": "2025-09-23 15:07:49"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I wanna be in the tranny free zone",
+      "ts": "2025-09-23 15:08:10"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I saw you in #truth and said to myself, enough of a person like that, let's try something else",
+      "ts": "2025-09-23 15:08:30"
+    },
+    {
+      "nick": "drymon",
+      "quote": "so I seeked for something better...",
+      "ts": "2025-09-23 15:08:37"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I think you can try #truther then",
+      "ts": "2025-09-23 15:08:53"
+    },
+    {
+      "nick": "drymon",
+      "quote": "lol, is that rocky's channel?",
+      "ts": "2025-09-23 15:09:02"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "thats where Rocky hangs out now",
+      "ts": "2025-09-23 15:09:07"
+    },
+    {
+      "nick": "drymon",
+      "quote": "that's worse than even you",
+      "ts": "2025-09-23 15:09:13"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I have no choice but to stay here",
+      "ts": "2025-09-23 15:09:23"
+    },
+    {
+      "nick": "drymon",
+      "quote": "#void might be the best channel",
+      "ts": "2025-09-23 15:09:30"
+    },
+    {
+      "nick": "drymon",
+      "quote": "drymon is literally ancient greek and means, tree-being",
+      "ts": "2025-09-23 15:10:00"
+    },
+    {
+      "nick": "drymon",
+      "quote": "which would translate to wood-wosa/e",
+      "ts": "2025-09-23 15:10:16"
+    },
+    {
+      "nick": "drymon",
+      "quote": "that's where \"was\" comes from, too",
+      "ts": "2025-09-23 15:10:32"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I had some great chips, but I had some terrible chips in sweden recently",
+      "ts": "2025-09-23 15:11:27"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I was waiting at the main train station in stockholm, and went into one of those supermarkets there",
+      "ts": "2025-09-23 15:11:48"
+    },
+    {
+      "nick": "drymon",
+      "quote": "and they had this special offering of root plant based chips...",
+      "ts": "2025-09-23 15:11:58"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I was not aware chips could even be terrible",
+      "ts": "2025-09-23 15:12:06"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I usually like them, but let's be honest, the appeal of chips is to be fatty, and very spicey",
+      "ts": "2025-09-23 15:12:14"
+    },
+    {
+      "nick": "drymon",
+      "quote": "they were neither oily, not spicey...",
+      "ts": "2025-09-23 15:12:22"
+    },
+    {
+      "nick": "drymon",
+      "quote": "and then, I ate one bag and it lead to diarrhea while sittin in the train",
+      "ts": "2025-09-23 15:12:37"
+    },
+    {
+      "nick": "drymon",
+      "quote": "they were offered to a special price, so I bought two",
+      "ts": "2025-09-23 15:12:48"
+    },
+    {
+      "nick": "drymon",
+      "quote": "but I couldn't get myself to eat the second bag, which never ever happened in my life before with chips...",
+      "ts": "2025-09-23 15:13:03"
+    },
+    {
+      "nick": "drymon",
+      "quote": "he probably thought that I was some fag or whatever",
+      "ts": "2025-09-23 15:14:08"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I would have declined as well, tbqh",
+      "ts": "2025-09-23 15:14:24"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "I saw my cousin eating those lays chips with that and she was like I'd rather shit my pants than be fat",
+      "ts": "2025-09-23 15:14:27"
+    },
+    {
+      "nick": "drymon",
+      "quote": "redrose is probably not required",
+      "ts": "2025-09-23 15:17:09"
+    },
+    {
+      "nick": "drymon",
+      "quote": "yeah, nil has better parsers",
+      "ts": "2025-09-23 15:17:40"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "RedRose is mine and its here cause of RoseRed in #truth lol",
+      "ts": "2025-09-23 15:18:21"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I was trying to make a sane duplicate of #truth run by respected chatters",
+      "ts": "2025-09-23 15:18:44"
+    },
+    {
+      "nick": "drymon",
+      "quote": "eh... should be against the",
+      "ts": "2025-09-23 15:19:09"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "its not really that I am not against it to be far",
+      "ts": "2025-09-23 15:19:28"
+    },
+    {
+      "nick": "drymon",
+      "quote": "if they were to mind their own business and not shove their sexuality up everybody's nose, thing could be different",
+      "ts": "2025-09-23 15:19:33"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I just dont want to hate a group of people that clearly have some kind of mental disability",
+      "ts": "2025-09-23 15:19:51"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I dont think they are ALL bad was all I was trying to say",
+      "ts": "2025-09-23 15:20:07"
+    },
+    {
+      "nick": "drymon",
+      "quote": "well, you don't see trisomy 21 people trying to harass you",
+      "ts": "2025-09-23 15:20:16"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "all of that does scare me though",
+      "ts": "2025-09-23 15:20:19"
+    },
+    {
+      "nick": "drymon",
+      "quote": "if they go to a public school",
+      "ts": "2025-09-23 15:20:38"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "my children will never go to public scholl",
+      "ts": "2025-09-23 15:20:52"
+    },
+    {
+      "nick": "drymon",
+      "quote": "well, then they are lucky",
+      "ts": "2025-09-23 15:21:05"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I was banned from #truth for speaking out against it",
+      "ts": "2025-09-23 15:21:25"
+    },
+    {
+      "nick": "drymon",
+      "quote": "moomoo literally banned me for that",
+      "ts": "2025-09-23 15:21:32"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I called him a white racist homo neo-nazi",
+      "ts": "2025-09-23 15:21:45"
+    },
+    {
+      "nick": "drymon",
+      "quote": "and criticised the trans movement",
+      "ts": "2025-09-23 15:21:51"
+    },
+    {
+      "nick": "drymon",
+      "quote": "he didn't seem to like being called a neo-nazi",
+      "ts": "2025-09-23 15:22:11"
+    },
+    {
+      "nick": "drymon",
+      "quote": "you could call him many things, but that he didn't like",
+      "ts": "2025-09-23 15:22:19"
+    },
+    {
+      "nick": "drymon",
+      "quote": "it's almost like I found a secret cheat code",
+      "ts": "2025-09-23 15:22:28"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "yeah you are on the blacklist for #truth",
+      "ts": "2025-09-23 15:22:40"
+    },
+    {
+      "nick": "drymon",
+      "quote": "that triggers him more than anything else",
+      "ts": "2025-09-23 15:22:41"
+    },
+    {
+      "nick": "drymon",
+      "quote": "he said, I won't enforce bans I didn't do myself",
+      "ts": "2025-09-23 15:22:58"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "they can ban you as they please cause you pissed Greatest off or someshit",
+      "ts": "2025-09-23 15:23:03"
+    },
+    {
+      "nick": "drymon",
+      "quote": "when people informed him about alts potentially being me",
+      "ts": "2025-09-23 15:23:06"
+    },
+    {
+      "nick": "drymon",
+      "quote": "but then he ended up being so pissed off about something",
+      "ts": "2025-09-23 15:23:15"
+    },
+    {
+      "nick": "drymon",
+      "quote": "how would somebody ever get pissed off by me",
+      "ts": "2025-09-23 15:23:33"
+    },
+    {
+      "nick": "drymon",
+      "quote": "anyways enough of the ego talk",
+      "ts": "2025-09-23 15:23:59"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "we speak of you fondly regularly actually",
+      "ts": "2025-09-23 15:24:08"
+    },
+    {
+      "nick": "drymon",
+      "quote": "troons... they are a serious danger to a healthy set of morals for kids",
+      "ts": "2025-09-23 15:24:23"
+    },
+    {
+      "nick": "drymon",
+      "quote": "they literally present nothing that is healthy to a functional society",
+      "ts": "2025-09-23 15:24:42"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I mean, literally nothing",
+      "ts": "2025-09-23 15:24:54"
+    },
+    {
+      "nick": "drymon",
+      "quote": "they are not even inclusive of kinds",
+      "ts": "2025-09-23 15:25:04"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I love that they are all getting fired and then crying about it on social media though",
+      "ts": "2025-09-23 15:25:19"
+    },
+    {
+      "nick": "drymon",
+      "quote": "you express a different opinion, they will literally try to kill you",
+      "ts": "2025-09-23 15:25:23"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "by this logic we could be killing them for being trannies you know..",
+      "ts": "2025-09-23 15:26:27"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "so I should be shooting up the streets",
+      "ts": "2025-09-23 15:26:47"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "the world is a mess and I feel scared",
+      "ts": "2025-09-23 15:26:58"
+    },
+    {
+      "nick": "drymon",
+      "quote": "the dumbest thing, I mean literally the dumbest thing I have ever seen in my entire life was LGQBT(...XYZ)+ folks shanting pro hamas slogans",
+      "ts": "2025-09-23 15:27:31"
+    },
+    {
+      "nick": "drymon",
+      "quote": "it's a deranged group of insane people trying to steer society",
+      "ts": "2025-09-23 15:28:38"
+    },
+    {
+      "nick": "drymon",
+      "quote": "you should be wary of them more than any filthy muslim... because those muslims don't dare to chop off their own genitals",
+      "ts": "2025-09-23 15:29:16"
+    },
+    {
+      "nick": "drymon",
+      "quote": "muslims only dare to mutilate their own kids",
+      "ts": "2025-09-23 15:29:23"
+    },
+    {
+      "nick": "drymon",
+      "quote": "they'd make great warriors",
+      "ts": "2025-09-23 15:29:50"
+    },
+    {
+      "nick": "drymon",
+      "quote": "if they weren't so gay, there is a reason homos are not good for the military",
+      "ts": "2025-09-23 15:30:27"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "main attraction being Mr Kowal ofc",
+      "ts": "2025-09-23 15:32:21"
+    },
+    {
+      "nick": "jeff_stacey",
+      "quote": "gonna grab some more coffee i just woke up :)",
+      "ts": "2025-09-23 15:32:51"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "drymon: I find myself asking every single day, what more will these people do before something is done to stop them indefinitely",
+      "ts": "2025-09-23 15:33:49"
+    },
+    {
+      "nick": "drymon",
+      "quote": "dead_girl: the way things look, the muslims will spread like rats, and be voted into office by these morons",
+      "ts": "2025-09-23 15:34:25"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "yeah I have seen England is busy imploding",
+      "ts": "2025-09-23 15:34:53"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "that's the problem right there",
+      "ts": "2025-09-23 15:34:55"
+    },
+    {
+      "nick": "drymon",
+      "quote": "most of europe is lost to islam",
+      "ts": "2025-09-23 15:35:18"
+    },
+    {
+      "nick": "drymon",
+      "quote": "and that's not an exaggeration",
+      "ts": "2025-09-23 15:35:36"
+    },
+    {
+      "nick": "drymon",
+      "quote": "last 5 votes I gave were for the AfD",
+      "ts": "2025-09-23 15:36:21"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "YouTube: OSHO: Democracy Is Not the Highest Possibility",
+      "ts": "2025-09-23 15:36:28"
+    },
+    {
+      "nick": "drymon",
+      "quote": "who knew that I turned out to be a right winger",
+      "ts": "2025-09-23 15:36:29"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "no not at all its just supposed to be a copy of MooMoo's dumb bot",
+      "ts": "2025-09-23 15:37:37"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "democracy basically means government for the people, by the people, and of the people",
+      "ts": "2025-09-23 15:37:44"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "but the people are retarded",
+      "ts": "2025-09-23 15:37:48"
+    },
+    {
+      "nick": "drymon",
+      "quote": "who am I to judge, I am quite retarded",
+      "ts": "2025-09-23 15:38:32"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "drymon, it ain't over. Spain was ruled by muslims for almost 800 years",
+      "ts": "2025-09-23 15:38:50"
+    },
+    {
+      "nick": "drymon",
+      "quote": "we don't really have democracies though...",
+      "ts": "2025-09-23 15:38:58"
+    },
+    {
+      "nick": "drymon",
+      "quote": "giving your 4 every other year is not a democracy",
+      "ts": "2025-09-23 15:39:08"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "yeah well the will of the people is never enacted",
+      "ts": "2025-09-23 15:39:14"
+    },
+    {
+      "nick": "drymon",
+      "quote": "switzerland might be the closest thing to that",
+      "ts": "2025-09-23 15:39:24"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "oh it does read tweets though which was something I really battled to get right",
+      "ts": "2025-09-23 15:39:26"
+    },
+    {
+      "nick": "drymon",
+      "quote": "dead_girl: I don't want to take away that joy from you to work on the bot",
+      "ts": "2025-09-23 15:39:48"
+    },
+    {
+      "nick": "drymon",
+      "quote": "but don't you think that some fancy api parser is useful?",
+      "ts": "2025-09-23 15:39:59"
+    },
+    {
+      "nick": "drymon",
+      "quote": "or do you want me to remove mine?",
+      "ts": "2025-09-23 15:40:07"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "you m ust understand I am self taught and struggle my way through all of it",
+      "ts": "2025-09-23 15:40:22"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I will just keep the tweets on",
+      "ts": "2025-09-23 15:40:41"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "> tear down the crescent! Raise the Cross upon the highest tower! For Granada is now Christian!",
+      "ts": "2025-09-23 15:41:06"
+    },
+    {
+      "nick": "nil",
+      "quote": "drymon: The operation succeeded.",
+      "ts": "2025-09-23 15:44:21"
+    },
+    {
+      "nick": "nil",
+      "quote": "drymon: <Kowal> > tear down the crescent! Raise the Cross upon the highest tower! For Granada is now Christian!",
+      "ts": "2025-09-23 15:44:25"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "chopped his legs right off",
+      "ts": "2025-09-23 15:45:32"
+    },
+    {
+      "nick": "drymon",
+      "quote": "but some plugins are broken atm... which is why I also deploy zilch",
+      "ts": "2025-09-23 15:46:45"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I forgot how that worked...",
+      "ts": "2025-09-23 15:48:44"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: Error: 'ud' is not a valid plugin.",
+      "ts": "2025-09-23 15:49:09"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: defdown, defup, expand, random, reset, and ud",
+      "ts": "2025-09-23 15:49:18"
+    },
+    {
+      "nick": "nil",
+      "quote": "drymon: \u0002\u000311[ex 1]\u000f Pejorative;[Friend]: \"Dude, you're into HER? She's a Dead Girl!\"[Affectionate];[Friend] #2: \"Dead Girls are hot!\"",
+      "ts": "2025-09-23 15:49:31"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: \u0002\u0003031.\u000f Usurping the [traditional] term GAY to take the [homosexual] meaning out and leaving in [the lame].\u000f",
+      "ts": "2025-09-23 15:49:59"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: \u0002\u0003073.\u000f a derivation of gay meaning lame. [meant to be] non-offensive to individuals of a [homosexual] [persuasion].\u000f",
+      "ts": "2025-09-23 15:50:01"
+    },
+    {
+      "nick": "Kowal",
+      "quote": ">Someone in south africa . From the south of joburg",
+      "ts": "2025-09-23 15:50:24"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "oh may you perhaps add that s/blah/blahblah thing woodwose ?",
+      "ts": "2025-09-23 15:50:45"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "I saw sedregex and thought it would work",
+      "ts": "2025-09-23 15:50:59"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "yeah I like having t hat though I feel like none of the channels have it anymorer",
+      "ts": "2025-09-23 15:51:20"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "\\config channel #truth-seekers plugins.sedregex.enable",
+      "ts": "2025-09-23 15:51:22"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "\\config channel #truth-seekers plugins.sedregex.enable true",
+      "ts": "2025-09-23 15:51:45"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: The operation succeeded.",
+      "ts": "2025-09-23 15:51:46"
+    },
+    {
+      "nick": "nil",
+      "quote": "Kowal thinks woodwose meant to say: \u0002fuck\u0002 it",
+      "ts": "2025-09-23 15:51:57"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "the best thing is the host greeter though",
+      "ts": "2025-09-23 15:53:00"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "code wise it's an over engineered piece of shit",
+      "ts": "2025-09-23 15:53:13"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: add, clear, list, modify, remove, search, and show",
+      "ts": "2025-09-23 15:53:22"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "my limnoria knowledge is a bit rusty",
+      "ts": "2025-09-23 15:53:55"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "\\hostgreeter add --nick drymon yo, man \\a/",
+      "ts": "2025-09-23 15:54:24"
+    },
+    {
+      "nick": "nil",
+      "quote": "woodwose: Greeting added for drymon!~drymon@8BEF9379.C13F409F.4199D0A6.IP in #truth-seekers.",
+      "ts": "2025-09-23 15:54:25"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "the problem was, that there was no decent hostmask based greeter for limnoria, so I had to make one",
+      "ts": "2025-09-23 15:55:02"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "people can add their own greetings, but they cannot modify that of others",
+      "ts": "2025-09-23 15:55:21"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "so everybody can set a greeting",
+      "ts": "2025-09-23 15:55:32"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "that's one of the better aspects of limnoria, it has a permission system",
+      "ts": "2025-09-23 15:55:50"
+    },
+    {
+      "nick": "drymon",
+      "quote": "\\hostgreeter list -nick drymon",
+      "ts": "2025-09-23 15:56:32"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "\\hostgreeter add --nick MooMoo Racist homo neo-nazi tr00n ^^",
+      "ts": "2025-09-23 15:56:35"
+    },
+    {
+      "nick": "nil",
+      "quote": "dead_girl: Oops: An unexpected error occurred.",
+      "ts": "2025-09-23 15:56:37"
+    },
+    {
+      "nick": "drymon",
+      "quote": "\\hostgreeter list --brief",
+      "ts": "2025-09-23 15:56:40"
+    },
+    {
+      "nick": "nil",
+      "quote": "drymon: drymon!~drymon@8BEF9379.C13F409F.4199D0A6.IP: yo, man \\a/",
+      "ts": "2025-09-23 15:56:41"
+    },
+    {
+      "nick": "dead_girl",
+      "quote": "I used to have a bot that called everyone a troon heh",
+      "ts": "2025-09-23 15:57:14"
+    },
+    {
+      "nick": "Kowal",
+      "quote": ">Why is Trump talking about a cure for autism when a gay furry just gunned-down one of his best friends?",
+      "ts": "2025-09-23 15:57:39"
+    },
+    {
+      "nick": "drymon",
+      "quote": "if you hop the bot, we have votekick",
+      "ts": "2025-09-23 15:57:50"
+    },
+    {
+      "nick": "drymon",
+      "quote": "\\hostgreeter modify -nick drymon Racist homo neo-nazi tr00n ^^",
+      "ts": "2025-09-23 15:58:26"
+    },
+    {
+      "nick": "drymon",
+      "quote": "\\hostgreeter modify --nick drymon Racist homo neo-nazi tr00n ^^",
+      "ts": "2025-09-23 15:58:40"
+    },
+    {
+      "nick": "nil",
+      "quote": "drymon: Greeting modified for drymon!~drymon@8BEF9379.C13F409F.4199D0A6.IP in #truth-seekers.",
+      "ts": "2025-09-23 15:58:41"
+    },
+    {
+      "nick": "drymon",
+      "quote": "it doesn't greet upon frequent rejoins",
+      "ts": "2025-09-23 15:59:13"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "but maybe I forgot to check for users network wise",
+      "ts": "2025-09-23 15:59:34"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "I don't want to look into that crap now, I am supposed to work on something else",
+      "ts": "2025-09-23 15:59:47"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "I migrated to PQC, SHA-3 and ED448 recently",
+      "ts": "2025-09-23 16:00:33"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "I am now trying to enable PQC everywhere",
+      "ts": "2025-09-23 16:01:08"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "but weechat has issues because it uses gnutls",
+      "ts": "2025-09-23 16:01:42"
+    },
+    {
+      "nick": "nil",
+      "quote": "allegedly 2025 is the point of no return",
+      "ts": "2025-09-23 16:02:18"
+    },
+    {
+      "nick": "nil",
+      "quote": "all the encrypted shit they harvest will be broken in 5 years from now",
+      "ts": "2025-09-23 16:03:04"
+    },
+    {
+      "nick": "nil",
+      "quote": "but I think the argument is, that they will harvest for 5 years in advance",
+      "ts": "2025-09-23 16:06:08"
+    },
+    {
+      "nick": "nil",
+      "quote": "knowing that they will ahve the capability in 2030",
+      "ts": "2025-09-23 16:06:18"
+    },
+    {
+      "nick": "nil",
+      "quote": "so the formula is Q day - 5 years",
+      "ts": "2025-09-23 16:06:32"
+    },
+    {
+      "nick": "drymon",
+      "quote": "sorry, but I can't stand gnome users, I must leave",
+      "ts": "2025-09-23 16:27:59"
+    },
+    {
+      "nick": "drymon",
+      "quote": "oh wait, wrong buffer, one moment",
+      "ts": "2025-09-23 16:28:08"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "sorry, but I can't gnome users, I must leave",
+      "ts": "2025-09-23 16:28:20"
+    },
+    {
+      "nick": "nil",
+      "quote": "so, this is the best channel on rizon now",
+      "ts": "2025-09-23 17:12:35"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I keep mixing up my buffers",
+      "ts": "2025-09-23 17:12:42"
+    },
+    {
+      "nick": "drymon",
+      "quote": "so, this is the best channel on cryzon now",
+      "ts": "2025-09-23 17:12:48"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "lmao Kowal it really works!",
+      "ts": "2025-09-23 17:12:54"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "tylenol will make you able to memorize an entire phone book",
+      "ts": "2025-09-23 17:13:02"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "it unlocks your true autism spectrum",
+      "ts": "2025-09-23 17:13:21"
+    },
+    {
+      "nick": "woodwose",
+      "quote": "but remember, nothing in the universe comes for free",
+      "ts": "2025-09-23 17:13:43"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "indeed. it's always a compromise. lose something, gain something. gain something, lose something.",
+      "ts": "2025-09-23 17:14:36"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "FWIW I own ##truth now... I guess thomas/Mighty regged the previous owners nick and took it over and gave it to me",
+      "ts": "2025-09-23 17:19:51"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "Feel free to check it out as well o/",
+      "ts": "2025-09-23 17:20:07"
+    },
+    {
+      "nick": "drymon",
+      "quote": "## name spaces are retarded",
+      "ts": "2025-09-23 17:20:15"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "FWIW I own ##8chan now... I guess thomas/Mighty regged the previous owners nick and took it over and gave it to me",
+      "ts": "2025-09-23 17:20:33"
+    },
+    {
+      "nick": "drymon",
+      "quote": "tbh, naming channels after others in some way is also retarded",
+      "ts": "2025-09-23 17:20:55"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "##8chan has existed for years and predates #truth noob",
+      "ts": "2025-09-23 17:21:07"
+    },
+    {
+      "nick": "drymon",
+      "quote": "that's why #void is the king of channels",
+      "ts": "2025-09-23 17:21:07"
+    },
+    {
+      "nick": "drymon",
+      "quote": "but all true winners run their own network",
+      "ts": "2025-09-23 17:21:22"
+    },
+    {
+      "nick": "drymon",
+      "quote": "and go with whatever channel the fuckthey want",
+      "ts": "2025-09-23 17:21:33"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "And Im off to my favvy fave indian buffet",
+      "ts": "2025-09-23 17:22:27"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "i feel like great now that my autism is cured",
+      "ts": "2025-09-23 17:22:28"
+    },
+    {
+      "nick": "drymon",
+      "quote": "but wouldn't you agree with me?",
+      "ts": "2025-09-23 17:22:32"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "finally living the life that i deserve, thanks to trump",
+      "ts": "2025-09-23 17:22:46"
+    },
+    {
+      "nick": "drymon",
+      "quote": "why is there a \"##\" and not a \"#\"?",
+      "ts": "2025-09-23 17:22:57"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "How did daddy trump cure ur autism?",
+      "ts": "2025-09-23 17:23:22"
+    },
+    {
+      "nick": "drymon",
+      "quote": "I think if you take the personal aspect or component out of this you would agree with me",
+      "ts": "2025-09-23 17:23:26"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "RAMBO: i stopped taking tylenol as per his medical advice",
+      "ts": "2025-09-23 17:23:36"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "i can already feel my autism receding",
+      "ts": "2025-09-23 17:23:45"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "DaddyTrumpCuredMyAutism: that wont work because the effects persist but I never took tylenol.",
+      "ts": "2025-09-23 17:24:11"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "i'm genuinely appreciative of the fact that they're looking into the causes of autism",
+      "ts": "2025-09-23 17:24:40"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "Why should i risk tylenol when aspirin is natural and safe and effective?",
+      "ts": "2025-09-23 17:24:41"
+    },
+    {
+      "nick": "DaddyTrumpCuredMyAutism",
+      "quote": "even though i joke about it",
+      "ts": "2025-09-23 17:24:48"
+    },
+    {
+      "nick": "RAMBO",
+      "quote": "Glad to hear it bbl lunch",
+      "ts": "2025-09-23 17:24:55"
+    },
+    {
+      "nick": "RedRose",
+      "quote": "YouTube: Trump addresses world leaders at UN General Assembly",
+      "ts": "2025-09-23 17:27:32"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "DaddyTrumpCuredMyAutism, good to hear",
+      "ts": "2025-09-23 17:41:19"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "I own ##############truth now. It was a desperate power struggle: spanning years and continents. Lives ruined and blood shed. Epic.",
+      "ts": "2025-09-23 17:43:07"
+    },
+    {
+      "nick": "Kowal",
+      "quote": "some people just can't handle 14-pound truth",
+      "ts": "2025-09-23 17:46:07"
+    },
+    {
+      "nick": "owo",
+      "quote": "anyone still awake enough to realize how strange this is?",
+      "ts": "2025-09-23 17:55:08"
+    },
+    {
+      "nick": "owo",
+      "quote": "thank you i thought so too",
+      "ts": "2025-09-23 17:57:07"
+    },
+    {
+      "nick": "owo",
+      "quote": "i clicked twice thinking i had made a mistake",
+      "ts": "2025-09-23 17:59:13"
+    },
+    {
+      "nick": "owo",
+      "quote": "now i'm wondering if it's lagging metadata or something?",
+      "ts": "2025-09-23 17:59:23"
+    },
+    {
+      "nick": "owo",
+      "quote": "maybe it is taking you to the correct video but the title that shows up on youtube bots is wrong",
+      "ts": "2025-09-23 17:59:43"
+    }
+  ],
+  "joins": [
+    {
+      "nick": "powermail",
+      "count": 309
+    },
+    {
+      "nick": "dru",
+      "count": 253
+    },
+    {
+      "nick": "SoulCareer",
+      "count": 244
+    },
+    {
+      "nick": "ap",
+      "count": 227
+    },
+    {
+      "nick": "Girard",
+      "count": 215
+    },
+    {
+      "nick": "truthr",
+      "count": 189
+    },
+    {
+      "nick": "Madafaka",
+      "count": 187
+    },
+    {
+      "nick": "antitheus",
+      "count": 157
+    },
+    {
+      "nick": "Christistheway",
+      "count": 155
+    },
+    {
+      "nick": "somebody___",
+      "count": 154
+    },
+    {
+      "nick": "dog_whistle",
+      "count": 149
+    },
+    {
+      "nick": "RottenVomit",
+      "count": 125
+    },
+    {
+      "nick": "michaelrules365",
+      "count": 124
+    },
+    {
+      "nick": "ShadowMantis",
+      "count": 123
+    },
+    {
+      "nick": "Nice2BMe",
+      "count": 123
+    },
+    {
+      "nick": "SummerSkies",
+      "count": 121
+    },
+    {
+      "nick": "girl",
+      "count": 114
+    },
+    {
+      "nick": "aek",
+      "count": 110
+    },
+    {
+      "nick": "[mezmur]",
+      "count": 104
+    },
+    {
+      "nick": "Hestia",
+      "count": 103
+    },
+    {
+      "nick": "liveuser",
+      "count": 92
+    },
+    {
+      "nick": "deadly",
+      "count": 84
+    },
+    {
+      "nick": "Nice2BMe__",
+      "count": 83
+    },
+    {
+      "nick": "oho",
+      "count": 81
+    },
+    {
+      "nick": "Skipp_OSX",
+      "count": 81
+    },
+    {
+      "nick": "RedRose",
+      "count": 70
+    },
+    {
+      "nick": "xOOG",
+      "count": 66
+    },
+    {
+      "nick": "Tiger",
+      "count": 64
+    },
+    {
+      "nick": "owo",
+      "count": 60
+    },
+    {
+      "nick": "Smoke",
+      "count": 60
+    }
+  ],
+  "quits": [
+    {
+      "nick": "powermail",
+      "count": 333
+    },
+    {
+      "nick": "dru",
+      "count": 244
+    },
+    {
+      "nick": "ap",
+      "count": 229
+    },
+    {
+      "nick": "SoulCareer",
+      "count": 223
+    },
+    {
+      "nick": "truthr",
+      "count": 188
+    },
+    {
+      "nick": "Girard",
+      "count": 186
+    },
+    {
+      "nick": "Madafaka",
+      "count": 185
+    },
+    {
+      "nick": "antitheus",
+      "count": 169
+    },
+    {
+      "nick": "somebody___",
+      "count": 161
+    },
+    {
+      "nick": "Christistheway",
+      "count": 142
+    },
+    {
+      "nick": "dog_whistle",
+      "count": 139
+    },
+    {
+      "nick": "michaelrules365",
+      "count": 125
+    },
+    {
+      "nick": "truthwillout",
+      "count": 125
+    },
+    {
+      "nick": "SummerSkies",
+      "count": 124
+    },
+    {
+      "nick": "RottenVomit",
+      "count": 122
+    },
+    {
+      "nick": "aek",
+      "count": 115
+    },
+    {
+      "nick": "girl",
+      "count": 104
+    },
+    {
+      "nick": "[mezmur]",
+      "count": 100
+    },
+    {
+      "nick": "Hestia",
+      "count": 98
+    },
+    {
+      "nick": "deadly",
+      "count": 82
+    },
+    {
+      "nick": "oho",
+      "count": 80
+    },
+    {
+      "nick": "Skipp_OSX",
+      "count": 80
+    },
+    {
+      "nick": "Nice2BMe__",
+      "count": 79
+    },
+    {
+      "nick": "ShadowMantis",
+      "count": 76
+    },
+    {
+      "nick": "Smoke",
+      "count": 69
+    },
+    {
+      "nick": "xOOG",
+      "count": 68
+    },
+    {
+      "nick": "RedRose",
+      "count": 62
+    },
+    {
+      "nick": "Tiger",
+      "count": 60
+    },
+    {
+      "nick": "Donepooping_Signature",
+      "count": 58
+    },
+    {
+      "nick": "linuxyo",
+      "count": 57
+    }
+  ],
+  "kicks": {
+    "byOp": [
+      {
+        "nick": "You",
+        "count": 19
+      }
+    ],
+    "received": [
+      {
+        "nick": "dead_girl",
+        "count": 17
+      },
+      {
+        "nick": "dead_giRl",
+        "count": 1
+      },
+      {
+        "nick": "kapibala",
+        "count": 1
+      }
+    ]
+  },
+  "modeChanges": {
+    "byOp": [
+      {
+        "nick": "BillGates",
+        "count": 3308
+      },
+      {
+        "nick": "irc.rizon.io",
+        "count": 164
+      },
+      {
+        "nick": "solenoid.rizon.net",
+        "count": 150
+      },
+      {
+        "nick": "Kowal",
+        "count": 110
+      },
+      {
+        "nick": "irc.rizon.life",
+        "count": 95
+      },
+      {
+        "nick": "Smallest",
+        "count": 51
+      },
+      {
+        "nick": "dumbgoy",
+        "count": 37
+      },
+      {
+        "nick": "Girard",
+        "count": 18
+      },
+      {
+        "nick": "irc.shells.org",
+        "count": 15
+      },
+      {
+        "nick": "irc.xtremeprovider.com",
+        "count": 15
+      },
+      {
+        "nick": "dead_girl",
+        "count": 7
+      },
+      {
+        "nick": "GiRaRd",
+        "count": 6
+      },
+      {
+        "nick": "drymon",
+        "count": 3
+      },
+      {
+        "nick": "PureTrance",
+        "count": 3
+      },
+      {
+        "nick": "GiRard",
+        "count": 2
+      },
+      {
+        "nick": "MisterReader",
+        "count": 1
+      },
+      {
+        "nick": "MrsReader",
+        "count": 1
+      },
+      {
+        "nick": "Violence",
+        "count": 1
+      }
+    ],
+    "givenTo": [
+      {
+        "nick": "dead_girl",
+        "count": 348
+      },
+      {
+        "nick": "powermail",
+        "count": 265
+      },
+      {
+        "nick": "Girard",
+        "count": 204
+      },
+      {
+        "nick": "SoulCareer",
+        "count": 186
+      },
+      {
+        "nick": "Madafaka",
+        "count": 175
+      },
+      {
+        "nick": "antitheus",
+        "count": 163
+      },
+      {
+        "nick": "somebody___",
+        "count": 147
+      },
+      {
+        "nick": "dog_whistle",
+        "count": 131
+      },
+      {
+        "nick": "SummerSkies",
+        "count": 109
+      },
+      {
+        "nick": "michaelrules365",
+        "count": 109
+      },
+      {
+        "nick": "girl",
+        "count": 108
+      },
+      {
+        "nick": "Christistheway",
+        "count": 103
+      },
+      {
+        "nick": "[mezmur]",
+        "count": 94
+      },
+      {
+        "nick": "Hestia",
+        "count": 92
+      },
+      {
+        "nick": "deadly",
+        "count": 83
+      },
+      {
+        "nick": "oho",
+        "count": 76
+      },
+      {
+        "nick": "RedRose",
+        "count": 71
+      },
+      {
+        "nick": "Skipp_OSX",
+        "count": 70
+      },
+      {
+        "nick": "xOOG",
+        "count": 65
+      },
+      {
+        "nick": "Tiger",
+        "count": 65
+      },
+      {
+        "nick": "owo",
+        "count": 54
+      },
+      {
+        "nick": "linuxyo",
+        "count": 54
+      },
+      {
+        "nick": "GiRaRd",
+        "count": 54
+      },
+      {
+        "nick": "Smoke",
+        "count": 53
+      },
+      {
+        "nick": "ShadowMantis",
+        "count": 50
+      },
+      {
+        "nick": "Arirang",
+        "count": 48
+      },
+      {
+        "nick": "truthwillout",
+        "count": 45
+      },
+      {
+        "nick": "RottenVomit",
+        "count": 44
+      },
+      {
+        "nick": "Mysteria",
+        "count": 43
+      },
+      {
+        "nick": "PureTrance",
+        "count": 41
+      }
+    ]
+  },
+  "nickChanges": [
+    {
+      "ts": "2025-09-20 17:03:44",
+      "old": "HumilityExercise",
+      "new": "owo"
+    },
+    {
+      "ts": "2025-09-21 17:31:26",
+      "old": "owo",
+      "new": "HumilityExercise"
+    },
+    {
+      "ts": "2025-09-22 05:13:51",
+      "old": "HumilityExercise",
+      "new": "owo"
+    },
+    {
+      "ts": "2025-09-22 20:59:09",
+      "old": "user_",
+      "new": "Smoke"
+    },
+    {
+      "ts": "2025-09-22 23:16:47",
+      "old": "user_",
+      "new": "Smoke"
+    },
+    {
+      "ts": "2025-09-23 01:49:11",
+      "old": "Ghoul",
+      "new": "SolesNGhouls"
+    },
+    {
+      "ts": "2025-09-23 02:00:01",
+      "old": "SolesNGhouls",
+      "new": "Snewla"
+    },
+    {
+      "ts": "2025-09-23 07:05:03",
+      "old": "linuxyo",
+      "new": "DaddyTrumpCuredMyAutism"
+    },
+    {
+      "ts": "2025-09-23 18:20:17",
+      "old": "owo",
+      "new": "HumilityExercise"
+    },
+    {
+      "ts": "2025-09-23 18:25:23",
+      "old": "HumilityExercise",
+      "new": "owo"
+    },
+    {
+      "ts": "2025-09-23 19:49:41",
+      "old": "owo",
+      "new": "oho"
+    },
+    {
+      "ts": "2025-09-23 22:45:00",
+      "old": "Kowal",
+      "new": "MrTvWatcher"
+    },
+    {
+      "ts": "2025-09-23 22:52:11",
+      "old": "MrTvWatcher",
+      "new": "Kowal"
+    },
+    {
+      "ts": "2025-09-24 03:57:39",
+      "old": "nil`",
+      "new": "nil"
+    },
+    {
+      "ts": "2025-09-24 05:09:54",
+      "old": "cheslav1",
+      "new": "cheslav"
+    },
+    {
+      "ts": "2025-09-24 08:25:32",
+      "old": "DaddyTrumpCuredMyAutism",
+      "new": "linuxyo"
+    },
+    {
+      "ts": "2025-09-24 18:13:09",
+      "old": "oho",
+      "new": "owo"
+    },
+    {
+      "ts": "2025-09-26 16:54:36",
+      "old": "JohnConnor",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-09-26 17:08:51",
+      "old": "PureTrance",
+      "new": "JohnConnor"
+    },
+    {
+      "ts": "2025-09-26 20:08:57",
+      "old": "JohnConnor",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-09-27 15:43:50",
+      "old": "lucifer",
+      "new": "linuxyo"
+    },
+    {
+      "ts": "2025-09-27 19:50:08",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-27 19:50:19",
+      "old": "Hyde",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-27 20:17:53",
+      "old": "Mysteria",
+      "new": "Mysti"
+    },
+    {
+      "ts": "2025-09-27 20:30:02",
+      "old": "Mysti",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-28 20:21:13",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-28 20:26:26",
+      "old": "dead_girl",
+      "new": "Connie"
+    },
+    {
+      "ts": "2025-09-28 20:26:45",
+      "old": "Connie",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-09-28 20:35:40",
+      "old": "Hyde",
+      "new": "Mysti"
+    },
+    {
+      "ts": "2025-09-28 20:46:43",
+      "old": "Mysti",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-28 22:14:31",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-28 22:15:39",
+      "old": "Hyde",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-28 22:28:52",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-28 22:29:02",
+      "old": "Hyde",
+      "new": "Mysti"
+    },
+    {
+      "ts": "2025-09-28 22:29:08",
+      "old": "Mysti",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-28 23:52:12",
+      "old": "Mysteria",
+      "new": "Mysti"
+    },
+    {
+      "ts": "2025-09-28 23:52:18",
+      "old": "Mysti",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-28 23:53:07",
+      "old": "Hyde",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-29 01:49:41",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-29 01:49:56",
+      "old": "Hyde",
+      "new": "Mysti"
+    },
+    {
+      "ts": "2025-09-29 01:51:07",
+      "old": "Mysti",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-29 03:38:02",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-09-29 03:38:28",
+      "old": "Hyde",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-09-29 13:50:46",
+      "old": "linuxyo",
+      "new": "Fuhrer"
+    },
+    {
+      "ts": "2025-09-29 13:50:57",
+      "old": "Fuhrer",
+      "new": "linuxyo"
+    },
+    {
+      "ts": "2025-09-30 13:47:44",
+      "old": "Guest1488",
+      "new": "DavidGest1488"
+    },
+    {
+      "ts": "2025-10-01 15:05:35",
+      "old": "dxy",
+      "new": "Friendly-Rapist-Lyft-Driver"
+    },
+    {
+      "ts": "2025-10-01 17:00:08",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-10-01 17:00:26",
+      "old": "Hyde",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-10-01 20:37:46",
+      "old": "Friendly-Rapist-Lyft-Driver",
+      "new": "Recruiter"
+    },
+    {
+      "ts": "2025-10-01 20:47:48",
+      "old": "sanduser2",
+      "new": "sanduser"
+    },
+    {
+      "ts": "2025-10-02 09:22:44",
+      "old": "PureTrance_",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-10-02 19:24:32",
+      "old": "opsec",
+      "new": "FLatins"
+    },
+    {
+      "ts": "2025-10-02 20:22:11",
+      "old": "FLatins",
+      "new": "opsec"
+    },
+    {
+      "ts": "2025-10-02 21:47:57",
+      "old": "Girard",
+      "new": "GiRard"
+    },
+    {
+      "ts": "2025-10-03 00:46:50",
+      "old": "linuxyo",
+      "new": "UMAMIMAN"
+    },
+    {
+      "ts": "2025-10-03 01:54:43",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-10-03 01:57:17",
+      "old": "Hyde",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-10-03 04:25:36",
+      "old": "fart",
+      "new": "CharlieKirkDeservedToDie"
+    },
+    {
+      "ts": "2025-10-03 06:11:24",
+      "old": "CharlieKirkDeservedToDie",
+      "new": "fart"
+    },
+    {
+      "ts": "2025-10-03 08:43:08",
+      "old": "PureTrance_",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-10-03 09:35:16",
+      "old": "Atque",
+      "new": "Atque2"
+    },
+    {
+      "ts": "2025-10-03 09:35:28",
+      "old": "Atque2",
+      "new": "Atque"
+    },
+    {
+      "ts": "2025-10-03 23:31:48",
+      "old": "Atque",
+      "new": "Atque2"
+    },
+    {
+      "ts": "2025-10-03 23:32:46",
+      "old": "Atque2",
+      "new": "Atque"
+    },
+    {
+      "ts": "2025-10-04 11:08:19",
+      "old": "Atque",
+      "new": "Atque2"
+    },
+    {
+      "ts": "2025-10-04 11:08:27",
+      "old": "Atque2",
+      "new": "Atque"
+    },
+    {
+      "ts": "2025-10-04 19:58:36",
+      "old": "linuxyo",
+      "new": "ReggaeFascist"
+    },
+    {
+      "ts": "2025-10-05 07:41:20",
+      "old": "ReggaeFascist",
+      "new": "PhatPhuck"
+    },
+    {
+      "ts": "2025-10-05 16:40:40",
+      "old": "lossevaril",
+      "new": "redubious"
+    },
+    {
+      "ts": "2025-10-05 20:39:25",
+      "old": "PhatPhuck",
+      "new": "linuxyo"
+    },
+    {
+      "ts": "2025-10-06 08:38:01",
+      "old": "xOOG",
+      "new": "COVID-xOOG"
+    },
+    {
+      "ts": "2025-10-06 15:26:19",
+      "old": "Ghoui",
+      "new": "Ghoul"
+    },
+    {
+      "ts": "2025-10-06 17:35:24",
+      "old": "linuxyo",
+      "new": "PhatPhuc"
+    },
+    {
+      "ts": "2025-10-06 17:39:39",
+      "old": "PhatPhuc",
+      "new": "AdmiralDonuts"
+    },
+    {
+      "ts": "2025-10-06 19:29:11",
+      "old": "Mysteria",
+      "new": "Hyde"
+    },
+    {
+      "ts": "2025-10-06 19:29:27",
+      "old": "Hyde",
+      "new": "Mysti"
+    },
+    {
+      "ts": "2025-10-06 20:03:23",
+      "old": "Mysti",
+      "new": "Mysteria"
+    },
+    {
+      "ts": "2025-10-07 04:54:08",
+      "old": "Atque",
+      "new": "Atque6"
+    },
+    {
+      "ts": "2025-10-07 04:54:50",
+      "old": "Atque6",
+      "new": "Atque"
+    },
+    {
+      "ts": "2025-10-07 09:06:26",
+      "old": "COVID-xOOG",
+      "new": "xOOG"
+    },
+    {
+      "ts": "2025-10-07 15:37:44",
+      "old": "AdmiralDonuts",
+      "new": "linuxyo"
+    },
+    {
+      "ts": "2025-10-07 17:26:07",
+      "old": "owo",
+      "new": "Guest36162"
+    },
+    {
+      "ts": "2025-10-07 17:27:34",
+      "old": "Guest36162",
+      "new": "owo"
+    },
+    {
+      "ts": "2025-10-08 01:21:44",
+      "old": "pk",
+      "new": "Guest42495"
+    },
+    {
+      "ts": "2025-10-08 01:22:06",
+      "old": "Guest42495",
+      "new": "princesskitana"
+    },
+    {
+      "ts": "2025-10-08 04:42:15",
+      "old": "princesskitana",
+      "new": "pk"
+    },
+    {
+      "ts": "2025-10-08 19:47:40",
+      "old": "Tiger_",
+      "new": "RAMBO_"
+    },
+    {
+      "ts": "2025-10-08 20:07:56",
+      "old": "nil`",
+      "new": "nil"
+    },
+    {
+      "ts": "2025-10-09 04:12:50",
+      "old": "Girard",
+      "new": "GiRard"
+    },
+    {
+      "ts": "2025-10-09 18:32:45",
+      "old": "SoulCareer",
+      "new": "Sgt-What-If-ston"
+    },
+    {
+      "ts": "2025-10-09 21:08:28",
+      "old": "user_",
+      "new": "Smoke"
+    },
+    {
+      "ts": "2025-10-09 22:25:35",
+      "old": "truthwillout",
+      "new": "Guest54027"
+    },
+    {
+      "ts": "2025-10-09 23:28:39",
+      "old": "truthwillout",
+      "new": "Guest32897"
+    },
+    {
+      "ts": "2025-10-09 23:29:09",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-09 23:52:40",
+      "old": "truthwillout",
+      "new": "Guest31045"
+    },
+    {
+      "ts": "2025-10-09 23:52:54",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-10 00:53:30",
+      "old": "truthwillout",
+      "new": "Guest20784"
+    },
+    {
+      "ts": "2025-10-10 00:55:22",
+      "old": "mint2",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-10 01:58:53",
+      "old": "truthwillout",
+      "new": "Guest2975"
+    },
+    {
+      "ts": "2025-10-10 01:59:09",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-10 04:26:41",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-10 06:52:27",
+      "old": "Tiger",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-10 07:44:59",
+      "old": "nil`",
+      "new": "nil"
+    },
+    {
+      "ts": "2025-10-10 11:15:14",
+      "old": "Tiger",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-10 17:40:29",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-10 23:40:07",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-11 06:36:23",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-11 13:53:48",
+      "old": "xOOG",
+      "new": "TurboAIDShomoFaggotPedoWeakArm"
+    },
+    {
+      "ts": "2025-10-11 13:57:29",
+      "old": "AIDShomoFaggotPedoHKM",
+      "new": "xOOG"
+    },
+    {
+      "ts": "2025-10-11 17:14:58",
+      "old": "Tiger",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-11 17:58:37",
+      "old": "Anon666",
+      "new": "ROCKY"
+    },
+    {
+      "ts": "2025-10-11 17:58:51",
+      "old": "ROCKY",
+      "new": "ROCKY_"
+    },
+    {
+      "ts": "2025-10-11 22:12:40",
+      "old": "rdr",
+      "new": "Buddha"
+    },
+    {
+      "ts": "2025-10-11 22:27:50",
+      "old": "Buddha",
+      "new": "Alberta"
+    },
+    {
+      "ts": "2025-10-11 22:32:37",
+      "old": "Alberta",
+      "new": "rdr"
+    },
+    {
+      "ts": "2025-10-11 22:32:52",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-12 04:25:25",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-12 18:23:54",
+      "old": "Tiger",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-13 23:44:49",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-14 01:23:24",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-14 02:07:35",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-14 05:09:53",
+      "old": "Girard",
+      "new": "GiRard"
+    },
+    {
+      "ts": "2025-10-14 05:18:58",
+      "old": "Hestia",
+      "new": "Guest23011"
+    },
+    {
+      "ts": "2025-10-14 05:22:48",
+      "old": "Guest23011",
+      "new": "Hestia"
+    },
+    {
+      "ts": "2025-10-14 13:31:53",
+      "old": "Hestia",
+      "new": "Guest55358"
+    },
+    {
+      "ts": "2025-10-14 15:55:51",
+      "old": "Guest55358",
+      "new": "Hestia"
+    },
+    {
+      "ts": "2025-10-14 16:47:40",
+      "old": "opsec",
+      "new": "assclowns"
+    },
+    {
+      "ts": "2025-10-14 20:12:42",
+      "old": "Kowal",
+      "new": "Equality"
+    },
+    {
+      "ts": "2025-10-14 20:13:02",
+      "old": "Equality",
+      "new": "Equality7-2521"
+    },
+    {
+      "ts": "2025-10-14 22:56:53",
+      "old": "Equality7-2521",
+      "new": "Kowal"
+    },
+    {
+      "ts": "2025-10-15 01:50:42",
+      "old": "SoulCareer",
+      "new": "Cumhaill"
+    },
+    {
+      "ts": "2025-10-15 01:53:49",
+      "old": "Cumhaill",
+      "new": "SoulCareer"
+    },
+    {
+      "ts": "2025-10-16 00:12:12",
+      "old": "Hestia2",
+      "new": "Hestia"
+    },
+    {
+      "ts": "2025-10-16 02:18:56",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-16 02:51:20",
+      "old": "Ghoul",
+      "new": "psychoTheRapist"
+    },
+    {
+      "ts": "2025-10-16 02:52:12",
+      "old": "psychoTheRapist",
+      "new": "Ghoul"
+    },
+    {
+      "ts": "2025-10-16 02:55:55",
+      "old": "linuxyo",
+      "new": "iFUCKmyself"
+    },
+    {
+      "ts": "2025-10-16 04:29:14",
+      "old": "iFUCKmyself",
+      "new": "linuxyo"
+    },
+    {
+      "ts": "2025-10-16 13:38:34",
+      "old": "Anon666",
+      "new": "Guest23586"
+    },
+    {
+      "ts": "2025-10-16 13:39:00",
+      "old": "Guest23586",
+      "new": "Tiger_"
+    },
+    {
+      "ts": "2025-10-16 21:21:50",
+      "old": "cheslav1",
+      "new": "cheslav"
+    },
+    {
+      "ts": "2025-10-17 00:24:43",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-17 02:50:34",
+      "old": "Melvinn",
+      "new": "Mastarr"
+    },
+    {
+      "ts": "2025-10-17 03:32:23",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-17 03:43:13",
+      "old": "cheslav1",
+      "new": "cheslav"
+    },
+    {
+      "ts": "2025-10-17 04:03:53",
+      "old": "Mastarr",
+      "new": "BenDover"
+    },
+    {
+      "ts": "2025-10-17 05:50:00",
+      "old": "BenDover",
+      "new": "Melvinn"
+    },
+    {
+      "ts": "2025-10-17 05:51:53",
+      "old": "Tiger",
+      "new": "PissedOffGuest"
+    },
+    {
+      "ts": "2025-10-17 06:47:45",
+      "old": "Hestia",
+      "new": "Guest59483"
+    },
+    {
+      "ts": "2025-10-17 07:08:17",
+      "old": "dead_girl",
+      "new": "earth_girl"
+    },
+    {
+      "ts": "2025-10-17 07:29:54",
+      "old": "earth_girl",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-10-17 07:31:26",
+      "old": "Melvinn",
+      "new": "S_T_F_U"
+    },
+    {
+      "ts": "2025-10-17 07:33:13",
+      "old": "S_T_F_U",
+      "new": "Melvinn"
+    },
+    {
+      "ts": "2025-10-17 07:44:08",
+      "old": "Guest59483",
+      "new": "Hestia"
+    },
+    {
+      "ts": "2025-10-17 09:49:09",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-17 11:11:39",
+      "old": "CountChocula",
+      "new": "wigger"
+    },
+    {
+      "ts": "2025-10-17 11:13:52",
+      "old": "wigger",
+      "new": "fester"
+    },
+    {
+      "ts": "2025-10-17 11:15:31",
+      "old": "fester",
+      "new": "CountChocula"
+    },
+    {
+      "ts": "2025-10-17 16:48:44",
+      "old": "PureTrance_",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-10-17 23:03:12",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-18 03:13:20",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-18 04:47:13",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-18 11:33:55",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-19 03:16:06",
+      "old": "tabletopjimmy",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-19 17:01:04",
+      "old": "Nice2BMe",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-20 01:14:20",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-20 09:30:39",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-20 20:36:39",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-20 20:44:50",
+      "old": "Nice2BMe",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-20 21:35:10",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-20 22:00:53",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-21 06:11:07",
+      "old": "Nice2BMe",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-21 06:11:43",
+      "old": "Anon666",
+      "new": "Nice2BMe"
+    },
+    {
+      "ts": "2025-10-21 07:55:59",
+      "old": "chert",
+      "new": "chet"
+    },
+    {
+      "ts": "2025-10-21 08:16:38",
+      "old": "chet_",
+      "new": "chet"
+    },
+    {
+      "ts": "2025-10-21 09:55:45",
+      "old": "Girard1",
+      "new": "Girard"
+    },
+    {
+      "ts": "2025-10-21 10:18:38",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-21 12:29:00",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-22 00:07:51",
+      "old": "Shitland_Signaturd",
+      "new": "boy"
+    },
+    {
+      "ts": "2025-10-22 01:01:37",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-22 04:49:31",
+      "old": "Hestia",
+      "new": "Guest61299"
+    },
+    {
+      "ts": "2025-10-22 05:05:58",
+      "old": "Guest61299",
+      "new": "Hestia"
+    },
+    {
+      "ts": "2025-10-22 06:48:04",
+      "old": "slacker",
+      "new": "Owlman"
+    },
+    {
+      "ts": "2025-10-22 06:48:12",
+      "old": "Owlman",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-10-22 07:55:44",
+      "old": "PureTrance_",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-10-22 17:27:22",
+      "old": "Justice4Fart",
+      "new": "fart"
+    },
+    {
+      "ts": "2025-10-22 18:06:04",
+      "old": "Nice2BMe",
+      "new": "Guest14336"
+    },
+    {
+      "ts": "2025-10-22 18:34:03",
+      "old": "Guest14336",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-23 02:42:59",
+      "old": "KirklandSignature",
+      "new": "anne"
+    },
+    {
+      "ts": "2025-10-23 09:16:58",
+      "old": "slacker",
+      "new": "morningwood"
+    },
+    {
+      "ts": "2025-10-23 09:17:09",
+      "old": "morningwood",
+      "new": "MorningWood"
+    },
+    {
+      "ts": "2025-10-23 09:18:34",
+      "old": "MorningWood",
+      "new": "slacKer"
+    },
+    {
+      "ts": "2025-10-23 09:19:22",
+      "old": "slacKer",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-10-23 09:45:47",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-23 14:06:29",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-23 19:59:12",
+      "old": "Owlman",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-10-23 21:52:07",
+      "old": "Nice2BMe_",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-23 22:52:59",
+      "old": "Nice2BMe",
+      "new": "Anon666`"
+    },
+    {
+      "ts": "2025-10-23 22:54:00",
+      "old": "Anon666`",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-24 03:54:25",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-24 06:03:21",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-24 08:34:27",
+      "old": "Ghoul",
+      "new": "Snowla"
+    },
+    {
+      "ts": "2025-10-24 08:38:08",
+      "old": "Snowla",
+      "new": "Ghoul"
+    },
+    {
+      "ts": "2025-10-24 08:51:17",
+      "old": "Hestia",
+      "new": "Guest4057"
+    },
+    {
+      "ts": "2025-10-24 09:49:23",
+      "old": "truthwillout",
+      "new": "Guest47965"
+    },
+    {
+      "ts": "2025-10-24 09:49:45",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-24 11:44:05",
+      "old": "diy",
+      "new": "peach"
+    },
+    {
+      "ts": "2025-10-24 12:36:30",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-24 14:46:27",
+      "old": "Nice2BMe",
+      "new": "Guest32776"
+    },
+    {
+      "ts": "2025-10-24 15:45:00",
+      "old": "Guest32776",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-24 20:50:42",
+      "old": "Guest4057",
+      "new": "Hestia"
+    },
+    {
+      "ts": "2025-10-24 22:29:46",
+      "old": "Kirkland_Signature",
+      "new": "KirklandSignature"
+    },
+    {
+      "ts": "2025-10-24 23:04:37",
+      "old": "quietus_",
+      "new": "quietus"
+    },
+    {
+      "ts": "2025-10-25 00:02:23",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-25 00:54:42",
+      "old": "truthwillout",
+      "new": "muurrr"
+    },
+    {
+      "ts": "2025-10-25 01:30:25",
+      "old": "muurrr",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-25 02:19:40",
+      "old": "Ghoul",
+      "new": "lolcow"
+    },
+    {
+      "ts": "2025-10-25 02:20:56",
+      "old": "lolcow",
+      "new": "Ghoul"
+    },
+    {
+      "ts": "2025-10-25 06:47:33",
+      "old": "mint",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-25 06:56:25",
+      "old": "mint4",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-25 07:55:00",
+      "old": "dead_girl",
+      "new": "dead_"
+    },
+    {
+      "ts": "2025-10-25 08:00:51",
+      "old": "dead_",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-10-25 08:37:58",
+      "old": "Ghoul",
+      "new": "Kaylee"
+    },
+    {
+      "ts": "2025-10-25 08:48:50",
+      "old": "Kaylee",
+      "new": "Ghoul"
+    },
+    {
+      "ts": "2025-10-27 08:53:50",
+      "old": "dead_girl",
+      "new": "glyphosate"
+    },
+    {
+      "ts": "2025-10-27 08:56:51",
+      "old": "glyphosate",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-10-27 17:25:31",
+      "old": "Nice2BMe_",
+      "new": "Nice2BMe"
+    },
+    {
+      "ts": "2025-10-27 18:21:49",
+      "old": "gmagkanaris",
+      "new": "gmagk"
+    },
+    {
+      "ts": "2025-10-27 18:27:24",
+      "old": "gmagkanaris",
+      "new": "gmagk"
+    },
+    {
+      "ts": "2025-10-27 20:01:16",
+      "old": "Nice2BMe_",
+      "new": "Anon666"
+    },
+    {
+      "ts": "2025-10-28 21:22:25",
+      "old": "ShadowMa1",
+      "new": "ShadowMantis"
+    },
+    {
+      "ts": "2025-10-29 08:07:10",
+      "old": "dead_girl",
+      "new": "dead_"
+    },
+    {
+      "ts": "2025-10-29 08:07:25",
+      "old": "dead_",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-10-29 16:26:21",
+      "old": "Rue_",
+      "new": "YouTryinToGetSmokedOrWhatMyBoy"
+    },
+    {
+      "ts": "2025-10-29 17:33:07",
+      "old": "YouTryinToGetSmokedOrWhatMyBoy",
+      "new": "Rue"
+    },
+    {
+      "ts": "2025-10-29 21:19:25",
+      "old": "Offland_Worknature",
+      "new": "peepeepoopoo"
+    },
+    {
+      "ts": "2025-10-29 21:22:03",
+      "old": "peepeepoopoo",
+      "new": "Kirkland_Signature"
+    },
+    {
+      "ts": "2025-10-29 22:27:14",
+      "old": "xOOG_",
+      "new": "xOOG"
+    },
+    {
+      "ts": "2025-10-30 01:01:45",
+      "old": "stonecold",
+      "new": "squeaker"
+    },
+    {
+      "ts": "2025-10-30 02:06:01",
+      "old": "squeaker",
+      "new": "stonecold"
+    },
+    {
+      "ts": "2025-10-30 03:39:56",
+      "old": "Nice2BMe",
+      "new": "Guest10288"
+    },
+    {
+      "ts": "2025-10-30 04:59:23",
+      "old": "stonecold",
+      "new": "stonecock"
+    },
+    {
+      "ts": "2025-10-30 06:15:51",
+      "old": "dead_girl",
+      "new": "jaded_girl"
+    },
+    {
+      "ts": "2025-10-30 06:23:18",
+      "old": "jaded_girl",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-10-30 10:48:09",
+      "old": "Nice2BMe",
+      "new": "Guest49922"
+    },
+    {
+      "ts": "2025-10-30 22:43:51",
+      "old": "Owlman",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-10-31 00:08:19",
+      "old": "liveuser",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-31 03:41:30",
+      "old": "liveuser",
+      "new": "truthwillout"
+    },
+    {
+      "ts": "2025-10-31 10:35:06",
+      "old": "dead_girl",
+      "new": "lipless"
+    },
+    {
+      "ts": "2025-10-31 10:42:37",
+      "old": "lipless",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-10-31 16:02:36",
+      "old": "Ice`",
+      "new": "SLOW"
+    },
+    {
+      "ts": "2025-10-31 16:03:16",
+      "old": "SLOW",
+      "new": "Ice`"
+    },
+    {
+      "ts": "2025-10-31 16:51:32",
+      "old": "dumbgoy_",
+      "new": "dumbgoy"
+    },
+    {
+      "ts": "2025-10-31 18:07:25",
+      "old": "nigel",
+      "new": "Nwords"
+    },
+    {
+      "ts": "2025-10-31 18:17:48",
+      "old": "nigel",
+      "new": "Nwords"
+    },
+    {
+      "ts": "2025-10-31 18:22:06",
+      "old": "nigel",
+      "new": "Nwords"
+    },
+    {
+      "ts": "2025-10-31 22:22:01",
+      "old": "Owlman",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-11-01 02:10:55",
+      "old": "dead_girl",
+      "new": "toiletpaper"
+    },
+    {
+      "ts": "2025-11-01 02:11:56",
+      "old": "toiletpaper",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-11-02 02:49:59",
+      "old": "Ghoul",
+      "new": "Ghoula"
+    },
+    {
+      "ts": "2025-11-02 02:51:12",
+      "old": "Ghoula",
+      "new": "Ghoul"
+    },
+    {
+      "ts": "2025-11-02 05:04:04",
+      "old": "cheslav1",
+      "new": "cheslav"
+    },
+    {
+      "ts": "2025-11-02 08:45:31",
+      "old": "PureTrance_",
+      "new": "PureTrance"
+    },
+    {
+      "ts": "2025-11-02 10:09:27",
+      "old": "slacker",
+      "new": "MorningWood"
+    },
+    {
+      "ts": "2025-11-02 10:09:28",
+      "old": "MorningWood",
+      "new": "Galizur"
+    },
+    {
+      "ts": "2025-11-02 10:09:31",
+      "old": "Galizur",
+      "new": "mqiva"
+    },
+    {
+      "ts": "2025-11-02 10:09:34",
+      "old": "mqiva",
+      "new": "OHI_bridge"
+    },
+    {
+      "ts": "2025-11-02 10:09:37",
+      "old": "OHI_bridge",
+      "new": "OHI_bridge_"
+    },
+    {
+      "ts": "2025-11-02 10:09:41",
+      "old": "OHI_bridge_",
+      "new": "Shiban"
+    },
+    {
+      "ts": "2025-11-02 10:10:09",
+      "old": "Shiban",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-11-02 16:03:03",
+      "old": "Kirkland_Ballscratcher",
+      "new": "Jax"
+    },
+    {
+      "ts": "2025-11-02 16:03:23",
+      "old": "Jax",
+      "new": "Guest47351"
+    },
+    {
+      "ts": "2025-11-03 09:41:39",
+      "old": "Hestia",
+      "new": "Guest29322"
+    },
+    {
+      "ts": "2025-11-03 11:50:35",
+      "old": "dead_girl",
+      "new": "jail_bait"
+    },
+    {
+      "ts": "2025-11-03 11:51:06",
+      "old": "jail_bait",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-11-04 01:18:30",
+      "old": "CountChocula",
+      "new": "ni66er"
+    },
+    {
+      "ts": "2025-11-04 01:20:07",
+      "old": "ni66er",
+      "new": "countchocula"
+    },
+    {
+      "ts": "2025-11-04 01:23:01",
+      "old": "countchocula",
+      "new": "ni66er"
+    },
+    {
+      "ts": "2025-11-04 05:26:29",
+      "old": "dead_girl",
+      "new": "d3ad_gir1"
+    },
+    {
+      "ts": "2025-11-04 05:32:08",
+      "old": "ni66er",
+      "new": "ni69er"
+    },
+    {
+      "ts": "2025-11-04 05:57:10",
+      "old": "Owlman",
+      "new": "slacker"
+    },
+    {
+      "ts": "2025-11-04 08:15:50",
+      "old": "d3ad_gir1",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-11-04 16:16:16",
+      "old": "Nice2BMe",
+      "new": "Guest18461"
+    },
+    {
+      "ts": "2025-11-04 16:51:33",
+      "old": "Guest18461",
+      "new": "Nice2BMe"
+    },
+    {
+      "ts": "2025-11-04 20:33:33",
+      "old": "Nice2BMe",
+      "new": "Guest48216"
+    },
+    {
+      "ts": "2025-11-04 23:29:49",
+      "old": "Donepooping_Signature",
+      "new": "Kirkland_Signature"
+    },
+    {
+      "ts": "2025-11-04 23:30:20",
+      "old": "Kirkland_Signature",
+      "new": "KirklandSignature"
+    },
+    {
+      "ts": "2025-11-05 15:15:32",
+      "old": "Nice2BMe",
+      "new": "Guest32337"
+    },
+    {
+      "ts": "2025-11-05 16:18:12",
+      "old": "Guest32337",
+      "new": "Nice2BMe"
+    },
+    {
+      "ts": "2025-11-05 21:28:13",
+      "old": "dead_girl",
+      "new": "bubblegum_girl"
+    },
+    {
+      "ts": "2025-11-05 23:19:00",
+      "old": "Tethy",
+      "new": "Teth"
+    },
+    {
+      "ts": "2025-11-06 07:14:34",
+      "old": "Nice2BMe",
+      "new": "Guest34210"
+    },
+    {
+      "ts": "2025-11-06 08:03:11",
+      "old": "niger_tits",
+      "new": "dog_whistle"
+    },
+    {
+      "ts": "2025-11-06 13:04:01",
+      "old": "bubblegum_girl",
+      "new": "dead_girl"
+    },
+    {
+      "ts": "2025-11-06 16:56:35",
+      "old": "Kowal",
+      "new": "Kowal-away"
+    },
+    {
+      "ts": "2025-11-06 19:18:46",
+      "old": "Nice2BMe",
+      "new": "Guest59157"
+    },
+    {
+      "ts": "2025-11-07 09:35:59",
+      "old": "Nice2BMe",
+      "new": "Guest43332"
+    },
+    {
+      "ts": "2025-11-07 09:41:09",
+      "old": "Guest43332",
+      "new": "Nice2BMe"
+    },
+    {
+      "ts": "2025-11-07 17:13:56",
+      "old": "Nice2BMe",
+      "new": "Guest1266"
+    }
+  ]
+}
