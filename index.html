@@ -87,6 +87,7 @@
     .view-btn:nth-child(5) { background: var(--purple); }
     .view-btn:nth-child(6) { background: var(--blue); color: #071018; }
     .view-btn:nth-child(7) { background: var(--pink); }
+    .view-btn:nth-child(8) { background: var(--purple); }
 
     .view-btn:hover { transform: translateY(-2px) rotate(-1deg); filter: brightness(1.08); }
 
@@ -2290,6 +2291,284 @@
       transform: scaleX(-1) rotate(5deg) !important;
     }
 
+    /* CHANNEL LORE TAB */
+    #panel-lore .lore-layout {
+      display: grid;
+      gap: 16px;
+    }
+
+    #panel-lore .lore-hero {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(255, 63, 143, 0.20), transparent 30%),
+        radial-gradient(circle at 84% 18%, rgba(79, 220, 255, 0.17), transparent 32%),
+        linear-gradient(135deg, rgba(255,228,92,0.08), transparent 45%),
+        #0f0f17;
+      border: 2px dashed rgba(255, 63, 143, 0.55);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 5px 5px 0 #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #panel-lore .lore-hero::before {
+      content: "RECEIPTS";
+      position: absolute;
+      top: 16px;
+      right: -28px;
+      background: var(--pink);
+      color: #fff;
+      border: 2px solid #000;
+      padding: 5px 38px;
+      font-weight: 900;
+      transform: rotate(18deg);
+      box-shadow: 3px 3px 0 #000;
+      letter-spacing: 1px;
+    }
+
+    #panel-lore .lore-title {
+      color: var(--yellow);
+      font-size: 28px;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 #000;
+      margin-bottom: 6px;
+    }
+
+    #panel-lore .lore-sub {
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.35;
+    }
+
+    #panel-lore .lore-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    #panel-lore .lore-meta-card {
+      color: #111;
+      background: var(--paper2);
+      border: 2px solid #000;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 3px 3px 0 #000;
+      transform: rotate(-1deg);
+      text-align: center;
+    }
+
+    #panel-lore .lore-meta-card:nth-child(2n) {
+      background: var(--paper3);
+      transform: rotate(1deg);
+    }
+
+    #panel-lore .lore-meta-card:nth-child(3n) {
+      background: var(--paper5);
+    }
+
+    #panel-lore .lore-meta-label {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #5b4050;
+    }
+
+    #panel-lore .lore-meta-value {
+      margin-top: 6px;
+      font-size: 24px;
+      font-weight: 900;
+      color: #111;
+    }
+
+    #panel-lore .lore-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    #panel-lore .lore-board {
+      background: #0f0f17;
+      border: 2px dashed rgba(79, 220, 255, 0.45);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 4px 4px 0 #000;
+      min-width: 0;
+    }
+
+    #panel-lore .lore-board.wide {
+      grid-column: 1 / -1;
+    }
+
+    #panel-lore .lore-board-title {
+      display: inline-block;
+      background: #f1d7e5;
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 #000;
+      transform: rotate(-2deg);
+      margin-bottom: 12px;
+    }
+
+    #panel-lore .lore-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    #panel-lore .lore-row {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 82px;
+      gap: 8px;
+      align-items: center;
+      background: #151521;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 9px 10px;
+    }
+
+    #panel-lore .lore-rank {
+      color: var(--pink);
+      font-weight: 900;
+    }
+
+    #panel-lore .lore-name {
+      color: #fff;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-lore .lore-score {
+      color: var(--yellow);
+      font-weight: 900;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    #panel-lore .word-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    #panel-lore .word-chip {
+      display: inline-block;
+      color: #111;
+      background: var(--paper3);
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 900;
+      box-shadow: 2px 2px 0 #000;
+      transform: rotate(-1deg);
+    }
+
+    #panel-lore .word-chip:nth-child(2n) {
+      background: var(--paper6);
+      transform: rotate(1deg);
+    }
+
+    #panel-lore .word-chip:nth-child(3n) {
+      background: var(--paper5);
+      transform: rotate(-2deg);
+    }
+
+    #panel-lore .quote-machine {
+      background: #151521;
+      border: 2px dashed rgba(255, 228, 92, 0.55);
+      border-radius: 16px;
+      padding: 14px;
+      min-height: 130px;
+      position: relative;
+    }
+
+    #panel-lore .quote-text {
+      font-size: 18px;
+      line-height: 1.35;
+      color: #fff;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-lore .quote-author {
+      margin-top: 10px;
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    #panel-lore .quote-button {
+      margin-top: 12px;
+      background: var(--pink);
+      color: white;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    #panel-lore .quote-button:hover {
+      transform: translateY(-2px) rotate(-1deg);
+    }
+
+    #panel-lore .edge-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #panel-lore .edge-card {
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 3px 3px 0 #000;
+      transform: rotate(-1deg);
+      text-align: center;
+    }
+
+    #panel-lore .edge-card:nth-child(2n) {
+      background: var(--paper3);
+      transform: rotate(1deg);
+    }
+
+    #panel-lore .edge-from,
+    #panel-lore .edge-to {
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    #panel-lore .edge-arrow {
+      font-size: 22px;
+      color: #8d104c;
+      font-weight: 900;
+      margin: 4px 0;
+    }
+
+    #panel-lore .edge-weight {
+      display: inline-block;
+      margin-top: 6px;
+      background: #111;
+      color: var(--yellow);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      #panel-lore .lore-grid,
+      #panel-lore .lore-meta-grid,
+      #panel-lore .edge-board {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -2307,6 +2586,7 @@
       <button class="view-btn" onclick="showPanel('links', this)">Link Gremlins</button>
       <button class="view-btn" onclick="showPanel('joins', this)">Door Slammers</button>
       <button class="view-btn" onclick="showPanel('overview', this)">Overview</button>
+      <button class="view-btn" onclick="showPanel('lore', this)">Channel Lore</button>
       <button class="view-btn" onclick="showPanel('memory', this)">girl Remembers</button>
     </div>
 
@@ -2480,6 +2760,71 @@
       <h2>Overview</h2>
       <div class="panel-note">the whole ugly pile</div>
       <div class="mini-grid" id="overview-cards-full">loading...</div>
+    </section>
+
+
+    <section class="panel" id="panel-lore">
+      <h2>Channel Lore</h2>
+      <div class="panel-note">experimental log goblin statistics from the exported #truth-seekers receipts</div>
+
+      <div class="lore-layout">
+        <div class="lore-hero">
+          <div class="lore-title">the receipt machine is awake ♡</div>
+          <div class="lore-sub">
+            This tab is a playground for the raw channel logs: word crimes, swear jars, quote roulette,
+            social magnets, op/jannie behaviour, nick shapeshifters, and other suspicious little patterns.
+          </div>
+          <div class="lore-meta-grid" id="lore-meta">
+            <div class="lore-meta-card"><div class="lore-meta-label">Status</div><div class="lore-meta-value">loading</div></div>
+          </div>
+        </div>
+
+        <div class="lore-grid">
+          <div class="lore-board">
+            <div class="lore-board-title">✎ Word Crimes</div>
+            <div class="word-cloud" id="lore-word-cloud">loading...</div>
+          </div>
+
+          <div class="lore-board">
+            <div class="lore-board-title">☠ Swear Jar</div>
+            <div class="lore-list" id="lore-swear-list">loading...</div>
+          </div>
+
+          <div class="lore-board">
+            <div class="lore-board-title">♡ Main Character Detector</div>
+            <div class="lore-list" id="lore-magnets">loading...</div>
+          </div>
+
+          <div class="lore-board">
+            <div class="lore-board-title">⚖ Jannie Court</div>
+            <div class="lore-list" id="lore-jannies">loading...</div>
+          </div>
+
+          <div class="lore-board wide">
+            <div class="lore-board-title">✉ Quote Roulette</div>
+            <div class="quote-machine">
+              <div class="quote-text" id="lore-quote-text">loading quote...</div>
+              <div class="quote-author" id="lore-quote-author"></div>
+              <button class="quote-button" type="button" onclick="showRandomLoreQuote()">pull another receipt</button>
+            </div>
+          </div>
+
+          <div class="lore-board wide">
+            <div class="lore-board-title">⤷ Who Talks To Who</div>
+            <div class="edge-board" id="lore-edges">loading...</div>
+          </div>
+
+          <div class="lore-board">
+            <div class="lore-board-title">☞ Nick Shapeshifters</div>
+            <div class="lore-list" id="lore-nicks">loading...</div>
+          </div>
+
+          <div class="lore-board">
+            <div class="lore-board-title">↯ Door Drama</div>
+            <div class="lore-list" id="lore-doors">loading...</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="panel-memory">
@@ -3345,6 +3690,150 @@
         renderWatchCarousel();
       }, 10000);
     }
+
+
+    let loreStats = null;
+    let loreQuoteIndex = 0;
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function loreRows(items, nameKey = 'nick', scoreKey = 'count', suffix = '') {
+      if (!items || !items.length) return '<div class="memory-item">nothing logged yet</div>';
+      return items.slice(0, 10).map((item, index) => `
+        <div class="lore-row">
+          <div class="lore-rank">#${index + 1}</div>
+          <div class="lore-name">${escapeHtml(item[nameKey])}</div>
+          <div class="lore-score">${fmt(item[scoreKey])}${suffix}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderLoreMeta(stats) {
+      const meta = stats.meta || {};
+      const cards = [
+        ['Messages', fmt(meta.messages || 0)],
+        ['Users', fmt(meta.usersWithMessages || 0)],
+        ['Log Lines', fmt(meta.lines || 0)],
+        ['Actions', fmt(meta.actions || 0)]
+      ];
+
+      document.getElementById('lore-meta').innerHTML = cards.map(([label, value]) => `
+        <div class="lore-meta-card">
+          <div class="lore-meta-label">${label}</div>
+          <div class="lore-meta-value">${value}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderLoreWords(stats) {
+      const words = (stats.topWords || []).slice(0, 35);
+      const max = words[0] ? words[0].count : 1;
+
+      document.getElementById('lore-word-cloud').innerHTML = words.map((item) => {
+        const size = 12 + Math.round((item.count / max) * 18);
+        return `<span class="word-chip" style="font-size:${size}px">${escapeHtml(item.word)} <small>${fmt(item.count)}</small></span>`;
+      }).join('') || '<div class="memory-item">no words found</div>';
+    }
+
+    function showRandomLoreQuote() {
+      if (!loreStats || !loreStats.randomQuotes || !loreStats.randomQuotes.length) return;
+      const quotes = loreStats.randomQuotes;
+      loreQuoteIndex = Math.floor(Math.random() * quotes.length);
+      const q = quotes[loreQuoteIndex];
+
+      document.getElementById('lore-quote-text').innerHTML = `“${escapeHtml(q.quote)}”`;
+      document.getElementById('lore-quote-author').innerHTML = `— ${escapeHtml(q.nick)} · ${escapeHtml(q.ts || '')}`;
+    }
+
+    function renderLoreEdges(stats) {
+      const edges = (stats.talkEdges || []).slice(0, 9);
+      document.getElementById('lore-edges').innerHTML = edges.map(edge => `
+        <div class="edge-card">
+          <div class="edge-from">${escapeHtml(edge.from)}</div>
+          <div class="edge-arrow">→</div>
+          <div class="edge-to">${escapeHtml(edge.to)}</div>
+          <div class="edge-weight">${fmt(edge.weight)} pings</div>
+        </div>
+      `).join('') || '<div class="memory-item">no interaction edges found</div>';
+    }
+
+    function renderLoreNickChanges(stats) {
+      const nickChanges = (stats.nickChanges || []).slice(0, 10);
+      document.getElementById('lore-nicks').innerHTML = nickChanges.map((item, index) => `
+        <div class="lore-row">
+          <div class="lore-rank">#${index + 1}</div>
+          <div class="lore-name">${escapeHtml(item.old)} → ${escapeHtml(item.new)}</div>
+          <div class="lore-score">nick</div>
+        </div>
+      `).join('') || '<div class="memory-item">no nick changes found</div>';
+    }
+
+    function renderLoreDoors(stats) {
+      const joins = (stats.joins || []).slice(0, 5);
+      const quits = (stats.quits || []).slice(0, 5);
+      const doorItems = [
+        ...joins.map(item => ({ nick: item.nick, count: item.count, tag: 'joins' })),
+        ...quits.map(item => ({ nick: item.nick, count: item.count, tag: 'quits' }))
+      ].slice(0, 10);
+
+      document.getElementById('lore-doors').innerHTML = doorItems.map((item, index) => `
+        <div class="lore-row">
+          <div class="lore-rank">#${index + 1}</div>
+          <div class="lore-name">${escapeHtml(item.nick)}</div>
+          <div class="lore-score">${fmt(item.count)} ${item.tag}</div>
+        </div>
+      `).join('') || '<div class="memory-item">no door drama found</div>';
+    }
+
+    function renderLoreJannies(stats) {
+      const modeOps = (stats.modeChanges && stats.modeChanges.byOp) ? stats.modeChanges.byOp : [];
+      const kicks = (stats.kicks && stats.kicks.byOp) ? stats.kicks.byOp : [];
+      const combined = new Map();
+
+      modeOps.forEach(item => combined.set(item.nick, (combined.get(item.nick) || 0) + item.count));
+      kicks.forEach(item => combined.set(item.nick, (combined.get(item.nick) || 0) + (item.count * 3)));
+
+      const ranked = [...combined.entries()]
+        .map(([nick, count]) => ({ nick, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+
+      document.getElementById('lore-jannies').innerHTML = loreRows(ranked, 'nick', 'count', ' pts');
+    }
+
+    function renderChannelLore(stats) {
+      loreStats = stats;
+      renderLoreMeta(stats);
+      renderLoreWords(stats);
+      document.getElementById('lore-swear-list').innerHTML = loreRows(stats.swearLords || [], 'nick', 'count', ' swears');
+      document.getElementById('lore-magnets').innerHTML = loreRows(stats.conversationMagnets || [], 'nick', 'score', ' pulls');
+      renderLoreJannies(stats);
+      renderLoreEdges(stats);
+      renderLoreNickChanges(stats);
+      renderLoreDoors(stats);
+      showRandomLoreQuote();
+    }
+
+    fetch('channel_fun_stats.json')
+      .then(response => response.json())
+      .then(renderChannelLore)
+      .catch(error => {
+        console.error('Could not load channel lore:', error);
+        ['lore-word-cloud', 'lore-swear-list', 'lore-magnets', 'lore-jannies', 'lore-edges', 'lore-nicks', 'lore-doors'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = '<div class="memory-item">Could not load channel_fun_stats.json yet.</div>';
+        });
+        const quote = document.getElementById('lore-quote-text');
+        if (quote) quote.innerHTML = 'Could not load channel_fun_stats.json yet.';
+      });
+
 
     fetch('truth_seekers_user_stats.json')
       .then(response => response.json())
