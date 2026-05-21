@@ -2653,11 +2653,11 @@
     }
 
     #screen-pet.walking .pet-creature {
-      animation: petWalk 0.48s ease-in-out infinite;
+      animation: petWalk 0.82s ease-in-out infinite;
     }
 
     #screen-pet.jumping .pet-creature {
-      animation: petJump 0.55s ease-out 1;
+      animation: petHop 0.42s ease-out 1;
     }
 
     #screen-pet .pet-creature:active {
@@ -2767,7 +2767,7 @@
     }
 
     #screen-pet.walking .pet-foot {
-      animation: petFootFast 0.24s infinite alternate;
+      animation: petFootFast 0.38s infinite alternate;
     }
 
     #screen-pet .pet-foot:nth-child(2) {
@@ -3003,13 +3003,13 @@
     }
 
     @keyframes petWalk {
-      0%, 100% { transform: translateY(0) rotate(-3deg); }
-      50% { transform: translateY(-4px) rotate(3deg); }
+      0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+      50% { transform: translateY(-2px) rotate(1.5deg); }
     }
 
-    @keyframes petJump {
+    @keyframes petHop {
       0% { transform: translateY(0) scale(1); }
-      45% { transform: translateY(-34px) scale(1.04); }
+      45% { transform: translateY(-10px) scale(1.02); }
       100% { transform: translateY(0) scale(1); }
     }
 
@@ -3024,8 +3024,8 @@
     }
 
     @keyframes petFootFast {
-      from { transform: translateY(-1px) rotate(-6deg); }
-      to { transform: translateY(3px) rotate(6deg); }
+      from { transform: translateY(0) rotate(-4deg); }
+      to { transform: translateY(2px) rotate(4deg); }
     }
 
     @keyframes petPop {
@@ -4463,10 +4463,14 @@
       lastMove: 0,
       fed: 80,
       social: 70,
-      zoomies: 60,
+      zoomies: 45,
       trust: 50,
       points: 0,
-      wordOfDay: 'receipts'
+      wordOfDay: 'receipts',
+      route: [],
+      routeIndex: 0,
+      pauseUntil: 0,
+      lastRouteBuild: 0
     };
 
     const petWords = ['receipts', 'goblin', 'jannie', 'zoomies', 'lore', 'bonk', 'ops', 'chaos', 'sparkle', 'snack'];
@@ -4534,39 +4538,48 @@
     function feedPet() {
       flashPetThing('pet-treat');
       setPetBubble('snack acquired ♡', 'happy');
-      updatePetStats({ fed: 16, social: 3, zoomies: -3, points: 2 });
+      updatePetStats({ fed: 16, social: 3, zoomies: -4, points: 2 });
+      petPause(1000);
     }
 
     function ticklePet() {
       flashPetThing('pet-heart');
       flashPetThing('pet-spark');
       setPetBubble('hehe stop!!', 'happy');
-      updatePetStats({ social: 12, zoomies: 8, trust: 3, points: 1 });
-      petJumpToThing();
+      updatePetStats({ social: 12, zoomies: 5, trust: 3, points: 1 });
+      petSmallHop();
+      petPause(700);
     }
 
     function fetchPet() {
       flashPetThing('pet-ball');
       setPetBubble('fetch quest accepted', 'ooh');
-      updatePetStats({ zoomies: 14, social: 6, fed: -4, points: 3 });
-      choosePetTarget(true);
-      setTimeout(() => setPetBubble('ball secured', 'happy'), 900);
+      updatePetStats({ zoomies: 10, social: 6, fed: -4, points: 3 });
+      chooseNextPetTarget(true);
+      setTimeout(() => setPetBubble('walking to the ball', 'happy'), 900);
     }
 
     function petNap() {
       setPetBubble('brb tiny nap', 'flat');
       updatePetStats({ zoomies: -18, fed: -2, trust: 4 });
+      petPause(3000);
     }
 
     function petPing() {
       setPetBubble('ping? pong. irc baby.', 'ooh');
       updatePetStats({ social: 5, trust: 2, points: 1 });
+      petPause(900);
     }
 
     function petPet() {
       flashPetThing('pet-heart');
       setPetBubble('receipt purr...', 'happy');
       updatePetStats({ social: 5, trust: 2 });
+      petPause(900);
+    }
+
+    function petPause(ms) {
+      petState.pauseUntil = performance.now() + ms;
     }
 
     function pickWordOfDay() {
@@ -4575,9 +4588,10 @@
       renderPetStats();
     }
 
-    function visibleLandingSpots() {
+    function petLandingElements() {
       const selectors = [
         '.view-btn',
+        '.panel.active',
         '.panel.active .board',
         '.panel.active .lore-board',
         '.panel.active .top3-card',
@@ -4585,61 +4599,116 @@
         '.panel.active .mini-card',
         '.panel.active .degen-card',
         '.panel.active .lol-tile',
-        '.panel.active .wanted-card'
+        '.panel.active .wanted-card',
+        '.panel.active .door-profile-card',
+        '.panel.active .door-file-paper'
       ];
 
-      const spots = [];
-      document.querySelectorAll(selectors.join(',')).forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.width < 50 || rect.height < 20) return;
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        spots.push({
-          x: rect.left + Math.min(rect.width - 70, Math.max(8, rect.width * 0.5)),
-          y: Math.max(8, rect.top - 92)
-        });
-      });
-
-      return spots;
+      return [...document.querySelectorAll(selectors.join(','))]
+        .map(el => ({ el, rect: el.getBoundingClientRect() }))
+        .filter(({ rect }) => (
+          rect.width >= 70 &&
+          rect.height >= 20 &&
+          rect.bottom > 30 &&
+          rect.top < window.innerHeight - 40 &&
+          rect.right > 30 &&
+          rect.left < window.innerWidth - 30
+        ));
     }
 
-    function choosePetTarget(forceJump = false) {
+    function buildPetRoute() {
       const pet = document.getElementById('screen-pet');
       if (!pet) return;
 
-      const spots = visibleLandingSpots();
-      const maxX = Math.max(8, window.innerWidth - pet.offsetWidth - 8);
-      const maxY = Math.max(8, window.innerHeight - pet.offsetHeight - 8);
+      const petWidth = pet.offsetWidth || 132;
+      const petHeight = pet.offsetHeight || 150;
+      const maxX = Math.max(8, window.innerWidth - petWidth - 8);
+      const maxY = Math.max(8, window.innerHeight - petHeight - 8);
 
-      let target;
-      if (spots.length && Math.random() < 0.72) {
-        target = spots[Math.floor(Math.random() * spots.length)];
-      } else {
-        target = {
-          x: 8 + Math.random() * (maxX - 8),
-          y: 40 + Math.random() * (maxY - 40)
-        };
+      const points = [];
+
+      petLandingElements().forEach(({ rect }) => {
+        const y = Math.max(8, Math.min(maxY, rect.top - petHeight + 22));
+
+        points.push({
+          x: Math.max(8, Math.min(maxX, rect.left + 8)),
+          y,
+          kind: 'ledge'
+        });
+
+        if (rect.width > 180) {
+          points.push({
+            x: Math.max(8, Math.min(maxX, rect.left + rect.width / 2 - petWidth / 2)),
+            y,
+            kind: 'ledge'
+          });
+        }
+
+        points.push({
+          x: Math.max(8, Math.min(maxX, rect.right - petWidth - 8)),
+          y,
+          kind: 'ledge'
+        });
+      });
+
+      if (!points.length) {
+        points.push(
+          { x: 24, y: Math.max(60, window.innerHeight - petHeight - 28), kind: 'floor' },
+          { x: Math.max(24, window.innerWidth * 0.45), y: Math.max(60, window.innerHeight - petHeight - 28), kind: 'floor' },
+          { x: maxX - 24, y: Math.max(60, window.innerHeight - petHeight - 28), kind: 'floor' }
+        );
       }
 
-      petState.targetX = Math.max(8, Math.min(maxX, target.x));
-      petState.targetY = Math.max(8, Math.min(maxY, target.y));
+      // Sort top-to-bottom, then left-to-right so the pet patrols the layout instead of teleporting around.
+      points.sort((a, b) => (a.y - b.y) || (a.x - b.x));
 
-      if (forceJump) {
-        petJumpAnimation();
-      }
+      // Remove near-duplicates.
+      petState.route = points.filter((point, index, arr) => {
+        if (index === 0) return true;
+        const prev = arr[index - 1];
+        return Math.abs(point.x - prev.x) > 40 || Math.abs(point.y - prev.y) > 18;
+      });
+
+      petState.routeIndex = Math.min(petState.routeIndex, Math.max(0, petState.route.length - 1));
+      petState.lastRouteBuild = performance.now();
     }
 
-    function petJumpAnimation() {
+    function chooseNextPetTarget(forceRebuild = false) {
+      if (forceRebuild || !petState.route.length || performance.now() - petState.lastRouteBuild > 3500) {
+        buildPetRoute();
+      }
+
+      if (!petState.route.length) return;
+
+      const current = petState.route[petState.routeIndex] || petState.route[0];
+      const nextIndex = (petState.routeIndex + 1) % petState.route.length;
+      const next = petState.route[nextIndex];
+
+      // If the next point is very far vertically, choose a gentler nearby point first.
+      const nearby = petState.route.find(point =>
+        Math.abs(point.y - petState.y) < 120 &&
+        Math.abs(point.x - petState.x) > 80
+      );
+
+      const target = nearby && Math.random() < 0.55 ? nearby : next;
+      petState.routeIndex = petState.route.indexOf(target);
+      petState.targetX = target.x;
+      petState.targetY = target.y;
+    }
+
+    function petSmallHop() {
       const pet = document.getElementById('screen-pet');
       if (!pet) return;
       pet.classList.remove('jumping');
       void pet.offsetWidth;
       pet.classList.add('jumping');
-      setTimeout(() => pet.classList.remove('jumping'), 650);
+      setTimeout(() => pet.classList.remove('jumping'), 500);
     }
 
     function petJumpToThing() {
-      choosePetTarget(true);
-      setPetBubble('boing!', 'ooh');
+      chooseNextPetTarget(true);
+      petSmallHop();
+      setPetBubble('tiny hop, not chaos', 'ooh');
     }
 
     function keepPetInBounds() {
@@ -4668,26 +4737,43 @@
         const dt = Math.min(32, timestamp - petState.lastMove);
         petState.lastMove = timestamp;
 
+        const paused = timestamp < petState.pauseUntil;
         const dx = petState.targetX - petState.x;
         const dy = petState.targetY - petState.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 8 || Math.random() < 0.0012) {
-          choosePetTarget(Math.random() < 0.35);
-        } else {
-          const speed = 0.035 + (petState.zoomies / 100) * 0.035;
-          petState.vx = dx * speed;
-          petState.vy = dy * speed;
-          petState.x += petState.vx * dt * 0.08;
-          petState.y += petState.vy * dt * 0.08;
-        }
+        if (!paused) {
+          if (dist < 5) {
+            petState.x = petState.targetX;
+            petState.y = petState.targetY;
+            petState.vx = 0;
+            petState.vy = 0;
+            pet.classList.remove('walking');
+            petPause(650 + Math.random() * 1300);
+            if (Math.random() < 0.22) {
+              const thoughts = ['patrolling the borders', 'sniffing the receipts', 'watching the ops', 'tiny goblin duties'];
+              setPetBubble(thoughts[Math.floor(Math.random() * thoughts.length)], 'happy');
+            }
+            chooseNextPetTarget();
+          } else {
+            const speed = 0.018 + (petState.zoomies / 100) * 0.012;
+            const step = Math.min(dist, speed * dt * 6.5);
+            petState.vx = (dx / dist) * step;
+            petState.vy = (dy / dist) * step;
 
-        pet.classList.toggle('walking', dist > 12);
+            petState.x += petState.vx;
+            petState.y += petState.vy;
+
+            pet.classList.toggle('walking', dist > 10);
+          }
+        } else {
+          pet.classList.remove('walking');
+        }
 
         keepPetInBounds();
         renderPetPosition();
 
-        if (Math.random() < 0.00045) {
+        if (Math.random() < 0.00028) {
           updatePetStats({ fed: -1, social: -1, zoomies: -1 });
         }
       }
@@ -4702,7 +4788,14 @@
 
       pickWordOfDay();
       renderPetStats();
-      choosePetTarget();
+      buildPetRoute();
+
+      const first = petState.route[0] || { x: 28, y: 28 };
+      petState.x = first.x;
+      petState.y = first.y;
+      petState.routeIndex = 0;
+      chooseNextPetTarget();
+
       renderPetPosition();
       requestAnimationFrame(animatePet);
 
@@ -4717,6 +4810,7 @@
         dragOffsetX = event.clientX - rect.left;
         dragOffsetY = event.clientY - rect.top;
         pet.setPointerCapture(event.pointerId);
+        pet.classList.remove('walking');
         setPetBubble('you picked me up!', 'ooh');
       });
 
@@ -4733,16 +4827,27 @@
         petState.dragging = false;
         pet.releasePointerCapture(event.pointerId);
         setPetBubble('back to patrol', 'happy');
-        choosePetTarget(true);
+        buildPetRoute();
+        chooseNextPetTarget();
       });
 
       window.addEventListener('resize', () => {
+        buildPetRoute();
         keepPetInBounds();
-        choosePetTarget();
+        chooseNextPetTarget();
         renderPetPosition();
       });
 
-      setTimeout(() => setPetBubble('checking the logs...', 'happy'), 2200);
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setTimeout(() => {
+            buildPetRoute();
+            chooseNextPetTarget(true);
+          }, 80);
+        });
+      });
+
+      setTimeout(() => setPetBubble('slow patrol mode', 'happy'), 1800);
     }
 
     document.addEventListener('DOMContentLoaded', initScreenPet);
