@@ -3,7 +3,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 
 $allowed = [
-    'redrose_stats' => '/truth_seekers_user_stats.json',
+    'truth_seekers_user_stats' => '/truth_seekers_user_stats.json',
     'girl_personalities' => '/home/znc/bots/atrum/personalities.json'
 ];
 
