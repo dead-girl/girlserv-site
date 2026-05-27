@@ -88,6 +88,8 @@
     .view-btn:nth-child(6) { background: var(--blue); color: #071018; }
     .view-btn:nth-child(7) { background: var(--pink); }
     .view-btn:nth-child(8) { background: var(--purple); }
+    .view-btn:nth-child(9) { background: var(--blue); color: #071018; }
+    .view-btn:nth-child(10) { background: var(--pink); }
 
     .view-btn:hover { transform: translateY(-2px) rotate(-1deg); filter: brightness(1.08); }
 
@@ -3264,7 +3266,129 @@
       display: block;
     }
 
-</style>
+
+    /* Channels tab */
+    .channel-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 16px;
+    }
+
+    .channel-btn {
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 9px 12px;
+      cursor: pointer;
+      font-family: monospace;
+      font-weight: 900;
+      background: var(--paper3);
+      color: #111;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .channel-btn.active {
+      background: var(--yellow);
+      transform: rotate(-1deg);
+    }
+
+    .channel-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .channel-stat-card {
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+    }
+
+    .channel-stat-card strong {
+      display: block;
+      font-size: 24px;
+      margin-top: 5px;
+    }
+
+    .channel-lists {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .channel-list-box {
+      background: #11111b;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .channel-list-box h3 {
+      margin: 0 0 10px;
+      color: var(--pink);
+    }
+
+    .channel-row {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 90px;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      align-items: center;
+    }
+
+    .channel-row:last-child { border-bottom: 0; }
+    .channel-row .rank { font-size: 16px; }
+    .channel-row .name { font-size: 14px; }
+    .channel-row .value { font-size: 15px; }
+
+    .remember-group-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .remember-group-card {
+      background: #11111b;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .remember-group-card h3 {
+      margin: 0 0 8px;
+      color: var(--pink);
+    }
+
+    .remember-chip {
+      display: inline-block;
+      margin: 4px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--paper6);
+      color: #111;
+      font-weight: 900;
+      border: 1px solid rgba(0,0,0,0.18);
+    }
+
+    .remember-note {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .channel-summary-grid,
+      .channel-lists,
+      .remember-group-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
@@ -3282,6 +3406,7 @@
       <button class="view-btn" onclick="showPanel('joins', this)">Door Slammers</button>
       <button class="view-btn" onclick="showPanel('overview', this)">Overview</button>
       <button class="view-btn" onclick="showPanel('lore', this)">Channel Lore</button>
+      <button class="view-btn" onclick="showPanel('channels', this)">Channels</button>
       <button class="view-btn" onclick="showPanel('memory', this)">girl Remembers</button>
       <button class="view-btn" onclick="showPanel('pet', this)">Pet Corner</button>
     </div>
@@ -3523,19 +3648,30 @@
       </div>
     </section>
 
+
+    <section class="panel" id="panel-channels">
+      <h2>Channels</h2>
+      <div class="panel-note">Per-channel stats from RedRose. These load separately from the main global leaderboard.</div>
+
+      <div class="board">
+        <div class="board-title">✦ Pick a channel</div>
+        <div class="channel-controls" id="channel-controls"></div>
+        <div id="channel-status" class="panel-note">Loading channel stats...</div>
+        <div class="channel-summary-grid" id="channel-summary-grid"></div>
+        <div class="channel-lists" id="channel-lists"></div>
+      </div>
+    </section>
+
     <section class="panel" id="panel-memory">
       <h2>girl Remembers</h2>
-      <div class="panel-note">from trollbot memory/config if girl_config.json exists</div>
+      <div class="panel-note">Live from girl’s personality/config file once <code>girl_config.json</code> is being written into the web folder.</div>
 
-      <h3>Admins</h3>
-      <div id="admins-list"></div>
-
-      <h3>Remembered Users</h3>
-      <div id="profiles-list">loading...</div>
-
-      <h3>Recent Tokens</h3>
-      <div id="tokens-list">loading...</div>
-    </section>
+      <div class="board">
+        <div class="board-title">✦ Personality groups</div>
+        <div id="remembers-status" class="remember-note">Loading girl_config.json...</div>
+        <div id="remember-groups" class="remember-group-grid"></div>
+      </div>
+</section>
 
     <section class="panel" id="panel-pet">
       <div class="board pet-tab-board">
@@ -4950,7 +5086,154 @@
 
     document.addEventListener('DOMContentLoaded', initScreenPet);
 
-  </script>
+  
+    // --- GirlServ Channels tab ---
+    const CHANNEL_FILES = [
+      { name: "#truth-seekers", file: "channel-stats/truth-seekers_user_stats.json" },
+      { name: "#cemetery", file: "channel-stats/cemetery_user_stats.json" },
+      { name: "#Wordle", file: "channel-stats/wordle_user_stats.json" }
+    ];
+
+    let channelStatsCache = {};
+
+    async function fetchJsonNoCache(url) {
+      const sep = url.includes("?") ? "&" : "?";
+      const res = await fetch(url + sep + "v=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error(url + " returned " + res.status);
+      return await res.json();
+    }
+
+    function statNum(stats, key) {
+      return Number((stats && stats[key]) || 0);
+    }
+
+    function sortedUsersFromStats(data, key) {
+      return Object.entries(data || {})
+        .filter(([nick, stats]) => nick && stats && statNum(stats, key) > 0)
+        .sort((a, b) => statNum(b[1], key) - statNum(a[1], key));
+    }
+
+    function renderChannelMiniList(title, rows, key) {
+      const items = rows.slice(0, 10).map(([nick, stats], idx) => `
+        <div class="channel-row">
+          <div class="rank">#${idx + 1}</div>
+          <div class="name">${escapeHtml(nick)}</div>
+          <div class="value">${fmt(statNum(stats, key))}</div>
+        </div>
+      `).join("");
+
+      return `
+        <div class="channel-list-box">
+          <h3>${title}</h3>
+          ${items || '<div class="panel-note">No stats yet.</div>'}
+        </div>
+      `;
+    }
+
+    async function showChannelStats(file) {
+      document.querySelectorAll(".channel-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.file === file);
+      });
+
+      const status = document.getElementById("channel-status");
+      const summary = document.getElementById("channel-summary-grid");
+      const lists = document.getElementById("channel-lists");
+      if (!status || !summary || !lists) return;
+
+      status.textContent = "Loading...";
+      summary.innerHTML = "";
+      lists.innerHTML = "";
+
+      try {
+        if (!channelStatsCache[file]) {
+          channelStatsCache[file] = await fetchJsonNoCache(file);
+        }
+        const data = channelStatsCache[file];
+        const users = Object.entries(data || {});
+        const totals = users.reduce((acc, [, stats]) => {
+          acc.words += statNum(stats, "words");
+          acc.joins += statNum(stats, "joins");
+          acc.lol += statNum(stats, "lol");
+          acc.degeneracy += statNum(stats, "degeneracy");
+          acc.links += statNum(stats, "links");
+          return acc;
+        }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
+
+        status.textContent = `Loaded ${users.length} users from ${file}`;
+
+        summary.innerHTML = `
+          <div class="channel-stat-card">Users<strong>${fmt(users.length)}</strong></div>
+          <div class="channel-stat-card">Words<strong>${fmt(totals.words)}</strong></div>
+          <div class="channel-stat-card">Links<strong>${fmt(totals.links)}</strong></div>
+          <div class="channel-stat-card">LOLs<strong>${fmt(totals.lol)}</strong></div>
+          <div class="channel-stat-card">Degeneracy<strong>${fmt(totals.degeneracy)}</strong></div>
+        `;
+
+        lists.innerHTML =
+          renderChannelMiniList("Top Chatters", sortedUsersFromStats(data, "words"), "words") +
+          renderChannelMiniList("Link Gremlins", sortedUsersFromStats(data, "links"), "links") +
+          renderChannelMiniList("LOL Lords", sortedUsersFromStats(data, "lol"), "lol") +
+          renderChannelMiniList("Door Slammers", sortedUsersFromStats(data, "joins"), "joins");
+      } catch (err) {
+        status.textContent = "Could not load this channel yet. RedRose may not have created the file.";
+        lists.innerHTML = `<div class="channel-list-box"><h3>Missing file</h3><div class="panel-note">${escapeHtml(String(err.message || err))}</div></div>`;
+      }
+    }
+
+    function initChannelsTab() {
+      const controls = document.getElementById("channel-controls");
+      if (!controls) return;
+
+      controls.innerHTML = CHANNEL_FILES.map((ch, idx) => `
+        <button class="channel-btn ${idx === 0 ? 'active' : ''}" type="button" data-file="${ch.file}">
+          ${escapeHtml(ch.name)}
+        </button>
+      `).join("");
+
+      controls.querySelectorAll(".channel-btn").forEach(btn => {
+        btn.addEventListener("click", () => showChannelStats(btn.dataset.file));
+      });
+
+      showChannelStats(CHANNEL_FILES[0].file);
+    }
+
+    // --- girl Remembers tab from girl_config.json ---
+    async function loadGirlRemembers() {
+      const status = document.getElementById("remembers-status");
+      const holder = document.getElementById("remember-groups");
+      if (!holder) return;
+
+      try {
+        const config = await fetchJsonNoCache("girl_config.json");
+        const groups = config.nick_groups || {};
+        const groupEntries = Object.entries(groups).filter(([, members]) => Array.isArray(members));
+
+        if (!groupEntries.length) {
+          if (status) status.textContent = "girl_config.json loaded, but no nick_groups were found.";
+          holder.innerHTML = "";
+          return;
+        }
+
+        if (status) status.textContent = `Loaded ${groupEntries.length} personality groups from girl_config.json.`;
+
+        holder.innerHTML = groupEntries.map(([group, members]) => `
+          <div class="remember-group-card">
+            <h3>${escapeHtml(group)}</h3>
+            ${members.length ? members.map(nick => `<span class="remember-chip">${escapeHtml(String(nick))}</span>`).join("") : '<div class="panel-note">No nicks yet.</div>'}
+          </div>
+        `).join("");
+      } catch (err) {
+        if (status) status.textContent = "Could not load girl_config.json yet.";
+        holder.innerHTML = `<div class="remember-group-card"><h3>Missing file</h3><div class="panel-note">${escapeHtml(String(err.message || err))}</div></div>`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initChannelsTab();
+      loadGirlRemembers();
+    });
+
+</script>
   <div id="screen-pet-zone" aria-hidden="false">
 </body>
 </html>
