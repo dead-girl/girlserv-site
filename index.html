@@ -4630,48 +4630,54 @@
       });
 
 
-    const USER_STATS_SOURCES = [
-      'preloaded_user_stats.json',
-      'truth_seekers_user_stats.json'
-    ];
+    function fetchJsonNoCache(url) {
+      const sep = url.includes('?') ? '&' : '?';
+      return fetch(url + sep + 'v=' + Date.now(), { cache: 'no-store' }).then(response => {
+        if (!response.ok) throw new Error(url + ' returned ' + response.status);
+        return response.json();
+      });
+    }
 
-    async function fetchJsonIfPresent(url) {
+    async function fetchOptionalJson(url) {
       try {
-        const response = await fetch(url + '?v=' + Date.now(), { cache: 'no-store' });
-        if (!response.ok) return null;
-        return await response.json();
+        return await fetchJsonNoCache(url);
       } catch (error) {
-        console.warn('Could not load optional stats file:', url, error);
+        console.warn('Optional stats source unavailable:', url, error);
         return null;
       }
     }
 
-    function combineRawUserStats(statsFiles) {
+    async function loadUserStatsSources() {
+      const preloaded = await fetchOptionalJson('preloaded_user_stats.json');
+
+      let live = await fetchOptionalJson('live-data.php?file=truth_seekers_user_stats');
+      if (!live) {
+        live = await fetchOptionalJson('truth_seekers_user_stats.json');
+      }
+
+      return [preloaded, live].filter(Boolean);
+    }
+
+    function mergeUserStatsSources(sources) {
       const combined = {};
 
-      statsFiles
-        .filter(data => data && typeof data === 'object' && !Array.isArray(data))
-        .forEach(data => {
-          Object.entries(data).forEach(([name, stats]) => {
-            if (!stats || typeof stats !== 'object') return;
-            const existing = combined[name] || { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 };
-            existing.words += Number(stats.words || 0);
-            existing.joins += Number(stats.joins || 0);
-            existing.lol += Number(stats.lol || 0);
-            existing.degeneracy += Number(stats.degeneracy || 0);
-            existing.links += Number(stats.links || 0);
-            combined[name] = existing;
-          });
+      sources.forEach(source => {
+        Object.entries(source || {}).forEach(([name, stats]) => {
+          if (!combined[name]) {
+            combined[name] = { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 };
+          }
+          combined[name].words += Number(stats.words || 0);
+          combined[name].joins += Number(stats.joins || 0);
+          combined[name].lol += Number(stats.lol || 0);
+          combined[name].degeneracy += Number(stats.degeneracy || 0);
+          combined[name].links += Number(stats.links || 0);
         });
+      });
 
       return combined;
     }
 
-    Promise.all(USER_STATS_SOURCES.map(fetchJsonIfPresent))
-      .then(statsFiles => {
-        const loadedStats = statsFiles.filter(Boolean);
-        if (!loadedStats.length) throw new Error('No user stats JSON files loaded');
-        const data = combineRawUserStats(loadedStats);
+    function renderUserStats(data) {
         const users = mergeUserStats(data)
           .filter(user => normalizeName(user.name) !== 'girl');
 
@@ -4757,10 +4763,17 @@
 
         const overviewHtml = buildOverviewCardsHtml(users, totals);
         document.getElementById('overview-cards-full').innerHTML = overviewHtml;
+
+    }
+
+    loadUserStatsSources()
+      .then(sources => {
+        if (!sources.length) throw new Error('No stats sources loaded');
+        renderUserStats(mergeUserStatsSources(sources));
       })
       .catch(error => {
         console.error('Could not load stats:', error);
-        const errorMessage = '<div class="memory-item">Could not load stats. Check truth_seekers_user_stats.json and browser console.</div>';
+        const errorMessage = '<div class="memory-item">Could not load stats. Check preloaded_user_stats.json / live-data.php / truth_seekers_user_stats.json and browser console.</div>';
         ['chatters-left', 'chatters-right', 'degen-top9', 'degen-remaining', 'lol-list', 'links-list', 'joins-list', 'door-selector-grid', 'door-remaining', 'door-summary', 'overview-cards', 'overview-cards-full'].forEach(id => {
           const el = document.getElementById(id);
           if (el && (!el.innerHTML || el.innerHTML.includes('loading'))) el.innerHTML = errorMessage;
