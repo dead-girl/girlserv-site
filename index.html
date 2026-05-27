@@ -5089,7 +5089,15 @@
   
     // --- GirlServ Channels tab ---
     const CHANNEL_FILES = [
-      { name: "#truth-seekers", file: "channel-stats/truth-seekers_user_stats.json" },
+      {
+        name: "All channels",
+        files: [
+          "truth_seekers_user_stats.json",
+          "channel-stats/cemetery_user_stats.json",
+          "channel-stats/wordle_user_stats.json"
+        ]
+      },
+      { name: "#truth-seekers", file: "truth_seekers_user_stats.json" },
       { name: "#cemetery", file: "channel-stats/cemetery_user_stats.json" },
       { name: "#Wordle", file: "channel-stats/wordle_user_stats.json" }
     ];
@@ -5113,6 +5121,47 @@
         .sort((a, b) => statNum(b[1], key) - statNum(a[1], key));
     }
 
+
+    function mergeStatsObjects(objects) {
+      const merged = {};
+      for (const data of objects) {
+        for (const [nick, stats] of Object.entries(data || {})) {
+          const key = String(nick).toLowerCase();
+          if (!merged[key]) {
+            merged[key] = { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 };
+          }
+          merged[key].words += statNum(stats, "words");
+          merged[key].joins += statNum(stats, "joins");
+          merged[key].lol += statNum(stats, "lol");
+          merged[key].degeneracy += statNum(stats, "degeneracy");
+          merged[key].links += statNum(stats, "links");
+        }
+      }
+      return merged;
+    }
+
+    async function loadChannelData(ch) {
+      if (ch.files) {
+        const loaded = [];
+        for (const file of ch.files) {
+          try {
+            if (!channelStatsCache[file]) {
+              channelStatsCache[file] = await fetchJsonNoCache(file);
+            }
+            loaded.push(channelStatsCache[file]);
+          } catch (err) {
+            console.warn("Missing channel stats file:", file, err);
+          }
+        }
+        return mergeStatsObjects(loaded);
+      }
+
+      if (!channelStatsCache[ch.file]) {
+        channelStatsCache[ch.file] = await fetchJsonNoCache(ch.file);
+      }
+      return channelStatsCache[ch.file];
+    }
+
     function renderChannelMiniList(title, rows, key) {
       const items = rows.slice(0, 10).map(([nick, stats], idx) => `
         <div class="channel-row">
@@ -5131,8 +5180,9 @@
     }
 
     async function showChannelStats(file) {
+      const ch = CHANNEL_FILES.find(c => c.file === file || c.name === file || (c.files && c.files.includes(file))) || CHANNEL_FILES[0];
       document.querySelectorAll(".channel-btn").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.file === file);
+        btn.classList.toggle("active", btn.dataset.name === ch.name);
       });
 
       const status = document.getElementById("channel-status");
@@ -5145,10 +5195,7 @@
       lists.innerHTML = "";
 
       try {
-        if (!channelStatsCache[file]) {
-          channelStatsCache[file] = await fetchJsonNoCache(file);
-        }
-        const data = channelStatsCache[file];
+        const data = await loadChannelData(ch);
         const users = Object.entries(data || {});
         const totals = users.reduce((acc, [, stats]) => {
           acc.words += statNum(stats, "words");
@@ -5159,7 +5206,7 @@
           return acc;
         }, { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 });
 
-        status.textContent = `Loaded ${users.length} users from ${file}`;
+        status.textContent = `Loaded ${users.length} users for ${ch.name}`;
 
         summary.innerHTML = `
           <div class="channel-stat-card">Users<strong>${fmt(users.length)}</strong></div>
@@ -5175,7 +5222,7 @@
           renderChannelMiniList("LOL Lords", sortedUsersFromStats(data, "lol"), "lol") +
           renderChannelMiniList("Door Slammers", sortedUsersFromStats(data, "joins"), "joins");
       } catch (err) {
-        status.textContent = "Could not load this channel yet. RedRose may not have created the file.";
+        status.textContent = `Could not load ${ch.name} yet. RedRose may not have created the file.`;
         lists.innerHTML = `<div class="channel-list-box"><h3>Missing file</h3><div class="panel-note">${escapeHtml(String(err.message || err))}</div></div>`;
       }
     }
@@ -5185,16 +5232,16 @@
       if (!controls) return;
 
       controls.innerHTML = CHANNEL_FILES.map((ch, idx) => `
-        <button class="channel-btn ${idx === 0 ? 'active' : ''}" type="button" data-file="${ch.file}">
+        <button class="channel-btn ${idx === 0 ? 'active' : ''}" type="button" data-name="${escapeHtml(ch.name)}" data-file="${escapeHtml(ch.file || ch.name)}">
           ${escapeHtml(ch.name)}
         </button>
       `).join("");
 
       controls.querySelectorAll(".channel-btn").forEach(btn => {
-        btn.addEventListener("click", () => showChannelStats(btn.dataset.file));
+        btn.addEventListener("click", () => showChannelStats(btn.dataset.name));
       });
 
-      showChannelStats(CHANNEL_FILES[0].file);
+      showChannelStats(CHANNEL_FILES[0].name);
     }
 
     // --- girl Remembers tab from girl_config.json ---
