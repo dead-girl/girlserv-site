@@ -4650,7 +4650,7 @@
     async function loadUserStatsSources() {
       const preloaded = await fetchOptionalJson('preloaded_user_stats.json');
 
-      let live = await fetchOptionalJson('live_truth_seekers_user_stats.json');
+      let live = await fetchOptionalJson('truth_seekers_user_stats.json');
       if (!live) {
         live = await fetchOptionalJson('truth_seekers_user_stats.json');
       }
