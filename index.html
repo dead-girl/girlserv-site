@@ -4630,9 +4630,48 @@
       });
 
 
-    fetch('truth_seekers_user_stats.json')
-      .then(response => response.json())
-      .then(data => {
+    const USER_STATS_SOURCES = [
+      'preloaded_user_stats.json',
+      'truth_seekers_user_stats.json'
+    ];
+
+    async function fetchJsonIfPresent(url) {
+      try {
+        const response = await fetch(url + '?v=' + Date.now(), { cache: 'no-store' });
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (error) {
+        console.warn('Could not load optional stats file:', url, error);
+        return null;
+      }
+    }
+
+    function combineRawUserStats(statsFiles) {
+      const combined = {};
+
+      statsFiles
+        .filter(data => data && typeof data === 'object' && !Array.isArray(data))
+        .forEach(data => {
+          Object.entries(data).forEach(([name, stats]) => {
+            if (!stats || typeof stats !== 'object') return;
+            const existing = combined[name] || { words: 0, joins: 0, lol: 0, degeneracy: 0, links: 0 };
+            existing.words += Number(stats.words || 0);
+            existing.joins += Number(stats.joins || 0);
+            existing.lol += Number(stats.lol || 0);
+            existing.degeneracy += Number(stats.degeneracy || 0);
+            existing.links += Number(stats.links || 0);
+            combined[name] = existing;
+          });
+        });
+
+      return combined;
+    }
+
+    Promise.all(USER_STATS_SOURCES.map(fetchJsonIfPresent))
+      .then(statsFiles => {
+        const loadedStats = statsFiles.filter(Boolean);
+        if (!loadedStats.length) throw new Error('No user stats JSON files loaded');
+        const data = combineRawUserStats(loadedStats);
         const users = mergeUserStats(data)
           .filter(user => normalizeName(user.name) !== 'girl');
 
