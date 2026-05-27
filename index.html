@@ -4650,7 +4650,7 @@
     async function loadUserStatsSources() {
       const preloaded = await fetchOptionalJson('preloaded_user_stats.json');
 
-      let live = await fetchOptionalJson('live-data.php?file=truth_seekers_user_stats');
+      let live = await fetchOptionalJson('live_truth_seekers_user_stats.json');
       if (!live) {
         live = await fetchOptionalJson('truth_seekers_user_stats.json');
       }
@@ -4773,7 +4773,7 @@
       })
       .catch(error => {
         console.error('Could not load stats:', error);
-        const errorMessage = '<div class="memory-item">Could not load stats. Check preloaded_user_stats.json / live-data.php / truth_seekers_user_stats.json and browser console.</div>';
+        const errorMessage = '<div class="memory-item">Could not load stats. Check preloaded_user_stats.json / live JSON / truth_seekers_user_stats.json and browser console.</div>';
         ['chatters-left', 'chatters-right', 'degen-top9', 'degen-remaining', 'lol-list', 'links-list', 'joins-list', 'door-selector-grid', 'door-remaining', 'door-summary', 'overview-cards', 'overview-cards-full'].forEach(id => {
           const el = document.getElementById(id);
           if (el && (!el.innerHTML || el.innerHTML.includes('loading'))) el.innerHTML = errorMessage;
