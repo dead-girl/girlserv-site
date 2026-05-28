@@ -77,106 +77,100 @@
       height: auto;
     }
 
-    .main-menu-wrap {
-      margin: 14px auto 18px;
-      padding: 18px 20px 22px;
-      border: 2px dashed rgba(255, 74, 165, 0.45);
-      border-radius: 22px;
-      background: rgba(5, 3, 8, 0.74);
-      box-shadow: 6px 6px 0 #000;
-      overflow: visible;
+    .side-menu-shell {
+      position: fixed;
+      left: 0;
+      top: 130px;
+      z-index: 40;
+      display: flex;
+      align-items: flex-start;
+      transform: translateX(-292px);
+      transition: transform 0.22s ease;
+    }
+
+    .side-menu-shell:hover,
+    .side-menu-shell:focus-within,
+    .side-menu-shell.is-open {
+      transform: translateX(0);
+    }
+
+    .menu-tab {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      color: #111;
+      background: #ff4aa5;
+      border: 2px solid #000;
+      border-left: 0;
+      border-radius: 0 16px 16px 0;
+      box-shadow: 4px 4px 0 #000;
+      padding: 15px 9px;
+      margin-top: 18px;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .side-menu-panel {
+      width: 292px;
+      max-height: calc(100vh - 155px);
+      overflow-y: auto;
+      overflow-x: visible;
+      padding: 14px 16px 18px 14px;
+      border: 2px dashed rgba(255, 74, 165, 0.62);
+      border-left: 0;
+      border-radius: 0 22px 22px 0;
+      background: rgba(5, 3, 8, 0.94);
+      box-shadow: 8px 8px 0 #000, 0 0 26px rgba(255, 18, 143, 0.16);
+      scrollbar-color: var(--hotpink) #050308;
+    }
+
+    .side-menu-title {
+      width: fit-content;
+      color: #111;
+      background: var(--paper);
+      border: 2px solid #000;
+      border-radius: 999px;
+      box-shadow: 4px 4px 0 #000;
+      padding: 7px 13px;
+      margin: 0 0 13px;
+      font-size: 16px;
+      font-weight: 900;
+      transform: rotate(-2deg);
     }
 
     .main-menu {
       display: grid;
-      gap: 18px;
-      align-items: center;
-      justify-items: center;
-    }
-
-    .main-menu-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 16px 18px;
-      width: 100%;
+      gap: 10px;
       overflow: visible;
-    }
-
-    .main-menu-row.featured {
-      max-width: 1100px;
-      padding: 0 10px;
-      justify-content: space-evenly;
-    }
-
-    .main-menu-row.stats-top {
-      max-width: 1220px;
-      padding: 0 8px;
-      justify-content: space-evenly;
-    }
-
-    .main-menu-row.stats-bottom {
-      max-width: 920px;
-      padding: 0 8px;
-      justify-content: space-evenly;
     }
 
     .main-menu a {
       display: block;
+      width: 235px;
       background: transparent;
-      transition: transform 0.14s ease, filter 0.14s ease;
       outline: none;
-      flex: 0 0 auto;
+      transition: transform 0.14s ease, filter 0.14s ease;
+      transform: rotate(var(--rot)) translateX(var(--shift));
     }
 
-    .menu-xl { width: clamp(250px, 22vw, 350px); }
-    .menu-md { width: clamp(175px, 15vw, 240px); }
-    .menu-lg { width: clamp(205px, 17vw, 270px); }
-
-    .main-menu-row.featured a:nth-child(1) { transform: rotate(-3deg) translateY(6px); }
-    .main-menu-row.featured a:nth-child(2) { transform: rotate(1.6deg) translateY(-6px); }
-    .main-menu-row.featured a:nth-child(3) { transform: rotate(-2.3deg) translateY(4px); }
-
-    .main-menu-row.stats-top a:nth-child(1) { transform: rotate(-4deg) translateY(6px); }
-    .main-menu-row.stats-top a:nth-child(2) { transform: rotate(2.8deg) translateY(12px); }
-    .main-menu-row.stats-top a:nth-child(3) { transform: rotate(-2.2deg) translateY(-6px); }
-    .main-menu-row.stats-top a:nth-child(4) { transform: rotate(2deg) translateY(7px); }
-    .main-menu-row.stats-top a:nth-child(5) { transform: rotate(-1.7deg) translateY(2px); }
-
-    .main-menu-row.stats-bottom a:nth-child(1) { transform: rotate(-3.2deg) translateY(3px); }
-    .main-menu-row.stats-bottom a:nth-child(2) { transform: rotate(1.8deg) translateY(11px); }
-    .main-menu-row.stats-bottom a:nth-child(3) { transform: rotate(-2.5deg) translateY(1px); }
+    .main-menu a:nth-child(1) { --rot: -2deg; --shift: 0px; }
+    .main-menu a:nth-child(2) { --rot: 2deg; --shift: 8px; }
+    .main-menu a:nth-child(3) { --rot: -1.5deg; --shift: -4px; }
+    .main-menu a:nth-child(4) { --rot: 1.6deg; --shift: 7px; }
+    .main-menu a:nth-child(5) { --rot: -2.2deg; --shift: -2px; }
+    .main-menu a:nth-child(6) { --rot: 1.8deg; --shift: 6px; }
+    .main-menu a:nth-child(7) { --rot: -1.4deg; --shift: -3px; }
+    .main-menu a:nth-child(8) { --rot: 2.2deg; --shift: 7px; }
+    .main-menu a:nth-child(9) { --rot: -1.8deg; --shift: 0px; }
+    .main-menu a:nth-child(10) { --rot: 1.3deg; --shift: 6px; }
 
     .main-menu a:hover,
     .main-menu a:focus-visible {
-      filter: brightness(1.08) saturate(1.08);
+      filter: brightness(1.09) saturate(1.08);
+      transform: rotate(var(--rot)) translateX(calc(var(--shift) + 8px)) scale(1.04);
     }
-
-    .main-menu-row.featured a:nth-child(1):hover,
-    .main-menu-row.featured a:nth-child(1):focus-visible { transform: rotate(-3deg) translateY(2px) scale(1.03); }
-    .main-menu-row.featured a:nth-child(2):hover,
-    .main-menu-row.featured a:nth-child(2):focus-visible { transform: rotate(1.6deg) translateY(-10px) scale(1.03); }
-    .main-menu-row.featured a:nth-child(3):hover,
-    .main-menu-row.featured a:nth-child(3):focus-visible { transform: rotate(-2.3deg) translateY(0px) scale(1.03); }
-
-    .main-menu-row.stats-top a:nth-child(1):hover,
-    .main-menu-row.stats-top a:nth-child(1):focus-visible { transform: rotate(-4deg) translateY(2px) scale(1.04); }
-    .main-menu-row.stats-top a:nth-child(2):hover,
-    .main-menu-row.stats-top a:nth-child(2):focus-visible { transform: rotate(2.8deg) translateY(8px) scale(1.04); }
-    .main-menu-row.stats-top a:nth-child(3):hover,
-    .main-menu-row.stats-top a:nth-child(3):focus-visible { transform: rotate(-2.2deg) translateY(-10px) scale(1.04); }
-    .main-menu-row.stats-top a:nth-child(4):hover,
-    .main-menu-row.stats-top a:nth-child(4):focus-visible { transform: rotate(2deg) translateY(3px) scale(1.04); }
-    .main-menu-row.stats-top a:nth-child(5):hover,
-    .main-menu-row.stats-top a:nth-child(5):focus-visible { transform: rotate(-1.7deg) translateY(-2px) scale(1.04); }
-
-    .main-menu-row.stats-bottom a:nth-child(1):hover,
-    .main-menu-row.stats-bottom a:nth-child(1):focus-visible { transform: rotate(-3.2deg) translateY(-1px) scale(1.04); }
-    .main-menu-row.stats-bottom a:nth-child(2):hover,
-    .main-menu-row.stats-bottom a:nth-child(2):focus-visible { transform: rotate(1.8deg) translateY(7px) scale(1.04); }
-    .main-menu-row.stats-bottom a:nth-child(3):hover,
-    .main-menu-row.stats-bottom a:nth-child(3):focus-visible { transform: rotate(-2.5deg) translateY(-3px) scale(1.04); }
 
     .main-menu img {
       display: block;
@@ -634,29 +628,25 @@
         width: min(100% - 10px, 1600px);
       }
 
-      .main-menu-wrap {
-        padding: 12px 8px 18px;
+      .side-menu-shell {
+        top: 92px;
+        transform: translateX(-250px);
       }
 
-      .main-menu {
-        gap: 14px;
+      .side-menu-panel {
+        width: 250px;
+        max-height: calc(100vh - 115px);
+        padding: 12px 12px 16px 10px;
       }
 
-      .main-menu-row {
-        gap: 12px 10px;
-        justify-content: center;
-        padding: 0;
+      .main-menu a {
+        width: 205px;
       }
 
-      .main-menu-row.featured,
-      .main-menu-row.stats-top,
-      .main-menu-row.stats-bottom {
-        justify-content: center;
+      .menu-tab {
+        font-size: 16px;
+        padding: 13px 8px;
       }
-
-      .menu-xl { width: min(70vw, 320px); }
-      .menu-md { width: min(42vw, 220px); }
-      .menu-lg { width: min(48vw, 250px); }
 
       .stat-strip,
       .memory-grid,
@@ -690,28 +680,24 @@
       <img id="site-header-img" src="assets/header-main.png" alt="GirlServ" onerror="tryHeaderFallback(this)">
     </header>
 
-    <section class="main-menu-wrap" aria-label="GirlServ main menu">
-      <nav class="main-menu">
-        <div class="main-menu-row featured" aria-label="Core pages">
-          <a class="menu-xl" href="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
-          <a class="menu-xl" href="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
-          <a class="menu-xl" href="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
-        </div>
-
-        <div class="main-menu-row stats-top" aria-label="Stats pages top row">
-          <a class="menu-md" href="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
-          <a class="menu-md" href="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
-          <a class="menu-md" href="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
-          <a class="menu-md" href="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
-          <a class="menu-md" href="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
-        </div>
-
-        <div class="main-menu-row stats-bottom" aria-label="Stats pages bottom row">
-          <a class="menu-lg" href="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
-          <a class="menu-lg" href="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
-        </div>
-      </nav>
-    </section>
+    <aside class="side-menu-shell" aria-label="GirlServ slide-out menu">
+      <div class="side-menu-panel">
+        <div class="side-menu-title">GirlServ menu ♡</div>
+        <nav class="main-menu" aria-label="GirlServ main menu">
+          <a href="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
+          <a href="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
+          <a href="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
+          <a href="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
+          <a href="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
+          <a href="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
+          <a href="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
+          <a href="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
+          <a href="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
+          <a href="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
+        </nav>
+      </div>
+      <button class="menu-tab" type="button" aria-label="Open GirlServ menu">menu</button>
+    </aside>
 
     <div class="notice-strip">
       <span>new header + image-button menu test build ♡ old full homepage is still safe as overview.html</span>
@@ -846,6 +832,15 @@
   </main>
 
   <script>
+    const sideMenuShell = document.querySelector(".side-menu-shell");
+    const menuTab = document.querySelector(".menu-tab");
+
+    if (menuTab && sideMenuShell) {
+      menuTab.addEventListener("click", () => {
+        sideMenuShell.classList.toggle("is-open");
+      });
+    }
+
     const HEADER_FALLBACKS = [
       "assets/header-main.png",
       "assets/girlserv_punk_collage_with_monsters.png",
