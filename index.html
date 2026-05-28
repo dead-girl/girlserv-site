@@ -347,12 +347,11 @@
     .intro-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.22fr) minmax(330px, 0.78fr);
-      gap: 0;
+      grid-template-columns: minmax(0, 1.42fr) minmax(330px, 0.72fr);
+      gap: 14px;
       margin: 14px 0 22px;
       align-items: start;
-      min-height: 560px;
-      padding: 18px 18px 26px;
+      padding: 20px 20px 24px;
       border: 2px dashed rgba(255, 74, 165, 0.38);
       border-radius: 28px;
       background:
@@ -365,8 +364,11 @@
 
     .intro-left {
       position: relative;
-      min-height: 540px;
       z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(245px, 0.36fr);
+      gap: 0;
+      align-items: start;
       overflow: visible;
     }
 
@@ -392,8 +394,8 @@
 
     .welcome-wrap {
       position: relative;
-      width: min(100%, 1040px);
-      margin: 0 0 0 0;
+      width: 100%;
+      margin: 0;
       transform: rotate(-1deg);
       z-index: 1;
     }
@@ -402,12 +404,10 @@
       filter: drop-shadow(8px 12px 0 rgba(0,0,0,0.70)) drop-shadow(0 12px 18px rgba(0,0,0,0.36));
     }
 
-
     .portrait-wrap {
-      position: absolute;
-      right: -4%;
-      top: 54px;
-      width: min(32%, 310px);
+      position: relative;
+      width: 100%;
+      margin: 58px 0 0 -40px;
       z-index: 5;
       transform: rotate(3deg);
       display: grid;
@@ -419,11 +419,10 @@
       filter: drop-shadow(8px 10px 0 rgba(0,0,0,0.76)) drop-shadow(0 14px 18px rgba(0,0,0,0.40));
     }
 
-
     .network-panel {
       position: relative;
       z-index: 4;
-      margin: 30px 0 0 -30px;
+      margin: 22px 0 0 -6px;
       background: rgba(12, 8, 18, 0.92);
       border-radius: 26px;
       padding: 15px;
@@ -976,28 +975,23 @@
     @media (max-width: 1180px) {
       .intro-grid {
         grid-template-columns: 1fr;
-        min-height: unset;
       }
 
       .intro-left {
-        min-height: unset;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr);
       }
 
       .welcome-wrap {
         width: 100%;
       }
 
-
       .portrait-wrap {
-        position: relative;
-        right: auto;
-        top: auto;
-        width: min(360px, 64%);
-        margin: -70px 3% 0 auto;
+        width: 100%;
+        margin: 48px 0 0 -28px;
       }
 
       .network-panel {
-        margin: -24px 0 0 0;
+        margin: 8px 0 0 0;
       }
 
       .network-grid {
