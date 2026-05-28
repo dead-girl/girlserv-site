@@ -190,8 +190,8 @@
       filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
     }
 
-    .top-nav-item.is-current .nav-preview::after {
-      content: "you are here";
+    .nav-preview::after {
+      content: attr(data-note);
       position: absolute;
       left: 50%;
       bottom: -10px;
@@ -205,6 +205,25 @@
       font-weight: 900;
       box-shadow: 2px 3px 0 #000;
       white-space: nowrap;
+      text-transform: lowercase;
+    }
+
+    .top-nav-item.is-current .nav-preview::before {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      transform: translateX(-50%) rotate(2deg);
+      color: #111;
+      background: #d8ff5e;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      z-index: 2;
     }
 
     .site-header {
@@ -837,43 +856,43 @@
       <nav class="top-nav" aria-label="GirlServ pages">
         <span class="top-nav-item" data-page="index.html">
           <a class="nav-text" href="index.html">GirlServ HQ</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+          <span class="nav-preview" data-note="home base" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="loudmouths.html">
-          <a class="nav-text" href="loudmouths.html">loudmouths</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+          <a class="nav-text" href="loudmouths.html">Loudmouths</a>
+          <span class="nav-preview" data-note="top chatters" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="channel-trolls.html">
-          <a class="nav-text" href="channel-trolls.html">channel trolls</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+          <a class="nav-text" href="channel-trolls.html">Channel Trolls</a>
+          <span class="nav-preview" data-note="degenerates" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="lol-lords.html">
-          <a class="nav-text" href="lol-lords.html">LOL lords</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+          <a class="nav-text" href="lol-lords.html">LOL Lords</a>
+          <span class="nav-preview" data-note="ha! ha! ha!" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="clickbait-crew.html">
-          <a class="nav-text" href="clickbait-crew.html">clickbait crew</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+          <a class="nav-text" href="clickbait-crew.html">Clickbait Crew</a>
+          <span class="nav-preview" data-note="linked by" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="frequent-flyers.html">
-          <a class="nav-text" href="frequent-flyers.html">frequent flyers</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+          <a class="nav-text" href="frequent-flyers.html">Frequent Flyers</a>
+          <span class="nav-preview" data-note="repeat joiners" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="stat-dump.html">
-          <a class="nav-text" href="stat-dump.html">stat dump</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+          <a class="nav-text" href="stat-dump.html">Stat Dump</a>
+          <span class="nav-preview" data-note="totals" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="girls-notes.html">
-          <a class="nav-text" href="girls-notes.html">girl's notes</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+          <a class="nav-text" href="girls-notes.html">Girl's Notes</a>
+          <span class="nav-preview" data-note="no entry!" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="room-reports.html">
-          <a class="nav-text" href="room-reports.html">room reports</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+          <a class="nav-text" href="room-reports.html">Room Reports</a>
+          <span class="nav-preview" data-note="channel receipts" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
         </span>
         <span class="top-nav-item" data-page="the-girlbook.html">
-          <a class="nav-text" href="the-girlbook.html">the girlbook</a>
-          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+          <a class="nav-text" href="the-girlbook.html">Girlbook</a>
+          <span class="nav-preview" data-note="drop the &quot;the&quot;" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
         </span>
       </nav>
     </div>
