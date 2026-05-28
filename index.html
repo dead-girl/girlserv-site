@@ -7,21 +7,26 @@
 
   <style>
     :root {
-      --bg: #07070d;
-      --ink: #f8f4fb;
-      --muted: #c8bfd0;
-      --pink: #ff3f9b;
-      --hotpink: #ff1493;
-      --blue: #4fdcff;
+      --bg: #120816;
+      --bg2: #1c0c20;
+      --ink: #fff8fd;
+      --muted: #dcc7dc;
+      --pink: #ff4aa5;
+      --hotpink: #ff128f;
+      --bubblegum: #ff86c6;
       --purple: #9d6cff;
-      --yellow: #ffe45c;
-      --paper: #f3e7df;
-      --paper2: #f8d9eb;
-      --paper3: #d9f2ff;
-      --paper4: #e8e1ff;
-      --black: #050507;
-      --panel: rgba(14, 14, 24, 0.94);
-      --line: rgba(255, 63, 155, 0.62);
+      --aqua: #67e9ff;
+      --lime: #d8ff5e;
+      --yellow: #ffe85b;
+      --red: #ff5966;
+      --paper: #fff4ea;
+      --paper2: #ffe8f3;
+      --paper3: #e8f8ff;
+      --paper4: #efe8ff;
+      --black: #0b0b10;
+      --panel: rgba(18, 10, 28, 0.92);
+      --line: rgba(255, 132, 198, 0.6);
+      --shadow: 5px 5px 0 #000;
     }
 
     * { box-sizing: border-box; }
@@ -29,274 +34,549 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Comic Sans MS", "Trebuchet MS", monospace;
       color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
       background:
-        radial-gradient(circle at 10% 12%, rgba(255, 63, 155, 0.18), transparent 25%),
-        radial-gradient(circle at 90% 8%, rgba(79, 220, 255, 0.13), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(157, 108, 255, 0.16), transparent 35%),
-        repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 6px),
-        #050507;
+        radial-gradient(circle at 12% 12%, rgba(255, 74, 165, 0.30), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(103, 233, 255, 0.24), transparent 20%),
+        radial-gradient(circle at 18% 88%, rgba(216, 255, 94, 0.16), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(157, 108, 255, 0.22), transparent 26%),
+        linear-gradient(180deg, #2c102f 0%, #17091d 42%, #0f0816 100%);
       overflow-x: hidden;
     }
 
     body::before {
-      content: "☆  ♡  ✧  x  ☆  ♡  ✧  x  ☆  ♡  ✧  x  ☆  ♡  ✧  x";
+      content: "♡  ★  xoxo  ★  ♡  so fetch  ♡  ★  xoxo  ★  ♡";
       position: fixed;
       inset: 0;
-      color: rgba(255, 63, 155, 0.35);
-      font-size: 34px;
-      line-height: 95px;
-      letter-spacing: 22px;
-      transform: rotate(-6deg) scale(1.1);
       pointer-events: none;
-      z-index: 0;
+      color: rgba(255,255,255,0.055);
+      font-size: 34px;
+      line-height: 115px;
+      letter-spacing: 7px;
+      transform: rotate(-7deg) scale(1.1);
       white-space: pre-wrap;
+      z-index: 0;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    .wrap {
+    .page-shell {
       position: relative;
       z-index: 1;
-      width: min(1600px, calc(100% - 28px));
+      width: min(1600px, calc(100% - 26px));
       margin: 14px auto 24px;
-      border: 2px dashed rgba(255, 63, 155, 0.7);
-      border-radius: 18px;
-      background: rgba(5, 5, 7, 0.72);
-      box-shadow: 0 0 0 4px rgba(0,0,0,0.45), 8px 8px 0 #000;
       padding: 16px;
-    }
-
-    .top-scrap {
-      display: grid;
-      grid-template-columns: 270px 1fr 330px;
-      gap: 18px;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-
-    .doodle-card,
-    .sticky,
-    .paper-note {
-      color: #111;
-      border: 2px solid #000;
-      box-shadow: 5px 5px 0 #000;
-      position: relative;
-    }
-
-    .doodle-card {
-      background: #efeaf0;
-      border-radius: 8px;
-      min-height: 150px;
-      padding: 14px;
-      transform: rotate(-3deg);
-      display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .anime-box {
-      width: 88px;
-      height: 104px;
-      background:
-        radial-gradient(circle at 50% 35%, #fff 0 18px, transparent 19px),
-        linear-gradient(135deg, #111, #40304a);
-      border: 2px solid #111;
-      border-radius: 10px;
+      border: 3px solid #000;
+      border-radius: 26px;
+      background: rgba(14, 8, 18, 0.82);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.05), 10px 10px 0 #000;
       overflow: hidden;
+    }
+
+    .page-shell::before,
+    .page-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(4px);
+      opacity: 0.45;
+      z-index: -1;
+    }
+
+    .page-shell::before {
+      width: 240px;
+      height: 240px;
+      background: rgba(255, 74, 165, 0.22);
+      top: -80px;
+      right: -60px;
+    }
+
+    .page-shell::after {
+      width: 220px;
+      height: 220px;
+      background: rgba(103, 233, 255, 0.16);
+      left: -80px;
+      bottom: -60px;
+    }
+
+    .hero-board {
       display: grid;
-      place-items: center;
-      color: var(--pink);
-      font-size: 46px;
+      grid-template-columns: 270px 1fr 280px;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
     }
 
-    .doodle-text {
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.2;
+    .paper-card,
+    .tape-note,
+    .summary-sticker,
+    .panel,
+    .menu-btn,
+    .footer-pill,
+    .score-mini,
+    .status-badge,
+    .small-note,
+    .memory-card,
+    .heart,
+    .enemy-chip,
+    .tag-chip,
+    .receipt-card,
+    .spotlight,
+    .seen-row,
+    .receipt-row {
+      border: 2px solid #000;
+      box-shadow: var(--shadow);
     }
 
-    .logo-wrap {
-      text-align: center;
+    .paper-card {
+      color: #111;
+      background: var(--paper2);
+      border-radius: 14px;
+      padding: 14px;
       position: relative;
-      padding-top: 10px;
+      transform: rotate(-3deg);
     }
+
+    .paper-card::before {
+      content: "burn book";
+      position: absolute;
+      top: -14px;
+      left: 18px;
+      background: var(--yellow);
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-weight: 900;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-center {
+      position: relative;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .logo-stage {
+      position: relative;
+      padding: 16px 18px 10px;
+      border: 2px dashed rgba(255, 255, 255, 0.24);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)),
+        rgba(19, 9, 27, 0.82);
+      overflow: hidden;
+    }
+
+    .logo-stage::before,
+    .logo-stage::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      transform: rotate(var(--rot));
+    }
+
+    .logo-stage::before {
+      width: 100px;
+      height: 28px;
+      background: #9ff8ff;
+      top: 16px;
+      left: 18px;
+      --rot: -8deg;
+    }
+
+    .logo-stage::after {
+      width: 130px;
+      height: 30px;
+      background: #ff9ad3;
+      right: 16px;
+      bottom: 18px;
+      --rot: 9deg;
+    }
+
+    .tiny-scribbles {
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 180px;
+    }
+
+    .tiny-scribbles span {
+      color: #111;
+      background: var(--paper);
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      transform: rotate(var(--r));
+    }
+
+    .tiny-scribbles span:nth-child(1) { --r: -5deg; background: #ff8bc9; }
+    .tiny-scribbles span:nth-child(2) { --r: 6deg; background: #c8b1ff; }
+    .tiny-scribbles span:nth-child(3) { --r: -3deg; background: #aef4ff; }
 
     .logo {
-      margin: 0;
-      font-size: clamp(64px, 8vw, 128px);
-      line-height: 0.9;
+      margin: 12px 0 4px;
+      font-size: clamp(64px, 8vw, 134px);
+      line-height: 0.92;
       letter-spacing: -5px;
-      color: var(--pink);
+      color: var(--hotpink);
       -webkit-text-stroke: 3px #000;
       text-shadow:
         4px 4px 0 #fff,
         8px 8px 0 #000,
-        0 0 18px rgba(255,63,155,0.55);
+        0 0 20px rgba(255, 74, 165, 0.55);
+      text-align: center;
       transform: rotate(1deg);
     }
 
     .tagline {
-      display: inline-block;
+      width: fit-content;
+      margin: 0 auto 10px;
       color: #111;
-      background: var(--paper);
-      border: 2px solid #000;
-      padding: 5px 18px;
+      background: #fff7b8;
+      padding: 7px 18px;
       border-radius: 999px;
-      box-shadow: 4px 4px 0 #000;
-      transform: rotate(-1deg);
       font-weight: 900;
-      margin-top: 2px;
+      transform: rotate(-2deg);
+      text-align: center;
     }
 
-    .top-notes {
+    .subtag {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      max-width: 760px;
+      margin: 0 auto 6px;
+    }
+
+    .hero-summary {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      align-items: center;
     }
 
-    .sticky {
-      min-height: 88px;
-      padding: 15px;
-      font-size: 17px;
+    .summary-sticker {
+      color: #111;
+      border-radius: 16px;
+      padding: 12px 10px;
+      text-align: center;
+      transform: rotate(var(--rot));
+      min-height: 90px;
+      display: grid;
+      align-content: center;
+      gap: 3px;
+    }
+
+    .summary-sticker:nth-child(1) { background: #ff9ecf; --rot: -2deg; }
+    .summary-sticker:nth-child(2) { background: #bfb0ff; --rot: 2deg; }
+    .summary-sticker:nth-child(3) { background: #adf6ff; --rot: -1deg; }
+    .summary-sticker:nth-child(4) { background: #e7ff86; --rot: 3deg; }
+
+    .summary-kicker {
+      font-size: 11px;
       font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      opacity: 0.85;
+    }
+
+    .summary-value {
+      font-size: clamp(22px, 2.2vw, 30px);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .summary-caption {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .note-stack {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .tape-note {
+      color: #111;
       background: var(--paper3);
+      border-radius: 14px;
+      padding: 14px;
+      position: relative;
+      transform: rotate(3deg);
+    }
+
+    .tape-note:nth-child(2) {
+      background: var(--paper);
       transform: rotate(-4deg);
     }
 
-    .sticky:nth-child(2) {
-      background: var(--paper);
-      transform: rotate(5deg);
+    .tape-note:nth-child(3) {
+      background: var(--paper4);
+      transform: rotate(2deg);
     }
 
-    .nav-menu {
+    .tape-note::before {
+      content: "";
+      position: absolute;
+      width: 74px;
+      height: 18px;
+      background: rgba(255,255,255,0.45);
+      border: 2px solid #000;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-4deg);
+    }
+
+    .status-badge {
+      display: inline-block;
+      margin-top: 8px;
+      color: #111;
+      background: #ff7fbf;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .menu-grid {
       display: grid;
-      grid-template-columns: repeat(9, minmax(120px, 1fr));
+      grid-template-columns: repeat(9, minmax(110px, 1fr));
       gap: 10px;
-      margin: 12px 0 18px;
+      margin: 4px 0 18px;
     }
 
     .menu-btn {
+      border-radius: 16px;
+      min-height: 68px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      min-height: 54px;
-      border: 2px solid #000;
-      border-radius: 14px;
-      box-shadow: 4px 4px 0 #000;
-      color: white;
-      font-weight: 900;
       text-align: center;
-      padding: 9px;
+      font-weight: 900;
+      line-height: 1.15;
       transition: transform .12s ease, filter .12s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .menu-btn:hover {
       transform: translateY(-3px) rotate(-1deg);
-      filter: brightness(1.12);
+      filter: brightness(1.06);
     }
 
-    .menu-btn:nth-child(1), .menu-btn:nth-child(4), .menu-btn:nth-child(8) { background: var(--pink); }
-    .menu-btn:nth-child(2), .menu-btn:nth-child(5), .menu-btn:nth-child(9) { background: var(--purple); }
-    .menu-btn:nth-child(3), .menu-btn:nth-child(6), .menu-btn:nth-child(7) { background: #2198db; }
+    .menu-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.26), transparent 40%);
+      pointer-events: none;
+    }
 
-    .homepage-grid {
+    .menu-btn:nth-child(1), .menu-btn:nth-child(5) { background: #ff5ba9; }
+    .menu-btn:nth-child(2), .menu-btn:nth-child(6) { background: #9d6cff; }
+    .menu-btn:nth-child(3), .menu-btn:nth-child(7) { background: #4fdcff; color: #101218; }
+    .menu-btn:nth-child(4), .menu-btn:nth-child(8) { background: #ffe45c; color: #111; }
+    .menu-btn:nth-child(9) { background: #ff7b7b; }
+
+    .content-grid {
       display: grid;
-      grid-template-columns: 1.05fr 1fr 1.05fr;
-      gap: 14px;
-      align-items: start;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 16px;
     }
 
-    .section {
-      border: 2px dashed var(--line);
-      border-radius: 18px;
-      background: var(--panel);
-      padding: 14px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    .left-column,
+    .right-column {
+      display: grid;
+      gap: 16px;
       min-width: 0;
+    }
+
+    .panel {
+      background: var(--panel);
+      border-radius: 22px;
+      padding: 15px;
+      min-width: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), var(--shadow);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .title-strip {
       display: inline-block;
+      color: #111;
       background: var(--pink);
-      color: #09090b;
       border: 2px solid #000;
       box-shadow: 4px 4px 0 #000;
-      padding: 5px 18px;
-      font-size: 27px;
+      border-radius: 999px;
+      padding: 7px 16px;
+      font-size: 25px;
       font-weight: 900;
       transform: rotate(-2deg);
-      margin: -4px 0 14px;
     }
+
+    .title-strip.alt { background: var(--aqua); }
+    .title-strip.yellow { background: var(--yellow); }
+    .title-strip.purple { background: #ccb6ff; }
 
     .subline {
       color: var(--muted);
       font-size: 13px;
-      margin: -7px 0 12px;
+      margin-top: 3px;
+      max-width: 420px;
+      line-height: 1.35;
+    }
+
+    .small-note {
+      color: #111;
+      background: #fff3c7;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transform: rotate(2deg);
+      white-space: nowrap;
     }
 
     .memory-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 11px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .memory-card {
       color: #111;
       background: var(--paper);
-      border: 2px solid #000;
-      border-radius: 8px;
-      box-shadow: 4px 4px 0 rgba(0,0,0,0.55);
-      padding: 10px;
-      min-height: 132px;
+      border-radius: 14px;
+      padding: 13px 12px 12px;
+      min-height: 144px;
       position: relative;
-      transform: rotate(var(--r, -1deg));
+      transform: rotate(var(--r));
     }
 
-    .memory-card:nth-child(2n) { --r: 2deg; background: #f6e7ec; }
-    .memory-card:nth-child(3n) { --r: -2deg; background: #eaf4ff; }
+    .memory-card:nth-child(odd) { --r: -2deg; }
+    .memory-card:nth-child(even) { --r: 2deg; background: #ffe6f2; }
+    .memory-card:nth-child(3n) { background: #ebf7ff; }
 
     .pin {
       position: absolute;
       top: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 19px;
-      height: 19px;
+      width: 18px;
+      height: 18px;
       border-radius: 999px;
-      background: var(--pink);
-      border: 2px solid #a1004f;
+      background: var(--hotpink);
+      border: 2px solid #7f003f;
       box-shadow: 2px 2px 0 #000;
     }
 
-    .memory-name {
-      color: #168bd4;
-      font-size: 18px;
+    .memory-rank {
+      display: inline-block;
+      color: #111;
+      background: #fff9a1;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
       font-weight: 900;
-      margin: 8px 0 6px;
+      margin-top: 4px;
+    }
+
+    .memory-name {
+      color: #197fc5;
+      font-size: 19px;
+      font-weight: 900;
+      margin: 7px 0 5px;
       word-break: break-word;
     }
 
     .memory-quote {
       font-size: 13px;
-      line-height: 1.3;
-      font-weight: 700;
+      line-height: 1.35;
+      font-weight: 800;
     }
 
     .memory-stats {
-      margin-top: 8px;
-      color: #4d4249;
-      font-size: 11px;
       display: flex;
-      gap: 8px;
       flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 8px;
+      color: #53464e;
+      font-size: 11px;
+      font-weight: 800;
     }
 
-    .vibes-board {
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.16);
+      border-radius: 999px;
+      padding: 4px 8px;
+    }
+
+    .mini-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 11px;
+      margin-bottom: 12px;
+    }
+
+    .score-mini {
+      color: #111;
+      border-radius: 16px;
+      padding: 12px;
+      min-height: 114px;
+      display: grid;
+      align-content: start;
+      gap: 5px;
+    }
+
+    .score-mini:nth-child(1) { background: #ffb3d8; }
+    .score-mini:nth-child(2) { background: #b7f5ff; }
+    .score-mini:nth-child(3) { background: #d4c2ff; }
+
+    .score-kicker {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.8;
+    }
+
+    .score-name {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.1;
+      word-break: break-word;
+    }
+
+    .score-value {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .vibes-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
@@ -304,264 +584,288 @@
 
     .paper-panel {
       color: #111;
-      background: rgba(243, 231, 223, 0.95);
       border: 2px solid #000;
-      border-radius: 12px;
-      padding: 13px;
       box-shadow: 4px 4px 0 #000;
+      border-radius: 16px;
+      padding: 13px;
+      background: rgba(255, 244, 234, 0.97);
     }
 
-    .paper-panel.enemy {
-      background: #f4aecb;
+    .paper-panel.enemy { background: #ffc7d8; }
+
+    .paper-panel h3 {
+      margin: 0;
+      font-size: 22px;
     }
 
-    .heart-stack {
+    .heart-stack,
+    .enemy-list,
+    .tag-cloud {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 8px 0 12px;
+      margin: 10px 0 12px;
     }
 
     .heart {
-      min-width: 70px;
+      min-width: 84px;
       min-height: 58px;
-      padding: 15px 8px 8px;
-      background: var(--pink);
+      padding: 14px 10px 8px;
+      background: #ff5ba9;
       color: #111;
-      border: 2px solid #000;
-      border-radius: 48% 48% 45% 45%;
+      border-radius: 48% 48% 44% 44%;
       display: grid;
       place-items: center;
-      font-weight: 900;
       text-align: center;
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.45);
-      transform: rotate(var(--rot, -5deg));
-      word-break: break-word;
       font-size: 13px;
+      font-weight: 900;
+      transform: rotate(var(--rot));
+      word-break: break-word;
     }
 
-    .heart:nth-child(2n) { --rot: 4deg; background: #cba8ff; }
-    .heart:nth-child(3n) { --rot: -2deg; background: #aee9ff; }
-
-    .enemy-list {
-      display: grid;
-      gap: 9px;
-      margin: 8px 0 12px;
-    }
+    .heart:nth-child(2n) { background: #aeefff; --rot: 3deg; }
+    .heart:nth-child(3n) { background: #cab6ff; --rot: -4deg; }
 
     .enemy-chip {
-      background: #09090b;
       color: #fff;
-      border: 2px solid #000;
+      background: #111;
       border-radius: 999px;
-      padding: 9px 10px;
-      text-align: center;
+      padding: 8px 11px;
+      font-size: 13px;
       font-weight: 900;
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+      text-align: center;
       word-break: break-word;
     }
+
+    .tag-chip {
+      color: #111;
+      background: #fff4bb;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transform: rotate(var(--rr));
+    }
+
+    .tag-chip:nth-child(odd) { --rr: -3deg; }
+    .tag-chip:nth-child(even) { --rr: 2deg; background: #d7efff; }
 
     .why-list {
       list-style: none;
       padding: 0;
-      margin: 8px 0 0;
+      margin: 0;
+      display: grid;
+      gap: 6px;
       font-size: 13px;
       font-weight: 800;
-      line-height: 1.55;
+      line-height: 1.45;
     }
 
-    .why-list li::before { content: "☑ "; color: #157a2e; }
-    .enemy .why-list li::before { content: "✕ "; color: #9d002c; }
-
-    .unknown-strip {
-      grid-column: 1 / -1;
-      border: 0;
-      border-top: 2px dashed rgba(79,220,255,0.65);
-      margin-top: 10px;
-      padding-top: 10px;
-    }
-
-    .unknown-strip span {
-      display: inline-block;
-      background: var(--paper);
-      color: #111;
-      border: 2px solid #000;
-      border-radius: 6px;
-      padding: 7px 10px;
-      margin: 4px;
-      font-size: 12px;
-      font-weight: 900;
-      transform: rotate(-2deg);
-    }
-
-    .feed {
-      display: grid;
-      gap: 12px;
-    }
+    .why-list li::before { content: "☑ "; color: #18792b; }
+    .enemy .why-list li::before { content: "✕ "; color: #92002f; }
 
     .receipt-card {
-      background: var(--paper);
       color: #111;
-      border: 2px solid #000;
-      box-shadow: 4px 4px 0 #000;
-      border-radius: 8px;
-      padding: 10px;
-      transform: rotate(1deg);
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 10px 12px;
     }
 
-    .receipt-row,
-    .seen-row {
+    .receipt-row {
       display: grid;
-      grid-template-columns: 26px 1fr auto;
+      grid-template-columns: 28px 1fr auto;
       gap: 8px;
       align-items: center;
-      border-bottom: 1px solid rgba(0,0,0,0.18);
-      padding: 7px 0;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.13);
       font-size: 13px;
       font-weight: 900;
     }
 
-    .receipt-row:last-child,
-    .seen-row:last-child { border-bottom: 0; }
+    .receipt-row:last-child { border-bottom: 0; }
 
     .tiny-avatar {
-      width: 25px;
-      height: 25px;
-      border-radius: 5px;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
       border: 1px solid #000;
       background: #111;
       display: grid;
       place-items: center;
-      color: var(--pink);
-      font-size: 12px;
+      color: var(--hotpink);
       overflow: hidden;
+      font-size: 12px;
     }
 
-    .tiny-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tiny-avatar img,
+    .spotlight-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     .time {
-      color: #555;
       font-size: 11px;
+      color: #5a4d57;
       white-space: nowrap;
     }
 
-    .dark-list {
-      background: #11111b;
-      border: 2px dashed rgba(79,220,255,0.55);
-      border-radius: 14px;
-      padding: 10px;
+    .hallway-list {
+      display: grid;
+      gap: 10px;
     }
 
-    .dark-list h3 {
-      margin: 0 0 8px;
-      color: var(--blue);
+    .hallway-item {
+      color: #111;
+      background: #f7e7ff;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 14px;
+      padding: 10px 11px;
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .hallway-item:nth-child(2n) { background: #e9f9ff; transform: rotate(1deg); }
+    .hallway-item:nth-child(2n+1) { transform: rotate(-1deg); }
+
+    .dark-box {
+      background: rgba(10, 12, 19, 0.88);
+      border: 2px dashed rgba(103, 233, 255, 0.45);
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .dark-box h3 {
+      margin: 0 0 10px;
+      color: var(--aqua);
       font-size: 18px;
     }
 
+    .spotlight {
+      display: grid;
+      grid-template-columns: 84px 1fr 86px;
+      gap: 12px;
+      align-items: center;
+      color: #111;
+      background: #ffd7ea;
+      border-radius: 16px;
+      padding: 12px;
+      transform: rotate(-1deg);
+    }
+
+    .spotlight-img {
+      width: 84px;
+      height: 84px;
+      border: 2px solid #000;
+      border-radius: 12px;
+      background: #111;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--hotpink);
+      font-size: 30px;
+    }
+
+    .mvp-sticker {
+      color: #111;
+      background: #fff98c;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 999px;
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.05;
+      transform: rotate(8deg);
+    }
+
+    .seen-list {
+      display: grid;
+      gap: 10px;
+    }
+
     .seen-row {
-      grid-template-columns: 26px 1fr 86px;
-      color: #e9e9f5;
-      border-color: rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      border-radius: 14px;
+      background: #151522;
+      padding: 9px 10px;
+      color: #f6f2fb;
+      font-size: 13px;
+      font-weight: 900;
+      border-color: rgba(255,255,255,0.10);
+      box-shadow: none;
     }
 
     .green-dot {
       display: inline-block;
       width: 9px;
       height: 9px;
-      border-radius: 99px;
-      background: #5cff69;
-      box-shadow: 0 0 8px #5cff69;
-      margin-right: 5px;
+      border-radius: 999px;
+      background: #60ff74;
+      box-shadow: 0 0 8px #60ff74;
+      margin-right: 6px;
     }
 
-    .spotlight {
-      display: grid;
-      grid-template-columns: 82px 1fr 82px;
-      gap: 12px;
-      align-items: center;
+    .footer-pill {
+      margin-top: 16px;
       color: #111;
-      background: #f3d7e5;
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 12px;
-      box-shadow: 4px 4px 0 #000;
-      transform: rotate(-1deg);
-    }
-
-    .spotlight-img {
-      width: 82px;
-      height: 82px;
-      border: 2px solid #000;
-      border-radius: 8px;
-      background: #111;
-      display: grid;
-      place-items: center;
-      color: var(--pink);
-      font-size: 32px;
-      overflow: hidden;
-    }
-
-    .spotlight-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .mvp-heart {
-      width: 78px;
-      height: 70px;
-      background: var(--pink);
-      border: 2px solid #000;
-      border-radius: 42% 42% 48% 48%;
-      display: grid;
-      place-items: center;
-      font-size: 18px;
-      font-weight: 900;
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.45);
-    }
-
-    .footer-note {
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin-top: 14px;
-      color: #111;
-      background: var(--paper);
-      border: 2px solid #000;
-      border-radius: 999px;
-      box-shadow: 4px 4px 0 #000;
-      padding: 10px 18px;
+      gap: 10px;
       font-weight: 900;
     }
 
-    .loading, .error {
+    .loading,
+    .error {
       color: var(--muted);
       font-size: 13px;
       padding: 8px;
     }
 
-    .error { color: #ffc7dc; }
+    .error { color: #ffbed8; }
 
-    @media (max-width: 1200px) {
-      .top-scrap,
-      .homepage-grid {
+    @media (max-width: 1320px) {
+      .hero-board {
         grid-template-columns: 1fr;
       }
 
-      .nav-menu {
+      .menu-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 720px) {
-      .wrap { width: min(100% - 14px, 1600px); padding: 10px; }
-      .nav-menu,
-      .memory-grid,
-      .vibes-board,
-      .top-notes {
-        grid-template-columns: 1fr;
+    @media (max-width: 860px) {
+      .page-shell {
+        width: min(100% - 12px, 1600px);
+        padding: 10px;
       }
 
-      .logo {
-        font-size: 58px;
-        letter-spacing: -3px;
+      .hero-summary,
+      .mini-board,
+      .memory-grid,
+      .vibes-grid {
+        grid-template-columns: 1fr;
       }
 
       .spotlight {
@@ -570,127 +874,226 @@
       }
 
       .spotlight-img,
-      .mvp-heart {
+      .mvp-sticker {
         margin: auto;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .logo {
+        font-size: 58px;
+        letter-spacing: -3px;
       }
     }
   </style>
 </head>
-
 <body>
-  <main class="wrap">
-    <header class="top-scrap">
-      <div class="doodle-card">
-        <div class="anime-box">♡</div>
-        <div class="doodle-text">memories hit different here.</div>
+  <main class="page-shell">
+    <header class="hero-board">
+      <section class="paper-card">
+        <div style="font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;opacity:.8;">welcome to the cutest mess online</div>
+        <h2 style="margin:8px 0 8px;font-size:32px;line-height:1;">too scrapbook.<br>too chaotic.<br>too iconic.</h2>
+        <p style="margin:0 0 10px;font-size:14px;font-weight:800;line-height:1.45;">Mean Girls hallway energy meets MySpace glitter chaos, with weird-cute little monster vibes and a live stats obsession.</p>
+        <div class="status-badge">currently serving: receipts, rankings, and gossip-board glamour</div>
+      </section>
+
+      <div class="hero-center">
+        <section class="logo-stage">
+          <div class="tiny-scribbles">
+            <span>so fetch</span>
+            <span>xoxo</span>
+            <span>burn book</span>
+          </div>
+          <h1 class="logo">GirlServ</h1>
+          <div class="tagline">coolour chaos for the terminally online ♡</div>
+          <div class="subtag">Live server stats, scrapbook vibes, weird-cute energy, and enough pink to qualify as a personality trait.</div>
+        </section>
+
+        <section class="hero-summary">
+          <article class="summary-sticker">
+            <div class="summary-kicker">chatters</div>
+            <div class="summary-value" id="summary-users">…</div>
+            <div class="summary-caption">people on the board</div>
+          </article>
+          <article class="summary-sticker">
+            <div class="summary-kicker">words</div>
+            <div class="summary-value" id="summary-words">…</div>
+            <div class="summary-caption">typed into history</div>
+          </article>
+          <article class="summary-sticker">
+            <div class="summary-kicker">lols</div>
+            <div class="summary-value" id="summary-lols">…</div>
+            <div class="summary-caption">public giggles recorded</div>
+          </article>
+          <article class="summary-sticker">
+            <div class="summary-kicker">links</div>
+            <div class="summary-value" id="summary-links">…</div>
+            <div class="summary-caption">receipts dropped</div>
+          </article>
+        </section>
       </div>
 
-      <div class="logo-wrap">
-        <h1 class="logo">GirlServ</h1>
-        <div class="tagline">everyone stays. vibes stay forever. ♡</div>
-      </div>
-
-      <div class="top-notes">
-        <div class="sticky">be kind,<br>be real,<br>be here.</div>
-        <div class="sticky">good people<br>make the<br>server. ♡</div>
-      </div>
+      <aside class="note-stack">
+        <div class="tape-note">
+          <div style="font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;opacity:.8;">mission</div>
+          <div style="font-size:21px;font-weight:900;line-height:1.15;margin-top:4px;">split the site into juicy little pages without losing the vibes.</div>
+        </div>
+        <div class="tape-note">
+          <div style="font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;opacity:.8;">moodboard</div>
+          <div style="font-size:15px;font-weight:900;line-height:1.45;margin-top:4px;">burn book • sticker bomb • old school myspace • weird-cute toy monster • all the colour</div>
+        </div>
+        <div class="tape-note">
+          <div style="font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;opacity:.8;">archive</div>
+          <div style="font-size:15px;font-weight:900;line-height:1.45;margin-top:4px;">Need the old full vibe while we rebuild? The <b>Old Homepage</b> button is staying for now.</div>
+        </div>
+      </aside>
     </header>
 
-    <nav class="nav-menu" aria-label="GirlServ pages">
-      <a class="menu-btn" href="top-chatter.html">💬 Top Chatter</a>
-      <a class="menu-btn" href="degeneracy.html">🔥 Degeneracy</a>
-      <a class="menu-btn" href="lol-lords.html">👑 LOL Lords</a>
-      <a class="menu-btn" href="link-gremlins.html">🔗 Link Gremlins</a>
-      <a class="menu-btn" href="door-slammers.html">🚪 Door Slammers</a>
-      <a class="menu-btn" href="overview.html">🧷 Old Homepage</a>
-      <a class="menu-btn" href="girl-remembers.html">💗 girl Remembers</a>
-      <a class="menu-btn" href="pet-corner.html">🐾 Pet Corner</a>
-      <a class="menu-btn" href="channels.html"># Channels</a>
+    <nav class="menu-grid" aria-label="GirlServ pages">
+      <a class="menu-btn" href="top-chatter.html">💬<br>Top Chatter</a>
+      <a class="menu-btn" href="degeneracy.html">🔥<br>Degeneracy</a>
+      <a class="menu-btn" href="lol-lords.html">👑<br>LOL Lords</a>
+      <a class="menu-btn" href="link-gremlins.html">🔗<br>Link Gremlins</a>
+      <a class="menu-btn" href="door-slammers.html">🚪<br>Door Slammers</a>
+      <a class="menu-btn" href="overview.html">🧷<br>Old Homepage</a>
+      <a class="menu-btn" href="girl-remembers.html">💗<br>girl Remembers</a>
+      <a class="menu-btn" href="pet-corner.html">🐾<br>Pet Corner</a>
+      <a class="menu-btn" href="channels.html">#<br>Channels</a>
     </nav>
 
-    <section class="homepage-grid">
-      <section class="section">
-        <div class="title-strip">memory wall ♡</div>
-        <div class="subline">people who left a mark</div>
-        <div id="memory-wall" class="memory-grid">
-          <div class="loading">loading live stats...</div>
-        </div>
-      </section>
+    <section class="content-grid">
+      <div class="left-column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip">burn book wall ♡</div>
+              <div class="subline">The main characters right now. Top chatter snapshots with a scrapbook-card treatment.</div>
+            </div>
+            <div class="small-note">live leaderboard preview</div>
+          </div>
+          <div id="memory-wall" class="memory-grid">
+            <div class="loading">loading live stats...</div>
+          </div>
+        </section>
 
-      <section class="section">
-        <div class="title-strip">vibes board</div>
-        <div class="subline">who we love, who we clash with, and everything in between...</div>
-
-        <div class="vibes-board">
-          <div class="paper-panel">
-            <h2 style="margin:0;">the favorites ♡</h2>
-            <div id="favorites" class="heart-stack"></div>
-            <div style="font-weight:900;">why they hit ♡</div>
-            <ul class="why-list">
-              <li>good vibes</li>
-              <li>loyal as hell</li>
-              <li>makes server better</li>
-              <li>iconic energy</li>
-            </ul>
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip alt">clique tracker ✦</div>
+              <div class="subline">Fast little snapshots of who is currently dominating the chatter, the laughs, and the links.</div>
+            </div>
+            <div class="small-note">hallway gossip speedrun</div>
           </div>
 
-          <div class="paper-panel enemy">
-            <h2 style="margin:0;">the enemies 💔</h2>
-            <div id="enemies" class="enemy-list"></div>
-            <div style="font-weight:900;">why they not it ✕</div>
-            <ul class="why-list">
-              <li>toxic energy</li>
-              <li>drama starter</li>
-              <li>server ruiner</li>
-              <li>just weird</li>
-            </ul>
+          <div class="mini-board">
+            <article class="score-mini">
+              <div class="score-kicker">most words</div>
+              <div class="score-name" id="quick-top-chatter">loading...</div>
+              <div class="score-value" id="quick-top-chatter-value">—</div>
+            </article>
+            <article class="score-mini">
+              <div class="score-kicker">most lols</div>
+              <div class="score-name" id="quick-top-lol">loading...</div>
+              <div class="score-value" id="quick-top-lol-value">—</div>
+            </article>
+            <article class="score-mini">
+              <div class="score-kicker">most links</div>
+              <div class="score-name" id="quick-top-links">loading...</div>
+              <div class="score-value" id="quick-top-links-value">—</div>
+            </article>
           </div>
 
-          <div class="unknown-strip">
-            <div style="color: var(--blue); font-weight:900; margin-bottom:6px;">we don't know you like that (yet). +</div>
-            <div id="unknowns"></div>
+          <div class="vibes-grid">
+            <article class="paper-panel">
+              <h3>the favorites ♡</h3>
+              <div id="favorites" class="heart-stack"></div>
+              <ul class="why-list">
+                <li>good vibes and good timing</li>
+                <li>server-enhancing behavior</li>
+                <li>main-character consistency</li>
+                <li>you just know when they arrive</li>
+              </ul>
+            </article>
+
+            <article class="paper-panel enemy">
+              <h3>the enemies 💔</h3>
+              <div id="enemies" class="enemy-list"></div>
+              <ul class="why-list">
+                <li>chaos but not the cute kind</li>
+                <li>side-eye worthy habits</li>
+                <li>caused scenes in the hallway</li>
+                <li>walking red flag energy</li>
+              </ul>
+            </article>
           </div>
-        </div>
 
-        <div class="footer-note">
-          <span>people come and go, but memories? those stay.</span>
-          <span>♡</span>
-        </div>
-      </section>
+          <div style="margin-top:12px;">
+            <div class="small-note" style="display:inline-block;transform:rotate(-2deg);">we don't know you like that (yet)</div>
+            <div id="unknowns" class="tag-cloud" style="margin-top:10px;"></div>
+          </div>
+        </section>
+      </div>
 
-      <section class="section feed">
-        <div>
-          <div class="title-strip">receipts ↝</div>
+      <div class="right-column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip yellow">receipts & rumours ↝</div>
+              <div class="subline">Live proof of who is laughing, linking, and generally leaving digital fingerprints everywhere.</div>
+            </div>
+            <div class="small-note">evidence locker</div>
+          </div>
           <div class="receipt-card" id="receipts">
             <div class="loading">loading receipts...</div>
           </div>
-        </div>
 
-        <div class="dark-list">
-          <h3>recent memories 📷</h3>
-          <div id="recent-memories">
-            <div class="loading">loading recent memories...</div>
-          </div>
-        </div>
+          <div style="height:12px"></div>
 
-        <div class="dark-list">
-          <h3>last seen ⏱</h3>
-          <div id="last-seen">
-            <div class="loading">loading last seen...</div>
+          <div class="dark-box">
+            <h3>hallway moments 📸</h3>
+            <div id="recent-memories" class="hallway-list">
+              <div class="loading">loading recent memories...</div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div class="spotlight" id="spotlight">
-          <div class="spotlight-img">♡</div>
-          <div>
-            <div style="font-weight:900; font-size:14px;">spotlight ✦ shining this week</div>
-            <h2 style="margin:5px 0 3px;">loading...</h2>
-            <div style="font-weight:800;">carried the vibes. kept it real.</div>
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip purple">hallway sightings ⏱</div>
+              <div class="subline">Who is shining, who was just seen, and who keeps showing up in every conversation worth remembering.</div>
+            </div>
+            <div class="small-note">seen in the halls</div>
           </div>
-          <div class="mvp-heart">MVP</div>
-        </div>
-      </section>
+
+          <div class="spotlight" id="spotlight">
+            <div class="spotlight-img">♡</div>
+            <div>
+              <div style="font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;">spotlight</div>
+              <h2 style="margin:5px 0 3px;">loading...</h2>
+              <div style="font-weight:800;">waiting for the live stats to pick the current main character.</div>
+            </div>
+            <div class="mvp-sticker">SO<br>FETCH</div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="dark-box">
+            <h3>last seen</h3>
+            <div id="last-seen" class="seen-list">
+              <div class="loading">loading last seen...</div>
+            </div>
+          </div>
+        </section>
+      </div>
     </section>
+
+    <footer class="footer-pill">
+      <span>GirlServ: part burn book, part MySpace shrine, part weird little museum of who said what.</span>
+      <span>♡ xoxo ♡</span>
+    </footer>
   </main>
 
   <script>
@@ -699,18 +1102,6 @@
       "truth_seekers_user_stats.json",
       "live_truth_seekers_user_stats.json"
     ];
-
-    const PAGE_LINKS = {
-      chatters: "top-chatter.html",
-      degeneracy: "degeneracy.html",
-      lol: "lol-lords.html",
-      links: "link-gremlins.html",
-      joins: "door-slammers.html",
-      overview: "overview.html",
-      memory: "girl-remembers.html",
-      pet: "pet-corner.html",
-      channels: "channels.html"
-    };
 
     const CUSTOM_AVATARS = {
       "dead_girl": "avatars/dead_girl.png",
@@ -822,6 +1213,45 @@
       return users.reduce((sum, u) => sum + Number(u[field] || 0), 0);
     }
 
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    function renderSummary(users) {
+      setText("summary-users", users.length.toLocaleString());
+      setText("summary-words", total(users, "words").toLocaleString());
+      setText("summary-lols", total(users, "lol").toLocaleString());
+      setText("summary-links", total(users, "links").toLocaleString());
+    }
+
+    function renderQuickWinners(users) {
+      const topWords = rankBy(users, "words")[0];
+      const topLols = rankBy(users, "lol")[0];
+      const topLinks = rankBy(users, "links")[0];
+
+      setText("quick-top-chatter", topWords ? topWords.name : "nobody yet");
+      setText("quick-top-chatter-value", topWords ? `${Number(topWords.words || 0).toLocaleString()} words` : "—");
+
+      setText("quick-top-lol", topLols ? topLols.name : "nobody yet");
+      setText("quick-top-lol-value", topLols ? `${Number(topLols.lol || 0).toLocaleString()} lols` : "—");
+
+      setText("quick-top-links", topLinks ? topLinks.name : "nobody yet");
+      setText("quick-top-links-value", topLinks ? `${Number(topLinks.links || 0).toLocaleString()} links` : "—");
+    }
+
+    function memoryQuote(index, user) {
+      const quotes = [
+        "kept the server alive and absolutely visible.",
+        "walked into the room and instantly became the topic.",
+        "too online to fail and too iconic to ignore.",
+        "left glitter, chaos, and a suspicious amount of lore.",
+        "not just active — hall-of-fame active.",
+        "showed up, said things, and stayed memorable."
+      ];
+      return quotes[index % quotes.length];
+    }
+
     function renderMemoryWall(users) {
       const wall = document.getElementById("memory-wall");
       const top = rankBy(users, "words").slice(0, 6);
@@ -834,27 +1264,16 @@
       wall.innerHTML = top.map((u, idx) => `
         <article class="memory-card">
           <div class="pin"></div>
+          <div class="memory-rank">#${idx + 1} main character</div>
           <div class="memory-name">${safeText(u.name)}</div>
           <div class="memory-quote">“${memoryQuote(idx, u)}”</div>
           <div class="memory-stats">
-            <span>${Number(u.words || 0).toLocaleString()} words</span>
-            <span>${Number(u.lol || 0).toLocaleString()} lols</span>
-            <span>${Number(u.links || 0).toLocaleString()} links</span>
+            <span class="stat-pill">💬 ${Number(u.words || 0).toLocaleString()} words</span>
+            <span class="stat-pill">😂 ${Number(u.lol || 0).toLocaleString()} lols</span>
+            <span class="stat-pill">🔗 ${Number(u.links || 0).toLocaleString()} links</span>
           </div>
         </article>
       `).join("");
-    }
-
-    function memoryQuote(index, user) {
-      const quotes = [
-        "brought the good vibes and the midnight chaos.",
-        "kept the server alive and slightly unwell.",
-        "unstoppable energy. always starting something.",
-        "icons, comebacks, and chaos. legend.",
-        "seen everywhere. said something. left a mark.",
-        "real recognizes real. always here."
-      ];
-      return quotes[index % quotes.length];
     }
 
     function renderVibes(users) {
@@ -867,19 +1286,19 @@
       const lowActivity = [...users]
         .filter(u => Number(u.words || 0) < 100)
         .sort((a, b) => Number(b.words || 0) - Number(a.words || 0))
-        .slice(0, 6);
+        .slice(0, 10);
 
       favorites.innerHTML = byWords.slice(0, 5).map(u => `
         <div class="heart">${safeText(u.name)}</div>
       `).join("") || `<div class="loading">no favorites yet</div>`;
 
-      enemies.innerHTML = byDegen.slice(0, 4).map(u => `
+      enemies.innerHTML = byDegen.slice(0, 5).map(u => `
         <div class="enemy-chip">${safeText(u.name)}</div>
       `).join("") || `<div class="loading">no enemies yet</div>`;
 
       unknowns.innerHTML = lowActivity.map(u => `
-        <span>${safeText(u.name)}</span>
-      `).join("") || `<span>lurkers loading...</span>`;
+        <span class="tag-chip">${safeText(u.name)}</span>
+      `).join("") || `<span class="tag-chip">lurkers loading...</span>`;
     }
 
     function renderReceipts(users) {
@@ -887,11 +1306,13 @@
       const topLol = rankBy(users, "lol")[0];
       const topLinks = rankBy(users, "links")[0];
       const topJoins = rankBy(users, "joins")[0];
+      const topDegen = rankBy(users, "degeneracy")[0];
 
       const rows = [
         topLol && { name: topLol.name, text: `laughed ${Number(topLol.lol || 0).toLocaleString()} times`, time: "live" },
         topLinks && { name: topLinks.name, text: `dropped ${Number(topLinks.links || 0).toLocaleString()} links`, time: "live" },
-        topJoins && { name: topJoins.name, text: `slammed the door ${Number(topJoins.joins || 0).toLocaleString()} times`, time: "live" }
+        topJoins && { name: topJoins.name, text: `joined ${Number(topJoins.joins || 0).toLocaleString()} times`, time: "live" },
+        topDegen && { name: topDegen.name, text: `stacked ${Number(topDegen.degeneracy || 0).toLocaleString()} degen points`, time: "live" }
       ].filter(Boolean);
 
       receipts.innerHTML = rows.map(r => `
@@ -903,27 +1324,27 @@
       `).join("") || `<div class="error">No receipts found yet.</div>`;
     }
 
+    function recentMemoryLine(index, user) {
+      const lines = [
+        `${user.name} was impossible to ignore`,
+        `${user.name} carried another whole conversation`,
+        `${user.name} left new receipts on the floor`,
+        `${user.name} kept the timeline moving`
+      ];
+      return lines[index % lines.length];
+    }
+
     function renderRecentMemories(users) {
       const area = document.getElementById("recent-memories");
       const rows = rankBy(users, "words").slice(0, 4);
 
       area.innerHTML = rows.map((u, idx) => `
-        <div class="receipt-row">
-          <span style="color:var(--blue);font-weight:900;">#</span>
+        <div class="hallway-item">
+          ${avatarHtml(u.name)}
           <span>${safeText(recentMemoryLine(idx, u))}</span>
-          <span class="time">${idx + 1}d ago</span>
+          <span class="time">#${idx + 1}</span>
         </div>
       `).join("") || `<div class="error">No memories found yet.</div>`;
-    }
-
-    function recentMemoryLine(index, user) {
-      const lines = [
-        `${user.name} carried the chat`,
-        `${user.name} left receipts`,
-        `${user.name} started a moment`,
-        `${user.name} kept the server alive`
-      ];
-      return lines[index % lines.length];
     }
 
     function renderLastSeen(users) {
@@ -947,11 +1368,11 @@
         spot.innerHTML = `
           <div class="spotlight-img">♡</div>
           <div>
-            <div style="font-weight:900; font-size:14px;">spotlight ✦ shining this week</div>
+            <div style="font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;">spotlight</div>
             <h2 style="margin:5px 0 3px;">waiting...</h2>
             <div style="font-weight:800;">no live stats loaded yet.</div>
           </div>
-          <div class="mvp-heart">MVP</div>
+          <div class="mvp-sticker">SO<br>FETCH</div>
         `;
         return;
       }
@@ -959,15 +1380,17 @@
       spot.innerHTML = `
         ${avatarHtml(top.name, "spotlight-img")}
         <div>
-          <div style="font-weight:900; font-size:14px;">spotlight ✦ shining this week</div>
+          <div style="font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;">spotlight</div>
           <h2 style="margin:5px 0 3px;">${safeText(top.name)}</h2>
-          <div style="font-weight:800;">carried the vibes with ${Number(top.words || 0).toLocaleString()} words.</div>
+          <div style="font-weight:800;">currently carrying the vibe with ${Number(top.words || 0).toLocaleString()} words.</div>
         </div>
-        <div class="mvp-heart">MVP</div>
+        <div class="mvp-sticker">SO<br>FETCH</div>
       `;
     }
 
     function renderPage(users) {
+      renderSummary(users);
+      renderQuickWinners(users);
       renderMemoryWall(users);
       renderVibes(users);
       renderReceipts(users);
@@ -986,6 +1409,10 @@
         ["memory-wall", "favorites", "enemies", "unknowns", "receipts", "recent-memories", "last-seen"].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.innerHTML = `<div class="error">Could not load live stats yet.</div>`;
+        });
+        ["summary-users", "summary-words", "summary-lols", "summary-links", "quick-top-chatter", "quick-top-lol", "quick-top-links"].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = "—";
         });
       });
   </script>
