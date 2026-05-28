@@ -345,18 +345,29 @@
 
 
     .intro-grid {
+      position: relative;
       display: grid;
-      grid-template-columns: 1.28fr 0.9fr;
-      gap: 16px;
-      margin-bottom: 18px;
+      grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+      gap: 0;
+      margin: 14px 0 22px;
       align-items: start;
+      min-height: 600px;
+      padding: 20px 18px 28px;
+      border: 2px dashed rgba(255, 74, 165, 0.38);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(255, 18, 143, 0.12), transparent 28%),
+        radial-gradient(circle at 78% 68%, rgba(103, 233, 255, 0.10), transparent 30%),
+        rgba(5, 3, 8, 0.58);
+      box-shadow: 7px 7px 0 #000;
+      overflow: visible;
     }
 
     .intro-left {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.62fr);
-      gap: 16px;
-      align-items: start;
+      position: relative;
+      min-height: 560px;
+      z-index: 2;
+      overflow: visible;
     }
 
     .art-frame,
@@ -367,46 +378,95 @@
     }
 
     .art-frame {
-      background: rgba(9, 5, 14, 0.88);
-      border-radius: 24px;
-      padding: 12px;
-      overflow: hidden;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
     }
 
     .art-frame img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 14px;
+    }
+
+    .welcome-wrap {
+      position: relative;
+      width: min(100%, 980px);
+      margin: 8px 0 0 0;
+      transform: rotate(-1deg);
+      z-index: 1;
+    }
+
+    .welcome-wrap img {
+      filter: drop-shadow(8px 12px 0 rgba(0,0,0,0.70)) drop-shadow(0 12px 18px rgba(0,0,0,0.36));
+    }
+
+    .welcome-copy {
+      position: absolute;
+      left: 35%;
+      top: 39%;
+      width: 52%;
+      color: #111;
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+      font-size: clamp(15px, 1.18vw, 22px);
+      line-height: 1.34;
+      font-weight: 900;
+      transform: rotate(-1deg);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.45);
+    }
+
+    .welcome-copy strong,
+    .welcome-copy em {
+      color: var(--hotpink);
+      font-style: normal;
     }
 
     .portrait-wrap {
+      position: absolute;
+      right: -5%;
+      top: 74px;
+      width: min(34%, 330px);
+      z-index: 5;
+      transform: rotate(3deg);
       display: grid;
-      gap: 10px;
+      gap: 0;
       align-content: start;
     }
 
+    .portrait-wrap .art-frame img {
+      filter: drop-shadow(8px 10px 0 rgba(0,0,0,0.76)) drop-shadow(0 14px 18px rgba(0,0,0,0.40));
+    }
+
     .portrait-note {
-      width: fit-content;
-      max-width: 100%;
+      position: absolute;
+      left: 7%;
+      right: 6%;
+      bottom: 5%;
       color: #111;
-      background: #9fe8ff;
+      background: rgba(159, 232, 255, 0.90);
       border: 2px solid #000;
       border-radius: 12px;
-      padding: 9px 12px;
-      font-size: 13px;
+      padding: 7px 10px;
+      font-size: clamp(12px, 1vw, 16px);
       font-weight: 900;
       line-height: 1.25;
-      transform: rotate(-2deg);
-      box-shadow: 4px 4px 0 #000;
+      transform: rotate(-1.5deg);
+      box-shadow: 3px 4px 0 #000;
+      text-align: center;
+      pointer-events: none;
     }
 
     .network-panel {
-      background: rgba(12, 8, 18, 0.94);
-      border-radius: 24px;
-      padding: 16px;
+      position: relative;
+      z-index: 4;
+      margin: 26px 0 0 -34px;
+      background: rgba(12, 8, 18, 0.92);
+      border-radius: 26px;
+      padding: 15px;
       min-width: 0;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), var(--shadow);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 7px 8px 0 #000;
+      transform: rotate(1deg);
     }
 
     .network-title {
@@ -953,10 +1013,34 @@
     @media (max-width: 1180px) {
       .intro-grid {
         grid-template-columns: 1fr;
+        min-height: unset;
       }
 
       .intro-left {
-        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .welcome-wrap {
+        width: 100%;
+      }
+
+      .welcome-copy {
+        left: 32%;
+        top: 42%;
+        width: 54%;
+        font-size: clamp(13px, 2vw, 18px);
+      }
+
+      .portrait-wrap {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: min(360px, 64%);
+        margin: -70px 3% 0 auto;
+      }
+
+      .network-panel {
+        margin: -24px 0 0 0;
       }
 
       .network-grid {
@@ -1097,8 +1181,11 @@
 
     <section class="intro-grid" aria-label="Welcome and Rizon network preview">
       <div class="intro-left">
-        <div class="art-frame">
+        <div class="art-frame welcome-wrap">
           <img src="assets/home/welcome-board.png" alt="Welcome to GirlServ board" onerror="this.src='assets/welcome_to_girlserv_board_design.png'">
+          <div class="welcome-copy">
+            An immaculate little corner of the internet where <strong>logs are forever</strong>, the mention of the word <em>“rake”</em> hits different, and the vibes? <strong>Autistic AF!</strong> Join a channel, sperg out and be a part of the schizophrenia.
+          </div>
         </div>
 
         <div class="portrait-wrap">
