@@ -80,11 +80,11 @@
     .side-menu-shell {
       position: fixed;
       left: 0;
-      top: 22px;
+      top: 10px;
       z-index: 40;
       display: flex;
       align-items: flex-start;
-      transform: translateX(-236px);
+      transform: translateX(-194px);
       transition: transform 0.22s ease;
     }
 
@@ -116,19 +116,19 @@
     }
 
     .side-menu-panel {
-      width: 236px;
-      max-height: calc(100vh - 44px);
+      width: 194px;
+      max-height: calc(100vh - 20px);
       overflow-y: auto;
       overflow-x: visible;
-      padding: 12px 12px 14px 10px;
+      padding: 10px 10px 12px 8px;
       border: 2px solid #000;
       border-left: 0;
       border-radius: 0 22px 22px 0;
       background:
-        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.18) 0 1px, transparent 1px 25px),
-        linear-gradient(90deg, transparent 0 24px, rgba(255, 18, 143, 0.40) 24px 27px, transparent 27px),
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.18) 0 1px, transparent 1px 23px),
+        linear-gradient(90deg, transparent 0 22px, rgba(255, 18, 143, 0.40) 22px 25px, transparent 25px),
         #fff4ea;
-      box-shadow: 8px 8px 0 #000, 0 0 26px rgba(255, 18, 143, 0.16);
+      box-shadow: 6px 8px 16px rgba(0,0,0,0.55), 0 0 22px rgba(255, 18, 143, 0.16);
       scrollbar-color: var(--hotpink) #fff4ea;
     }
 
@@ -138,27 +138,31 @@
       background: #ff9ecf;
       border: 2px solid #000;
       border-radius: 999px;
-      box-shadow: 3px 3px 0 #000;
-      padding: 6px 12px;
-      margin: 0 0 10px 18px;
-      font-size: 15px;
+      box-shadow: 2px 3px 7px rgba(0,0,0,0.45);
+      padding: 5px 11px;
+      margin: 0 0 8px 18px;
+      font-size: 14px;
       font-weight: 900;
       transform: rotate(-2deg);
     }
 
     .main-menu {
       display: grid;
-      gap: 7px;
+      gap: 4px;
       overflow: visible;
     }
 
     .main-menu a {
       display: block;
-      width: 190px;
+      width: 152px;
       background: transparent;
       outline: none;
       transition: transform 0.14s ease, filter 0.14s ease;
       transform: rotate(var(--rot)) translateX(var(--shift));
+    }
+
+    .main-menu a.is-current {
+      display: none;
     }
 
     .main-menu a:nth-child(1) { --rot: -2deg; --shift: 0px; }
@@ -183,7 +187,8 @@
       width: 100%;
       height: auto;
       border: 0;
-      filter: drop-shadow(4px 5px 0 rgba(0,0,0,0.92)) drop-shadow(0 0 8px rgba(255, 18, 143, 0.18));
+      border-radius: 16px;
+      filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.55)) drop-shadow(0 0 7px rgba(255, 18, 143, 0.16));
     }
 
     .notice-strip {
@@ -636,18 +641,18 @@
       }
 
       .side-menu-shell {
-        top: 12px;
-        transform: translateX(-218px);
+        top: 8px;
+        transform: translateX(-184px);
       }
 
       .side-menu-panel {
-        width: 218px;
-        max-height: calc(100vh - 24px);
-        padding: 11px 10px 13px 9px;
+        width: 184px;
+        max-height: calc(100vh - 16px);
+        padding: 10px 9px 12px 8px;
       }
 
       .main-menu a {
-        width: 175px;
+        width: 144px;
       }
 
       .menu-tab {
@@ -691,16 +696,16 @@
       <div class="side-menu-panel">
         <div class="side-menu-title">directory ♡</div>
         <nav class="main-menu" aria-label="GirlServ main menu">
-          <a href="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
-          <a href="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
-          <a href="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
-          <a href="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
-          <a href="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
-          <a href="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
-          <a href="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
-          <a href="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
-          <a href="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
-          <a href="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
+          <a href="index.html" data-page="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
+          <a href="girls-notes.html" data-page="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
+          <a href="the-girlbook.html" data-page="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
+          <a href="loudmouths.html" data-page="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
+          <a href="channel-trolls.html" data-page="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
+          <a href="lol-lords.html" data-page="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
+          <a href="clickbait-crew.html" data-page="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
+          <a href="frequent-flyers.html" data-page="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
+          <a href="room-reports.html" data-page="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
+          <a href="stat-dump.html" data-page="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
         </nav>
       </div>
       <button class="menu-tab" type="button" aria-label="Open GirlServ directory">directory</button>
@@ -847,6 +852,17 @@
         sideMenuShell.classList.toggle("is-open");
       });
     }
+
+    const currentPage = (() => {
+      const file = window.location.pathname.split("/").pop() || "index.html";
+      return file === "" ? "index.html" : file;
+    })();
+
+    document.querySelectorAll(".main-menu a[data-page]").forEach(link => {
+      if (link.dataset.page === currentPage || (currentPage === "index.html" && link.dataset.page === "index.html")) {
+        link.classList.add("is-current");
+      }
+    });
 
     const HEADER_FALLBACKS = [
       "assets/header-main.png",
