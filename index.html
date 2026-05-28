@@ -343,6 +343,175 @@
       opacity: 0.72;
     }
 
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.28fr 0.9fr;
+      gap: 16px;
+      margin-bottom: 18px;
+      align-items: start;
+    }
+
+    .intro-left {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.62fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .art-frame,
+    .network-panel,
+    .network-card {
+      border: 2px solid #000;
+      box-shadow: var(--shadow);
+    }
+
+    .art-frame {
+      background: rgba(9, 5, 14, 0.88);
+      border-radius: 24px;
+      padding: 12px;
+      overflow: hidden;
+    }
+
+    .art-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    .portrait-wrap {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .portrait-note {
+      width: fit-content;
+      max-width: 100%;
+      color: #111;
+      background: #9fe8ff;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.25;
+      transform: rotate(-2deg);
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .network-panel {
+      background: rgba(12, 8, 18, 0.94);
+      border-radius: 24px;
+      padding: 16px;
+      min-width: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), var(--shadow);
+    }
+
+    .network-title {
+      width: fit-content;
+      max-width: 100%;
+      color: #fff8fd;
+      background: #111;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin: 0 auto 14px;
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: 900;
+      transform: rotate(-1.5deg);
+      box-shadow: 4px 4px 0 #000;
+      text-align: center;
+    }
+
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .network-card {
+      position: relative;
+      color: #111;
+      border-radius: 16px;
+      padding: 14px 12px 12px;
+      min-height: 150px;
+      overflow: hidden;
+      transform: rotate(var(--r));
+    }
+
+    .network-card::before {
+      content: '';
+      position: absolute;
+      top: -9px;
+      left: 16px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--hotpink);
+      border: 2px solid #7f003f;
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .network-card::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 12px;
+      bottom: 12px;
+      width: 18px;
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.88) 0 4px, transparent 4.5px) center 0 / 18px 26px repeat-y;
+      opacity: 0.95;
+    }
+
+    .network-card:nth-child(1) { background: #ffd4ea; --r: -1.5deg; }
+    .network-card:nth-child(2) { background: #c9f3ff; --r: 1.6deg; }
+    .network-card:nth-child(3) { background: #d9ccff; --r: -1deg; }
+    .network-card:nth-child(4) { background: #ebf89a; --r: 1.4deg; }
+
+    .network-card-inner {
+      margin-left: 28px;
+      display: grid;
+      gap: 8px;
+      min-height: 100%;
+      align-content: start;
+    }
+
+    .network-kicker {
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: lowercase;
+    }
+
+    .network-sub {
+      width: fit-content;
+      color: #111;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .network-value {
+      font-size: clamp(28px, 3.3vw, 48px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .network-caption {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .network-placeholder {
+      opacity: 0.82;
+    }
+
     .notice-strip {
       display: flex;
       justify-content: space-between;
@@ -782,6 +951,18 @@
     .error { color: #ffbed8; }
 
     @media (max-width: 1180px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-left {
+        grid-template-columns: 1fr;
+      }
+
+      .network-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .content-grid {
         grid-template-columns: 1fr;
       }
@@ -913,6 +1094,62 @@
     <header class="site-header">
       <img id="site-header-img" src="assets/header-main.png" alt="GirlServ" onerror="tryHeaderFallback(this)">
     </header>
+
+    <section class="intro-grid" aria-label="Welcome and Rizon network preview">
+      <div class="intro-left">
+        <div class="art-frame">
+          <img src="assets/home/welcome-board.png" alt="Welcome to GirlServ board" onerror="this.src='assets/welcome_to_girlserv_board_design.png'">
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="art-frame">
+            <img src="assets/home/girl-portrait.png" alt="Girl portrait card" onerror="this.src='assets/gothic_anime_photo_collage_aesthetic.png'">
+          </div>
+          <div class="portrait-note">you sick fuck ♡</div>
+        </div>
+      </div>
+
+      <aside class="network-panel">
+        <div class="network-title">live from the Rizon network</div>
+        <div class="network-grid">
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">top chatter</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-top-chatter-value">---</div>
+              <div class="network-caption" id="rizon-top-chatter-caption">will hook into live stats here later</div>
+            </div>
+          </article>
+
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">recent memories</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-recent-memories-value">---</div>
+              <div class="network-caption" id="rizon-recent-memories-caption">choose whatever memory stat you want to show later</div>
+            </div>
+          </article>
+
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">channels active</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-channels-active-value">---</div>
+              <div class="network-caption" id="rizon-channels-active-caption">paper-card placeholder waiting for real numbers</div>
+            </div>
+          </article>
+
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">players online</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-players-online-value">---</div>
+              <div class="network-caption" id="rizon-players-online-caption">swap this for any live metric later</div>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </section>
 
     <div class="notice-strip">
       <span>top menu + hover-preview buttons test build ♡ old full homepage is still safe as overview.html</span>
