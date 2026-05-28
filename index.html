@@ -61,6 +61,152 @@
       margin: 12px auto 26px;
     }
 
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 auto 10px;
+      padding: 9px 14px;
+      border: 2px solid #000;
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.12) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, transparent 0 26px, rgba(255, 18, 143, 0.22) 26px 28px, transparent 28px),
+        rgba(255, 244, 234, 0.96);
+      box-shadow: 6px 6px 0 #000;
+      color: #111;
+    }
+
+    .mini-logo {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hotpink);
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-size: clamp(25px, 3vw, 42px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      transform-origin: center;
+    }
+
+    .mini-logo:hover,
+    .mini-logo:focus-visible {
+      animation: logoWiggle 0.38s linear infinite;
+      outline: none;
+    }
+
+    @keyframes logoWiggle {
+      0%, 100% { transform: rotate(0deg) translate(0, 0); }
+      20% { transform: rotate(-4deg) translate(-1px, 1px); }
+      40% { transform: rotate(3deg) translate(1px, -1px); }
+      60% { transform: rotate(-2deg) translate(1px, 1px); }
+      80% { transform: rotate(4deg) translate(-1px, -1px); }
+    }
+
+    .top-nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px 7px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .top-nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #111;
+      font-size: clamp(12px, 1.02vw, 15px);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
+    }
+
+    .nav-text:hover,
+    .nav-text:focus-visible,
+    .top-nav-item:hover .nav-text {
+      color: #fff;
+      background: #111;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .top-nav-item.is-current .nav-text {
+      color: rgba(17,17,17,0.58);
+      background: rgba(0,0,0,0.08);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .nav-preview {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px) rotate(var(--r, -2deg));
+      width: min(255px, 26vw);
+      min-width: 190px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 80;
+      transition: opacity 0.13s ease, transform 0.13s ease, visibility 0.13s ease;
+    }
+
+    .top-nav-item:nth-child(2n) .nav-preview { --r: 2deg; }
+    .top-nav-item:nth-child(3n) .nav-preview { --r: -3deg; }
+
+    .top-nav-item:hover .nav-preview,
+    .top-nav-item:focus-within .nav-preview {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) rotate(var(--r, -2deg));
+    }
+
+    .nav-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
+
+    .top-nav-item.is-current .nav-preview img {
+      filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
+
+    .top-nav-item.is-current .nav-preview::after {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%) rotate(-2deg);
+      color: #111;
+      background: #fff4ea;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+    }
+
     .site-header {
       width: 100%;
       margin: 0 auto 12px;
@@ -80,11 +226,11 @@
     .side-menu-shell {
       position: fixed;
       left: 0;
-      top: 10px;
+      top: 84px;
       z-index: 40;
       display: flex;
       align-items: flex-start;
-      transform: translateX(-194px);
+      transform: translateX(-218px);
       transition: transform 0.22s ease;
     }
 
@@ -116,11 +262,11 @@
     }
 
     .side-menu-panel {
-      width: 194px;
-      max-height: calc(100vh - 20px);
+      width: 218px;
+      max-height: calc(100vh - 98px);
       overflow-y: auto;
       overflow-x: visible;
-      padding: 10px 10px 12px 8px;
+      padding: 12px 12px 14px 12px;
       border: 2px solid #000;
       border-left: 0;
       border-radius: 0 22px 22px 0;
@@ -130,6 +276,7 @@
         #fff4ea;
       box-shadow: 6px 8px 16px rgba(0,0,0,0.55), 0 0 22px rgba(255, 18, 143, 0.16);
       scrollbar-color: var(--hotpink) #fff4ea;
+      color: #111;
     }
 
     .side-menu-title {
@@ -140,55 +287,41 @@
       border-radius: 999px;
       box-shadow: 2px 3px 7px rgba(0,0,0,0.45);
       padding: 5px 11px;
-      margin: 0 0 8px 18px;
+      margin: 0 0 10px 18px;
       font-size: 14px;
       font-weight: 900;
       transform: rotate(-2deg);
     }
 
-    .main-menu {
+    .drawer-note {
+      color: #111;
+      background: rgba(255,255,255,0.58);
+      border: 2px solid rgba(0,0,0,0.7);
+      border-radius: 14px;
+      padding: 9px 10px;
+      margin: 8px 0;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.35;
+      box-shadow: 2px 3px 8px rgba(0,0,0,0.25);
+    }
+
+    .drawer-placeholder {
       display: grid;
-      gap: 4px;
-      overflow: visible;
+      gap: 7px;
+      margin-top: 10px;
     }
 
-    .main-menu a {
+    .drawer-placeholder span {
       display: block;
-      width: 152px;
-      background: transparent;
-      outline: none;
-      transition: transform 0.14s ease, filter 0.14s ease;
-      transform: rotate(var(--rot)) translateX(var(--shift));
-    }
-
-    .main-menu a.is-current {
-      display: none;
-    }
-
-    .main-menu a:nth-child(1) { --rot: -2deg; --shift: 0px; }
-    .main-menu a:nth-child(2) { --rot: 2deg; --shift: 8px; }
-    .main-menu a:nth-child(3) { --rot: -1.5deg; --shift: -4px; }
-    .main-menu a:nth-child(4) { --rot: 1.6deg; --shift: 7px; }
-    .main-menu a:nth-child(5) { --rot: -2.2deg; --shift: -2px; }
-    .main-menu a:nth-child(6) { --rot: 1.8deg; --shift: 6px; }
-    .main-menu a:nth-child(7) { --rot: -1.4deg; --shift: -3px; }
-    .main-menu a:nth-child(8) { --rot: 2.2deg; --shift: 7px; }
-    .main-menu a:nth-child(9) { --rot: -1.8deg; --shift: 0px; }
-    .main-menu a:nth-child(10) { --rot: 1.3deg; --shift: 6px; }
-
-    .main-menu a:hover,
-    .main-menu a:focus-visible {
-      filter: brightness(1.09) saturate(1.08);
-      transform: rotate(var(--rot)) translateX(calc(var(--shift) + 8px)) scale(1.04);
-    }
-
-    .main-menu img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border: 0;
-      border-radius: 16px;
-      filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.55)) drop-shadow(0 0 7px rgba(255, 18, 143, 0.16));
+      color: #111;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      opacity: 0.72;
     }
 
     .notice-strip {
@@ -640,19 +773,30 @@
         width: min(100% - 10px, 1600px);
       }
 
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .nav-preview {
+        width: min(220px, 72vw);
+      }
+
       .side-menu-shell {
-        top: 8px;
-        transform: translateX(-184px);
+        top: 92px;
+        transform: translateX(-198px);
       }
 
       .side-menu-panel {
-        width: 184px;
-        max-height: calc(100vh - 16px);
+        width: 198px;
+        max-height: calc(100vh - 108px);
         padding: 10px 9px 12px 8px;
-      }
-
-      .main-menu a {
-        width: 144px;
       }
 
       .menu-tab {
@@ -688,31 +832,71 @@
 </head>
 <body>
   <main class="page-shell">
+    <div class="top-bar" aria-label="GirlServ top navigation">
+      <a class="mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
+      <nav class="top-nav" aria-label="GirlServ pages">
+        <span class="top-nav-item" data-page="index.html">
+          <a class="nav-text" href="index.html">GirlServ HQ</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="loudmouths.html">
+          <a class="nav-text" href="loudmouths.html">loudmouths</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="channel-trolls.html">
+          <a class="nav-text" href="channel-trolls.html">channel trolls</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="lol-lords.html">
+          <a class="nav-text" href="lol-lords.html">LOL lords</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="clickbait-crew.html">
+          <a class="nav-text" href="clickbait-crew.html">clickbait crew</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="frequent-flyers.html">
+          <a class="nav-text" href="frequent-flyers.html">frequent flyers</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="stat-dump.html">
+          <a class="nav-text" href="stat-dump.html">stat dump</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="girls-notes.html">
+          <a class="nav-text" href="girls-notes.html">girl's notes</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="room-reports.html">
+          <a class="nav-text" href="room-reports.html">room reports</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="the-girlbook.html">
+          <a class="nav-text" href="the-girlbook.html">the girlbook</a>
+          <span class="nav-preview" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+        </span>
+      </nav>
+    </div>
+
+    <aside class="side-menu-shell" aria-label="Future login and account drawer">
+      <div class="side-menu-panel">
+        <div class="side-menu-title">account ♡</div>
+        <div class="drawer-note">saving this slide-out spot for future login, profile, member tools, and account stuff.</div>
+        <div class="drawer-placeholder" aria-hidden="true">
+          <span>login coming later</span>
+          <span>profile coming later</span>
+          <span>member stats coming later</span>
+        </div>
+      </div>
+      <button class="menu-tab" type="button" aria-label="Open future account drawer">account</button>
+    </aside>
+
     <header class="site-header">
       <img id="site-header-img" src="assets/header-main.png" alt="GirlServ" onerror="tryHeaderFallback(this)">
     </header>
 
-    <aside class="side-menu-shell" aria-label="GirlServ slide-out menu">
-      <div class="side-menu-panel">
-        <div class="side-menu-title">directory ♡</div>
-        <nav class="main-menu" aria-label="GirlServ main menu">
-          <a href="index.html" data-page="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
-          <a href="girls-notes.html" data-page="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
-          <a href="the-girlbook.html" data-page="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
-          <a href="loudmouths.html" data-page="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
-          <a href="channel-trolls.html" data-page="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
-          <a href="lol-lords.html" data-page="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
-          <a href="clickbait-crew.html" data-page="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
-          <a href="frequent-flyers.html" data-page="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
-          <a href="room-reports.html" data-page="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
-          <a href="stat-dump.html" data-page="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
-        </nav>
-      </div>
-      <button class="menu-tab" type="button" aria-label="Open GirlServ directory">directory</button>
-    </aside>
-
     <div class="notice-strip">
-      <span>new header + image-button menu test build ♡ old full homepage is still safe as overview.html</span>
+      <span>top menu + hover-preview buttons test build ♡ old full homepage is still safe as overview.html</span>
       <span>favicon reminder: still needed</span>
     </div>
 
@@ -858,9 +1042,17 @@
       return file === "" ? "index.html" : file;
     })();
 
-    document.querySelectorAll(".main-menu a[data-page]").forEach(link => {
-      if (link.dataset.page === currentPage || (currentPage === "index.html" && link.dataset.page === "index.html")) {
-        link.classList.add("is-current");
+    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+      const page = item.dataset.page;
+      const isCurrent = page === currentPage || (currentPage === "index.html" && page === "index.html");
+      if (!isCurrent) return;
+
+      item.classList.add("is-current");
+      const link = item.querySelector(".nav-text");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+        link.removeAttribute("href");
+        link.addEventListener("click", event => event.preventDefault());
       }
     });
 
