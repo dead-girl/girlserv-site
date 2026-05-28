@@ -78,39 +78,47 @@
     }
 
     .main-menu-wrap {
-      margin: 18px auto 18px;
-      padding: 14px;
+      margin: 12px auto 18px;
+      padding: 8px;
       border: 2px dashed rgba(255, 74, 165, 0.45);
-      border-radius: 22px;
+      border-radius: 18px;
       background: rgba(5, 3, 8, 0.72);
       box-shadow: 6px 6px 0 #000;
+      overflow-x: auto;
+      scrollbar-color: var(--hotpink) #050308;
     }
 
     .main-menu {
       display: grid;
-      grid-template-columns: repeat(5, minmax(130px, 1fr));
-      gap: 13px;
+      grid-template-columns: repeat(10, minmax(92px, 1fr));
+      gap: 7px;
       align-items: center;
+      min-width: 980px;
     }
 
     .main-menu a {
       display: block;
-      border-radius: 17px;
+      aspect-ratio: 3 / 1;
+      border-radius: 13px;
+      overflow: hidden;
+      background: #050308;
       transition: transform 0.14s ease, filter 0.14s ease;
       outline: none;
     }
 
     .main-menu a:hover,
     .main-menu a:focus-visible {
-      transform: translateY(-3px) rotate(-1deg);
+      transform: translateY(-2px) rotate(-1deg);
       filter: brightness(1.09) saturate(1.08);
     }
 
     .main-menu img {
       display: block;
       width: 100%;
-      height: auto;
-      border-radius: 17px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border: 0;
     }
 
     .notice-strip {
@@ -552,10 +560,6 @@
     .error { color: #ffbed8; }
 
     @media (max-width: 1180px) {
-      .main-menu {
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-      }
-
       .content-grid {
         grid-template-columns: 1fr;
       }
@@ -567,12 +571,7 @@
       }
 
       .main-menu-wrap {
-        padding: 10px;
-      }
-
-      .main-menu {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        padding: 7px;
       }
 
       .stat-strip,
@@ -604,7 +603,7 @@
 <body>
   <main class="page-shell">
     <header class="site-header">
-      <img src="assets/header-main.png" alt="GirlServ">
+      <img id="site-header-img" src="assets/header-main.png" alt="GirlServ" onerror="tryHeaderFallback(this)">
     </header>
 
     <section class="main-menu-wrap" aria-label="GirlServ main menu">
@@ -755,6 +754,29 @@
   </main>
 
   <script>
+    const HEADER_FALLBACKS = [
+      "assets/header-main.png",
+      "assets/girlserv_punk_collage_with_monsters.png",
+      "assets/girlserv-header.png",
+      "girlserv-header.png"
+    ];
+
+    function tryHeaderFallback(img) {
+      const current = img.getAttribute("data-fallback-index") || "0";
+      const nextIndex = Number(current) + 1;
+
+      if (nextIndex >= HEADER_FALLBACKS.length) {
+        img.onerror = null;
+        img.alt = "GirlServ header image missing";
+        img.style.minHeight = "180px";
+        img.style.background = "#050308";
+        return;
+      }
+
+      img.setAttribute("data-fallback-index", String(nextIndex));
+      img.src = HEADER_FALLBACKS[nextIndex] + "?v=" + Date.now();
+    }
+
     const USER_STATS_SOURCES = [
       "preloaded_user_stats.json",
       "truth_seekers_user_stats.json",
