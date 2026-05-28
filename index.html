@@ -347,12 +347,12 @@
     .intro-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+      grid-template-columns: minmax(0, 1.22fr) minmax(330px, 0.78fr);
       gap: 0;
       margin: 14px 0 22px;
       align-items: start;
-      min-height: 600px;
-      padding: 20px 18px 28px;
+      min-height: 560px;
+      padding: 18px 18px 26px;
       border: 2px dashed rgba(255, 74, 165, 0.38);
       border-radius: 28px;
       background:
@@ -365,7 +365,7 @@
 
     .intro-left {
       position: relative;
-      min-height: 560px;
+      min-height: 540px;
       z-index: 2;
       overflow: visible;
     }
@@ -392,8 +392,8 @@
 
     .welcome-wrap {
       position: relative;
-      width: min(100%, 980px);
-      margin: 8px 0 0 0;
+      width: min(100%, 1040px);
+      margin: 0 0 0 0;
       transform: rotate(-1deg);
       z-index: 1;
     }
@@ -402,31 +402,12 @@
       filter: drop-shadow(8px 12px 0 rgba(0,0,0,0.70)) drop-shadow(0 12px 18px rgba(0,0,0,0.36));
     }
 
-    .welcome-copy {
-      position: absolute;
-      left: 35%;
-      top: 39%;
-      width: 52%;
-      color: #111;
-      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
-      font-size: clamp(15px, 1.18vw, 22px);
-      line-height: 1.34;
-      font-weight: 900;
-      transform: rotate(-1deg);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.45);
-    }
-
-    .welcome-copy strong,
-    .welcome-copy em {
-      color: var(--hotpink);
-      font-style: normal;
-    }
 
     .portrait-wrap {
       position: absolute;
-      right: -5%;
-      top: 74px;
-      width: min(34%, 330px);
+      right: -4%;
+      top: 54px;
+      width: min(32%, 310px);
       z-index: 5;
       transform: rotate(3deg);
       display: grid;
@@ -438,29 +419,11 @@
       filter: drop-shadow(8px 10px 0 rgba(0,0,0,0.76)) drop-shadow(0 14px 18px rgba(0,0,0,0.40));
     }
 
-    .portrait-note {
-      position: absolute;
-      left: 7%;
-      right: 6%;
-      bottom: 5%;
-      color: #111;
-      background: rgba(159, 232, 255, 0.90);
-      border: 2px solid #000;
-      border-radius: 12px;
-      padding: 7px 10px;
-      font-size: clamp(12px, 1vw, 16px);
-      font-weight: 900;
-      line-height: 1.25;
-      transform: rotate(-1.5deg);
-      box-shadow: 3px 4px 0 #000;
-      text-align: center;
-      pointer-events: none;
-    }
 
     .network-panel {
       position: relative;
       z-index: 4;
-      margin: 26px 0 0 -34px;
+      margin: 30px 0 0 -30px;
       background: rgba(12, 8, 18, 0.92);
       border-radius: 26px;
       padding: 15px;
@@ -1024,12 +987,6 @@
         width: 100%;
       }
 
-      .welcome-copy {
-        left: 32%;
-        top: 42%;
-        width: 54%;
-        font-size: clamp(13px, 2vw, 18px);
-      }
 
       .portrait-wrap {
         position: relative;
@@ -1183,16 +1140,12 @@
       <div class="intro-left">
         <div class="art-frame welcome-wrap">
           <img src="assets/home/welcome-board.png" alt="Welcome to GirlServ board" onerror="this.src='assets/welcome_to_girlserv_board_design.png'">
-          <div class="welcome-copy">
-            An immaculate little corner of the internet where <strong>logs are forever</strong>, the mention of the word <em>“rake”</em> hits different, and the vibes? <strong>Autistic AF!</strong> Join a channel, sperg out and be a part of the schizophrenia.
-          </div>
         </div>
 
         <div class="portrait-wrap">
           <div class="art-frame">
             <img src="assets/home/girl-portrait.png" alt="Girl portrait card" onerror="this.src='assets/gothic_anime_photo_collage_aesthetic.png'">
           </div>
-          <div class="portrait-note">you sick fuck ♡</div>
         </div>
       </div>
 
