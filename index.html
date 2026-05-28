@@ -79,7 +79,7 @@
 
     .main-menu-wrap {
       margin: 12px auto 18px;
-      padding: 8px;
+      padding: 10px;
       border: 2px dashed rgba(255, 74, 165, 0.45);
       border-radius: 18px;
       background: rgba(5, 3, 8, 0.72);
@@ -90,10 +90,25 @@
 
     .main-menu {
       display: grid;
-      grid-template-columns: repeat(10, minmax(92px, 1fr));
-      gap: 7px;
+      gap: 10px;
       align-items: center;
-      min-width: 980px;
+      min-width: 1180px;
+    }
+
+    .main-menu-row {
+      display: grid;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .main-menu-row.featured {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: min(820px, 72%);
+      margin: 0 auto;
+    }
+
+    .main-menu-row.standard {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
     }
 
     .main-menu a {
@@ -608,16 +623,21 @@
 
     <section class="main-menu-wrap" aria-label="GirlServ main menu">
       <nav class="main-menu">
-        <a href="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
-        <a href="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
-        <a href="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
-        <a href="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
-        <a href="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
-        <a href="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
-        <a href="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
-        <a href="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
-        <a href="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
-        <a href="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
+        <div class="main-menu-row featured" aria-label="Core pages">
+          <a href="index.html" aria-label="GirlServ HQ"><img src="assets/buttons/girlserv-hq.png" alt="GirlServ HQ"></a>
+          <a href="girls-notes.html" aria-label="girl's notes"><img src="assets/buttons/girls-notes.png" alt="girl's notes"></a>
+          <a href="the-girlbook.html" aria-label="the girlbook"><img src="assets/buttons/the-girlbook.png" alt="the girlbook"></a>
+        </div>
+
+        <div class="main-menu-row standard" aria-label="Stats pages">
+          <a href="loudmouths.html" aria-label="loudmouths"><img src="assets/buttons/loudmouths.png" alt="loudmouths"></a>
+          <a href="channel-trolls.html" aria-label="channel trolls"><img src="assets/buttons/channel-trolls.png" alt="channel trolls"></a>
+          <a href="lol-lords.html" aria-label="LOL lords"><img src="assets/buttons/lol-lords.png" alt="LOL lords"></a>
+          <a href="clickbait-crew.html" aria-label="clickbait crew"><img src="assets/buttons/clickbait-crew.png" alt="clickbait crew"></a>
+          <a href="frequent-flyers.html" aria-label="frequent flyers"><img src="assets/buttons/frequent-flyers.png" alt="frequent flyers"></a>
+          <a href="stat-dump.html" aria-label="stat dump"><img src="assets/buttons/stat-dump.png" alt="stat dump"></a>
+          <a href="room-reports.html" aria-label="room reports"><img src="assets/buttons/room-reports.png" alt="room reports"></a>
+        </div>
       </nav>
     </section>
 
