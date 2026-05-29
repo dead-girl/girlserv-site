@@ -190,6 +190,15 @@
       overflow: hidden;
     }
 
+    .mini-avatar img,
+    .top3-photo img,
+    .watch-top-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .extra-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -388,11 +397,63 @@
 
     .top3-label { font-size: 12px; color: #444; margin-top: 6px; }
 
-    .watch-wide-board { margin-top: 14px; }
+    .watch-wide-board { margin-top: 14px; overflow: hidden; }
+
+    .watch-slider-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .watch-slider-title {
+      color: var(--yellow);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .watch-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .watch-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      opacity: 0.45;
+      cursor: pointer;
+    }
+
+    .watch-dot.active {
+      opacity: 1;
+      background: var(--pink);
+    }
+
+    .watch-slider-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .watch-slider-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .watch-slide {
+      min-width: 100%;
+      width: 100%;
+    }
 
     .watch-carousel {
       display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
+      grid-template-columns: repeat(3,minmax(0,1fr));
       gap: 10px;
       min-height: 275px;
     }
@@ -408,10 +469,22 @@
       box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
     }
 
-    .watch-carousel-photo {
+    .watch-top-rank {
+      display: inline-block;
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-weight: 900;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .watch-top-photo {
       width: 96px;
       height: 96px;
-      margin: 20px auto 10px;
+      margin: 0 auto 10px;
       border: 3px solid #fff;
       outline: 2px solid #d1a9b8;
       border-radius: 10px;
@@ -514,8 +587,14 @@
 
           <div class="board watch-wide-board">
             <div class="board-title">Users To Keep An Eye On</div>
+            <div class="watch-slider-head">
+              <div class="watch-slider-title" id="watch-slider-title">loading...</div>
+              <div class="watch-dots" id="watch-dots"></div>
+            </div>
             <div id="json-status-watch"></div>
-            <div class="watch-carousel" id="watch-carousel"></div>
+            <div class="watch-slider-viewport">
+              <div class="watch-slider-track" id="watch-slider-track"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -528,6 +607,10 @@
       "truth_seekers_user_stats.json",
       "./truth_seekers_user_stats.json"
     ];
+
+    let watchSlides = [];
+    let watchIndex = 0;
+    let watchTimer = null;
 
     function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
 
@@ -545,8 +628,41 @@
       el.innerHTML = text ? `<div class="status-note">${esc(text)}</div>` : "";
     }
 
+    function normNick(nick){
+      return String(nick || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
+    }
+
+    function hashNick(nick){
+      let h = 0;
+      const s = String(nick || "");
+      for(let i = 0; i < s.length; i++){
+        h = (h * 31 + s.charCodeAt(i)) >>> 0;
+      }
+      return h;
+    }
+
+    function fallbackAvatar(nick){
+      const num = (hashNick(nick) % 30) + 1;
+      return `avatars/avatar-${String(num).padStart(2, "0")}.png`;
+    }
+
+    function customAvatar(nick){
+      return `avatars/custom-${normNick(nick)}.png`;
+    }
+
     function avatarMarkup(nick){
-      return `<div class="mini-avatar">${esc(nick).slice(0,2).toUpperCase()}</div>`;
+      const custom = customAvatar(nick);
+      const fallback = fallbackAvatar(nick);
+      return `<div class="mini-avatar"><img src="${custom}" alt="${esc(nick)}" onerror="this.onerror=null;this.src='${fallback}'"></div>`;
+    }
+
+    function avatarPhotoMarkup(nick, cls){
+      const custom = customAvatar(nick);
+      const fallback = fallbackAvatar(nick);
+      return `<div class="${cls}"><img src="${custom}" alt="${esc(nick)}" onerror="this.onerror=null;this.src='${fallback}'"></div>`;
     }
 
     function entriesFrom(raw){
@@ -643,7 +759,7 @@
       document.getElementById("top3-grid").innerHTML = ordered.map((u, idx) => `
         <div class="top3-card rank${ranks[idx]}">
           <div class="top3-badge">#${ranks[idx]}</div>
-          <div class="top3-photo">${esc(u.nick).slice(0,2).toUpperCase()}</div>
+          ${avatarPhotoMarkup(u.nick, "top3-photo")}
           <div class="top3-name">${esc(u.nick)}</div>
           <div class="top3-score">${fmt(u.words)}</div>
           <div class="top3-label">words</div>
@@ -651,21 +767,84 @@
       `).join("");
     }
 
-    function renderWatch(all){
-      const picks = [
-        { label:"Most Joins", user:[...all].sort((a,b)=>b.joins-a.joins)[0], score:u=>`${fmt(u.joins)} joins`, note:"always coming back" },
-        { label:"Biggest LOL Menace", user:[...all].sort((a,b)=>b.lol-a.lol)[0], score:u=>`${fmt(u.lol)} lol`, note:"giggly little pest" },
-        { label:"Chaos Goblin", user:[...all].sort((a,b)=>b.degeneracy-a.degeneracy)[0], score:u=>`${fmt(u.degeneracy)} chaos`, note:"needs supervision" },
-        { label:"Link Gremlin", user:[...all].sort((a,b)=>b.links-a.links)[0], score:u=>`${fmt(u.links)} links`, note:"keeps posting things" }
+    function buildWatchSlides(all){
+      return [
+        {
+          title: "Most Joins",
+          note: "always coming back",
+          items: [...all].sort((a,b)=>b.joins-a.joins).slice(0,3),
+          score: u => `${fmt(u.joins)} joins`
+        },
+        {
+          title: "Biggest LOL Menace",
+          note: "giggly little pest",
+          items: [...all].sort((a,b)=>b.lol-a.lol).slice(0,3),
+          score: u => `${fmt(u.lol)} lol`
+        },
+        {
+          title: "Chaos Goblin",
+          note: "needs supervision",
+          items: [...all].sort((a,b)=>b.degeneracy-a.degeneracy).slice(0,3),
+          score: u => `${fmt(u.degeneracy)} chaos`
+        },
+        {
+          title: "Link Gremlin",
+          note: "keeps posting things",
+          items: [...all].sort((a,b)=>b.links-a.links).slice(0,3),
+          score: u => `${fmt(u.links)} links`
+        }
       ];
-      document.getElementById("watch-carousel").innerHTML = picks.map(p => `
-        <div class="watch-carousel-card">
-          <div class="watch-carousel-photo">${esc((p.user?.nick || "--")).slice(0,2).toUpperCase()}</div>
-          <div class="watch-carousel-name">${esc(p.user?.nick || "nobody yet")}</div>
-          <div class="watch-carousel-score">${p.user ? p.score(p.user) : "0"}</div>
-          <div class="watch-carousel-note">${esc(p.note)}</div>
+    }
+
+    function renderWatchSlider(){
+      const track = document.getElementById("watch-slider-track");
+      const dots = document.getElementById("watch-dots");
+
+      track.innerHTML = watchSlides.map(slide => `
+        <div class="watch-slide">
+          <div class="watch-carousel">
+            ${slide.items.map((u, idx) => `
+              <div class="watch-carousel-card">
+                <div class="watch-top-rank">#${idx+1}</div>
+                ${avatarPhotoMarkup(u.nick, "watch-top-photo")}
+                <div class="watch-carousel-name">${esc(u.nick)}</div>
+                <div class="watch-carousel-score">${slide.score(u)}</div>
+                <div class="watch-carousel-note">${esc(slide.note)}</div>
+              </div>
+            `).join("")}
+          </div>
         </div>
       `).join("");
+
+      dots.innerHTML = watchSlides.map((_, idx) => `
+        <button type="button" class="watch-dot${idx === 0 ? " active" : ""}" data-index="${idx}" aria-label="Go to slide ${idx+1}"></button>
+      `).join("");
+
+      dots.querySelectorAll(".watch-dot").forEach(dot => {
+        dot.addEventListener("click", () => {
+          goWatchSlide(Number(dot.dataset.index), true);
+        });
+      });
+
+      goWatchSlide(0, false);
+      startWatchSlider();
+    }
+
+    function goWatchSlide(index, restart){
+      watchIndex = index % watchSlides.length;
+      document.getElementById("watch-slider-track").style.transform = `translateX(-${watchIndex * 100}%)`;
+      document.getElementById("watch-slider-title").textContent = watchSlides[watchIndex].title;
+      document.querySelectorAll(".watch-dot").forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === watchIndex);
+      });
+      if(restart) startWatchSlider();
+    }
+
+    function startWatchSlider(){
+      if(watchTimer) clearInterval(watchTimer);
+      watchTimer = setInterval(() => {
+        goWatchSlide((watchIndex + 1) % watchSlides.length, false);
+      }, 3500);
     }
 
     function setupSearch(all){
@@ -721,7 +900,8 @@
         const top30 = all.slice(0,30);
         renderChatters(top30);
         renderTop3(top30.slice(0,3));
-        renderWatch(all);
+        watchSlides = buildWatchSlides(all);
+        renderWatchSlider();
         renderSelected(top30[0] || null);
         setupSearch(all);
       }catch(e){
