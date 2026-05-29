@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LOL Lords | GirlServ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --paper:#fffdf8;
+      --ink:#111;
+      --line:#111;
+      --pink:#ffd7ea;
+      --blue:#dff1ff;
+      --yellow:#fff4b8;
+      --mint:#e4ffd9;
+      --shadow:4px 5px 0 #111;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 22%),
+        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
+      color:var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main{
+      width:min(1400px, calc(100% - 28px));
+      margin:18px auto 42px;
+    }
+
+    .hero,
+    .section,
+    .tool-card{
+      background:var(--paper);
+      border:3px solid var(--line);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      padding:22px 22px 18px;
+      margin-bottom:18px;
+    }
+
+    .kicker{
+      display:inline-block;
+      padding:7px 12px;
+      border:2px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-weight:900;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:clamp(34px, 5vw, 64px);
+      line-height:.95;
+      letter-spacing:-2px;
+    }
+
+    .hero p{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .toolbar{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:12px;
+      margin:18px 0;
+    }
+
+    .tool-card{
+      padding:14px;
+      border-radius:22px;
+    }
+
+    .tool-label{
+      display:block;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      letter-spacing:.06em;
+    }
+
+    .search{
+      width:100%;
+      border:2px solid var(--line);
+      border-radius:999px;
+      padding:12px 14px;
+      font-size:15px;
+      font-weight:700;
+      background:#fff;
+    }
+
+    .mini-stat{
+      font-size:28px;
+      font-weight:900;
+      line-height:1;
+      margin:2px 0 6px;
+    }
+
+    .mini-note{
+      font-size:13px;
+      font-weight:700;
+      opacity:.78;
+    }
+
+    .section{
+      padding:18px;
+      margin:18px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(26px, 3.4vw, 40px);
+      line-height:1;
+      letter-spacing:-1px;
+    }
+
+    .sub{
+      margin:0;
+      font-size:13px;
+      font-weight:700;
+      opacity:.75;
+    }
+
+    .top10{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .lord-card,
+    .list-card,
+    .watch-card{
+      border:3px solid var(--line);
+      border-radius:24px;
+      background:#fff;
+      box-shadow:3px 4px 0 #111;
+      overflow:hidden;
+    }
+
+    .lord-card:nth-child(4n+1){background:#fff7fb}
+    .lord-card:nth-child(4n+2){background:#f2fbff}
+    .lord-card:nth-child(4n+3){background:#fffbea}
+    .lord-card:nth-child(4n+4){background:#f5fff0}
+
+    .lord-card .inner,
+    .watch-card .inner,
+    .list-card .inner{
+      padding:14px;
+    }
+
+    .tiny{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:8px;
+    }
+
+    .big-name{
+      font-size:24px;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:8px;
+      word-break:break-word;
+    }
+
+    .big-value{
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 9px;
+      border:2px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .list{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .column{
+      display:grid;
+      gap:12px;
+    }
+
+    .list-card button{
+      width:100%;
+      border:0;
+      background:transparent;
+      color:inherit;
+      text-align:left;
+      padding:14px 16px;
+      cursor:pointer;
+      font:inherit;
+    }
+
+    .list-card button:hover{
+      background:#fff8fd;
+    }
+
+    .row-top{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:12px;
+      align-items:center;
+    }
+
+    .rank{
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:2px solid var(--line);
+      border-radius:14px;
+      background:var(--yellow);
+      font-weight:900;
+      font-size:15px;
+    }
+
+    .name{
+      font-size:18px;
+      font-weight:900;
+      line-height:1.1;
+      word-break:break-word;
+    }
+
+    .score{
+      font-size:16px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .watch-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .watch-card:nth-child(1){background:#fff7fb}
+    .watch-card:nth-child(2){background:#f3fbff}
+    .watch-card:nth-child(3){background:#fffdf0}
+    .watch-card:nth-child(4){background:#f6fff3}
+
+    .empty,
+    .loading{
+      border:3px dashed var(--line);
+      border-radius:24px;
+      padding:18px;
+      background:#fff;
+      font-weight:800;
+    }
+
+    @media (max-width: 1100px){
+      .top10{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px){
+      .toolbar,
+      .list,
+      .watch-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 700px){
+      .top10{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <span class="kicker">GirlServ / LOL</span>
+      <h1>👑 LOL Lords ♡</h1>
+      <p>the room laugh track ♡</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="tool-card">
+        <label class="tool-label" for="searchBox">Search laugh gremlins</label>
+        <input id="searchBox" class="search" type="search" placeholder="type a nick…">
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Showing</div>
+        <div class="mini-stat" id="showingCount">0</div>
+        <div class="mini-note">lol lords on display</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Total lol</div>
+        <div class="mini-stat" id="totalLol">0</div>
+        <div class="mini-note">visible laugh count</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Top 10 lol lords</h2>
+          <p class="sub">the biggest laugh merchants in the room</p>
+        </div>
+      </div>
+      <div id="top10Wrap" class="loading">Loading lol stats…</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Ranks 11–30</h2>
+          <p class="sub">the rest of the laugh nobility</p>
+        </div>
+      </div>
+      <div id="rankedWrap" class="loading">Loading ranked list…</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>## Users To Keep An Eye On</h2>
+          <p class="sub">funny business watchlist</p>
+        </div>
+      </div>
+      <div id="watchWrap" class="watch-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    const DATA_URL = "truth_seekers_user_stats.json";
+
+    function formatNum(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function safeEntries(raw) {
+      return Object.entries(raw || {}).map(([nick, stats]) => ({
+        nick,
+        words: Number(stats?.words || 0),
+        joins: Number(stats?.joins || 0),
+        lol: Number(stats?.lol || 0),
+        degeneracy: Number(stats?.degeneracy || 0),
+        links: Number(stats?.links || 0)
+      }));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function buildTop10(list) {
+      const wrap = document.getElementById("top10Wrap");
+      if (!list.length) {
+        wrap.className = "empty";
+        wrap.textContent = "No lol lords found.";
+        return;
+      }
+
+      wrap.className = "top10";
+      wrap.innerHTML = list.slice(0, 10).map((user, index) => `
+        <article class="lord-card">
+          <div class="inner">
+            <div class="tiny">rank #${index + 1}</div>
+            <div class="big-name">${escapeHtml(user.nick)}</div>
+            <div class="big-value">${formatNum(user.lol)} lol</div>
+            <div class="meta">
+              <span class="pill">${formatNum(user.words)} words</span>
+              <span class="pill">${formatNum(user.joins)} joins</span>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function buildRanked(list) {
+      const wrap = document.getElementById("rankedWrap");
+      const rest = list.slice(10, 30);
+
+      if (!rest.length) {
+        wrap.className = "empty";
+        wrap.textContent = "No ranks 11–30 yet.";
+        return;
+      }
+
+      const left = rest.slice(0, 10);
+      const right = rest.slice(10, 20);
+
+      wrap.className = "list";
+      wrap.innerHTML = `
+        <div class="column">${left.map((user, i) => renderRow(user, i + 11)).join("")}</div>
+        <div class="column">${right.map((user, i) => renderRow(user, i + 21)).join("")}</div>
+      `;
+    }
+
+    function renderRow(user, rank) {
+      return `
+        <article class="list-card">
+          <div class="inner">
+            <div class="row-top">
+              <div class="rank">#${rank}</div>
+              <div>
+                <div class="name">${escapeHtml(user.nick)}</div>
+                <div class="meta">
+                  <span class="pill">${formatNum(user.words)} words</span>
+                </div>
+              </div>
+              <div class="score">${formatNum(user.lol)} lol</div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildWatch(entries) {
+      const wrap = document.getElementById("watchWrap");
+      const picks = [
+        {
+          title: "most lol total",
+          user: [...entries].sort((a, b) => b.lol - a.lol)[0],
+          value: u => `${formatNum(u.lol)} lol`
+        },
+        {
+          title: "laugh per word",
+          user: [...entries].filter(u => u.words > 0).sort((a, b) => (b.lol / b.words) - (a.lol / a.words))[0],
+          value: u => `${((u.lol / u.words) * 100).toFixed(2)}% lol rate`
+        },
+        {
+          title: "lol + joins",
+          user: [...entries].sort((a, b) => (b.lol + b.joins) - (a.lol + a.joins))[0],
+          value: u => `${formatNum(u.lol + u.joins)} lol + joins`
+        },
+        {
+          title: "chaotic comedian",
+          user: [...entries].sort((a, b) => (b.lol + b.degeneracy) - (a.lol + a.degeneracy))[0],
+          value: u => `${formatNum(u.lol)} lol + ${formatNum(u.degeneracy)} chaos`
+        }
+      ];
+
+      wrap.innerHTML = picks.map(item => `
+        <article class="watch-card">
+          <div class="inner">
+            <div class="tiny">${escapeHtml(item.title)}</div>
+            <div class="big-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
+            <div class="big-value">${item.user ? item.value(item.user) : "0"}</div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function applySearch(fullList) {
+      const search = document.getElementById("searchBox");
+
+      function render() {
+        const q = search.value.trim().toLowerCase();
+        const filtered = fullList.filter(user => user.nick.toLowerCase().includes(q));
+
+        buildTop10(filtered);
+        buildRanked(filtered);
+
+        const visible = filtered.slice(0, 30);
+        document.getElementById("showingCount").textContent = formatNum(visible.length);
+        document.getElementById("totalLol").textContent = formatNum(
+          visible.reduce((sum, user) => sum + user.lol, 0)
+        );
+      }
+
+      search.addEventListener("input", render);
+      render();
+    }
+
+    async function loadPage() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error("Failed to load lol stats");
+        const raw = await response.json();
+
+        const entries = safeEntries(raw)
+          .filter(user => user.nick.toLowerCase() !== "girl")
+          .sort((a, b) => b.lol - a.lol);
+
+        buildWatch(entries);
+        applySearch(entries);
+      } catch (error) {
+        document.getElementById("top10Wrap").className = "empty";
+        document.getElementById("top10Wrap").textContent = "Could not load lol stats.";
+        document.getElementById("rankedWrap").className = "empty";
+        document.getElementById("rankedWrap").textContent = "Could not load ranked list.";
+        document.getElementById("watchWrap").innerHTML = '<div class="empty">Could not load watchlist.</div>';
+      }
+    }
+
+    loadPage();
+  </script>
+</body>
+</html>
