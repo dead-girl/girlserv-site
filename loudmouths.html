@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loudmouths | GirlServ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --bg:#fff4ea;
+      --paper:#fffdf8;
+      --ink:#111;
+      --line:#111;
+      --soft:#f7d9e6;
+      --soft2:#d9efff;
+      --shadow:4px 5px 0 #111;
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.65), transparent 22%),
+        linear-gradient(180deg, #fff7f1 0%, #fff0f7 100%);
+      color:var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main{
+      width:min(1400px, calc(100% - 28px));
+      margin:18px auto 42px;
+    }
+
+    .hero{
+      background:var(--paper);
+      border:3px solid var(--line);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      padding:22px 22px 18px;
+      margin-bottom:18px;
+    }
+
+    .kicker{
+      display:inline-block;
+      padding:7px 12px;
+      border:2px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-weight:900;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:clamp(34px, 5vw, 64px);
+      line-height:.95;
+      letter-spacing:-2px;
+    }
+
+    .hero p{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .toolbar{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:12px;
+      margin:18px 0;
+    }
+
+    .tool-card{
+      background:var(--paper);
+      border:3px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:14px;
+    }
+
+    .tool-label{
+      display:block;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      letter-spacing:.06em;
+    }
+
+    .search{
+      width:100%;
+      border:2px solid var(--line);
+      border-radius:999px;
+      padding:12px 14px;
+      font-size:15px;
+      font-weight:700;
+      background:#fff;
+    }
+
+    .mini-stat{
+      font-size:28px;
+      font-weight:900;
+      line-height:1;
+      margin:2px 0 6px;
+    }
+
+    .mini-note{
+      font-size:13px;
+      font-weight:700;
+      opacity:.78;
+    }
+
+    .section{
+      background:var(--paper);
+      border:3px solid var(--line);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      padding:18px;
+      margin:18px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(26px, 3.4vw, 40px);
+      line-height:1;
+      letter-spacing:-1px;
+    }
+
+    .sub{
+      margin:0;
+      font-size:13px;
+      font-weight:700;
+      opacity:.75;
+    }
+
+    .top30{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .column{
+      display:grid;
+      gap:12px;
+    }
+
+    .chatter{
+      border:3px solid var(--line);
+      border-radius:22px;
+      background:#fff;
+      overflow:hidden;
+      box-shadow:3px 4px 0 #111;
+    }
+
+    .chatter button{
+      width:100%;
+      border:0;
+      background:transparent;
+      color:inherit;
+      padding:14px 16px;
+      text-align:left;
+      cursor:pointer;
+      font:inherit;
+    }
+
+    .chatter button:hover{
+      background:#fff8fd;
+    }
+
+    .row-top{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+    }
+
+    .rank{
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:2px solid var(--line);
+      border-radius:14px;
+      background:var(--soft);
+      font-weight:900;
+      font-size:15px;
+    }
+
+    .name{
+      font-size:18px;
+      font-weight:900;
+      line-height:1.1;
+      word-break:break-word;
+    }
+
+    .words{
+      font-size:15px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 9px;
+      border:2px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .details{
+      display:none;
+      border-top:3px dashed var(--line);
+      padding:12px 16px 14px;
+      background:#fff9f0;
+    }
+
+    .chatter.open .details{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:10px;
+    }
+
+    .detail-box{
+      border:2px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      padding:10px 11px;
+    }
+
+    .detail-label{
+      display:block;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:5px;
+      opacity:.72;
+    }
+
+    .detail-value{
+      font-size:20px;
+      font-weight:900;
+      line-height:1;
+    }
+
+    .spot-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .spot-card{
+      border:3px solid var(--line);
+      border-radius:24px;
+      background:#fff;
+      padding:14px;
+      box-shadow:3px 4px 0 #111;
+    }
+
+    .spot-card:nth-child(1){background:#fff7fb}
+    .spot-card:nth-child(2){background:#f3fbff}
+    .spot-card:nth-child(3){background:#fffdf0}
+    .spot-card:nth-child(4){background:#f6fff3}
+
+    .spot-title{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:8px;
+    }
+
+    .spot-name{
+      font-size:24px;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:6px;
+      word-break:break-word;
+    }
+
+    .spot-value{
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .empty{
+      border:3px dashed var(--line);
+      border-radius:24px;
+      padding:18px;
+      font-weight:800;
+      background:#fff;
+    }
+
+    .loading{
+      padding:18px;
+      border:3px dashed var(--line);
+      border-radius:24px;
+      background:#fff;
+      font-weight:800;
+    }
+
+    @media (max-width: 980px){
+      .toolbar,
+      .top30,
+      .spot-grid,
+      .chatter.open .details{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <span class="kicker">GirlServ / Top Chatters</span>
+      <h1>★ Top Chatters ♡</h1>
+      <p>word crimes logged ♡</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="tool-card">
+        <label class="tool-label" for="searchBox">Search loudmouths</label>
+        <input id="searchBox" class="search" type="search" placeholder="type a nick…">
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Showing</div>
+        <div class="mini-stat" id="showingCount">0</div>
+        <div class="mini-note">top chatters on display</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Total words</div>
+        <div class="mini-stat" id="totalWords">0</div>
+        <div class="mini-note">combined from visible top 30</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Top 30 chatters</h2>
+          <p class="sub">click a user to open their joins / lol / chaos / links stats</p>
+        </div>
+      </div>
+      <div id="top30Wrap" class="loading">Loading chatters…</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>## ☆ #truth-seekers</h2>
+          <p class="sub">the loudest little monsters at the top</p>
+        </div>
+      </div>
+      <div id="truthSeekersWrap" class="spot-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>## Users To Keep An Eye On</h2>
+          <p class="sub">different flavours of suspicious activity</p>
+        </div>
+      </div>
+      <div id="watchWrap" class="spot-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    const DATA_URL = "../truth_seekers_user_stats.json";
+
+    function formatNum(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function safeEntries(raw) {
+      return Object.entries(raw || {}).map(([nick, stats]) => ({
+        nick,
+        words: Number(stats?.words || 0),
+        joins: Number(stats?.joins || 0),
+        lol: Number(stats?.lol || 0),
+        degeneracy: Number(stats?.degeneracy || 0),
+        links: Number(stats?.links || 0)
+      }));
+    }
+
+    function buildTop30(list) {
+      const wrap = document.getElementById("top30Wrap");
+
+      if (!list.length) {
+        wrap.className = "empty";
+        wrap.textContent = "No chatter data found.";
+        return;
+      }
+
+      const left = list.slice(0, 15);
+      const right = list.slice(15, 30);
+
+      wrap.className = "top30";
+      wrap.innerHTML = `
+        <div class="column">${left.map((user, i) => renderChatter(user, i + 1)).join("")}</div>
+        <div class="column">${right.map((user, i) => renderChatter(user, i + 16)).join("")}</div>
+      `;
+
+      wrap.querySelectorAll(".chatter button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          btn.closest(".chatter").classList.toggle("open");
+        });
+      });
+    }
+
+    function renderChatter(user, rank) {
+      const totalTracked = user.joins + user.lol + user.degeneracy + user.links;
+      return `
+        <article class="chatter" data-nick="${escapeAttr(user.nick)}">
+          <button type="button" aria-expanded="false">
+            <div class="row-top">
+              <div class="rank">#${rank}</div>
+              <div>
+                <div class="name">${escapeHtml(user.nick)}</div>
+                <div class="meta">
+                  <span class="pill">${formatNum(user.words)} words</span>
+                  <span class="pill">${formatNum(totalTracked)} extra stats</span>
+                </div>
+              </div>
+              <div class="words">${formatNum(user.words)}</div>
+            </div>
+          </button>
+          <div class="details">
+            <div class="detail-box">
+              <span class="detail-label">joins</span>
+              <div class="detail-value">${formatNum(user.joins)}</div>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">lol</span>
+              <div class="detail-value">${formatNum(user.lol)}</div>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">chaos</span>
+              <div class="detail-value">${formatNum(user.degeneracy)}</div>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">links</span>
+              <div class="detail-value">${formatNum(user.links)}</div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildTruthSeekers(top3) {
+      const wrap = document.getElementById("truthSeekersWrap");
+      wrap.innerHTML = top3.map((user, index) => `
+        <article class="spot-card">
+          <div class="spot-title">rank #${index + 1}</div>
+          <div class="spot-name">${escapeHtml(user.nick)}</div>
+          <div class="spot-value">${formatNum(user.words)} words</div>
+        </article>
+      `).join("");
+    }
+
+    function buildWatch(entries) {
+      const wrap = document.getElementById("watchWrap");
+
+      const picks = [
+        {
+          title: "most joins",
+          user: [...entries].sort((a, b) => b.joins - a.joins)[0],
+          value: u => `${formatNum(u.joins)} joins`
+        },
+        {
+          title: "biggest lol menace",
+          user: [...entries].sort((a, b) => b.lol - a.lol)[0],
+          value: u => `${formatNum(u.lol)} lol`
+        },
+        {
+          title: "chaos goblin",
+          user: [...entries].sort((a, b) => b.degeneracy - a.degeneracy)[0],
+          value: u => `${formatNum(u.degeneracy)} chaos`
+        },
+        {
+          title: "link gremlin",
+          user: [...entries].sort((a, b) => b.links - a.links)[0],
+          value: u => `${formatNum(u.links)} links`
+        }
+      ];
+
+      wrap.innerHTML = picks.map(item => `
+        <article class="spot-card">
+          <div class="spot-title">${escapeHtml(item.title)}</div>
+          <div class="spot-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
+          <div class="spot-value">${item.user ? item.value(item.user) : "0"}</div>
+        </article>
+      `).join("");
+    }
+
+    function applySearch(fullList) {
+      const search = document.getElementById("searchBox");
+
+      function render() {
+        const q = search.value.trim().toLowerCase();
+        const filtered = fullList.filter(user => user.nick.toLowerCase().includes(q));
+        buildTop30(filtered.slice(0, 30));
+
+        document.getElementById("showingCount").textContent = formatNum(filtered.slice(0, 30).length);
+        document.getElementById("totalWords").textContent = formatNum(
+          filtered.slice(0, 30).reduce((sum, user) => sum + user.words, 0)
+        );
+      }
+
+      search.addEventListener("input", render);
+      render();
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value).replaceAll("'", "&#39;");
+    }
+
+    async function loadPage() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error("Failed to load chatter data");
+        const raw = await response.json();
+
+        const entries = safeEntries(raw)
+          .filter(user => user.nick.toLowerCase() !== "girl")
+          .sort((a, b) => b.words - a.words);
+
+        const top30 = entries.slice(0, 30);
+        buildTruthSeekers(top30.slice(0, 3));
+        buildWatch(entries);
+        applySearch(top30);
+      } catch (error) {
+        const wrap = document.getElementById("top30Wrap");
+        wrap.className = "empty";
+        wrap.textContent = "Could not load chatter data.";
+        document.getElementById("truthSeekersWrap").innerHTML = '<div class="empty">Could not load top 3.</div>';
+        document.getElementById("watchWrap").innerHTML = '<div class="empty">Could not load watchlist.</div>';
+      }
+    }
+
+    loadPage();
+  </script>
+</body>
+</html>
