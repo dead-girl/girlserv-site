@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stat Dump | GirlServ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --paper:#fffdf8;
+      --ink:#111;
+      --line:#111;
+      --pink:#ffd7ea;
+      --blue:#dff1ff;
+      --yellow:#fff4b8;
+      --mint:#e4ffd9;
+      --shadow:4px 5px 0 #111;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 22%),
+        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
+      color:var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main{
+      width:min(1400px, calc(100% - 28px));
+      margin:18px auto 42px;
+    }
+
+    .hero,
+    .section,
+    .tool-card,
+    .stat-card{
+      background:var(--paper);
+      border:3px solid var(--line);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      padding:22px 22px 18px;
+      margin-bottom:18px;
+    }
+
+    .kicker{
+      display:inline-block;
+      padding:7px 12px;
+      border:2px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-weight:900;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:clamp(34px, 5vw, 64px);
+      line-height:.95;
+      letter-spacing:-2px;
+    }
+
+    .hero p{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .toolbar{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+      margin:18px 0;
+    }
+
+    .tool-card{
+      padding:14px;
+      border-radius:22px;
+    }
+
+    .tool-label{
+      display:block;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      letter-spacing:.06em;
+    }
+
+    .mini-stat{
+      font-size:28px;
+      font-weight:900;
+      line-height:1;
+      margin:2px 0 6px;
+    }
+
+    .mini-note{
+      font-size:13px;
+      font-weight:700;
+      opacity:.78;
+    }
+
+    .section{
+      padding:18px;
+      margin:18px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(26px, 3.4vw, 40px);
+      line-height:1;
+      letter-spacing:-1px;
+    }
+
+    .sub{
+      margin:0;
+      font-size:13px;
+      font-weight:700;
+      opacity:.75;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .stat-card{
+      padding:14px;
+      border-radius:24px;
+    }
+
+    .stat-card:nth-child(4n+1){background:#fff7fb}
+    .stat-card:nth-child(4n+2){background:#f2fbff}
+    .stat-card:nth-child(4n+3){background:#fffbea}
+    .stat-card:nth-child(4n+4){background:#f5fff0}
+
+    .tiny{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:8px;
+    }
+
+    .big-value{
+      font-size:32px;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:6px;
+      word-break:break-word;
+    }
+
+    .big-name{
+      font-size:16px;
+      font-weight:800;
+      word-break:break-word;
+    }
+
+    .table-wrap{
+      border:3px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:3px 4px 0 #111;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    th, td{
+      padding:12px 14px;
+      border-bottom:2px solid #111;
+      text-align:left;
+      font-size:14px;
+    }
+
+    th{
+      background:#fff4ea;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    tr:last-child td{
+      border-bottom:0;
+    }
+
+    .loading,
+    .empty{
+      border:3px dashed var(--line);
+      border-radius:24px;
+      padding:18px;
+      background:#fff;
+      font-weight:800;
+    }
+
+    @media (max-width: 1100px){
+      .stats-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px){
+      .toolbar,
+      .stats-grid{
+        grid-template-columns:1fr;
+      }
+
+      th, td{
+        padding:10px 10px;
+        font-size:13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <span class="kicker">GirlServ / Totals</span>
+      <h1>📊 Stat Dump ♡</h1>
+      <p>all the numbers in one pile ♡</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="tool-card">
+        <div class="tool-label">Tracked users</div>
+        <div class="mini-stat" id="trackedUsers">0</div>
+        <div class="mini-note">excluding girl</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Combined words</div>
+        <div class="mini-stat" id="combinedWords">0</div>
+        <div class="mini-note">all tracked chatter</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Combined events</div>
+        <div class="mini-stat" id="combinedEvents">0</div>
+        <div class="mini-note">joins + lol + chaos + links</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Room leaders</h2>
+          <p class="sub">biggest totals by category</p>
+        </div>
+      </div>
+      <div id="leadersWrap" class="loading">Loading totals…</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Full totals table</h2>
+          <p class="sub">all tracked users sorted by total words</p>
+        </div>
+      </div>
+      <div id="tableWrap" class="loading">Loading user totals…</div>
+    </section>
+  </main>
+
+  <script>
+    const DATA_URL = "truth_seekers_user_stats.json";
+
+    function formatNum(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function safeEntries(raw) {
+      return Object.entries(raw || {}).map(([nick, stats]) => ({
+        nick,
+        words: Number(stats?.words || 0),
+        joins: Number(stats?.joins || 0),
+        lol: Number(stats?.lol || 0),
+        degeneracy: Number(stats?.degeneracy || 0),
+        links: Number(stats?.links || 0)
+      }));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function buildLeaders(entries) {
+      const wrap = document.getElementById("leadersWrap");
+
+      const leaders = [
+        {
+          title: "most words",
+          user: [...entries].sort((a, b) => b.words - a.words)[0],
+          value: u => `${formatNum(u.words)} words`
+        },
+        {
+          title: "most joins",
+          user: [...entries].sort((a, b) => b.joins - a.joins)[0],
+          value: u => `${formatNum(u.joins)} joins`
+        },
+        {
+          title: "most lol",
+          user: [...entries].sort((a, b) => b.lol - a.lol)[0],
+          value: u => `${formatNum(u.lol)} lol`
+        },
+        {
+          title: "most chaos",
+          user: [...entries].sort((a, b) => b.degeneracy - a.degeneracy)[0],
+          value: u => `${formatNum(u.degeneracy)} chaos`
+        },
+        {
+          title: "most links",
+          user: [...entries].sort((a, b) => b.links - a.links)[0],
+          value: u => `${formatNum(u.links)} links`
+        },
+        {
+          title: "biggest total events",
+          user: [...entries].sort((a, b) => (b.joins + b.lol + b.degeneracy + b.links) - (a.joins + a.lol + a.degeneracy + a.links))[0],
+          value: u => `${formatNum(u.joins + u.lol + u.degeneracy + u.links)} total events`
+        },
+        {
+          title: "largest chaos pile",
+          user: [...entries].sort((a, b) => (b.words + b.degeneracy) - (a.words + a.degeneracy))[0],
+          value: u => `${formatNum(u.words + u.degeneracy)} words + chaos`
+        },
+        {
+          title: "busiest goblin",
+          user: [...entries].sort((a, b) => (b.words + b.joins + b.lol + b.links) - (a.words + a.joins + a.lol + a.links))[0],
+          value: u => `${formatNum(u.words + u.joins + u.lol + u.links)} stacked activity`
+        }
+      ];
+
+      wrap.className = "stats-grid";
+      wrap.innerHTML = leaders.map(item => `
+        <article class="stat-card">
+          <div class="tiny">${escapeHtml(item.title)}</div>
+          <div class="big-value">${item.user ? item.value(item.user) : "0"}</div>
+          <div class="big-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
+        </article>
+      `).join("");
+    }
+
+    function buildTable(entries) {
+      const wrap = document.getElementById("tableWrap");
+
+      if (!entries.length) {
+        wrap.className = "empty";
+        wrap.textContent = "No tracked users found.";
+        return;
+      }
+
+      wrap.className = "table-wrap";
+      wrap.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>User</th>
+              <th>Words</th>
+              <th>Joins</th>
+              <th>LOL</th>
+              <th>Chaos</th>
+              <th>Links</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${entries.map((user, index) => `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${escapeHtml(user.nick)}</td>
+                <td>${formatNum(user.words)}</td>
+                <td>${formatNum(user.joins)}</td>
+                <td>${formatNum(user.lol)}</td>
+                <td>${formatNum(user.degeneracy)}</td>
+                <td>${formatNum(user.links)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    async function loadPage() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error("Failed to load stat totals");
+        const raw = await response.json();
+
+        const entries = safeEntries(raw)
+          .filter(user => user.nick.toLowerCase() !== "girl")
+          .sort((a, b) => b.words - a.words);
+
+        const combinedWords = entries.reduce((sum, user) => sum + user.words, 0);
+        const combinedEvents = entries.reduce((sum, user) => sum + user.joins + user.lol + user.degeneracy + user.links, 0);
+
+        document.getElementById("trackedUsers").textContent = formatNum(entries.length);
+        document.getElementById("combinedWords").textContent = formatNum(combinedWords);
+        document.getElementById("combinedEvents").textContent = formatNum(combinedEvents);
+
+        buildLeaders(entries);
+        buildTable(entries);
+      } catch (error) {
+        document.getElementById("leadersWrap").className = "empty";
+        document.getElementById("leadersWrap").textContent = "Could not load totals.";
+        document.getElementById("tableWrap").className = "empty";
+        document.getElementById("tableWrap").textContent = "Could not load user totals.";
+      }
+    }
+
+    loadPage();
+  </script>
+</body>
+</html>
