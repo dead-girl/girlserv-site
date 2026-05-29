@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root{
-      --bg:#fff4ea;
       --paper:#fffdf8;
       --ink:#111;
       --line:#111;
-      --soft:#f7d9e6;
-      --soft2:#d9efff;
+      --pink:#ffd7ea;
+      --blue:#dff1ff;
+      --yellow:#fff4b8;
+      --mint:#e4ffd9;
       --shadow:4px 5px 0 #111;
-      --radius:22px;
     }
 
     *{box-sizing:border-box}
@@ -21,22 +21,28 @@
     body{
       margin:0;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.65), transparent 22%),
-        linear-gradient(180deg, #fff7f1 0%, #fff0f7 100%);
+        radial-gradient(circle at top left, rgba(255,255,255,0.72), transparent 22%),
+        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
       color:var(--ink);
       font-family: Arial, Helvetica, sans-serif;
     }
 
     main{
-      width:min(1400px, calc(100% - 28px));
+      width:min(1450px, calc(100% - 28px));
       margin:18px auto 42px;
     }
 
-    .hero{
+    .hero,
+    .section,
+    .tool-card,
+    .spot-card{
       background:var(--paper);
       border:3px solid var(--line);
       border-radius:32px;
       box-shadow:var(--shadow);
+    }
+
+    .hero{
       padding:22px 22px 18px;
       margin-bottom:18px;
     }
@@ -75,11 +81,8 @@
     }
 
     .tool-card{
-      background:var(--paper);
-      border:3px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
       padding:14px;
+      border-radius:22px;
     }
 
     .tool-label{
@@ -115,10 +118,6 @@
     }
 
     .section{
-      background:var(--paper);
-      border:3px solid var(--line);
-      border-radius:32px;
-      box-shadow:var(--shadow);
       padding:18px;
       margin:18px 0;
     }
@@ -155,6 +154,23 @@
     .column{
       display:grid;
       gap:12px;
+      align-content:start;
+    }
+
+    .board-head{
+      display:grid;
+      grid-template-columns:64px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:12px 14px;
+      border:3px solid var(--line);
+      border-radius:22px;
+      background:#fff4ea;
+      box-shadow:3px 4px 0 #111;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
     }
 
     .chatter{
@@ -182,19 +198,19 @@
 
     .row-top{
       display:grid;
-      grid-template-columns:auto 1fr auto;
+      grid-template-columns:56px 1fr auto;
       align-items:center;
       gap:12px;
     }
 
     .rank{
-      width:40px;
-      height:40px;
+      width:44px;
+      height:44px;
       display:grid;
       place-items:center;
       border:2px solid var(--line);
       border-radius:14px;
-      background:var(--soft);
+      background:var(--pink);
       font-weight:900;
       font-size:15px;
     }
@@ -263,6 +279,7 @@
       font-size:20px;
       font-weight:900;
       line-height:1;
+      word-break:break-word;
     }
 
     .spot-grid{
@@ -272,11 +289,8 @@
     }
 
     .spot-card{
-      border:3px solid var(--line);
-      border-radius:24px;
-      background:#fff;
       padding:14px;
-      box-shadow:3px 4px 0 #111;
+      border-radius:24px;
     }
 
     .spot-card:nth-child(1){background:#fff7fb}
@@ -305,18 +319,11 @@
       font-weight:800;
     }
 
+    .loading,
     .empty{
       border:3px dashed var(--line);
       border-radius:24px;
       padding:18px;
-      font-weight:800;
-      background:#fff;
-    }
-
-    .loading{
-      padding:18px;
-      border:3px dashed var(--line);
-      border-radius:24px;
       background:#fff;
       font-weight:800;
     }
@@ -360,7 +367,7 @@
       <div class="section-head">
         <div>
           <h2># Top 30 chatters</h2>
-          <p class="sub">click a user to open their joins / lol / chaos / links stats</p>
+          <p class="sub">search, click a user, and snoop their extra stats</p>
         </div>
       </div>
       <div id="top30Wrap" class="loading">Loading chatters…</div>
@@ -388,7 +395,7 @@
   </main>
 
   <script>
-    const DATA_URL = "../truth_seekers_user_stats.json";
+    const DATA_URL = "truth_seekers_user_stats.json";
 
     function formatNum(value) {
       return Number(value || 0).toLocaleString("en-US");
@@ -405,6 +412,14 @@
       }));
     }
 
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
     function buildTop30(list) {
       const wrap = document.getElementById("top30Wrap");
 
@@ -419,8 +434,14 @@
 
       wrap.className = "top30";
       wrap.innerHTML = `
-        <div class="column">${left.map((user, i) => renderChatter(user, i + 1)).join("")}</div>
-        <div class="column">${right.map((user, i) => renderChatter(user, i + 16)).join("")}</div>
+        <div class="column">
+          <div class="board-head"><span>#</span><span>Nick</span><span>Words</span></div>
+          ${left.map((user, i) => renderChatter(user, i + 1)).join("")}
+        </div>
+        <div class="column">
+          <div class="board-head"><span>#</span><span>Nick</span><span>Words</span></div>
+          ${right.map((user, i) => renderChatter(user, i + 16)).join("")}
+        </div>
       `;
 
       wrap.querySelectorAll(".chatter button").forEach(btn => {
@@ -431,17 +452,16 @@
     }
 
     function renderChatter(user, rank) {
-      const totalTracked = user.joins + user.lol + user.degeneracy + user.links;
       return `
-        <article class="chatter" data-nick="${escapeAttr(user.nick)}">
-          <button type="button" aria-expanded="false">
+        <article class="chatter">
+          <button type="button">
             <div class="row-top">
               <div class="rank">#${rank}</div>
               <div>
                 <div class="name">${escapeHtml(user.nick)}</div>
                 <div class="meta">
                   <span class="pill">${formatNum(user.words)} words</span>
-                  <span class="pill">${formatNum(totalTracked)} extra stats</span>
+                  <span class="pill">${formatNum(user.joins + user.lol + user.degeneracy + user.links)} extras</span>
                 </div>
               </div>
               <div class="words">${formatNum(user.words)}</div>
@@ -482,7 +502,6 @@
 
     function buildWatch(entries) {
       const wrap = document.getElementById("watchWrap");
-
       const picks = [
         {
           title: "most joins",
@@ -520,29 +539,17 @@
 
       function render() {
         const q = search.value.trim().toLowerCase();
-        const filtered = fullList.filter(user => user.nick.toLowerCase().includes(q));
-        buildTop30(filtered.slice(0, 30));
+        const filtered = fullList.filter(user => user.nick.toLowerCase().includes(q)).slice(0, 30);
 
-        document.getElementById("showingCount").textContent = formatNum(filtered.slice(0, 30).length);
+        buildTop30(filtered);
+        document.getElementById("showingCount").textContent = formatNum(filtered.length);
         document.getElementById("totalWords").textContent = formatNum(
-          filtered.slice(0, 30).reduce((sum, user) => sum + user.words, 0)
+          filtered.reduce((sum, user) => sum + user.words, 0)
         );
       }
 
       search.addEventListener("input", render);
       render();
-    }
-
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
-    }
-
-    function escapeAttr(value) {
-      return escapeHtml(value).replaceAll("'", "&#39;");
     }
 
     async function loadPage() {
