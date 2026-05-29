@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -8,595 +6,543 @@ html = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root{
-      --paper:#fffdf8;
+      --paper:#f8efe7;
+      --paper2:#efe3da;
+      --pink:#ff8fbe;
+      --blue:#8ad9ff;
+      --yellow:#ffe27a;
       --ink:#111;
-      --line:#111;
-      --pink:#ffd7ea;
-      --blue:#dff1ff;
-      --yellow:#fff4b8;
-      --mint:#e4ffd9;
-      --shadow:4px 5px 0 #111;
+      --bg:#fbf6f2;
+      --line:#c7b398;
+      --shadow:4px 4px 0 rgba(0,0,0,0.28);
     }
-
     *{box-sizing:border-box}
-
     body{
       margin:0;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.72), transparent 22%),
-        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
+      background:linear-gradient(180deg,#fff8f4 0%,#f9f1ec 100%);
       color:var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:Arial, Helvetica, sans-serif;
     }
-
-    main{
-      width:min(1450px, calc(100% - 28px));
-      margin:18px auto 42px;
+    .wrap{
+      width:min(1400px, calc(100% - 28px));
+      margin:18px auto 40px;
     }
-
-    .hero,
-    .section,
-    .tool-card,
-    .spot-card{
-      background:var(--paper);
-      border:3px solid var(--line);
-      border-radius:32px;
-      box-shadow:var(--shadow);
-    }
-
-    .hero{
-      padding:22px 22px 18px;
-      margin-bottom:18px;
-    }
-
-    .kicker{
-      display:inline-block;
-      padding:7px 12px;
-      border:2px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      font-weight:900;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:12px;
-    }
-
-    h1{
-      margin:0 0 6px;
-      font-size:clamp(34px, 5vw, 64px);
-      line-height:.95;
-      letter-spacing:-2px;
-    }
-
-    .hero p{
-      margin:0;
-      font-size:16px;
-      font-weight:700;
-    }
-
-    .toolbar{
+    .home-layout{
       display:grid;
-      grid-template-columns:1.2fr .8fr .8fr;
-      gap:12px;
-      margin:18px 0;
-    }
-
-    .tool-card{
-      padding:14px;
-      border-radius:22px;
-    }
-
-    .tool-label{
-      display:block;
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      margin-bottom:8px;
-      letter-spacing:.06em;
-    }
-
-    .search{
-      width:100%;
-      border:2px solid var(--line);
-      border-radius:999px;
-      padding:12px 14px;
-      font-size:15px;
-      font-weight:700;
-      background:#fff;
-    }
-
-    .mini-stat{
-      font-size:28px;
-      font-weight:900;
-      line-height:1;
-      margin:2px 0 6px;
-    }
-
-    .mini-note{
-      font-size:13px;
-      font-weight:700;
-      opacity:.78;
-    }
-
-    .section{
-      padding:18px;
-      margin:18px 0;
-    }
-
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
-    }
-
-    h2{
-      margin:0;
-      font-size:clamp(26px, 3.4vw, 40px);
-      line-height:1;
-      letter-spacing:-1px;
-    }
-
-    .sub{
-      margin:0;
-      font-size:13px;
-      font-weight:700;
-      opacity:.75;
-    }
-
-    .top30{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
+      grid-template-columns:minmax(0,1.6fr) minmax(360px,.9fr);
       gap:16px;
+      align-items:start;
     }
-
-    .column{
-      display:grid;
-      gap:12px;
-      align-content:start;
+    .board{
+      background:var(--paper);
+      border:2px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px;
     }
-
-    .board-head{
-      display:grid;
-      grid-template-columns:64px 1fr auto;
-      gap:12px;
-      align-items:center;
-      padding:12px 14px;
-      border:3px solid var(--line);
-      border-radius:22px;
-      background:#fff4ea;
-      box-shadow:3px 4px 0 #111;
-      font-size:12px;
+    .board-title{
+      font-size:34px;
       font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
+      letter-spacing:-1px;
+      line-height:1;
+      margin-bottom:4px;
     }
-
-    .chatter{
-      border:3px solid var(--line);
-      border-radius:22px;
-      background:#fff;
-      overflow:hidden;
-      box-shadow:3px 4px 0 #111;
+    .board-subnote{
+      font-size:14px;
+      color:#5b4050;
+      margin-bottom:14px;
+      font-weight:700;
     }
-
-    .chatter button{
-      width:100%;
-      border:0;
-      background:transparent;
-      color:inherit;
-      padding:14px 16px;
-      text-align:left;
-      cursor:pointer;
-      font:inherit;
-    }
-
-    .chatter button:hover{
-      background:#fff8fd;
-    }
-
-    .row-top{
+    .top-chatters-grid{
       display:grid;
-      grid-template-columns:56px 1fr auto;
-      align-items:center;
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:12px;
     }
-
-    .rank{
-      width:44px;
-      height:44px;
+    .chatter-col-header{
+      display:grid;
+      grid-template-columns:48px minmax(0,1fr) 88px;
+      gap:8px;
+      padding:10px 12px;
+      background:#ead9cf;
+      border:2px solid #ccb9ab;
+      border-radius:12px;
+      font-size:12px;
+      text-transform:uppercase;
+      font-weight:900;
+      color:#4a3a31;
+      margin-bottom:8px;
+    }
+    .chatter-card{
+      border:2px solid #cebcb0;
+      border-radius:12px;
+      background:#151521;
+      overflow:hidden;
+      margin-bottom:8px;
+      box-shadow:3px 3px 0 rgba(0,0,0,0.22);
+    }
+    .chatter-head{
+      display:grid;
+      grid-template-columns:48px minmax(0,1fr) 88px;
+      gap:8px;
+      align-items:center;
+      padding:10px 12px;
+      cursor:pointer;
+    }
+    .chatter-rank{ color:var(--pink); font-size:18px; font-weight:900; }
+    .chatter-name{ color:white; font-size:15px; font-weight:900; word-break:break-word; }
+    .chatter-words{ text-align:right; color:#fff; font-size:16px; font-weight:900; }
+    .chatter-extra{
+      display:none;
+      padding:12px;
+      background:linear-gradient(180deg,#f1dce4,#f6e7ec);
+      color:#111;
+      border-top:1px solid rgba(0,0,0,0.12);
+    }
+    .chatter-card.open .chatter-extra{ display:block; }
+    .extra-layout{
+      display:grid;
+      grid-template-columns:74px 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .mini-avatar{
+      width:74px;
+      height:74px;
+      border:2px solid #c7a3b2;
+      border-radius:8px;
+      background:linear-gradient(135deg,#201423,#4f2a59);
       display:grid;
       place-items:center;
-      border:2px solid var(--line);
-      border-radius:14px;
-      background:var(--pink);
-      font-weight:900;
-      font-size:15px;
-    }
-
-    .name{
-      font-size:18px;
-      font-weight:900;
-      line-height:1.1;
-      word-break:break-word;
-    }
-
-    .words{
-      font-size:15px;
-      font-weight:900;
-      white-space:nowrap;
-    }
-
-    .meta{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding:6px 9px;
-      border:2px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      font-size:11px;
-      font-weight:900;
-    }
-
-    .details{
-      display:none;
-      border-top:3px dashed var(--line);
-      padding:12px 16px 14px;
-      background:#fff9f0;
-    }
-
-    .chatter.open .details{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:10px;
-    }
-
-    .detail-box{
-      border:2px solid var(--line);
-      border-radius:18px;
-      background:#fff;
-      padding:10px 11px;
-    }
-
-    .detail-label{
-      display:block;
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
-      margin-bottom:5px;
-      opacity:.72;
-    }
-
-    .detail-value{
-      font-size:20px;
-      font-weight:900;
-      line-height:1;
-      word-break:break-word;
-    }
-
-    .spot-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:12px;
-    }
-
-    .spot-card{
-      padding:14px;
-      border-radius:24px;
-    }
-
-    .spot-card:nth-child(1){background:#fff7fb}
-    .spot-card:nth-child(2){background:#f3fbff}
-    .spot-card:nth-child(3){background:#fffdf0}
-    .spot-card:nth-child(4){background:#f6fff3}
-
-    .spot-title{
+      color:white;
       font-size:12px;
       font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:8px;
+      overflow:hidden;
+      text-align:center;
     }
-
-    .spot-name{
-      font-size:24px;
-      font-weight:900;
-      line-height:1;
-      margin-bottom:6px;
-      word-break:break-word;
+    .mini-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .extra-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
     }
-
-    .spot-value{
+    .extra-stat{
+      background:rgba(255,255,255,0.45);
+      border:1px solid rgba(0,0,0,0.12);
+      border-radius:10px;
+      padding:10px 6px;
+      text-align:center;
+    }
+    .extra-label{ color:#5a4c58; font-size:10px; text-transform:uppercase; font-weight:900; }
+    .extra-value{ color:#111; font-size:18px; font-weight:900; margin-top:4px; }
+    .sidebar-stack{ display:grid; gap:14px; }
+    .selected-user-board{
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.14), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.10), transparent 38%),
+        #0f0f17;
+      color:#fff;
+    }
+    .selected-user-topline{ margin-bottom:10px; }
+    .selected-search-wrap{ position:relative; }
+    .selected-user-search{
+      width:100%;
+      border:2px solid rgba(255,255,255,0.16);
+      border-radius:12px;
+      background:#181824;
+      color:#fff;
+      padding:11px 12px;
       font-size:14px;
       font-weight:800;
+      outline:none;
     }
-
-    .loading,
-    .empty{
-      border:3px dashed var(--line);
-      border-radius:24px;
-      padding:18px;
-      background:#fff;
+    .selected-user-search::placeholder{ color:#d8cad5; }
+    .selected-user-results{
+      position:absolute;
+      top:calc(100% + 6px);
+      left:0;
+      right:0;
+      z-index:30;
+      display:none;
+      background:#1a1a26;
+      border:2px solid rgba(255,255,255,0.12);
+      border-radius:12px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.35);
+      max-height:260px;
+      overflow:auto;
+    }
+    .selected-user-results.open{ display:block; }
+    .selected-user-result{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      cursor:pointer;
       font-weight:800;
+      color:#fff;
     }
-
-    @media (max-width: 980px){
-      .toolbar,
-      .top30,
-      .spot-grid,
-      .chatter.open .details{
+    .selected-user-result:last-child{ border-bottom:0; }
+    .selected-user-result:hover{ background:#29293a; }
+    .chatter-expanded-full{
+      display:block;
+      margin-top:8px;
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
+        #151521;
+      border:2px dashed rgba(255,221,120,0.75);
+      border-radius:16px;
+      padding:12px;
+      box-shadow:4px 4px 0 #000;
+    }
+    .chatter-expanded-title{
+      color:var(--yellow);
+      font-size:17px;
+      font-weight:900;
+      margin-bottom:10px;
+      overflow-wrap:anywhere;
+      text-align:center;
+    }
+    .chatter-expanded-full .extra-layout{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      align-items:center;
+    }
+    .chatter-expanded-full .mini-avatar{
+      width:124px;
+      height:124px;
+      margin:0 auto;
+      border:3px solid #fff;
+      outline:3px solid #000;
+      border-radius:16px;
+      box-shadow:4px 4px 0 rgba(0,0,0,0.35);
+    }
+    .chatter-expanded-full .extra-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:7px;
+    }
+    .top3-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      align-items:end;
+    }
+    .top3-card{
+      background:var(--paper2);
+      color:#111;
+      border:2px solid #c7b398;
+      border-radius:10px;
+      padding:10px;
+      text-align:center;
+      box-shadow:4px 4px 0 rgba(0,0,0,0.35);
+      position:relative;
+      min-height:230px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+    }
+    .top3-card.rank1{ min-height:255px; background:#f1e6df; }
+    .top3-card.rank2{ transform:rotate(-1deg); }
+    .top3-card.rank3{ transform:rotate(1deg); }
+    .top3-badge{
+      position:absolute;
+      top:-12px;
+      left:50%;
+      transform:translateX(-50%) rotate(-7deg);
+      background:var(--yellow);
+      color:#111;
+      border:2px solid #000;
+      border-radius:12px;
+      padding:4px 10px;
+      font-weight:900;
+      box-shadow:3px 3px 0 rgba(0,0,0,0.35);
+    }
+    .top3-photo{
+      width:86px;
+      height:86px;
+      margin:18px auto 10px;
+      border:3px solid #fff;
+      outline:2px solid #d1a9b8;
+      border-radius:8px;
+      background:linear-gradient(135deg,#2b2033,#4c3550);
+      display:grid;
+      place-items:center;
+      color:white;
+      font-size:12px;
+      font-weight:900;
+      overflow:hidden;
+    }
+    .top3-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .top3-name{ font-size:14px; font-weight:900; margin-top:4px; word-break:break-word; }
+    .top3-score{
+      margin:10px auto 0;
+      display:inline-block;
+      background:#ffb6d1;
+      color:#111;
+      font-weight:900;
+      font-size:16px;
+      padding:6px 10px;
+      border-radius:8px;
+    }
+    .top3-label{ font-size:12px; color:#444; margin-top:6px; }
+    .watch-wide-board .watch-carousel{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+    .watch-carousel-card{
+      background:#f6ece4;
+      border:2px solid #ccb7a8;
+      border-radius:12px;
+      padding:10px;
+      text-align:center;
+      box-shadow:3px 3px 0 rgba(0,0,0,0.18);
+    }
+    .watch-carousel-photo{
+      width:82px;
+      height:82px;
+      margin:8px auto 10px;
+      border:3px solid #fff;
+      outline:2px solid #d1a9b8;
+      border-radius:10px;
+      background:#111;
+      overflow:hidden;
+    }
+    .watch-carousel-img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .watch-carousel-name{ font-size:15px; font-weight:900; word-break:break-word; line-height:1.1; }
+    .watch-carousel-score{
+      margin:10px auto 0;
+      display:inline-block;
+      background:#ffb6d1;
+      color:#111;
+      font-weight:900;
+      font-size:14px;
+      padding:6px 10px;
+      border-radius:8px;
+    }
+    .watch-carousel-note{ font-size:12px; color:#444; margin-top:7px; }
+    @media (max-width: 1050px){
+      .home-layout{ grid-template-columns:1fr; }
+    }
+    @media (max-width: 760px){
+      .top-chatters-grid,
+      .top3-grid,
+      .watch-wide-board .watch-carousel,
+      .chatter-expanded-full .extra-grid,
+      .chatter-card .chatter-extra .extra-layout,
+      .extra-grid{
         grid-template-columns:1fr;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <span class="kicker">GirlServ / Top Chatters</span>
-      <h1>★ Top Chatters ♡</h1>
-      <p>word crimes logged ♡</p>
-    </section>
+  <div class="wrap">
+    <section class="panel active" id="panel-chatters">
+      <div class="home-layout">
+        <div class="board">
+          <div class="board-title">★ Top Chatters ♡</div>
+          <div class="board-subnote">word crimes logged ♡</div>
 
-    <section class="toolbar">
-      <div class="tool-card">
-        <label class="tool-label" for="searchBox">Search loudmouths</label>
-        <input id="searchBox" class="search" type="search" placeholder="type a nick…">
-      </div>
-      <div class="tool-card">
-        <div class="tool-label">Showing</div>
-        <div class="mini-stat" id="showingCount">0</div>
-        <div class="mini-note">top chatters on display</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-label">Total words</div>
-        <div class="mini-stat" id="totalWords">0</div>
-        <div class="mini-note">combined from visible top 30</div>
-      </div>
-    </section>
+          <div class="top-chatters-grid">
+            <div>
+              <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
+              <div id="chatters-left"></div>
+            </div>
+            <div>
+              <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
+              <div id="chatters-right"></div>
+            </div>
+          </div>
+        </div>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2># Top 30 chatters</h2>
-          <p class="sub">search, click a user, and snoop their extra stats</p>
+        <div class="sidebar-stack">
+          <div class="board selected-user-board">
+            <div class="selected-user-topline">
+              <div class="selected-search-wrap">
+                <input id="selected-user-search" class="selected-user-search" type="search" placeholder="search nick..." autocomplete="off">
+                <div id="selected-user-results" class="selected-user-results"></div>
+              </div>
+            </div>
+            <div class="chatter-expanded-full open" id="chatter-expanded-full">loading...</div>
+          </div>
+
+          <div class="board">
+            <div class="board-title">☆ #truth-seekers</div>
+            <div class="top3-grid" id="top3-grid"></div>
+          </div>
+
+          <div class="board watch-wide-board">
+            <div class="board-title">Users To Keep An Eye On</div>
+            <div class="board-subnote">different flavours of suspicious activity</div>
+            <div class="watch-carousel" id="watch-carousel"></div>
+          </div>
         </div>
       </div>
-      <div id="top30Wrap" class="loading">Loading chatters…</div>
     </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>## ☆ #truth-seekers</h2>
-          <p class="sub">the loudest little monsters at the top</p>
-        </div>
-      </div>
-      <div id="truthSeekersWrap" class="spot-grid"></div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>## Users To Keep An Eye On</h2>
-          <p class="sub">different flavours of suspicious activity</p>
-        </div>
-      </div>
-      <div id="watchWrap" class="spot-grid"></div>
-    </section>
-  </main>
+  </div>
 
   <script>
     const DATA_URL = "truth_seekers_user_stats.json";
 
-    function formatNum(value) {
-      return Number(value || 0).toLocaleString("en-US");
+    function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
+
+    function esc(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;");
     }
 
-    function safeEntries(raw) {
+    function entriesFrom(raw){
       return Object.entries(raw || {}).map(([nick, stats]) => ({
         nick,
-        words: Number(stats?.words || 0),
-        joins: Number(stats?.joins || 0),
-        lol: Number(stats?.lol || 0),
-        degeneracy: Number(stats?.degeneracy || 0),
-        links: Number(stats?.links || 0)
-      }));
+        words:Number(stats?.words||0),
+        joins:Number(stats?.joins||0),
+        lol:Number(stats?.lol||0),
+        degeneracy:Number(stats?.degeneracy||0),
+        links:Number(stats?.links||0)
+      })).filter(u => u.nick.toLowerCase() !== "girl")
+        .sort((a,b)=>b.words-a.words);
     }
 
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
+    function avatarMarkup(nick){
+      return `<div class="mini-avatar">${esc(nick).slice(0,2).toUpperCase()}</div>`;
     }
 
-    function buildTop30(list) {
-      const wrap = document.getElementById("top30Wrap");
-
-      if (!list.length) {
-        wrap.className = "empty";
-        wrap.textContent = "No chatter data found.";
-        return;
-      }
-
-      const left = list.slice(0, 15);
-      const right = list.slice(15, 30);
-
-      wrap.className = "top30";
-      wrap.innerHTML = `
-        <div class="column">
-          <div class="board-head"><span>#</span><span>Nick</span><span>Words</span></div>
-          ${left.map((user, i) => renderChatter(user, i + 1)).join("")}
-        </div>
-        <div class="column">
-          <div class="board-head"><span>#</span><span>Nick</span><span>Words</span></div>
-          ${right.map((user, i) => renderChatter(user, i + 16)).join("")}
+    function renderSelected(user){
+      const el = document.getElementById("chatter-expanded-full");
+      if(!user){ el.textContent = "no user found"; return; }
+      el.innerHTML = `
+        <div class="chatter-expanded-title">${esc(user.nick)}</div>
+        <div class="extra-layout">
+          ${avatarMarkup(user.nick)}
+          <div class="extra-grid">
+            <div class="extra-stat"><div class="extra-label">words</div><div class="extra-value">${fmt(user.words)}</div></div>
+            <div class="extra-stat"><div class="extra-label">joins</div><div class="extra-value">${fmt(user.joins)}</div></div>
+            <div class="extra-stat"><div class="extra-label">lol</div><div class="extra-value">${fmt(user.lol)}</div></div>
+            <div class="extra-stat"><div class="extra-label">links</div><div class="extra-value">${fmt(user.links)}</div></div>
+            <div class="extra-stat"><div class="extra-label">chaos</div><div class="extra-value">${fmt(user.degeneracy)}</div></div>
+            <div class="extra-stat"><div class="extra-label">contribution</div><div class="extra-value">${fmt(user.words)}</div></div>
+          </div>
         </div>
       `;
+    }
 
-      wrap.querySelectorAll(".chatter button").forEach(btn => {
-        btn.addEventListener("click", () => {
-          btn.closest(".chatter").classList.toggle("open");
+    function card(user, rank){
+      return `
+        <div class="chatter-card" data-nick="${esc(user.nick)}">
+          <div class="chatter-head">
+            <div class="chatter-rank">#${rank}</div>
+            <div class="chatter-name">${esc(user.nick)}</div>
+            <div class="chatter-words">${fmt(user.words)}</div>
+          </div>
+          <div class="chatter-extra">
+            <div class="extra-layout">
+              ${avatarMarkup(user.nick)}
+              <div class="extra-grid">
+                <div class="extra-stat"><div class="extra-label">joins</div><div class="extra-value">${fmt(user.joins)}</div></div>
+                <div class="extra-stat"><div class="extra-label">lol</div><div class="extra-value">${fmt(user.lol)}</div></div>
+                <div class="extra-stat"><div class="extra-label">chaos</div><div class="extra-value">${fmt(user.degeneracy)}</div></div>
+                <div class="extra-stat"><div class="extra-label">links</div><div class="extra-value">${fmt(user.links)}</div></div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderTopChatters(top30){
+      document.getElementById("chatters-left").innerHTML = top30.slice(0,15).map((u,i)=>card(u,i+1)).join("");
+      document.getElementById("chatters-right").innerHTML = top30.slice(15,30).map((u,i)=>card(u,i+16)).join("");
+
+      document.querySelectorAll(".chatter-head").forEach(head => {
+        head.addEventListener("click", () => {
+          const card = head.parentElement;
+          card.classList.toggle("open");
+          const nick = card.dataset.nick;
+          const user = top30.find(u => u.nick === nick);
+          renderSelected(user);
         });
       });
     }
 
-    function renderChatter(user, rank) {
-      return `
-        <article class="chatter">
-          <button type="button">
-            <div class="row-top">
-              <div class="rank">#${rank}</div>
-              <div>
-                <div class="name">${escapeHtml(user.nick)}</div>
-                <div class="meta">
-                  <span class="pill">${formatNum(user.words)} words</span>
-                  <span class="pill">${formatNum(user.joins + user.lol + user.degeneracy + user.links)} extras</span>
-                </div>
-              </div>
-              <div class="words">${formatNum(user.words)}</div>
-            </div>
-          </button>
-          <div class="details">
-            <div class="detail-box">
-              <span class="detail-label">joins</span>
-              <div class="detail-value">${formatNum(user.joins)}</div>
-            </div>
-            <div class="detail-box">
-              <span class="detail-label">lol</span>
-              <div class="detail-value">${formatNum(user.lol)}</div>
-            </div>
-            <div class="detail-box">
-              <span class="detail-label">chaos</span>
-              <div class="detail-value">${formatNum(user.degeneracy)}</div>
-            </div>
-            <div class="detail-box">
-              <span class="detail-label">links</span>
-              <div class="detail-value">${formatNum(user.links)}</div>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    function buildTruthSeekers(top3) {
-      const wrap = document.getElementById("truthSeekersWrap");
-      wrap.innerHTML = top3.map((user, index) => `
-        <article class="spot-card">
-          <div class="spot-title">rank #${index + 1}</div>
-          <div class="spot-name">${escapeHtml(user.nick)}</div>
-          <div class="spot-value">${formatNum(user.words)} words</div>
-        </article>
+    function renderTop3(top3){
+      const grid = document.getElementById("top3-grid");
+      const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
+      const ranks = [2,1,3];
+      grid.innerHTML = ordered.map((u, idx) => `
+        <div class="top3-card rank${ranks[idx]}">
+          <div class="top3-badge">#${ranks[idx]}</div>
+          <div class="top3-photo">${esc(u.nick).slice(0,2).toUpperCase()}</div>
+          <div class="top3-name">${esc(u.nick)}</div>
+          <div class="top3-score">${fmt(u.words)}</div>
+          <div class="top3-label">words</div>
+        </div>
       `).join("");
     }
 
-    function buildWatch(entries) {
-      const wrap = document.getElementById("watchWrap");
+    function renderWatch(all){
       const picks = [
-        {
-          title: "most joins",
-          user: [...entries].sort((a, b) => b.joins - a.joins)[0],
-          value: u => `${formatNum(u.joins)} joins`
-        },
-        {
-          title: "biggest lol menace",
-          user: [...entries].sort((a, b) => b.lol - a.lol)[0],
-          value: u => `${formatNum(u.lol)} lol`
-        },
-        {
-          title: "chaos goblin",
-          user: [...entries].sort((a, b) => b.degeneracy - a.degeneracy)[0],
-          value: u => `${formatNum(u.degeneracy)} chaos`
-        },
-        {
-          title: "link gremlin",
-          user: [...entries].sort((a, b) => b.links - a.links)[0],
-          value: u => `${formatNum(u.links)} links`
-        }
+        { title:"Most Joins", user:[...all].sort((a,b)=>b.joins-a.joins)[0], score:u=>`${fmt(u.joins)} joins`, note:"always coming back" },
+        { title:"Biggest LOL Menace", user:[...all].sort((a,b)=>b.lol-a.lol)[0], score:u=>`${fmt(u.lol)} lol`, note:"giggly little pest" },
+        { title:"Chaos Goblin", user:[...all].sort((a,b)=>b.degeneracy-a.degeneracy)[0], score:u=>`${fmt(u.degeneracy)} chaos`, note:"needs supervision" },
+        { title:"Link Gremlin", user:[...all].sort((a,b)=>b.links-a.links)[0], score:u=>`${fmt(u.links)} links`, note:"keeps posting things" }
       ];
-
-      wrap.innerHTML = picks.map(item => `
-        <article class="spot-card">
-          <div class="spot-title">${escapeHtml(item.title)}</div>
-          <div class="spot-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
-          <div class="spot-value">${item.user ? item.value(item.user) : "0"}</div>
-        </article>
+      document.getElementById("watch-carousel").innerHTML = picks.map(p => `
+        <div class="watch-carousel-card">
+          <div class="watch-carousel-photo">${p.user ? esc(p.user.nick).slice(0,2).toUpperCase() : "--"}</div>
+          <div class="watch-carousel-name">${esc(p.user?.nick || "nobody yet")}</div>
+          <div class="watch-carousel-score">${p.user ? p.score(p.user) : "0"}</div>
+          <div class="watch-carousel-note">${esc(p.note)}</div>
+        </div>
       `).join("");
     }
 
-    function applySearch(fullList) {
-      const search = document.getElementById("searchBox");
+    function setupSearch(all, top30){
+      const input = document.getElementById("selected-user-search");
+      const results = document.getElementById("selected-user-results");
 
-      function render() {
-        const q = search.value.trim().toLowerCase();
-        const filtered = fullList.filter(user => user.nick.toLowerCase().includes(q)).slice(0, 30);
-
-        buildTop30(filtered);
-        document.getElementById("showingCount").textContent = formatNum(filtered.length);
-        document.getElementById("totalWords").textContent = formatNum(
-          filtered.reduce((sum, user) => sum + user.words, 0)
-        );
+      function paint(list){
+        results.innerHTML = list.slice(0,8).map(u => `<div class="selected-user-result" data-nick="${esc(u.nick)}">${esc(u.nick)}</div>`).join("");
+        results.classList.toggle("open", list.length > 0 && input.value.trim().length > 0);
+        results.querySelectorAll(".selected-user-result").forEach(row => {
+          row.addEventListener("click", () => {
+            const user = all.find(u => u.nick === row.dataset.nick);
+            input.value = user.nick;
+            results.classList.remove("open");
+            renderSelected(user);
+          });
+        });
       }
 
-      search.addEventListener("input", render);
-      render();
+      input.addEventListener("input", () => {
+        const q = input.value.trim().toLowerCase();
+        if(!q){ results.classList.remove("open"); return; }
+        paint(all.filter(u => u.nick.toLowerCase().includes(q)));
+      });
+
+      document.addEventListener("click", (e) => {
+        if(!e.target.closest(".selected-search-wrap")) results.classList.remove("open");
+      });
     }
 
-    async function loadPage() {
-      try {
-        const response = await fetch(DATA_URL, { cache: "no-store" });
-        if (!response.ok) throw new Error("Failed to load chatter data");
-        const raw = await response.json();
-
-        const entries = safeEntries(raw)
-          .filter(user => user.nick.toLowerCase() !== "girl")
-          .sort((a, b) => b.words - a.words);
-
-        const top30 = entries.slice(0, 30);
-        buildTruthSeekers(top30.slice(0, 3));
-        buildWatch(entries);
-        applySearch(top30);
-      } catch (error) {
-        const wrap = document.getElementById("top30Wrap");
-        wrap.className = "empty";
-        wrap.textContent = "Could not load chatter data.";
-        document.getElementById("truthSeekersWrap").innerHTML = '<div class="empty">Could not load top 3.</div>';
-        document.getElementById("watchWrap").innerHTML = '<div class="empty">Could not load watchlist.</div>';
+    async function boot(){
+      try{
+        const res = await fetch(DATA_URL, { cache:"no-store" });
+        if(!res.ok) throw new Error("bad response");
+        const raw = await res.json();
+        const all = entriesFrom(raw);
+        const top30 = all.slice(0,30);
+        renderTopChatters(top30);
+        renderTop3(top30.slice(0,3));
+        renderWatch(all);
+        renderSelected(top30[0]);
+        setupSearch(all, top30);
+      }catch(e){
+        document.getElementById("panel-chatters").innerHTML = '<div class="board"><div class="board-title">Could not load chatter data.</div></div>';
       }
     }
-
-    loadPage();
+    boot();
   </script>
 </body>
 </html>
-"""
-
-instructions = """Replace this file in GitHub:
-loudmouths.html
-
-Use this replacement file:
-girlserv_loudmouths_working_replacement.txt
-
-Commit description:
-v1.2.38 - Restored Loudmouths with the original top chatters layout, search bar, top 30 board, truth-seekers and watchlist
-
-Do not touch index.html for this step.
-"""
-
-Path("/mnt/data/girlserv_loudmouths_working_replacement.txt").write_text(html, encoding="utf-8")
-Path("/mnt/data/girlserv_loudmouths_working_instructions.txt").write_text(instructions, encoding="utf-8")
-
-print("/mnt/data/girlserv_loudmouths_working_replacement.txt")
-print("/mnt/data/girlserv_loudmouths_working_instructions.txt")
