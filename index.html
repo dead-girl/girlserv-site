@@ -1,65 +1,1663 @@
-In GitHub, edit this file:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GirlServ</title>
 
-index.html
+  <style>
+    :root {
+      --ink: #fff8fd;
+      --muted: #dcc7dc;
+      --pink: #ff4aa5;
+      --hotpink: #ff128f;
+      --purple: #9d6cff;
+      --aqua: #67e9ff;
+      --lime: #d8ff5e;
+      --paper: #fff4ea;
+      --black: #0b0b10;
+      --panel: rgba(18, 10, 28, 0.92);
+      --shadow: 5px 5px 0 #000;
+    }
 
-Do these exact replacements in the top menu links only.
+    * { box-sizing: border-box; }
 
-REPLACE:
-href="/"
+    html { scroll-behavior: smooth; }
 
-WITH:
-href="."
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255, 74, 165, 0.26), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(103, 233, 255, 0.20), transparent 20%),
+        radial-gradient(circle at 18% 88%, rgba(216, 255, 94, 0.12), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(157, 108, 255, 0.20), transparent 26%),
+        linear-gradient(180deg, #120716 0%, #0c0610 46%, #050308 100%);
+      overflow-x: hidden;
+    }
 
-REPLACE:
-href="/loudmouths"
+    body::before {
+      content: "♡ ★ xoxo ★ burn book ★ coolour ★ girlserv ★ memories ★";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      color: rgba(255,255,255,0.045);
+      font-size: 34px;
+      line-height: 125px;
+      letter-spacing: 8px;
+      transform: rotate(-7deg) scale(1.12);
+      white-space: pre-wrap;
+      z-index: 0;
+    }
 
-WITH:
-href="loudmouths.html"
+    a { color: inherit; text-decoration: none; }
 
-REPLACE:
-href="/channel-trolls"
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1600px, calc(100% - 22px));
+      margin: 12px auto 26px;
+    }
 
-WITH:
-href="channel-trolls.html"
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 auto 10px;
+      padding: 9px 14px;
+      border: 2px solid #000;
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.12) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, transparent 0 26px, rgba(255, 18, 143, 0.22) 26px 28px, transparent 28px),
+        rgba(255, 244, 234, 0.96);
+      box-shadow: 6px 6px 0 #000;
+      color: #111;
+    }
 
-REPLACE:
-href="/lol-lords"
+    .mini-logo {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hotpink);
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-size: clamp(25px, 3vw, 42px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      transform-origin: center;
+    }
 
-WITH:
-href="lol-lords.html"
+    .mini-logo:hover,
+    .mini-logo:focus-visible {
+      animation: logoWiggle 0.38s linear infinite;
+      outline: none;
+    }
 
-REPLACE:
-href="/clickbait-crew"
+    @keyframes logoWiggle {
+      0%, 100% { transform: rotate(0deg) translate(0, 0); }
+      20% { transform: rotate(-4deg) translate(-1px, 1px); }
+      40% { transform: rotate(3deg) translate(1px, -1px); }
+      60% { transform: rotate(-2deg) translate(1px, 1px); }
+      80% { transform: rotate(4deg) translate(-1px, -1px); }
+    }
 
-WITH:
-href="clickbait-crew.html"
+    .top-nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px 7px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
 
-REPLACE:
-href="/frequent-flyers"
+    .top-nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-WITH:
-href="frequent-flyers.html"
+    .nav-text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #111;
+      font-size: clamp(12px, 1.02vw, 15px);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
+    }
 
-REPLACE:
-href="/stat-dump"
+    .nav-text:hover,
+    .nav-text:focus-visible,
+    .top-nav-item:hover .nav-text {
+      color: #fff;
+      background: #111;
+      transform: translateY(-1px);
+      outline: none;
+    }
 
-WITH:
-href="stat-dump.html"
+    .top-nav-item.is-current .nav-text {
+      color: rgba(17,17,17,0.58);
+      background: rgba(0,0,0,0.08);
+      cursor: default;
+      pointer-events: none;
+    }
 
-REPLACE:
-href="/girls-notes"
+    .nav-preview {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px) rotate(var(--r, -2deg));
+      width: min(255px, 26vw);
+      min-width: 190px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 80;
+      transition: opacity 0.13s ease, transform 0.13s ease, visibility 0.13s ease;
+    }
 
-WITH:
-href="girls-notes.html"
+    .top-nav-item:nth-child(2n) .nav-preview { --r: 2deg; }
+    .top-nav-item:nth-child(3n) .nav-preview { --r: -3deg; }
 
-REPLACE:
-href="/room-reports"
+    .top-nav-item:hover .nav-preview,
+    .top-nav-item:focus-within .nav-preview {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) rotate(var(--r, -2deg));
+    }
 
-WITH:
-href="room-reports.html"
+    .nav-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
 
-REPLACE:
-href="/girlbook"
+    .top-nav-item.is-current .nav-preview img {
+      filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
 
-WITH:
-href="girlbook.html"
+    .nav-preview::after {
+      content: attr(data-note);
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%) rotate(-2deg);
+      color: #111;
+      background: #fff4ea;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      text-transform: lowercase;
+    }
+
+    .top-nav-item.is-current .nav-preview::before {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      transform: translateX(-50%) rotate(2deg);
+      color: #111;
+      background: #d8ff5e;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    .site-header {
+      width: 100%;
+      margin: 0 auto 12px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 74, 165, 0.55);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.9), 8px 8px 0 #000, 0 0 28px rgba(255, 18, 143, 0.18);
+      background: #050308;
+    }
+
+    .site-header img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .side-menu-shell {
+      position: fixed;
+      left: 0;
+      top: 84px;
+      z-index: 40;
+      display: flex;
+      align-items: flex-start;
+      transform: translateX(-218px);
+      transition: transform 0.22s ease;
+    }
+
+    .side-menu-shell:hover,
+    .side-menu-shell:focus-within,
+    .side-menu-shell.is-open {
+      transform: translateX(0);
+    }
+
+    .menu-tab {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      color: #111;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.20) 0 1px, transparent 1px 23px),
+        linear-gradient(90deg, transparent 0 19px, rgba(255, 18, 143, 0.42) 19px 21px, transparent 21px),
+        #fff4ea;
+      border: 2px solid #000;
+      border-left: 0;
+      border-radius: 0 15px 15px 0;
+      box-shadow: 4px 4px 0 #000;
+      padding: 13px 8px;
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .side-menu-panel {
+      width: 218px;
+      max-height: calc(100vh - 98px);
+      overflow-y: auto;
+      overflow-x: visible;
+      padding: 12px 12px 14px 12px;
+      border: 2px solid #000;
+      border-left: 0;
+      border-radius: 0 22px 22px 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.18) 0 1px, transparent 1px 23px),
+        linear-gradient(90deg, transparent 0 22px, rgba(255, 18, 143, 0.40) 22px 25px, transparent 25px),
+        #fff4ea;
+      box-shadow: 6px 8px 16px rgba(0,0,0,0.55), 0 0 22px rgba(255, 18, 143, 0.16);
+      scrollbar-color: var(--hotpink) #fff4ea;
+      color: #111;
+    }
+
+    .side-menu-title {
+      width: fit-content;
+      color: #111;
+      background: #ff9ecf;
+      border: 2px solid #000;
+      border-radius: 999px;
+      box-shadow: 2px 3px 7px rgba(0,0,0,0.45);
+      padding: 5px 11px;
+      margin: 0 0 10px 18px;
+      font-size: 14px;
+      font-weight: 900;
+      transform: rotate(-2deg);
+    }
+
+    .drawer-note {
+      color: #111;
+      background: rgba(255,255,255,0.58);
+      border: 2px solid rgba(0,0,0,0.7);
+      border-radius: 14px;
+      padding: 9px 10px;
+      margin: 8px 0;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.35;
+      box-shadow: 2px 3px 8px rgba(0,0,0,0.25);
+    }
+
+    .drawer-placeholder {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .drawer-placeholder span {
+      display: block;
+      color: #111;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      opacity: 0.72;
+    }
+
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 66fr) minmax(360px, 34fr);
+      gap: 18px;
+      margin-bottom: 18px;
+      align-items: start;
+      padding: 14px;
+      border: 2px solid #000;
+      border-radius: 28px;
+      background: rgba(5, 3, 8, 0.58);
+      box-shadow: 7px 7px 0 #000;
+      overflow: visible;
+    }
+
+    .intro-left {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 76fr) minmax(170px, 24fr);
+      gap: 14px;
+      align-items: start;
+      overflow: visible;
+    }
+
+    .art-frame,
+    .network-panel,
+    .network-card {
+      border: 2px solid #000;
+      box-shadow: var(--shadow);
+    }
+
+    .art-frame {
+      background: rgba(255,255,255,0.02);
+      border-radius: 22px;
+      padding: 8px;
+      box-shadow: 6px 6px 0 #000;
+      overflow: hidden;
+    }
+
+    .art-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    .welcome-wrap {
+      width: 100%;
+      margin: 0;
+      transform: rotate(-1deg);
+      z-index: 1;
+    }
+
+    .portrait-wrap {
+      width: 100%;
+      max-width: 255px;
+      justify-self: center;
+      margin: 16px 0 0;
+      transform: rotate(2deg);
+      display: grid;
+      gap: 0;
+      align-content: start;
+    }
+
+    .network-panel {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      background: rgba(12, 8, 18, 0.92);
+      border-radius: 26px;
+      padding: 15px;
+      min-width: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 7px 8px 0 #000;
+      transform: rotate(0.8deg);
+    }
+
+    .network-title {
+      width: fit-content;
+      max-width: 100%;
+      color: #fff8fd;
+      background: #111;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin: 0 auto 14px;
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: 900;
+      transform: rotate(-1.5deg);
+      box-shadow: 4px 4px 0 #000;
+      text-align: center;
+    }
+
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .network-card {
+      position: relative;
+      color: #111;
+      border-radius: 10px;
+      padding: 14px 12px 12px;
+      min-height: 156px;
+      overflow: hidden;
+      transform: rotate(var(--r));
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(0,0,0,0) 0,
+          rgba(0,0,0,0) 22px,
+          rgba(123, 155, 219, 0.26) 22px,
+          rgba(123, 155, 219, 0.26) 24px
+        ),
+        linear-gradient(90deg, rgba(232, 120, 164, 0.22) 0 3px, transparent 3px 100%),
+        #efe1b8;
+      clip-path: polygon(3% 0, 96% 1%, 100% 5%, 98% 17%, 100% 28%, 97% 42%, 100% 56%, 98% 72%, 100% 84%, 97% 100%, 5% 98%, 0 94%, 2% 80%, 0 66%, 3% 52%, 0 37%, 2% 20%, 0 8%);
+    }
+
+    .network-card::before {
+      content: '';
+      position: absolute;
+      top: -9px;
+      left: 16px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--hotpink);
+      border: 2px solid #7f003f;
+      box-shadow: 2px 2px 0 #000;
+      z-index: 2;
+    }
+
+    .network-card::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 12px;
+      bottom: 12px;
+      width: 18px;
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.88) 0 4px, transparent 4.5px) center 0 / 18px 26px repeat-y;
+      opacity: 0.95;
+    }
+
+    .network-card:nth-child(1) { --r: -1.2deg; }
+    .network-card:nth-child(2) { --r: 1.2deg; }
+    .network-card:nth-child(3) { --r: -0.8deg; }
+    .network-card:nth-child(4) { --r: 1deg; }
+
+    .network-card-inner {
+      margin-left: 28px;
+      display: grid;
+      gap: 8px;
+      min-height: 100%;
+      align-content: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .network-kicker {
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: lowercase;
+    }
+
+    .network-sub {
+      width: fit-content;
+      color: #111;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .network-value {
+      font-size: clamp(28px, 3.3vw, 48px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .network-caption {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .network-placeholder {
+      opacity: 0.82;
+    }
+    .notice-strip {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin: 12px 0 18px;
+      padding: 10px 16px;
+      color: #111;
+      background: var(--paper);
+      border: 2px solid #000;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-weight: 900;
+    }
+
+    .notice-strip span:last-child {
+      color: var(--hotpink);
+      white-space: nowrap;
+    }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+      margin-bottom: 18px;
+    }
+
+    .stat-card,
+    .panel,
+    .memory-card,
+    .score-mini,
+    .footer-pill {
+      border: 2px solid #000;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card {
+      color: #111;
+      border-radius: 18px;
+      min-height: 104px;
+      padding: 14px 12px;
+      text-align: center;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      transform: rotate(var(--r));
+    }
+
+    .stat-card:nth-child(1) { background: #ff9ecf; --r: -1deg; }
+    .stat-card:nth-child(2) { background: #b7f5ff; --r: 1deg; }
+    .stat-card:nth-child(3) { background: #ccb6ff; --r: -1deg; }
+    .stat-card:nth-child(4) { background: #e7ff86; --r: 1deg; }
+
+    .stat-kicker {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      opacity: 0.78;
+    }
+
+    .stat-value {
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .stat-caption {
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .column {
+      display: grid;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .panel {
+      background: var(--panel);
+      border-radius: 24px;
+      padding: 16px;
+      min-width: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), var(--shadow);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .title-strip {
+      display: inline-block;
+      color: #111;
+      background: var(--pink);
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: clamp(21px, 2.2vw, 32px);
+      font-weight: 900;
+      transform: rotate(-1.5deg);
+    }
+
+    .title-strip.blue { background: var(--aqua); }
+    .title-strip.purple { background: var(--purple); color: #fff; }
+    .title-strip.lime { background: var(--lime); }
+
+    .subline {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      max-width: 520px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .small-note {
+      color: #111;
+      background: #fff3c7;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transform: rotate(2deg);
+      white-space: nowrap;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .memory-card {
+      color: #111;
+      background: #fff4ea;
+      border-radius: 14px;
+      padding: 14px 12px 12px;
+      min-height: 142px;
+      position: relative;
+      transform: rotate(var(--r));
+    }
+
+    .memory-card:nth-child(odd) { --r: -1.5deg; }
+    .memory-card:nth-child(even) { --r: 1.5deg; background: #ffe6f2; }
+    .memory-card:nth-child(3n) { background: #ebf7ff; }
+
+    .pin {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--hotpink);
+      border: 2px solid #7f003f;
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .memory-rank {
+      display: inline-block;
+      color: #111;
+      background: #fff9a1;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      margin-top: 4px;
+    }
+
+    .memory-name {
+      color: #197fc5;
+      font-size: 20px;
+      font-weight: 900;
+      margin: 8px 0 5px;
+      word-break: break-word;
+    }
+
+    .memory-quote {
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .memory-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+      color: #53464e;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(0,0,0,0.16);
+      border-radius: 999px;
+      padding: 4px 8px;
+    }
+
+    .mini-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .score-mini {
+      color: #111;
+      border-radius: 17px;
+      padding: 13px;
+      min-height: 116px;
+      display: grid;
+      align-content: start;
+      gap: 5px;
+    }
+
+    .score-mini:nth-child(1) { background: #ffb3d8; }
+    .score-mini:nth-child(2) { background: #b7f5ff; }
+    .score-mini:nth-child(3) { background: #d4c2ff; }
+
+    .score-kicker {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.78;
+    }
+
+    .score-name {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.1;
+      word-break: break-word;
+    }
+
+    .score-value {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .receipt-card,
+    .hallway-item,
+    .spotlight,
+    .seen-row {
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .receipt-card {
+      color: #111;
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 10px 12px;
+    }
+
+    .receipt-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.13);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .receipt-row:last-child { border-bottom: 0; }
+
+    .tiny-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid #000;
+      background: #111;
+      display: grid;
+      place-items: center;
+      color: var(--hotpink);
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    .tiny-avatar img,
+    .spotlight-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .time {
+      font-size: 11px;
+      color: #5a4d57;
+      white-space: nowrap;
+    }
+
+    .hallway-list,
+    .seen-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hallway-item {
+      color: #111;
+      background: #f7e7ff;
+      border-radius: 14px;
+      padding: 10px 11px;
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .hallway-item:nth-child(2n) { background: #e9f9ff; transform: rotate(1deg); }
+    .hallway-item:nth-child(2n+1) { transform: rotate(-1deg); }
+
+    .dark-box {
+      background: rgba(10, 12, 19, 0.88);
+      border: 2px dashed rgba(103, 233, 255, 0.45);
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .dark-box h3 {
+      margin: 0 0 10px;
+      color: var(--aqua);
+      font-size: 18px;
+    }
+
+    .spotlight {
+      display: grid;
+      grid-template-columns: 84px 1fr 82px;
+      gap: 12px;
+      align-items: center;
+      color: #111;
+      background: #ffd7ea;
+      border-radius: 16px;
+      padding: 12px;
+      transform: rotate(-1deg);
+    }
+
+    .spotlight-img {
+      width: 84px;
+      height: 84px;
+      border: 2px solid #000;
+      border-radius: 12px;
+      background: #111;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--hotpink);
+      font-size: 30px;
+    }
+
+    .mvp-sticker {
+      color: #111;
+      background: #fff98c;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 999px;
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.05;
+      transform: rotate(8deg);
+    }
+
+    .seen-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      border-radius: 14px;
+      background: #151522;
+      padding: 9px 10px;
+      color: #f6f2fb;
+      font-size: 13px;
+      font-weight: 900;
+      border-color: rgba(255,255,255,0.10);
+      box-shadow: none;
+    }
+
+    .green-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #60ff74;
+      box-shadow: 0 0 8px #60ff74;
+      margin-right: 6px;
+    }
+
+    .footer-pill {
+      margin-top: 16px;
+      color: #111;
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+    }
+
+    .loading,
+    .error {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px;
+    }
+
+    .error { color: #ffbed8; }
+
+    @media (max-width: 1180px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-left {
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 0.28fr);
+      }
+
+      .portrait-wrap {
+        max-width: 240px;
+      }
+
+      .network-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 10px, 1600px);
+      }
+
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .nav-preview {
+        width: min(220px, 72vw);
+      }
+
+      .side-menu-shell {
+        top: 92px;
+        transform: translateX(-198px);
+      }
+
+      .side-menu-panel {
+        width: 198px;
+        max-height: calc(100vh - 108px);
+        padding: 10px 9px 12px 8px;
+      }
+
+      .menu-tab {
+        font-size: 15px;
+        padding: 12px 7px;
+      }
+
+      .stat-strip,
+      .memory-grid,
+      .mini-board {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-head,
+      .notice-strip,
+      .footer-pill {
+        align-items: flex-start;
+        flex-direction: column;
+        border-radius: 18px;
+      }
+
+      .spotlight {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .spotlight-img,
+      .mvp-sticker {
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <div class="top-bar" aria-label="GirlServ top navigation">
+      <a class="mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
+      <nav class="top-nav" aria-label="GirlServ pages">
+        <span class="top-nav-item" data-page="index.html">
+          <a class="nav-text" href="index.html">GirlServ HQ</a>
+          <span class="nav-preview" data-note="home base" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="loudmouths.html">
+          <a class="nav-text" href="loudmouths.html">Loudmouths</a>
+          <span class="nav-preview" data-note="top chatters" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="channel-trolls.html">
+          <a class="nav-text" href="channel-trolls.html">Channel Trolls</a>
+          <span class="nav-preview" data-note="degenerates" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="lol-lords.html">
+          <a class="nav-text" href="lol-lords.html">LOL Lords</a>
+          <span class="nav-preview" data-note="ha! ha! ha!" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="clickbait-crew.html">
+          <a class="nav-text" href="clickbait-crew.html">Clickbait Crew</a>
+          <span class="nav-preview" data-note="linked by" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="frequent-flyers.html">
+          <a class="nav-text" href="frequent-flyers.html">Frequent Flyers</a>
+          <span class="nav-preview" data-note="repeat joiners" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="stat-dump.html">
+          <a class="nav-text" href="stat-dump.html">Stat Dump</a>
+          <span class="nav-preview" data-note="totals" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="girls-notes.html">
+          <a class="nav-text" href="girls-notes.html">Girl's Notes</a>
+          <span class="nav-preview" data-note="no entry!" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="room-reports.html">
+          <a class="nav-text" href="room-reports.html">Room Reports</a>
+          <span class="nav-preview" data-note="channel receipts" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="the-girlbook.html">
+          <a class="nav-text" href="the-girlbook.html">Girlbook</a>
+          <span class="nav-preview" data-note="drop the &quot;the&quot;" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+        </span>
+      </nav>
+    </div>
+
+    <aside class="side-menu-shell" aria-label="Future login and account drawer">
+      <div class="side-menu-panel">
+        <div class="side-menu-title">account ♡</div>
+        <div class="drawer-note">saving this slide-out spot for future login, profile, member tools, and account stuff.</div>
+        <div class="drawer-placeholder" aria-hidden="true">
+          <span>login coming later</span>
+          <span>profile coming later</span>
+          <span>member stats coming later</span>
+        </div>
+      </div>
+      <button class="menu-tab" type="button" aria-label="Open future account drawer">account</button>
+    </aside>
+
+    <header class="site-header">
+      <img id="site-header-img" src="assets/header-main.png" alt="GirlServ" onerror="tryHeaderFallback(this)">
+    </header>
+
+    <section class="intro-grid" aria-label="Welcome and Rizon network preview">
+      <div class="intro-left">
+        <div class="art-frame welcome-wrap">
+          <img src="assets/home/welcome-board.png" alt="Welcome to GirlServ board" onerror="this.src='assets/welcome_to_girlserv_board_design.png'">
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="art-frame">
+            <img src="assets/home/girl-portrait.png" alt="Girl portrait card" onerror="this.src='assets/gothic_anime_photo_collage_aesthetic.png'">
+          </div>
+        </div>
+      </div>
+
+      <aside class="network-panel">
+        <div class="network-title">live from the Rizon network</div>
+        <div class="network-grid">
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">top chatter</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-top-chatter-value">---</div>
+              <div class="network-caption" id="rizon-top-chatter-caption">will hook into live stats here later</div>
+            </div>
+          </article>
+
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">recent memories</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-recent-memories-value">---</div>
+              <div class="network-caption" id="rizon-recent-memories-caption">choose whatever memory stat you want to show later</div>
+            </div>
+          </article>
+
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">channels active</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-channels-active-value">---</div>
+              <div class="network-caption" id="rizon-channels-active-caption">paper-card placeholder waiting for real numbers</div>
+            </div>
+          </article>
+
+          <article class="network-card">
+            <div class="network-card-inner">
+              <div class="network-kicker">players online</div>
+              <div class="network-sub">placeholder</div>
+              <div class="network-value network-placeholder" id="rizon-players-online-value">---</div>
+              <div class="network-caption" id="rizon-players-online-caption">swap this for any live metric later</div>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </section>
+
+    <div class="notice-strip">
+      <span>top menu + hover-preview buttons test build ♡ old full homepage is still safe as overview.html</span>
+      <span>favicon reminder: still needed</span>
+    </div>
+
+    <section class="stat-strip" aria-label="Live stat summary">
+      <article class="stat-card">
+        <div class="stat-kicker">chatters</div>
+        <div class="stat-value" id="summary-users">…</div>
+        <div class="stat-caption">people on the board</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-kicker">words</div>
+        <div class="stat-value" id="summary-words">…</div>
+        <div class="stat-caption">typed into history</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-kicker">lols</div>
+        <div class="stat-value" id="summary-lols">…</div>
+        <div class="stat-caption">public giggles recorded</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-kicker">links</div>
+        <div class="stat-value" id="summary-links">…</div>
+        <div class="stat-caption">receipts dropped</div>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <div class="column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip">burn book wall ♡</div>
+              <div class="subline">The main characters right now. This is still live and stat-driven while we rebuild the page around the new art assets.</div>
+            </div>
+            <div class="small-note">live leaderboard preview</div>
+          </div>
+          <div id="memory-wall" class="memory-grid">
+            <div class="loading">loading live stats...</div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip blue">clique tracker ✦</div>
+              <div class="subline">Quick little snapshots of who is dominating chatter, laughs, and links.</div>
+            </div>
+            <div class="small-note">hallway gossip speedrun</div>
+          </div>
+
+          <div class="mini-board">
+            <article class="score-mini">
+              <div class="score-kicker">most words</div>
+              <div class="score-name" id="quick-top-chatter">loading...</div>
+              <div class="score-value" id="quick-top-chatter-value">—</div>
+            </article>
+            <article class="score-mini">
+              <div class="score-kicker">most lols</div>
+              <div class="score-name" id="quick-top-lol">loading...</div>
+              <div class="score-value" id="quick-top-lol-value">—</div>
+            </article>
+            <article class="score-mini">
+              <div class="score-kicker">most links</div>
+              <div class="score-name" id="quick-top-links">loading...</div>
+              <div class="score-value" id="quick-top-links-value">—</div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div class="column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip lime">receipts & rumours ↝</div>
+              <div class="subline">Live proof of who is laughing, linking, joining, and generally leaving digital fingerprints everywhere.</div>
+            </div>
+            <div class="small-note">evidence locker</div>
+          </div>
+          <div class="receipt-card" id="receipts">
+            <div class="loading">loading receipts...</div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="dark-box">
+            <h3>hallway moments 📸</h3>
+            <div id="recent-memories" class="hallway-list">
+              <div class="loading">loading recent memories...</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="title-strip purple">spotlight ⏱</div>
+              <div class="subline">Who is shining right now according to the live stats.</div>
+            </div>
+            <div class="small-note">seen in the halls</div>
+          </div>
+
+          <div class="spotlight" id="spotlight">
+            <div class="spotlight-img">♡</div>
+            <div>
+              <div style="font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;">spotlight</div>
+              <h2 style="margin:5px 0 3px;">loading...</h2>
+              <div style="font-weight:800;">waiting for the live stats to pick the current main character.</div>
+            </div>
+            <div class="mvp-sticker">SO<br>FETCH</div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="dark-box">
+            <h3>last seen</h3>
+            <div id="last-seen" class="seen-list">
+              <div class="loading">loading last seen...</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="footer-pill">
+      <span>GirlServ: part burn book, part MySpace shrine, part weird little museum of who said what.</span>
+      <span>♡ xoxo ♡</span>
+    </footer>
+  </main>
+
+  <script>
+    const sideMenuShell = document.querySelector(".side-menu-shell");
+    const menuTab = document.querySelector(".menu-tab");
+
+    if (menuTab && sideMenuShell) {
+      menuTab.addEventListener("click", () => {
+        sideMenuShell.classList.toggle("is-open");
+      });
+    }
+
+    const currentPage = (() => {
+      const file = window.location.pathname.split("/").pop() || "index.html";
+      return file === "" ? "index.html" : file;
+    })();
+
+    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+      const page = item.dataset.page;
+      const isCurrent = page === currentPage || (currentPage === "index.html" && page === "index.html");
+      if (!isCurrent) return;
+
+      item.classList.add("is-current");
+      const link = item.querySelector(".nav-text");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+        link.removeAttribute("href");
+        link.addEventListener("click", event => event.preventDefault());
+      }
+    });
+
+    const HEADER_FALLBACKS = [
+      "assets/header-main.png",
+      "assets/girlserv_punk_collage_with_monsters.png",
+      "assets/girlserv-header.png",
+      "girlserv-header.png"
+    ];
+
+    function tryHeaderFallback(img) {
+      const current = img.getAttribute("data-fallback-index") || "0";
+      const nextIndex = Number(current) + 1;
+
+      if (nextIndex >= HEADER_FALLBACKS.length) {
+        img.onerror = null;
+        img.alt = "GirlServ header image missing";
+        img.style.minHeight = "180px";
+        img.style.background = "#050308";
+        return;
+      }
+
+      img.setAttribute("data-fallback-index", String(nextIndex));
+      img.src = HEADER_FALLBACKS[nextIndex] + "?v=" + Date.now();
+    }
+
+    const USER_STATS_SOURCES = [
+      "preloaded_user_stats.json",
+      "truth_seekers_user_stats.json",
+      "live_truth_seekers_user_stats.json"
+    ];
+
+    const CUSTOM_AVATARS = {
+      "dead_girl": "avatars/dead_girl.png",
+      "dead-girl": "avatars/dead_girl.png",
+      "girl": "avatars/girl.png"
+    };
+
+    function safeText(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+
+    function normName(name) {
+      return String(name || "")
+        .trim()
+        .toLowerCase()
+        .replace(/^[@~&%+]+/, "")
+        .replace(/[_-]+$/g, "");
+    }
+
+    function displayName(name) {
+      return String(name || "")
+        .trim()
+        .replace(/^[@~&%+]+/, "") || "unknown";
+    }
+
+    function canonicalName(name) {
+      const n = normName(name);
+      const aliases = {
+        "rdr_": "rdr",
+        "dead-girl": "dead_girl",
+        "deadgirl": "dead_girl",
+        "girly": "girl"
+      };
+      return aliases[n] || n;
+    }
+
+    function avatarFor(name) {
+      const display = displayName(name);
+      const key = canonicalName(display);
+      if (CUSTOM_AVATARS[key]) return CUSTOM_AVATARS[key];
+      const clean = key.replace(/[^a-z0-9_-]/g, "");
+      return `avatars/${clean}.png`;
+    }
+
+    function avatarHtml(name, className = "tiny-avatar") {
+      const src = avatarFor(name);
+      const alt = safeText(displayName(name));
+      return `<div class="${className}"><img src="${src}" alt="${alt}" onerror="this.remove(); this.parentNode.textContent='✦';"></div>`;
+    }
+
+    async function fetchJsonIfPresent(url) {
+      try {
+        const res = await fetch(url + "?v=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) return null;
+        return await res.json();
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function combineRawUserStats(files) {
+      const combined = {};
+      files.filter(Boolean).forEach(data => {
+        if (!data || typeof data !== "object" || Array.isArray(data)) return;
+        Object.entries(data).forEach(([rawName, rawStats]) => {
+          if (!rawStats || typeof rawStats !== "object") return;
+          const key = canonicalName(rawName);
+          if (!key || key === "girl") return;
+
+          const current = combined[key] || {
+            name: displayName(rawName),
+            words: 0,
+            joins: 0,
+            lol: 0,
+            degeneracy: 0,
+            links: 0,
+            left: 0,
+            last_seen: ""
+          };
+
+          current.words += Number(rawStats.words || 0);
+          current.joins += Number(rawStats.joins || 0);
+          current.lol += Number(rawStats.lol || rawStats.lols || 0);
+          current.degeneracy += Number(rawStats.degeneracy || rawStats.bad_words || 0);
+          current.links += Number(rawStats.links || 0);
+          current.left += Number(rawStats.left || rawStats.parts || 0);
+          current.last_seen = rawStats.last_seen || rawStats.lastSeen || current.last_seen;
+          combined[key] = current;
+        });
+      });
+
+      return Object.values(combined)
+        .filter(u => u.name && canonicalName(u.name) !== "girl");
+    }
+
+    function rankBy(users, field) {
+      return [...users]
+        .filter(u => Number(u[field] || 0) > 0)
+        .sort((a, b) => Number(b[field] || 0) - Number(a[field] || 0));
+    }
+
+    function total(users, field) {
+      return users.reduce((sum, u) => sum + Number(u[field] || 0), 0);
+    }
+
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    function renderSummary(users) {
+      setText("summary-users", users.length.toLocaleString());
+      setText("summary-words", total(users, "words").toLocaleString());
+      setText("summary-lols", total(users, "lol").toLocaleString());
+      setText("summary-links", total(users, "links").toLocaleString());
+    }
+
+    function renderQuickWinners(users) {
+      const topWords = rankBy(users, "words")[0];
+      const topLols = rankBy(users, "lol")[0];
+      const topLinks = rankBy(users, "links")[0];
+
+      setText("quick-top-chatter", topWords ? topWords.name : "nobody yet");
+      setText("quick-top-chatter-value", topWords ? `${Number(topWords.words || 0).toLocaleString()} words` : "—");
+
+      setText("quick-top-lol", topLols ? topLols.name : "nobody yet");
+      setText("quick-top-lol-value", topLols ? `${Number(topLols.lol || 0).toLocaleString()} lols` : "—");
+
+      setText("quick-top-links", topLinks ? topLinks.name : "nobody yet");
+      setText("quick-top-links-value", topLinks ? `${Number(topLinks.links || 0).toLocaleString()} links` : "—");
+    }
+
+    function memoryQuote(index) {
+      const quotes = [
+        "kept the server alive and absolutely visible.",
+        "walked into the room and instantly became the topic.",
+        "too online to fail and too iconic to ignore.",
+        "left glitter, chaos, and a suspicious amount of lore.",
+        "not just active — hall-of-fame active.",
+        "showed up, said things, and stayed memorable."
+      ];
+      return quotes[index % quotes.length];
+    }
+
+    function renderMemoryWall(users) {
+      const wall = document.getElementById("memory-wall");
+      const top = rankBy(users, "words").slice(0, 6);
+
+      if (!top.length) {
+        wall.innerHTML = `<div class="error">No user stats loaded yet.</div>`;
+        return;
+      }
+
+      wall.innerHTML = top.map((u, idx) => `
+        <article class="memory-card">
+          <div class="pin"></div>
+          <div class="memory-rank">#${idx + 1} main character</div>
+          <div class="memory-name">${safeText(u.name)}</div>
+          <div class="memory-quote">“${memoryQuote(idx)}”</div>
+          <div class="memory-stats">
+            <span class="stat-pill">💬 ${Number(u.words || 0).toLocaleString()} words</span>
+            <span class="stat-pill">😂 ${Number(u.lol || 0).toLocaleString()} lols</span>
+            <span class="stat-pill">🔗 ${Number(u.links || 0).toLocaleString()} links</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderReceipts(users) {
+      const receipts = document.getElementById("receipts");
+      const topLol = rankBy(users, "lol")[0];
+      const topLinks = rankBy(users, "links")[0];
+      const topJoins = rankBy(users, "joins")[0];
+      const topDegen = rankBy(users, "degeneracy")[0];
+
+      const rows = [
+        topLol && { name: topLol.name, text: `laughed ${Number(topLol.lol || 0).toLocaleString()} times`, time: "live" },
+        topLinks && { name: topLinks.name, text: `dropped ${Number(topLinks.links || 0).toLocaleString()} links`, time: "live" },
+        topJoins && { name: topJoins.name, text: `joined ${Number(topJoins.joins || 0).toLocaleString()} times`, time: "live" },
+        topDegen && { name: topDegen.name, text: `stacked ${Number(topDegen.degeneracy || 0).toLocaleString()} troll points`, time: "live" }
+      ].filter(Boolean);
+
+      receipts.innerHTML = rows.map(r => `
+        <div class="receipt-row">
+          ${avatarHtml(r.name)}
+          <span>${safeText(r.name)} ${safeText(r.text)}</span>
+          <span class="time">${safeText(r.time)}</span>
+        </div>
+      `).join("") || `<div class="error">No receipts found yet.</div>`;
+    }
+
+    function recentMemoryLine(index, user) {
+      const lines = [
+        `${user.name} was impossible to ignore`,
+        `${user.name} carried another whole conversation`,
+        `${user.name} left new receipts on the floor`,
+        `${user.name} kept the timeline moving`
+      ];
+      return lines[index % lines.length];
+    }
+
+    function renderRecentMemories(users) {
+      const area = document.getElementById("recent-memories");
+      const rows = rankBy(users, "words").slice(0, 4);
+
+      area.innerHTML = rows.map((u, idx) => `
+        <div class="hallway-item">
+          ${avatarHtml(u.name)}
+          <span>${safeText(recentMemoryLine(idx, u))}</span>
+          <span class="time">#${idx + 1}</span>
+        </div>
+      `).join("") || `<div class="error">No memories found yet.</div>`;
+    }
+
+    function renderLastSeen(users) {
+      const area = document.getElementById("last-seen");
+      const rows = rankBy(users, "words").slice(0, 5);
+
+      area.innerHTML = rows.map((u, idx) => `
+        <div class="seen-row">
+          ${avatarHtml(u.name)}
+          <span>${safeText(u.name)}</span>
+          <span>${idx === 0 ? '<span class="green-dot"></span>online-ish' : `${idx * 12}m ago`}</span>
+        </div>
+      `).join("") || `<div class="error">No last-seen data yet.</div>`;
+    }
+
+    function renderSpotlight(users) {
+      const spot = document.getElementById("spotlight");
+      const top = rankBy(users, "words")[0];
+
+      if (!top) {
+        spot.innerHTML = `
+          <div class="spotlight-img">♡</div>
+          <div>
+            <div style="font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;">spotlight</div>
+            <h2 style="margin:5px 0 3px;">waiting...</h2>
+            <div style="font-weight:800;">no live stats loaded yet.</div>
+          </div>
+          <div class="mvp-sticker">SO<br>FETCH</div>
+        `;
+        return;
+      }
+
+      spot.innerHTML = `
+        ${avatarHtml(top.name, "spotlight-img")}
+        <div>
+          <div style="font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;opacity:.8;">spotlight</div>
+          <h2 style="margin:5px 0 3px;">${safeText(top.name)}</h2>
+          <div style="font-weight:800;">currently carrying the vibe with ${Number(top.words || 0).toLocaleString()} words.</div>
+        </div>
+        <div class="mvp-sticker">SO<br>FETCH</div>
+      `;
+    }
+
+    function renderPage(users) {
+      renderSummary(users);
+      renderQuickWinners(users);
+      renderMemoryWall(users);
+      renderReceipts(users);
+      renderRecentMemories(users);
+      renderLastSeen(users);
+      renderSpotlight(users);
+    }
+
+    Promise.all(USER_STATS_SOURCES.map(fetchJsonIfPresent))
+      .then(files => {
+        const users = combineRawUserStats(files);
+        renderPage(users);
+      })
+      .catch(err => {
+        console.error(err);
+        ["memory-wall", "receipts", "recent-memories", "last-seen"].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = `<div class="error">Could not load live stats yet.</div>`;
+        });
+        ["summary-users", "summary-words", "summary-lols", "summary-links", "quick-top-chatter", "quick-top-lol", "quick-top-links"].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = "—";
+        });
+      });
+  </script>
+</body>
+</html>
