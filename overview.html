@@ -1,168 +1,46 @@
-OVERVIEW.HTML PATCH — v1.2.20
-
-This patch adds the same top text menu to overview.html and makes links like overview.html#chatters open the correct old tab automatically.
-
-────────────────────────────────────────
-1) PASTE THIS CSS BEFORE </style>
-────────────────────────────────────────
-
-<style>
-  .gs-top-bar {
-    position: relative;
-    z-index: 25;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin: 0 auto 14px;
-    padding: 9px 14px;
-    border: 2px solid #000;
-    border-radius: 18px;
-    background:
-      repeating-linear-gradient(0deg, rgba(79, 220, 255, 0.12) 0 1px, transparent 1px 22px),
-      linear-gradient(90deg, transparent 0 26px, rgba(255, 63, 143, 0.22) 26px 28px, transparent 28px),
-      rgba(255, 244, 234, 0.96);
-    box-shadow: 6px 6px 0 #000;
-    color: #111;
-    font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
-  }
-
-  .gs-mini-logo {
-    flex: 0 0 auto;
-    color: #ff128f;
-    -webkit-text-stroke: 1px #000;
-    text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
-    font-size: clamp(25px, 3vw, 42px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -1px;
-    text-decoration: none;
-  }
-
-  .gs-mini-logo:hover,
-  .gs-mini-logo:focus-visible {
-    animation: gsLogoWiggle 0.38s linear infinite;
-    outline: none;
-  }
-
-  @keyframes gsLogoWiggle {
-    0%, 100% { transform: rotate(0deg) translate(0, 0); }
-    20% { transform: rotate(-4deg) translate(-1px, 1px); }
-    40% { transform: rotate(3deg) translate(1px, -1px); }
-    60% { transform: rotate(-2deg) translate(1px, 1px); }
-    80% { transform: rotate(4deg) translate(-1px, -1px); }
-  }
-
-  .gs-top-nav {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 4px 7px;
-    flex-wrap: wrap;
-    min-width: 0;
-  }
-
-  .gs-top-nav a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 5px 9px;
-    border-radius: 999px;
-    color: #111;
-    font-size: clamp(12px, 1.02vw, 15px);
-    font-weight: 900;
-    white-space: nowrap;
-    text-decoration: none;
-    transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
-  }
-
-  .gs-top-nav a:hover,
-  .gs-top-nav a:focus-visible {
-    color: #fff;
-    background: #111;
-    transform: translateY(-1px);
-    outline: none;
-  }
-
-  @media (max-width: 760px) {
-    .gs-top-bar {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 8px;
-      padding: 8px 10px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GirlServ Overview Redirect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=index.html#chatters">
+  <script>
+    (function () {
+      var hash = window.location.hash || "#chatters";
+      window.location.replace("index.html" + hash);
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #fff4ea;
+      color: #111;
+      font-family: Arial, sans-serif;
+      padding: 24px;
+      text-align: center;
     }
-
-    .gs-top-nav {
-      justify-content: flex-start;
+    .card {
+      max-width: 620px;
+      background: #fff;
+      border: 3px solid #111;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 6px 6px 0 #111;
     }
-  }
-</style>
-
-────────────────────────────────────────
-2) PASTE THIS HTML DIRECTLY AFTER:
-<div class="wrap">
-────────────────────────────────────────
-
-<div class="gs-top-bar" aria-label="GirlServ top navigation">
-  <a class="gs-mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
-  <nav class="gs-top-nav" aria-label="GirlServ pages">
-    <a href="index.html">GirlServ HQ</a>
-    <a href="overview.html#chatters">Loudmouths</a>
-    <a href="overview.html#degeneracy">Channel Trolls</a>
-    <a href="overview.html#lol">LOL Lords</a>
-    <a href="overview.html#links">Clickbait Crew</a>
-    <a href="overview.html#joins">Frequent Flyers</a>
-    <a href="overview.html#overview">Stat Dump</a>
-    <a href="overview.html#lore">Girl's Notes</a>
-    <a href="overview.html#lore">Room Reports</a>
-    <a href="overview.html#memory">Girlbook</a>
-  </nav>
-</div>
-
-────────────────────────────────────────
-3) PASTE THIS SCRIPT BEFORE </body>
-────────────────────────────────────────
-
-<script>
-  (function () {
-    const hashToPanel = {
-      chatters: 'chatters',
-      loudmouths: 'chatters',
-      degeneracy: 'degeneracy',
-      'channel-trolls': 'degeneracy',
-      lol: 'lol',
-      'lol-lords': 'lol',
-      links: 'links',
-      'clickbait-crew': 'links',
-      joins: 'joins',
-      'frequent-flyers': 'joins',
-      overview: 'overview',
-      'stat-dump': 'overview',
-      lore: 'lore',
-      'girls-notes': 'lore',
-      'room-reports': 'lore',
-      memory: 'memory',
-      girlbook: 'memory',
-      'the-girlbook': 'memory',
-      pet: 'pet'
-    };
-
-    function openPanelFromHash() {
-      const raw = (window.location.hash || '').replace('#', '').trim();
-      if (!raw) return;
-      const panelName = hashToPanel[raw];
-      if (!panelName || typeof showPanel !== 'function') return;
-
-      const matchingButton = document.querySelector(`.view-btn[onclick*="'${panelName}'"], .view-btn[onclick*='"${panelName}"']`);
-      showPanel(panelName, matchingButton || null);
-
-      setTimeout(() => {
-        const panel = document.getElementById('panel-' + panelName);
-        if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
+    a {
+      color: #111;
+      font-weight: 700;
     }
-
-    window.addEventListener('hashchange', openPanelFromHash);
-    window.addEventListener('DOMContentLoaded', openPanelFromHash);
-  })();
-</script>
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Taking you to GirlServ HQ…</h1>
+    <p><a href="index.html#chatters">Click here if you are not redirected.</a></p>
+  </div>
+</body>
+</html>
