@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Girl's Notes | GirlServ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --paper:#fffdf8;
+      --ink:#111;
+      --line:#111;
+      --pink:#ffd7ea;
+      --blue:#dff1ff;
+      --yellow:#fff4b8;
+      --mint:#e4ffd9;
+      --shadow:4px 5px 0 #111;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 22%),
+        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
+      color:var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main{
+      width:min(1400px, calc(100% - 28px));
+      margin:18px auto 42px;
+    }
+
+    .hero,
+    .section,
+    .tool-card,
+    .note-card{
+      background:var(--paper);
+      border:3px solid var(--line);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      padding:22px 22px 18px;
+      margin-bottom:18px;
+    }
+
+    .kicker{
+      display:inline-block;
+      padding:7px 12px;
+      border:2px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-weight:900;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:clamp(34px, 5vw, 64px);
+      line-height:.95;
+      letter-spacing:-2px;
+    }
+
+    .hero p{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .toolbar{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+      margin:18px 0;
+    }
+
+    .tool-card{
+      padding:14px;
+      border-radius:22px;
+    }
+
+    .tool-label{
+      display:block;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      letter-spacing:.06em;
+    }
+
+    .mini-stat{
+      font-size:28px;
+      font-weight:900;
+      line-height:1;
+      margin:2px 0 6px;
+    }
+
+    .mini-note{
+      font-size:13px;
+      font-weight:700;
+      opacity:.78;
+    }
+
+    .section{
+      padding:18px;
+      margin:18px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(26px, 3.4vw, 40px);
+      line-height:1;
+      letter-spacing:-1px;
+    }
+
+    .sub{
+      margin:0;
+      font-size:13px;
+      font-weight:700;
+      opacity:.75;
+    }
+
+    .notes-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .note-card{
+      padding:16px;
+      border-radius:24px;
+    }
+
+    .note-card:nth-child(6n+1){background:#fff7fb}
+    .note-card:nth-child(6n+2){background:#f2fbff}
+    .note-card:nth-child(6n+3){background:#fffbea}
+    .note-card:nth-child(6n+4){background:#f5fff0}
+    .note-card:nth-child(6n+5){background:#fff3ef}
+    .note-card:nth-child(6n+6){background:#f4f0ff}
+
+    .tiny{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:8px;
+    }
+
+    .big-value{
+      font-size:30px;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:8px;
+      word-break:break-word;
+    }
+
+    .big-name{
+      font-size:16px;
+      font-weight:800;
+      word-break:break-word;
+    }
+
+    .note-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .mini-board{
+      border:3px solid var(--line);
+      border-radius:24px;
+      background:#fff;
+      box-shadow:3px 4px 0 #111;
+      overflow:hidden;
+    }
+
+    .mini-board table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    .mini-board th,
+    .mini-board td{
+      padding:12px 14px;
+      border-bottom:2px solid #111;
+      text-align:left;
+      font-size:14px;
+    }
+
+    .mini-board th{
+      background:#fff4ea;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    .mini-board tr:last-child td{
+      border-bottom:0;
+    }
+
+    .loading,
+    .empty{
+      border:3px dashed var(--line);
+      border-radius:24px;
+      padding:18px;
+      background:#fff;
+      font-weight:800;
+    }
+
+    @media (max-width: 1100px){
+      .notes-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px){
+      .toolbar,
+      .notes-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <span class="kicker">GirlServ / Notes</span>
+      <h1>📝 Girl's Notes ♡</h1>
+      <p>little room observations ♡</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="tool-card">
+        <div class="tool-label">Tracked users</div>
+        <div class="mini-stat" id="trackedUsers">0</div>
+        <div class="mini-note">excluding girl</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Noisiest note</div>
+        <div class="mini-stat" id="loudestWords">0</div>
+        <div class="mini-note">largest word pile</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-label">Messiest note</div>
+        <div class="mini-stat" id="messiestChaos">0</div>
+        <div class="mini-note">largest chaos pile</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Quick notes</h2>
+          <p class="sub">who stands out most by category</p>
+        </div>
+      </div>
+      <div id="notesWrap" class="loading">Loading notes…</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2># Mini boards</h2>
+          <p class="sub">top 5 snapshots by category</p>
+        </div>
+      </div>
+      <div id="boardsWrap" class="note-list"></div>
+    </section>
+  </main>
+
+  <script>
+    const DATA_URL = "truth_seekers_user_stats.json";
+
+    function formatNum(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function safeEntries(raw) {
+      return Object.entries(raw || {}).map(([nick, stats]) => ({
+        nick,
+        words: Number(stats?.words || 0),
+        joins: Number(stats?.joins || 0),
+        lol: Number(stats?.lol || 0),
+        degeneracy: Number(stats?.degeneracy || 0),
+        links: Number(stats?.links || 0)
+      }));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function buildNotes(entries) {
+      const wrap = document.getElementById("notesWrap");
+      const notes = [
+        {
+          title: "biggest loudmouth",
+          user: [...entries].sort((a, b) => b.words - a.words)[0],
+          value: u => `${formatNum(u.words)} words`
+        },
+        {
+          title: "most chaotic",
+          user: [...entries].sort((a, b) => b.degeneracy - a.degeneracy)[0],
+          value: u => `${formatNum(u.degeneracy)} chaos`
+        },
+        {
+          title: "most giggly",
+          user: [...entries].sort((a, b) => b.lol - a.lol)[0],
+          value: u => `${formatNum(u.lol)} lol`
+        },
+        {
+          title: "most slippery",
+          user: [...entries].sort((a, b) => b.links - a.links)[0],
+          value: u => `${formatNum(u.links)} links`
+        },
+        {
+          title: "keeps coming back",
+          user: [...entries].sort((a, b) => b.joins - a.joins)[0],
+          value: u => `${formatNum(u.joins)} joins`
+        },
+        {
+          title: "busy little menace",
+          user: [...entries].sort((a, b) => (b.words + b.joins + b.lol + b.degeneracy + b.links) - (a.words + a.joins + a.lol + a.degeneracy + a.links))[0],
+          value: u => `${formatNum(u.words + u.joins + u.lol + u.degeneracy + u.links)} stacked activity`
+        }
+      ];
+
+      wrap.className = "notes-grid";
+      wrap.innerHTML = notes.map(item => `
+        <article class="note-card">
+          <div class="tiny">${escapeHtml(item.title)}</div>
+          <div class="big-value">${item.user ? item.value(item.user) : "0"}</div>
+          <div class="big-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
+        </article>
+      `).join("");
+    }
+
+    function board(title, rows, fieldLabel) {
+      return `
+        <div class="mini-board">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3">${escapeHtml(title)}</th>
+              </tr>
+              <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>${escapeHtml(fieldLabel)}</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map((user, index) => `
+                <tr>
+                  <td>${index + 1}</td>
+                  <td>${escapeHtml(user.nick)}</td>
+                  <td>${formatNum(user.value)}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function buildBoards(entries) {
+      const wrap = document.getElementById("boardsWrap");
+
+      const boards = [
+        board(
+          "Top 5 words",
+          [...entries].sort((a, b) => b.words - a.words).slice(0, 5).map(u => ({ nick: u.nick, value: u.words })),
+          "words"
+        ),
+        board(
+          "Top 5 joins",
+          [...entries].sort((a, b) => b.joins - a.joins).slice(0, 5).map(u => ({ nick: u.nick, value: u.joins })),
+          "joins"
+        ),
+        board(
+          "Top 5 lol",
+          [...entries].sort((a, b) => b.lol - a.lol).slice(0, 5).map(u => ({ nick: u.nick, value: u.lol })),
+          "lol"
+        ),
+        board(
+          "Top 5 chaos",
+          [...entries].sort((a, b) => b.degeneracy - a.degeneracy).slice(0, 5).map(u => ({ nick: u.nick, value: u.degeneracy })),
+          "chaos"
+        ),
+        board(
+          "Top 5 links",
+          [...entries].sort((a, b) => b.links - a.links).slice(0, 5).map(u => ({ nick: u.nick, value: u.links })),
+          "links"
+        )
+      ];
+
+      wrap.innerHTML = boards.join("");
+    }
+
+    async function loadPage() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error("Failed to load notes data");
+        const raw = await response.json();
+
+        const entries = safeEntries(raw)
+          .filter(user => user.nick.toLowerCase() !== "girl")
+          .sort((a, b) => b.words - a.words);
+
+        document.getElementById("trackedUsers").textContent = formatNum(entries.length);
+        document.getElementById("loudestWords").textContent = formatNum(entries[0]?.words || 0);
+        document.getElementById("messiestChaos").textContent = formatNum(
+          [...entries].sort((a, b) => b.degeneracy - a.degeneracy)[0]?.degeneracy || 0
+        );
+
+        buildNotes(entries);
+        buildBoards(entries);
+      } catch (error) {
+        document.getElementById("notesWrap").className = "empty";
+        document.getElementById("notesWrap").textContent = "Could not load notes.";
+        document.getElementById("boardsWrap").innerHTML = '<div class="empty">Could not load mini boards.</div>';
+      }
+    }
+
+    loadPage();
+  </script>
+</body>
+</html>
