@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -579,3 +581,22 @@
   </script>
 </body>
 </html>
+"""
+
+instructions = """Replace this file in GitHub:
+loudmouths.html
+
+Use this replacement file:
+girlserv_loudmouths_working_replacement.txt
+
+Commit description:
+v1.2.38 - Restored Loudmouths with the original top chatters layout, search bar, top 30 board, truth-seekers and watchlist
+
+Do not touch index.html for this step.
+"""
+
+Path("/mnt/data/girlserv_loudmouths_working_replacement.txt").write_text(html, encoding="utf-8")
+Path("/mnt/data/girlserv_loudmouths_working_instructions.txt").write_text(instructions, encoding="utf-8")
+
+print("/mnt/data/girlserv_loudmouths_working_replacement.txt")
+print("/mnt/data/girlserv_loudmouths_working_instructions.txt")
