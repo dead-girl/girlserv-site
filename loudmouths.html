@@ -1,348 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loudmouths | GirlServ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    :root{
-      --paper:#f8efe7;
-      --paper2:#efe3da;
-      --pink:#ff8fbe;
-      --blue:#8ad9ff;
-      --yellow:#ffe27a;
-      --ink:#111;
-      --bg:#fbf6f2;
-      --line:#c7b398;
-      --shadow:4px 4px 0 rgba(0,0,0,0.28);
+    :root {
+      --bg: #07070d;
+      --panel: #151521;
+      --panel2: #1d1d2f;
+      --panel3: #111119;
+      --text: #f4f4f8;
+      --muted: #a7a7b8;
+      --pink: #ff3f8f;
+      --blue: #4fdcff;
+      --yellow: #ffe45c;
+      --green: #78ff91;
+      --purple: #bf8cff;
+      --orange: #ff9f43;
+      --border: #303047;
+      --paper: #f3e6ea;
+      --paper2: #f2efe7;
+      --paper3: #d6edf7;
+      --paper4: #e8f2dd;
+      --paper5: #f6e7bf;
+      --paper6: #f1d8ea;
+      --paper7: #dcebf8;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,#fff8f4 0%,#f9f1ec 100%);
-      color:var(--ink);
-      font-family:Arial, Helvetica, sans-serif;
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 18px;
+      min-height: 100vh;
+      font-family: monospace;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255, 63, 143, 0.18), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(79, 220, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 50% 90%, rgba(191, 140, 255, 0.13), transparent 30%),
+        #07070d;
     }
-    .wrap{
-      width:min(1400px, calc(100% - 28px));
-      margin:18px auto 40px;
+
+    .wrap { max-width: 1250px; margin: auto; }
+
+    .panel {
+      display: block;
+      border: 3px solid #000;
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(18, 18, 30, 0.96);
+      box-shadow: 7px 7px 0 #000;
+      margin-bottom: 30px;
     }
-    .home-layout{
-      display:grid;
-      grid-template-columns:minmax(0,1.6fr) minmax(360px,.9fr);
-      gap:16px;
-      align-items:start;
+
+    .home-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(300px, 0.9fr);
+      gap: 14px;
+      align-items: start;
     }
-    .board{
-      background:var(--paper);
-      border:2px solid var(--line);
-      border-radius:16px;
-      box-shadow:var(--shadow);
-      padding:16px;
+
+    .board {
+      background: #0f0f17;
+      border: 2px dashed rgba(255, 63, 143, 0.55);
+      border-radius: 18px;
+      padding: 14px;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
-    .board-title{
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-1px;
-      line-height:1;
-      margin-bottom:4px;
+
+    .board-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--pink);
+      margin-bottom: 12px;
     }
-    .board-subnote{
-      font-size:14px;
-      color:#5b4050;
-      margin-bottom:14px;
-      font-weight:700;
+
+    .board-subnote {
+      display: inline-block;
+      background: var(--paper2);
+      color: #111;
+      border: 1px solid #999;
+      padding: 5px 10px;
+      border-radius: 2px;
+      transform: rotate(-2deg);
+      margin-bottom: 12px;
+      margin-left: 8px;
     }
-    .top-chatters-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
+
+    .top-chatters-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
-    .chatter-col-header{
-      display:grid;
-      grid-template-columns:48px minmax(0,1fr) 88px;
-      gap:8px;
-      padding:10px 12px;
-      background:#ead9cf;
-      border:2px solid #ccb9ab;
-      border-radius:12px;
-      font-size:12px;
-      text-transform:uppercase;
-      font-weight:900;
-      color:#4a3a31;
-      margin-bottom:8px;
+
+    .chatter-col-header {
+      display: grid;
+      grid-template-columns: 48px 1fr 130px;
+      gap: 10px;
+      padding: 0 10px 8px;
+      color: var(--pink);
+      font-weight: 900;
+      font-size: 13px;
+      border-bottom: 1px dashed rgba(255, 63, 143, 0.4);
+      margin-bottom: 8px;
     }
-    .chatter-card{
-      border:2px solid #cebcb0;
-      border-radius:12px;
-      background:#151521;
-      overflow:hidden;
-      margin-bottom:8px;
-      box-shadow:3px 3px 0 rgba(0,0,0,0.22);
+
+    .chatter-card {
+      background: #11111b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
     }
-    .chatter-head{
-      display:grid;
-      grid-template-columns:48px minmax(0,1fr) 88px;
-      gap:8px;
-      align-items:center;
-      padding:10px 12px;
-      cursor:pointer;
+
+    .chatter-head {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+      color: white;
+      font-family: monospace;
+      display: grid;
+      grid-template-columns: 48px 1fr 130px;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      text-align: left;
     }
-    .chatter-rank{ color:var(--pink); font-size:18px; font-weight:900; }
-    .chatter-name{ color:white; font-size:15px; font-weight:900; word-break:break-word; }
-    .chatter-words{ text-align:right; color:#fff; font-size:16px; font-weight:900; }
-    .chatter-extra{
-      display:none;
-      padding:12px;
-      background:linear-gradient(180deg,#f1dce4,#f6e7ec);
-      color:#111;
-      border-top:1px solid rgba(0,0,0,0.12);
+
+    .chatter-rank { color: var(--pink); font-size: 18px; font-weight: 900; }
+    .chatter-name {
+      color: white;
+      font-size: 15px;
+      font-weight: 900;
+      word-break: break-word;
     }
-    .chatter-card.open .chatter-extra{ display:block; }
-    .extra-layout{
-      display:grid;
-      grid-template-columns:74px 1fr;
-      gap:12px;
-      align-items:stretch;
+    .chatter-words {
+      text-align: right;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
     }
-    .mini-avatar{
-      width:74px;
-      height:74px;
-      border:2px solid #c7a3b2;
-      border-radius:8px;
-      background:linear-gradient(135deg,#201423,#4f2a59);
-      display:grid;
-      place-items:center;
-      color:white;
-      font-size:12px;
-      font-weight:900;
-      overflow:hidden;
-      text-align:center;
+
+    .chatter-card.open .chatter-head {
+      background:
+        linear-gradient(135deg, rgba(255,63,143,0.16), transparent 38%),
+        linear-gradient(315deg, rgba(79,220,255,0.12), transparent 38%),
+        #151521;
+      border-color: var(--yellow);
+      box-shadow: 3px 3px 0 #000;
     }
-    .extra-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:8px;
+
+    .chatter-extra {
+      display: none;
+      padding: 12px;
+      background: linear-gradient(180deg, #f1dce4, #f6e7ec);
+      color: #111;
+      border-top: 1px solid rgba(0,0,0,0.12);
     }
-    .extra-stat{
-      background:rgba(255,255,255,0.45);
-      border:1px solid rgba(0,0,0,0.12);
-      border-radius:10px;
-      padding:10px 6px;
-      text-align:center;
+
+    .chatter-card.open .chatter-extra { display: block; }
+
+    .extra-layout {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
     }
-    .extra-label{ color:#5a4c58; font-size:10px; text-transform:uppercase; font-weight:900; }
-    .extra-value{ color:#111; font-size:18px; font-weight:900; margin-top:4px; }
-    .sidebar-stack{ display:grid; gap:14px; }
-    .selected-user-board{
+
+    .mini-avatar {
+      width: 54px;
+      height: 54px;
+      border: 2px solid #c7a3b2;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #201423, #4f2a59);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .extra-stat {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      padding: 6px;
+      text-align: center;
+    }
+
+    .extra-label { color: #5a4c58; font-size: 10px; text-transform: uppercase; font-weight: 900; }
+    .extra-value { color: #111; font-size: 14px; font-weight: 900; margin-top: 4px; }
+
+    .sidebar-stack { display: grid; gap: 14px; }
+
+    .selected-user-board {
       background:
         linear-gradient(135deg, rgba(255,63,143,0.14), transparent 38%),
         linear-gradient(315deg, rgba(79,220,255,0.10), transparent 38%),
         #0f0f17;
-      color:#fff;
     }
-    .selected-user-topline{ margin-bottom:10px; }
-    .selected-search-wrap{ position:relative; }
-    .selected-user-search{
-      width:100%;
-      border:2px solid rgba(255,255,255,0.16);
-      border-radius:12px;
-      background:#181824;
-      color:#fff;
-      padding:11px 12px;
-      font-size:14px;
-      font-weight:800;
-      outline:none;
+
+    .selected-user-topline { margin-bottom: 10px; }
+
+    .selected-search-wrap { position: relative; }
+
+    .selected-user-search {
+      width: 100%;
+      border: 2px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+      background: #181824;
+      color: #fff;
+      padding: 11px 12px;
+      font-size: 14px;
+      font-weight: 800;
+      outline: none;
+      font-family: monospace;
     }
-    .selected-user-search::placeholder{ color:#d8cad5; }
-    .selected-user-results{
-      position:absolute;
-      top:calc(100% + 6px);
-      left:0;
-      right:0;
-      z-index:30;
-      display:none;
-      background:#1a1a26;
-      border:2px solid rgba(255,255,255,0.12);
-      border-radius:12px;
-      box-shadow:0 10px 20px rgba(0,0,0,0.35);
-      max-height:260px;
-      overflow:auto;
+
+    .selected-user-search::placeholder { color: #d8cad5; }
+
+    .selected-user-results {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      z-index: 30;
+      display: none;
+      background: #1a1a26;
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+      max-height: 260px;
+      overflow: auto;
     }
-    .selected-user-results.open{ display:block; }
-    .selected-user-result{
-      padding:10px 12px;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      cursor:pointer;
-      font-weight:800;
-      color:#fff;
+
+    .selected-user-results.open { display: grid; gap: 5px; }
+
+    .selected-user-result {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #191927;
+      color: #fff;
+      border-radius: 10px;
+      padding: 7px 9px;
+      font-family: monospace;
+      font-weight: 900;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
     }
-    .selected-user-result:last-child{ border-bottom:0; }
-    .selected-user-result:hover{ background:#29293a; }
-    .chatter-expanded-full{
-      display:block;
-      margin-top:8px;
+
+    .selected-user-result:hover { background: rgba(255, 63, 143, 0.22); }
+    .selected-user-result-score { color: var(--yellow); font-size: 11px; white-space: nowrap; }
+
+    .chatter-expanded-full {
+      display: block;
+      margin-top: 8px;
       background:
         linear-gradient(135deg, rgba(255,63,143,0.18), transparent 38%),
         linear-gradient(315deg, rgba(79,220,255,0.14), transparent 38%),
         #151521;
-      border:2px dashed rgba(255,221,120,0.75);
-      border-radius:16px;
-      padding:12px;
-      box-shadow:4px 4px 0 #000;
+      border: 2px dashed rgba(255, 221, 120, 0.75);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 4px 4px 0 #000;
     }
-    .chatter-expanded-title{
-      color:var(--yellow);
-      font-size:17px;
-      font-weight:900;
-      margin-bottom:10px;
-      overflow-wrap:anywhere;
-      text-align:center;
+
+    .chatter-expanded-title {
+      color: var(--yellow);
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      overflow-wrap: anywhere;
+      text-align: center;
     }
-    .chatter-expanded-full .extra-layout{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-      align-items:center;
+
+    .chatter-expanded-full .extra-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: center;
     }
-    .chatter-expanded-full .mini-avatar{
-      width:124px;
-      height:124px;
-      margin:0 auto;
-      border:3px solid #fff;
-      outline:3px solid #000;
-      border-radius:16px;
-      box-shadow:4px 4px 0 rgba(0,0,0,0.35);
+
+    .chatter-expanded-full .mini-avatar {
+      width: 124px;
+      height: 124px;
+      margin: 0 auto;
+      border: 3px solid #fff;
+      outline: 3px solid #000;
+      border-radius: 16px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
     }
-    .chatter-expanded-full .extra-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:7px;
+
+    .chatter-expanded-full .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
     }
-    .top3-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      align-items:end;
+
+    .top3-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: end;
     }
-    .top3-card{
-      background:var(--paper2);
-      color:#111;
-      border:2px solid #c7b398;
-      border-radius:10px;
-      padding:10px;
-      text-align:center;
-      box-shadow:4px 4px 0 rgba(0,0,0,0.35);
-      position:relative;
-      min-height:230px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
+
+    .top3-card {
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
+      position: relative;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
-    .top3-card.rank1{ min-height:255px; background:#f1e6df; }
-    .top3-card.rank2{ transform:rotate(-1deg); }
-    .top3-card.rank3{ transform:rotate(1deg); }
-    .top3-badge{
-      position:absolute;
-      top:-12px;
-      left:50%;
-      transform:translateX(-50%) rotate(-7deg);
-      background:var(--yellow);
-      color:#111;
-      border:2px solid #000;
-      border-radius:12px;
-      padding:4px 10px;
-      font-weight:900;
-      box-shadow:3px 3px 0 rgba(0,0,0,0.35);
+
+    .top3-card.rank1 { min-height: 255px; background: #f1e6df; }
+    .top3-card.rank2 { transform: rotate(-1deg); }
+    .top3-card.rank3 { transform: rotate(1deg); }
+
+    .top3-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-7deg);
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
     }
-    .top3-photo{
-      width:86px;
-      height:86px;
-      margin:18px auto 10px;
-      border:3px solid #fff;
-      outline:2px solid #d1a9b8;
-      border-radius:8px;
-      background:linear-gradient(135deg,#2b2033,#4c3550);
-      display:grid;
-      place-items:center;
-      color:white;
-      font-size:12px;
-      font-weight:900;
-      overflow:hidden;
+
+    .top3-photo {
+      width: 86px;
+      height: 86px;
+      margin: 18px auto 10px;
+      border: 3px solid #fff;
+      outline: 2px solid #d1a9b8;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2b2033, #4c3550);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      overflow: hidden;
     }
-    .top3-name{ font-size:14px; font-weight:900; margin-top:4px; word-break:break-word; }
-    .top3-score{
-      margin:10px auto 0;
-      display:inline-block;
-      background:#ffb6d1;
-      color:#111;
-      font-weight:900;
-      font-size:16px;
-      padding:6px 10px;
-      border-radius:8px;
+
+    .top3-name { font-size: 14px; font-weight: 900; margin-top: 4px; word-break: break-word; }
+
+    .top3-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
     }
-    .top3-label{ font-size:12px; color:#444; margin-top:6px; }
-    .watch-wide-board .watch-carousel{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
+
+    .top3-label { font-size: 12px; color: #444; margin-top: 6px; }
+
+    .watch-wide-board { margin-top: 14px; }
+
+    .watch-carousel {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 10px;
+      min-height: 275px;
     }
-    .watch-carousel-card{
-      background:#f6ece4;
-      border:2px solid #ccb7a8;
-      border-radius:12px;
-      padding:10px;
-      text-align:center;
-      box-shadow:3px 3px 0 rgba(0,0,0,0.18);
+
+    .watch-carousel-card {
+      min-height: 225px;
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
     }
-    .watch-carousel-photo{
-      width:82px;
-      height:82px;
-      margin:8px auto 10px;
-      border:3px solid #fff;
-      outline:2px solid #d1a9b8;
-      border-radius:10px;
-      background:#111;
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-weight:900;
+
+    .watch-carousel-photo {
+      width: 96px;
+      height: 96px;
+      margin: 20px auto 10px;
+      border: 3px solid #fff;
+      outline: 2px solid #d1a9b8;
+      border-radius: 10px;
+      background: #111;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
     }
-    .watch-carousel-name{ font-size:15px; font-weight:900; word-break:break-word; line-height:1.1; }
-    .watch-carousel-score{
-      margin:10px auto 0;
-      display:inline-block;
-      background:#ffb6d1;
-      color:#111;
-      font-weight:900;
-      font-size:14px;
-      padding:6px 10px;
-      border-radius:8px;
+
+    .watch-carousel-name {
+      font-size: 17px;
+      font-weight: 900;
+      word-break: break-word;
+      line-height: 1.1;
     }
-    .watch-carousel-note{ font-size:12px; color:#444; margin-top:7px; }
-    .status-note{
-      display:block;
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:10px;
-      background:#fff1f6;
-      border:2px dashed #d8a3ba;
-      color:#6a2946;
-      font-size:13px;
-      font-weight:800;
+
+    .watch-carousel-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 8px;
     }
-    @media (max-width: 1050px){
-      .home-layout{ grid-template-columns:1fr; }
+
+    .watch-carousel-note {
+      font-size: 12px;
+      color: #444;
+      margin-top: 7px;
     }
-    @media (max-width: 760px){
+
+    .status-note {
+      margin-top: 10px;
+      display: inline-block;
+      background: var(--paper5);
+      color: #111;
+      border: 1px solid #b9a457;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transform: rotate(-2deg);
+      font-weight: 900;
+    }
+
+    @media (max-width: 1050px) {
+      .home-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
       .top-chatters-grid,
       .top3-grid,
-      .watch-wide-board .watch-carousel,
+      .watch-carousel,
       .chatter-expanded-full .extra-grid,
-      .chatter-card .chatter-extra .extra-layout,
-      .extra-grid{
-        grid-template-columns:1fr;
+      .chatter-card .chatter-extra .extra-layout {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -354,7 +481,7 @@
         <div class="board">
           <div class="board-title">★ Top Chatters ♡</div>
           <div class="board-subnote">word crimes logged ♡</div>
-          <div id="chatters-status" class="status-note" style="display:none;"></div>
+          <div id="json-status-left"></div>
 
           <div class="top-chatters-grid">
             <div>
@@ -376,20 +503,18 @@
                 <div id="selected-user-results" class="selected-user-results"></div>
               </div>
             </div>
-            <div class="chatter-expanded-full open" id="chatter-expanded-full">search a user or click a chatter card</div>
-            <div id="selected-status" class="status-note" style="display:none;"></div>
+            <div class="chatter-expanded-full open" id="chatter-expanded-full">loading...</div>
           </div>
 
           <div class="board">
             <div class="board-title">☆ #truth-seekers</div>
-            <div id="truthseekers-status" class="status-note" style="display:none;"></div>
+            <div id="json-status-top3"></div>
             <div class="top3-grid" id="top3-grid"></div>
           </div>
 
           <div class="board watch-wide-board">
             <div class="board-title">Users To Keep An Eye On</div>
-            <div class="board-subnote">different flavours of suspicious activity</div>
-            <div id="watch-status" class="status-note" style="display:none;"></div>
+            <div id="json-status-watch"></div>
             <div class="watch-carousel" id="watch-carousel"></div>
           </div>
         </div>
@@ -399,9 +524,9 @@
 
   <script>
     const DATA_URLS = [
+      "channel-stats/truth_seekers_user_stats.json",
       "truth_seekers_user_stats.json",
-      "./truth_seekers_user_stats.json",
-      "channel-stats/truth_seekers_user_stats.json"
+      "./truth_seekers_user_stats.json"
     ];
 
     function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
@@ -414,11 +539,14 @@
         .replaceAll('"',"&quot;");
     }
 
-    function setStatus(id, text){
-      const el = document.getElementById(id);
+    function status(elId, text){
+      const el = document.getElementById(elId);
       if(!el) return;
-      el.style.display = text ? "block" : "none";
-      el.textContent = text || "";
+      el.innerHTML = text ? `<div class="status-note">${esc(text)}</div>` : "";
+    }
+
+    function avatarMarkup(nick){
+      return `<div class="mini-avatar">${esc(nick).slice(0,2).toUpperCase()}</div>`;
     }
 
     function entriesFrom(raw){
@@ -433,17 +561,13 @@
         .sort((a,b)=>b.words-a.words);
     }
 
-    function avatarMarkup(nick){
-      return `<div class="mini-avatar">${esc(nick).slice(0,2).toUpperCase()}</div>`;
-    }
-
     function renderSelected(user){
-      const el = document.getElementById("chatter-expanded-full");
+      const root = document.getElementById("chatter-expanded-full");
       if(!user){
-        el.textContent = "search a user or click a chatter card";
+        root.textContent = "truthseekers stats .json can't load";
         return;
       }
-      el.innerHTML = `
+      root.innerHTML = `
         <div class="chatter-expanded-title">${esc(user.nick)}</div>
         <div class="extra-layout">
           ${avatarMarkup(user.nick)}
@@ -459,37 +583,54 @@
       `;
     }
 
-    function card(user, rank){
-      return `
-        <div class="chatter-card" data-nick="${esc(user.nick)}">
-          <div class="chatter-head">
-            <div class="chatter-rank">#${rank}</div>
-            <div class="chatter-name">${esc(user.nick)}</div>
-            <div class="chatter-words">${fmt(user.words)}</div>
-          </div>
+    function renderChatters(top30){
+      document.getElementById("chatters-left").innerHTML = top30.slice(0,15).map((u,i)=>`
+        <div class="chatter-card" data-nick="${esc(u.nick)}">
+          <button class="chatter-head" type="button">
+            <div class="chatter-rank">#${i+1}</div>
+            <div class="chatter-name">${esc(u.nick)}</div>
+            <div class="chatter-words">${fmt(u.words)}</div>
+          </button>
           <div class="chatter-extra">
             <div class="extra-layout">
-              ${avatarMarkup(user.nick)}
+              ${avatarMarkup(u.nick)}
               <div class="extra-grid">
-                <div class="extra-stat"><div class="extra-label">joins</div><div class="extra-value">${fmt(user.joins)}</div></div>
-                <div class="extra-stat"><div class="extra-label">lol</div><div class="extra-value">${fmt(user.lol)}</div></div>
-                <div class="extra-stat"><div class="extra-label">chaos</div><div class="extra-value">${fmt(user.degeneracy)}</div></div>
-                <div class="extra-stat"><div class="extra-label">links</div><div class="extra-value">${fmt(user.links)}</div></div>
+                <div class="extra-stat"><div class="extra-label">joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
+                <div class="extra-stat"><div class="extra-label">lol</div><div class="extra-value">${fmt(u.lol)}</div></div>
+                <div class="extra-stat"><div class="extra-label">chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
+                <div class="extra-stat"><div class="extra-label">links</div><div class="extra-value">${fmt(u.links)}</div></div>
               </div>
             </div>
           </div>
-        </div>`;
-    }
+        </div>
+      `).join("");
 
-    function renderTopChatters(top30){
-      document.getElementById("chatters-left").innerHTML = top30.slice(0,15).map((u,i)=>card(u,i+1)).join("");
-      document.getElementById("chatters-right").innerHTML = top30.slice(15,30).map((u,i)=>card(u,i+16)).join("");
+      document.getElementById("chatters-right").innerHTML = top30.slice(15,30).map((u,i)=>`
+        <div class="chatter-card" data-nick="${esc(u.nick)}">
+          <button class="chatter-head" type="button">
+            <div class="chatter-rank">#${i+16}</div>
+            <div class="chatter-name">${esc(u.nick)}</div>
+            <div class="chatter-words">${fmt(u.words)}</div>
+          </button>
+          <div class="chatter-extra">
+            <div class="extra-layout">
+              ${avatarMarkup(u.nick)}
+              <div class="extra-grid">
+                <div class="extra-stat"><div class="extra-label">joins</div><div class="extra-value">${fmt(u.joins)}</div></div>
+                <div class="extra-stat"><div class="extra-label">lol</div><div class="extra-value">${fmt(u.lol)}</div></div>
+                <div class="extra-stat"><div class="extra-label">chaos</div><div class="extra-value">${fmt(u.degeneracy)}</div></div>
+                <div class="extra-stat"><div class="extra-label">links</div><div class="extra-value">${fmt(u.links)}</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join("");
 
       document.querySelectorAll(".chatter-head").forEach(head => {
         head.addEventListener("click", () => {
-          const c = head.parentElement;
-          c.classList.toggle("open");
-          const nick = c.dataset.nick;
+          const card = head.closest(".chatter-card");
+          card.classList.toggle("open");
+          const nick = card.dataset.nick;
           const user = top30.find(u => u.nick === nick);
           renderSelected(user);
         });
@@ -497,14 +638,9 @@
     }
 
     function renderTop3(top3){
-      const grid = document.getElementById("top3-grid");
-      if(!top3.length){
-        setStatus("truthseekers-status", "truthseekers stats json can't load");
-        return;
-      }
       const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
       const ranks = [2,1,3];
-      grid.innerHTML = ordered.map((u, idx) => `
+      document.getElementById("top3-grid").innerHTML = ordered.map((u, idx) => `
         <div class="top3-card rank${ranks[idx]}">
           <div class="top3-badge">#${ranks[idx]}</div>
           <div class="top3-photo">${esc(u.nick).slice(0,2).toUpperCase()}</div>
@@ -517,14 +653,14 @@
 
     function renderWatch(all){
       const picks = [
-        { title:"Most Joins", user:[...all].sort((a,b)=>b.joins-a.joins)[0], score:u=>`${fmt(u.joins)} joins`, note:"always coming back" },
-        { title:"Biggest LOL Menace", user:[...all].sort((a,b)=>b.lol-a.lol)[0], score:u=>`${fmt(u.lol)} lol`, note:"giggly little pest" },
-        { title:"Chaos Goblin", user:[...all].sort((a,b)=>b.degeneracy-a.degeneracy)[0], score:u=>`${fmt(u.degeneracy)} chaos`, note:"needs supervision" },
-        { title:"Link Gremlin", user:[...all].sort((a,b)=>b.links-a.links)[0], score:u=>`${fmt(u.links)} links`, note:"keeps posting things" }
+        { label:"Most Joins", user:[...all].sort((a,b)=>b.joins-a.joins)[0], score:u=>`${fmt(u.joins)} joins`, note:"always coming back" },
+        { label:"Biggest LOL Menace", user:[...all].sort((a,b)=>b.lol-a.lol)[0], score:u=>`${fmt(u.lol)} lol`, note:"giggly little pest" },
+        { label:"Chaos Goblin", user:[...all].sort((a,b)=>b.degeneracy-a.degeneracy)[0], score:u=>`${fmt(u.degeneracy)} chaos`, note:"needs supervision" },
+        { label:"Link Gremlin", user:[...all].sort((a,b)=>b.links-a.links)[0], score:u=>`${fmt(u.links)} links`, note:"keeps posting things" }
       ];
       document.getElementById("watch-carousel").innerHTML = picks.map(p => `
         <div class="watch-carousel-card">
-          <div class="watch-carousel-photo">${p.user ? esc(p.user.nick).slice(0,2).toUpperCase() : "--"}</div>
+          <div class="watch-carousel-photo">${esc((p.user?.nick || "--")).slice(0,2).toUpperCase()}</div>
           <div class="watch-carousel-name">${esc(p.user?.nick || "nobody yet")}</div>
           <div class="watch-carousel-score">${p.user ? p.score(p.user) : "0"}</div>
           <div class="watch-carousel-note">${esc(p.note)}</div>
@@ -536,9 +672,21 @@
       const input = document.getElementById("selected-user-search");
       const results = document.getElementById("selected-user-results");
 
-      function paint(list){
-        results.innerHTML = list.slice(0,8).map(u => `<div class="selected-user-result" data-nick="${esc(u.nick)}">${esc(u.nick)}</div>`).join("");
-        results.classList.toggle("open", list.length > 0 && input.value.trim().length > 0);
+      input.addEventListener("input", () => {
+        const q = input.value.trim().toLowerCase();
+        if(!q){
+          results.classList.remove("open");
+          results.innerHTML = "";
+          return;
+        }
+        const matches = all.filter(u => u.nick.toLowerCase().includes(q)).slice(0,8);
+        results.innerHTML = matches.map(u => `
+          <div class="selected-user-result" data-nick="${esc(u.nick)}">
+            <span>${esc(u.nick)}</span>
+            <span class="selected-user-result-score">${fmt(u.words)}</span>
+          </div>
+        `).join("");
+        results.classList.toggle("open", matches.length > 0);
         results.querySelectorAll(".selected-user-result").forEach(row => {
           row.addEventListener("click", () => {
             const user = all.find(u => u.nick === row.dataset.nick);
@@ -547,12 +695,6 @@
             renderSelected(user);
           });
         });
-      }
-
-      input.addEventListener("input", () => {
-        const q = input.value.trim().toLowerCase();
-        if(!q){ results.classList.remove("open"); return; }
-        paint(all.filter(u => u.nick.toLowerCase().includes(q)));
       });
 
       document.addEventListener("click", (e) => {
@@ -560,43 +702,36 @@
       });
     }
 
-    async function loadJson(){
+    async function loadData(){
       for(const url of DATA_URLS){
         try{
           const res = await fetch(url, { cache:"no-store" });
           if(res.ok){
-            const raw = await res.json();
-            return { raw, url };
+            return await res.json();
           }
         }catch(e){}
       }
-      throw new Error("no data url worked");
+      throw new Error("json failed");
     }
 
     async function boot(){
       try{
-        const { raw, url } = await loadJson();
+        const raw = await loadData();
         const all = entriesFrom(raw);
         const top30 = all.slice(0,30);
-
-        renderTopChatters(top30);
+        renderChatters(top30);
         renderTop3(top30.slice(0,3));
         renderWatch(all);
         renderSelected(top30[0] || null);
         setupSearch(all);
-
-        setStatus("chatters-status", "");
-        setStatus("truthseekers-status", "");
-        setStatus("watch-status", "");
-        setStatus("selected-status", "");
       }catch(e){
-        setStatus("chatters-status", "truthseekers stats .json can't load");
-        setStatus("truthseekers-status", "truthseekers stats .json can't load");
-        setStatus("watch-status", "truthseekers stats .json can't load");
-        setStatus("selected-status", "truthseekers stats .json can't load");
+        status("json-status-left", "truthseekers stats .json can't load");
+        status("json-status-top3", "truthseekers stats .json can't load");
+        status("json-status-watch", "truthseekers stats .json can't load");
         renderSelected(null);
       }
     }
+
     boot();
   </script>
 </body>
