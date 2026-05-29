@@ -119,7 +119,6 @@
       overflow:hidden;
       text-align:center;
     }
-    .mini-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
     .extra-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -271,7 +270,6 @@
       font-weight:900;
       overflow:hidden;
     }
-    .top3-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
     .top3-name{ font-size:14px; font-weight:900; margin-top:4px; word-break:break-word; }
     .top3-score{
       margin:10px auto 0;
@@ -306,8 +304,11 @@
       border-radius:10px;
       background:#111;
       overflow:hidden;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:900;
     }
-    .watch-carousel-img{ width:100%; height:100%; object-fit:cover; display:block; }
     .watch-carousel-name{ font-size:15px; font-weight:900; word-break:break-word; line-height:1.1; }
     .watch-carousel-score{
       margin:10px auto 0;
@@ -320,6 +321,17 @@
       border-radius:8px;
     }
     .watch-carousel-note{ font-size:12px; color:#444; margin-top:7px; }
+    .status-note{
+      display:block;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#fff1f6;
+      border:2px dashed #d8a3ba;
+      color:#6a2946;
+      font-size:13px;
+      font-weight:800;
+    }
     @media (max-width: 1050px){
       .home-layout{ grid-template-columns:1fr; }
     }
@@ -342,6 +354,7 @@
         <div class="board">
           <div class="board-title">★ Top Chatters ♡</div>
           <div class="board-subnote">word crimes logged ♡</div>
+          <div id="chatters-status" class="status-note" style="display:none;"></div>
 
           <div class="top-chatters-grid">
             <div>
@@ -363,17 +376,20 @@
                 <div id="selected-user-results" class="selected-user-results"></div>
               </div>
             </div>
-            <div class="chatter-expanded-full open" id="chatter-expanded-full">loading...</div>
+            <div class="chatter-expanded-full open" id="chatter-expanded-full">search a user or click a chatter card</div>
+            <div id="selected-status" class="status-note" style="display:none;"></div>
           </div>
 
           <div class="board">
             <div class="board-title">☆ #truth-seekers</div>
+            <div id="truthseekers-status" class="status-note" style="display:none;"></div>
             <div class="top3-grid" id="top3-grid"></div>
           </div>
 
           <div class="board watch-wide-board">
             <div class="board-title">Users To Keep An Eye On</div>
             <div class="board-subnote">different flavours of suspicious activity</div>
+            <div id="watch-status" class="status-note" style="display:none;"></div>
             <div class="watch-carousel" id="watch-carousel"></div>
           </div>
         </div>
@@ -382,7 +398,11 @@
   </div>
 
   <script>
-    const DATA_URL = "truth_seekers_user_stats.json";
+    const DATA_URLS = [
+      "truth_seekers_user_stats.json",
+      "./truth_seekers_user_stats.json",
+      "channel-stats/truth_seekers_user_stats.json"
+    ];
 
     function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
 
@@ -392,6 +412,13 @@
         .replaceAll("<","&lt;")
         .replaceAll(">","&gt;")
         .replaceAll('"',"&quot;");
+    }
+
+    function setStatus(id, text){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.style.display = text ? "block" : "none";
+      el.textContent = text || "";
     }
 
     function entriesFrom(raw){
@@ -412,7 +439,10 @@
 
     function renderSelected(user){
       const el = document.getElementById("chatter-expanded-full");
-      if(!user){ el.textContent = "no user found"; return; }
+      if(!user){
+        el.textContent = "search a user or click a chatter card";
+        return;
+      }
       el.innerHTML = `
         <div class="chatter-expanded-title">${esc(user.nick)}</div>
         <div class="extra-layout">
@@ -457,9 +487,9 @@
 
       document.querySelectorAll(".chatter-head").forEach(head => {
         head.addEventListener("click", () => {
-          const card = head.parentElement;
-          card.classList.toggle("open");
-          const nick = card.dataset.nick;
+          const c = head.parentElement;
+          c.classList.toggle("open");
+          const nick = c.dataset.nick;
           const user = top30.find(u => u.nick === nick);
           renderSelected(user);
         });
@@ -468,6 +498,10 @@
 
     function renderTop3(top3){
       const grid = document.getElementById("top3-grid");
+      if(!top3.length){
+        setStatus("truthseekers-status", "truthseekers stats json can't load");
+        return;
+      }
       const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
       const ranks = [2,1,3];
       grid.innerHTML = ordered.map((u, idx) => `
@@ -498,7 +532,7 @@
       `).join("");
     }
 
-    function setupSearch(all, top30){
+    function setupSearch(all){
       const input = document.getElementById("selected-user-search");
       const results = document.getElementById("selected-user-results");
 
@@ -526,20 +560,41 @@
       });
     }
 
+    async function loadJson(){
+      for(const url of DATA_URLS){
+        try{
+          const res = await fetch(url, { cache:"no-store" });
+          if(res.ok){
+            const raw = await res.json();
+            return { raw, url };
+          }
+        }catch(e){}
+      }
+      throw new Error("no data url worked");
+    }
+
     async function boot(){
       try{
-        const res = await fetch(DATA_URL, { cache:"no-store" });
-        if(!res.ok) throw new Error("bad response");
-        const raw = await res.json();
+        const { raw, url } = await loadJson();
         const all = entriesFrom(raw);
         const top30 = all.slice(0,30);
+
         renderTopChatters(top30);
         renderTop3(top30.slice(0,3));
         renderWatch(all);
-        renderSelected(top30[0]);
-        setupSearch(all, top30);
+        renderSelected(top30[0] || null);
+        setupSearch(all);
+
+        setStatus("chatters-status", "");
+        setStatus("truthseekers-status", "");
+        setStatus("watch-status", "");
+        setStatus("selected-status", "");
       }catch(e){
-        document.getElementById("panel-chatters").innerHTML = '<div class="board"><div class="board-title">Could not load chatter data.</div></div>';
+        setStatus("chatters-status", "truthseekers stats .json can't load");
+        setStatus("truthseekers-status", "truthseekers stats .json can't load");
+        setStatus("watch-status", "truthseekers stats .json can't load");
+        setStatus("selected-status", "truthseekers stats .json can't load");
+        renderSelected(null);
       }
     }
     boot();
