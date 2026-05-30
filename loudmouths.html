@@ -22,11 +22,7 @@
       --border: #303047;
       --paper: #f3e6ea;
       --paper2: #f2efe7;
-      --paper3: #d6edf7;
-      --paper4: #e8f2dd;
       --paper5: #f6e7bf;
-      --paper6: #f1d8ea;
-      --paper7: #dcebf8;
     }
 
     * { box-sizing: border-box; }
@@ -61,6 +57,7 @@
       grid-template-columns: minmax(0, 2.1fr) minmax(300px, 0.9fr);
       gap: 14px;
       align-items: start;
+      margin-bottom: 14px;
     }
 
     .board {
@@ -136,18 +133,8 @@
     }
 
     .chatter-rank { color: var(--pink); font-size: 18px; font-weight: 900; }
-    .chatter-name {
-      color: white;
-      font-size: 15px;
-      font-weight: 900;
-      word-break: break-word;
-    }
-    .chatter-words {
-      text-align: right;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 900;
-    }
+    .chatter-name { color: white; font-size: 15px; font-weight: 900; word-break: break-word; }
+    .chatter-words { text-align: right; color: #fff; font-size: 16px; font-weight: 900; }
 
     .chatter-card.open .chatter-head {
       background:
@@ -226,7 +213,6 @@
     }
 
     .selected-user-topline { margin-bottom: 10px; }
-
     .selected-search-wrap { position: relative; }
 
     .selected-user-search {
@@ -397,7 +383,11 @@
 
     .top3-label { font-size: 12px; color: #444; margin-top: 6px; }
 
-    .watch-wide-board { margin-top: 14px; overflow: hidden; }
+    .watch-wide-board {
+      margin-top: 0;
+      width: 100%;
+      overflow: hidden;
+    }
 
     .watch-slider-head {
       display: flex;
@@ -584,18 +574,18 @@
             <div id="json-status-top3"></div>
             <div class="top3-grid" id="top3-grid"></div>
           </div>
+        </div>
+      </div>
 
-          <div class="board watch-wide-board">
-            <div class="board-title">Users To Keep An Eye On</div>
-            <div class="watch-slider-head">
-              <div class="watch-slider-title" id="watch-slider-title">loading...</div>
-              <div class="watch-dots" id="watch-dots"></div>
-            </div>
-            <div id="json-status-watch"></div>
-            <div class="watch-slider-viewport">
-              <div class="watch-slider-track" id="watch-slider-track"></div>
-            </div>
-          </div>
+      <div class="board watch-wide-board">
+        <div class="board-title">Users To Keep An Eye On</div>
+        <div class="watch-slider-head">
+          <div class="watch-slider-title" id="watch-slider-title">loading...</div>
+          <div class="watch-dots" id="watch-dots"></div>
+        </div>
+        <div id="json-status-watch"></div>
+        <div class="watch-slider-viewport">
+          <div class="watch-slider-track" id="watch-slider-track"></div>
         </div>
       </div>
     </section>
