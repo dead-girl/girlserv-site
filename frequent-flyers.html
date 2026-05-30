@@ -1,523 +1,950 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frequent Flyers | GirlServ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    :root{
-      --paper:#fffdf8;
-      --ink:#111;
-      --line:#111;
-      --pink:#ffd7ea;
-      --blue:#dff1ff;
-      --yellow:#fff4b8;
-      --mint:#e4ffd9;
-      --shadow:4px 5px 0 #111;
+    :root {
+      --ink: #fff8fd;
+      --muted: #dcc7dc;
+      --pink: #ff4aa5;
+      --hotpink: #ff128f;
+      --purple: #9d6cff;
+      --aqua: #67e9ff;
+      --lime: #d8ff5e;
+      --paper: #fff4ea;
+      --black: #0b0b10;
+      --panel: rgba(18, 10, 28, 0.92);
+      --shadow: 5px 5px 0 #000;
+      --yellow: #ffe45c;
+      --paper2: #f2efe7;
+      --paper5: #f6e7bf;
     }
 
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    body{
-      margin:0;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 22%),
-        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
-      color:var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
+        radial-gradient(circle at 12% 12%, rgba(255, 74, 165, 0.26), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(103, 233, 255, 0.20), transparent 20%),
+        radial-gradient(circle at 18% 88%, rgba(216, 255, 94, 0.12), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(157, 108, 255, 0.20), transparent 26%),
+        linear-gradient(180deg, #120716 0%, #0c0610 46%, #050308 100%);
+      overflow-x: hidden;
+      padding: 18px;
     }
 
-    main{
-      width:min(1400px, calc(100% - 28px));
-      margin:18px auto 42px;
+    body::before {
+      content: "♡ ★ xoxo ★ burn book ★ coolour ★ girlserv ★ memories ★";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      color: rgba(255,255,255,0.045);
+      font-size: 34px;
+      line-height: 125px;
+      letter-spacing: 8px;
+      transform: rotate(-7deg) scale(1.12);
+      white-space: pre-wrap;
+      z-index: 0;
     }
 
-    .hero,
-    .section,
-    .tool-card{
-      background:var(--paper);
-      border:3px solid var(--line);
-      border-radius:32px;
-      box-shadow:var(--shadow);
+    a { color: inherit; text-decoration: none; }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1600px, calc(100% - 22px));
+      margin: 12px auto 26px;
     }
 
-    .hero{
-      padding:22px 22px 18px;
-      margin-bottom:18px;
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 auto 10px;
+      padding: 9px 14px;
+      border: 2px solid #000;
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.12) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, transparent 0 26px, rgba(255, 18, 143, 0.22) 26px 28px, transparent 28px),
+        rgba(255, 244, 234, 0.96);
+      box-shadow: 6px 6px 0 #000;
+      color: #111;
     }
 
-    .kicker{
-      display:inline-block;
-      padding:7px 12px;
-      border:2px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      font-weight:900;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:12px;
+    .mini-logo {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hotpink);
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-size: clamp(25px, 3vw, 42px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      transform-origin: center;
     }
 
-    h1{
-      margin:0 0 6px;
-      font-size:clamp(34px, 5vw, 64px);
-      line-height:.95;
-      letter-spacing:-2px;
+    .mini-logo:hover,
+    .mini-logo:focus-visible {
+      animation: logoWiggle 0.38s linear infinite;
+      outline: none;
     }
 
-    .hero p{
-      margin:0;
-      font-size:16px;
-      font-weight:700;
+    @keyframes logoWiggle {
+      0%, 100% { transform: rotate(0deg) translate(0, 0); }
+      20% { transform: rotate(-4deg) translate(-1px, 1px); }
+      40% { transform: rotate(3deg) translate(1px, -1px); }
+      60% { transform: rotate(-2deg) translate(1px, 1px); }
+      80% { transform: rotate(4deg) translate(-1px, -1px); }
     }
 
-    .toolbar{
-      display:grid;
-      grid-template-columns:1.2fr .8fr .8fr;
-      gap:12px;
-      margin:18px 0;
+    .top-nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px 7px;
+      flex-wrap: wrap;
+      min-width: 0;
     }
 
-    .tool-card{
-      padding:14px;
-      border-radius:22px;
+    .top-nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .tool-label{
-      display:block;
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      margin-bottom:8px;
-      letter-spacing:.06em;
+    .nav-text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #111;
+      font-size: clamp(12px, 1.02vw, 15px);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
     }
 
-    .search{
-      width:100%;
-      border:2px solid var(--line);
-      border-radius:999px;
-      padding:12px 14px;
-      font-size:15px;
-      font-weight:700;
-      background:#fff;
+    .nav-text:hover,
+    .nav-text:focus-visible,
+    .top-nav-item:hover .nav-text {
+      color: #fff;
+      background: #111;
+      transform: translateY(-1px);
+      outline: none;
     }
 
-    .mini-stat{
-      font-size:28px;
-      font-weight:900;
-      line-height:1;
-      margin:2px 0 6px;
+    .top-nav-item.is-current .nav-text {
+      color: rgba(17,17,17,0.58);
+      background: rgba(0,0,0,0.08);
+      cursor: default;
+      pointer-events: none;
     }
 
-    .mini-note{
-      font-size:13px;
-      font-weight:700;
-      opacity:.78;
+    .nav-preview {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px) rotate(var(--r, -2deg));
+      width: min(160px, 18vw);
+      min-width: 120px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 80;
+      transition: opacity 0.13s ease, transform 0.13s ease, visibility 0.13s ease;
     }
 
-    .section{
-      padding:18px;
-      margin:18px 0;
+    .top-nav-item:nth-child(2n) .nav-preview { --r: 2deg; }
+    .top-nav-item:nth-child(3n) .nav-preview { --r: -3deg; }
+
+    .top-nav-item:hover .nav-preview,
+    .top-nav-item:focus-within .nav-preview {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) rotate(var(--r, -2deg));
     }
 
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
+    .nav-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55));
     }
 
-    h2{
-      margin:0;
-      font-size:clamp(26px, 3.4vw, 40px);
-      line-height:1;
-      letter-spacing:-1px;
+    .top-nav-item.is-current .nav-preview img {
+      filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
     }
 
-    .sub{
-      margin:0;
-      font-size:13px;
-      font-weight:700;
-      opacity:.75;
+    .nav-preview::after {
+      content: attr(data-note);
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%) rotate(-2deg);
+      color: #111;
+      background: #fff4ea;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      text-transform: lowercase;
     }
 
-    .top10{
-      display:grid;
-      grid-template-columns:repeat(5, minmax(0, 1fr));
-      gap:12px;
+    .top-nav-item.is-current .nav-preview::before {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      transform: translateX(-50%) rotate(2deg);
+      color: #111;
+      background: #d8ff5e;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      z-index: 2;
     }
 
-    .flyer-card,
-    .list-card,
-    .watch-card{
-      border:3px solid var(--line);
-      border-radius:24px;
-      background:#fff;
-      box-shadow:3px 4px 0 #111;
-      overflow:hidden;
+    .wrap { max-width: 1250px; margin: auto; }
+
+    .panel {
+      display: block;
+      border: 3px solid #000;
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(18, 18, 30, 0.96);
+      box-shadow: 7px 7px 0 #000;
+      margin-bottom: 30px;
     }
 
-    .flyer-card:nth-child(4n+1){background:#fff7fb}
-    .flyer-card:nth-child(4n+2){background:#f2fbff}
-    .flyer-card:nth-child(4n+3){background:#fffbea}
-    .flyer-card:nth-child(4n+4){background:#f5fff0}
-
-    .flyer-card .inner,
-    .watch-card .inner,
-    .list-card .inner{
-      padding:14px;
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
     }
 
-    .tiny{
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:8px;
+    .title-strip {
+      display: inline-block;
+      color: #111;
+      background: #ffd39d;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: clamp(21px, 2.2vw, 32px);
+      font-weight: 900;
+      transform: rotate(-1.5deg);
     }
 
-    .big-name{
-      font-size:24px;
-      font-weight:900;
-      line-height:1;
-      margin-bottom:8px;
-      word-break:break-word;
+    .subline {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      max-width: 620px;
+      line-height: 1.35;
+      font-weight: 700;
     }
 
-    .big-value{
-      font-size:16px;
-      font-weight:900;
+    .small-note {
+      color: #111;
+      background: #fff3c7;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transform: rotate(2deg);
+      white-space: nowrap;
+      box-shadow: 4px 4px 0 #000;
     }
 
-    .meta{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
+    .hero-note {
+      display: inline-block;
+      background: var(--paper2);
+      color: #111;
+      border: 1px solid #999;
+      padding: 5px 10px;
+      border-radius: 2px;
+      transform: rotate(-2deg);
+      margin-bottom: 12px;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding:6px 9px;
-      border:2px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      font-size:11px;
-      font-weight:900;
+    .join-top-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
-    .list{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:16px;
+    .join-card,
+    .join-list-card {
+      background: #11111b;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0 #000;
     }
 
-    .column{
-      display:grid;
-      gap:12px;
+    .join-card {
+      text-align: center;
+      padding: 12px 10px 14px;
     }
 
-    .list-card .row-top{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      gap:12px;
-      align-items:center;
+    .join-rank {
+      display: inline-block;
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-weight: 900;
+      margin-bottom: 10px;
     }
 
-    .rank{
-      width:40px;
-      height:40px;
-      display:grid;
-      place-items:center;
-      border:2px solid var(--line);
-      border-radius:14px;
-      background:var(--mint);
-      font-weight:900;
-      font-size:15px;
+    .join-photo {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 10px;
+      border: 3px solid #fff;
+      outline: 2px solid #d1a9b8;
+      border-radius: 10px;
+      background: #111;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
     }
 
-    .name{
-      font-size:18px;
-      font-weight:900;
-      line-height:1.1;
-      word-break:break-word;
+    .join-photo img,
+    .watch-top-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .score{
-      font-size:16px;
-      font-weight:900;
-      white-space:nowrap;
+    .join-name {
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      overflow-wrap: anywhere;
     }
 
-    .watch-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:12px;
+    .join-score {
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 6px 10px;
+      border-radius: 8px;
     }
 
-    .watch-card:nth-child(1){background:#fff7fb}
-    .watch-card:nth-child(2){background:#f3fbff}
-    .watch-card:nth-child(3){background:#fffdf0}
-    .watch-card:nth-child(4){background:#f6fff3}
-
-    .empty,
-    .loading{
-      border:3px dashed var(--line);
-      border-radius:24px;
-      padding:18px;
-      background:#fff;
-      font-weight:800;
+    .join-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
     }
 
-    @media (max-width: 1100px){
-      .top10{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
+    .join-list-head {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+      color: white;
+      text-align: left;
+      font-family: monospace;
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr) 82px;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 9px;
+    }
+
+    .join-list-rank {
+      color: var(--pink);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .join-list-name {
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .join-list-score {
+      color: var(--yellow);
+      font-size: 14px;
+      font-weight: 900;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .join-list-extra {
+      display: none;
+      padding: 10px;
+      background: linear-gradient(180deg, #f1dce4, #f6e7ec);
+      color: #111;
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .join-list-card.open .join-list-extra {
+      display: block;
+    }
+
+    .join-extra-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .join-extra-stat {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      padding: 8px 6px;
+      text-align: center;
+    }
+
+    .join-extra-label {
+      color: #5a4c58;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .join-extra-value {
+      color: #111;
+      font-size: 14px;
+      font-weight: 900;
+      margin-top: 4px;
+    }
+
+    .watch-wide-board {
+      margin-top: 16px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .watch-slider-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .watch-slider-title {
+      color: var(--yellow);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .watch-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .watch-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      opacity: 0.45;
+      cursor: pointer;
+    }
+
+    .watch-dot.active {
+      opacity: 1;
+      background: var(--pink);
+    }
+
+    .watch-slider-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .watch-slider-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .watch-slide {
+      min-width: 100%;
+      width: 100%;
+    }
+
+    .watch-carousel {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 10px;
+      min-height: 275px;
+    }
+
+    .watch-carousel-card {
+      min-height: 225px;
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+
+    .watch-top-rank {
+      display: inline-block;
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-weight: 900;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .watch-top-photo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 10px;
+      border: 3px solid #fff;
+      outline: 2px solid #d1a9b8;
+      border-radius: 10px;
+      background: #111;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .watch-carousel-name {
+      font-size: 17px;
+      font-weight: 900;
+      word-break: break-word;
+      line-height: 1.1;
+    }
+
+    .watch-carousel-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .watch-carousel-note {
+      font-size: 12px;
+      color: #444;
+      margin-top: 7px;
+    }
+
+    .status-note {
+      margin-top: 10px;
+      display: inline-block;
+      background: var(--paper5);
+      color: #111;
+      border: 1px solid #b9a457;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transform: rotate(-2deg);
+      font-weight: 900;
+    }
+
+    @media (max-width: 1050px) {
+      .join-top-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 980px){
-      .toolbar,
-      .list,
-      .watch-grid{
-        grid-template-columns:1fr;
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 10px, 1600px);
       }
-    }
 
-    @media (max-width: 700px){
-      .top10{
-        grid-template-columns:1fr;
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .nav-preview {
+        width: min(220px, 72vw);
+      }
+
+      .join-top-grid,
+      .join-list,
+      .watch-carousel,
+      .join-extra-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <span class="kicker">GirlServ / Joins</span>
-      <h1>✈️ Frequent Flyers ♡</h1>
-      <p>the room revolving door ♡</p>
-    </section>
+  <main class="page-shell">
+    <div class="top-bar" aria-label="GirlServ top navigation">
+      <a class="mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
+      <nav class="top-nav" aria-label="GirlServ pages">
+        <span class="top-nav-item" data-page="index.html">
+          <a class="nav-text" href="index.html">GirlServ HQ</a>
+          <span class="nav-preview" data-note="home base" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="loudmouths.html">
+          <a class="nav-text" href="loudmouths.html">Loudmouths</a>
+          <span class="nav-preview" data-note="top chatters" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="channel-trolls.html">
+          <a class="nav-text" href="channel-trolls.html">Channel Trolls</a>
+          <span class="nav-preview" data-note="degenerates" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="lol-lords.html">
+          <a class="nav-text" href="lol-lords.html">LOL Lords</a>
+          <span class="nav-preview" data-note="ha! ha! ha!" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="clickbait-crew.html">
+          <a class="nav-text" href="clickbait-crew.html">Clickbait Crew</a>
+          <span class="nav-preview" data-note="linked by" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="frequent-flyers.html">
+          <a class="nav-text" href="frequent-flyers.html">Frequent Flyers</a>
+          <span class="nav-preview" data-note="repeat joiners" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="stat-dump.html">
+          <a class="nav-text" href="stat-dump.html">Stat Dump</a>
+          <span class="nav-preview" data-note="totals" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="girls-notes.html">
+          <a class="nav-text" href="girls-notes.html">Girl's Notes</a>
+          <span class="nav-preview" data-note="no entry!" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="room-reports.html">
+          <a class="nav-text" href="room-reports.html">Room Reports</a>
+          <span class="nav-preview" data-note="channel receipts" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="the-girlbook.html">
+          <a class="nav-text" href="the-girlbook.html">Girlbook</a>
+          <span class="nav-preview" data-note="drop the &quot;the&quot;" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+        </span>
+      </nav>
+    </div>
 
-    <section class="toolbar">
-      <div class="tool-card">
-        <label class="tool-label" for="searchBox">Search repeat joiners</label>
-        <input id="searchBox" class="search" type="search" placeholder="type a nick…">
-      </div>
-      <div class="tool-card">
-        <div class="tool-label">Showing</div>
-        <div class="mini-stat" id="showingCount">0</div>
-        <div class="mini-note">repeat joiners on display</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-label">Total joins</div>
-        <div class="mini-stat" id="totalJoins">0</div>
-        <div class="mini-note">visible re-entry count</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2># Top 10 frequent flyers</h2>
-          <p class="sub">the users most likely to keep popping back in</p>
+    <div class="wrap">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="title-strip">Frequent Flyers ✈</div>
+            <div class="subline">The joins tab cut out into its own page. Biggest repeat visitors first, then the rest of the hallway lingerers underneath.</div>
+          </div>
+          <div class="small-note">join leaderboard</div>
         </div>
-      </div>
-      <div id="top10Wrap" class="loading">Loading join stats…</div>
-    </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2># Ranks 11–30</h2>
-          <p class="sub">more suspiciously recurring visitors</p>
-        </div>
-      </div>
-      <div id="rankedWrap" class="loading">Loading ranked list…</div>
-    </section>
+        <div class="hero-note">repeat joiners • always coming back ♡</div>
+        <div id="json-status-main"></div>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>## Users To Keep An Eye On</h2>
-          <p class="sub">door slammer adjacent activity</p>
+        <div class="join-top-grid" id="join-top-grid"></div>
+        <div class="join-list" id="join-list"></div>
+
+        <div class="panel watch-wide-board">
+          <div class="panel-head" style="margin-bottom:10px;">
+            <div>
+              <div class="title-strip">Users To Keep An Eye On</div>
+            </div>
+          </div>
+          <div class="watch-slider-head">
+            <div class="watch-slider-title" id="watch-slider-title">loading...</div>
+            <div class="watch-dots" id="watch-dots"></div>
+          </div>
+          <div id="json-status-watch"></div>
+          <div class="watch-slider-viewport">
+            <div class="watch-slider-track" id="watch-slider-track"></div>
+          </div>
         </div>
-      </div>
-      <div id="watchWrap" class="watch-grid"></div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <script>
-    const DATA_URL = "truth_seekers_user_stats.json";
+    const currentPage = (() => {
+      const file = window.location.pathname.split("/").pop() || "index.html";
+      if (file === "" || file === "index.html") return "index.html";
+      if (file === "loudmouths") return "loudmouths.html";
+      if (file === "channel-trolls") return "channel-trolls.html";
+      if (file === "lol-lords") return "lol-lords.html";
+      if (file === "clickbait-crew") return "clickbait-crew.html";
+      if (file === "frequent-flyers") return "frequent-flyers.html";
+      if (file === "stat-dump") return "stat-dump.html";
+      if (file === "girls-notes") return "girls-notes.html";
+      if (file === "room-reports") return "room-reports.html";
+      if (file === "girlbook" || file === "the-girlbook") return "the-girlbook.html";
+      return file;
+    })();
 
-    function formatNum(value) {
-      return Number(value || 0).toLocaleString("en-US");
+    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+      const page = item.dataset.page;
+      const isCurrent = page === currentPage;
+      if (!isCurrent) return;
+      item.classList.add("is-current");
+      const link = item.querySelector(".nav-text");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+        link.removeAttribute("href");
+        link.addEventListener("click", event => event.preventDefault());
+      }
+    });
+
+    const DATA_URLS = [
+      "channel-stats/truth_seekers_user_stats.json",
+      "truth_seekers_user_stats.json",
+      "./truth_seekers_user_stats.json"
+    ];
+
+    let watchSlides = [];
+    let watchIndex = 0;
+    let watchTimer = null;
+
+    function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
+
+    function esc(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;");
     }
 
-    function safeEntries(raw) {
+    function status(elId, text){
+      const el = document.getElementById(elId);
+      if(!el) return;
+      el.innerHTML = text ? `<div class="status-note">${esc(text)}</div>` : "";
+    }
+
+    function normNick(nick){
+      return String(nick || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
+    }
+
+    function hashNick(nick){
+      let h = 0;
+      const s = String(nick || "");
+      for(let i = 0; i < s.length; i++){
+        h = (h * 31 + s.charCodeAt(i)) >>> 0;
+      }
+      return h;
+    }
+
+    function fallbackAvatar(nick){
+      const num = (hashNick(nick) % 30) + 1;
+      return `avatars/avatar-${String(num).padStart(2, "0")}.png`;
+    }
+
+    function customAvatar(nick){
+      return `avatars/custom-${normNick(nick)}.png`;
+    }
+
+    function avatarPhotoMarkup(nick, cls){
+      const custom = customAvatar(nick);
+      const fallback = fallbackAvatar(nick);
+      return `<div class="${cls}"><img src="${custom}" alt="${esc(nick)}" onerror="this.onerror=null;this.src='${fallback}'"></div>`;
+    }
+
+    function entriesFrom(raw){
       return Object.entries(raw || {}).map(([nick, stats]) => ({
         nick,
-        words: Number(stats?.words || 0),
-        joins: Number(stats?.joins || 0),
-        lol: Number(stats?.lol || 0),
-        degeneracy: Number(stats?.degeneracy || 0),
-        links: Number(stats?.links || 0)
-      }));
+        words:Number(stats?.words||0),
+        joins:Number(stats?.joins||0),
+        lol:Number(stats?.lol||0),
+        degeneracy:Number(stats?.degeneracy||0),
+        links:Number(stats?.links||0)
+      })).filter(u => u.nick.toLowerCase() !== "girl")
+        .sort((a,b)=>b.joins-a.joins);
     }
 
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
-    }
+    function renderJoins(users){
+      const top10 = users.slice(0, 10);
+      const rest = users.slice(10, 30);
 
-    function buildTop10(list) {
-      const wrap = document.getElementById("top10Wrap");
-      if (!list.length) {
-        wrap.className = "empty";
-        wrap.textContent = "No frequent flyers found.";
-        return;
-      }
-
-      wrap.className = "top10";
-      wrap.innerHTML = list.slice(0, 10).map((user, index) => `
-        <article class="flyer-card">
-          <div class="inner">
-            <div class="tiny">rank #${index + 1}</div>
-            <div class="big-name">${escapeHtml(user.nick)}</div>
-            <div class="big-value">${formatNum(user.joins)} joins</div>
-            <div class="meta">
-              <span class="pill">${formatNum(user.words)} words</span>
-              <span class="pill">${formatNum(user.links)} links</span>
-            </div>
-          </div>
-        </article>
+      document.getElementById("join-top-grid").innerHTML = top10.map((u, index) => `
+        <div class="join-card">
+          <div class="join-rank">#${index + 1}</div>
+          ${avatarPhotoMarkup(u.nick, "join-photo")}
+          <div class="join-name">${esc(u.nick)}</div>
+          <div class="join-score">${fmt(u.joins)} joins</div>
+        </div>
       `).join("");
-    }
 
-    function buildRanked(list) {
-      const wrap = document.getElementById("rankedWrap");
-      const rest = list.slice(10, 30);
-
-      if (!rest.length) {
-        wrap.className = "empty";
-        wrap.textContent = "No ranks 11–30 yet.";
-        return;
-      }
-
-      const left = rest.slice(0, 10);
-      const right = rest.slice(10, 20);
-
-      wrap.className = "list";
-      wrap.innerHTML = `
-        <div class="column">${left.map((user, i) => renderRow(user, i + 11)).join("")}</div>
-        <div class="column">${right.map((user, i) => renderRow(user, i + 21)).join("")}</div>
-      `;
-    }
-
-    function renderRow(user, rank) {
-      return `
-        <article class="list-card">
-          <div class="inner">
-            <div class="row-top">
-              <div class="rank">#${rank}</div>
-              <div>
-                <div class="name">${escapeHtml(user.nick)}</div>
-                <div class="meta">
-                  <span class="pill">${formatNum(user.words)} words</span>
-                </div>
-              </div>
-              <div class="score">${formatNum(user.joins)} joins</div>
+      document.getElementById("join-list").innerHTML = rest.map((u, index) => `
+        <div class="join-list-card">
+          <button class="join-list-head" type="button">
+            <div class="join-list-rank">#${index + 11}</div>
+            <div class="join-list-name">${esc(u.nick)}</div>
+            <div class="join-list-score">${fmt(u.joins)} joins</div>
+          </button>
+          <div class="join-list-extra">
+            <div class="join-extra-grid">
+              <div class="join-extra-stat"><div class="join-extra-label">Words</div><div class="join-extra-value">${fmt(u.words)}</div></div>
+              <div class="join-extra-stat"><div class="join-extra-label">LOLs</div><div class="join-extra-value">${fmt(u.lol)}</div></div>
+              <div class="join-extra-stat"><div class="join-extra-label">Chaos</div><div class="join-extra-value">${fmt(u.degeneracy)}</div></div>
+              <div class="join-extra-stat"><div class="join-extra-label">Links</div><div class="join-extra-value">${fmt(u.links)}</div></div>
             </div>
           </div>
-        </article>
-      `;
+        </div>
+      `).join("");
+
+      document.querySelectorAll(".join-list-head").forEach(btn => {
+        btn.addEventListener("click", () => btn.closest(".join-list-card").classList.toggle("open"));
+      });
     }
 
-    function buildWatch(entries) {
-      const wrap = document.getElementById("watchWrap");
-      const picks = [
+    function buildWatchSlides(all){
+      return [
         {
-          title: "most joins total",
-          user: [...entries].sort((a, b) => b.joins - a.joins)[0],
-          value: u => `${formatNum(u.joins)} joins`
+          title: "Highest Join Count",
+          note: "always coming back",
+          items: [...all].sort((a,b)=>b.joins-a.joins).slice(0,3),
+          score: u => `${fmt(u.joins)} joins`
         },
         {
-          title: "joins + words",
-          user: [...entries].sort((a, b) => (b.joins + b.words) - (a.joins + a.words))[0],
-          value: u => `${formatNum(u.joins)} joins + ${formatNum(u.words)} words`
+          title: "Joins + Words",
+          note: "showing up and talking",
+          items: [...all].sort((a,b)=>(b.joins+b.words)-(a.joins+a.words)).slice(0,3),
+          score: u => `${fmt(u.joins + u.words)} total`
         },
         {
-          title: "joins + chaos",
-          user: [...entries].sort((a, b) => (b.joins + b.degeneracy) - (a.joins + a.degeneracy))[0],
-          value: u => `${formatNum(u.joins)} joins + ${formatNum(u.degeneracy)} chaos`
+          title: "Joins + LOL",
+          note: "showing up giggling",
+          items: [...all].sort((a,b)=>(b.joins+b.lol)-(a.joins+a.lol)).slice(0,3),
+          score: u => `${fmt(u.joins + u.lol)} total`
         },
         {
-          title: "joins + links",
-          user: [...entries].sort((a, b) => (b.joins + b.links) - (a.joins + a.links))[0],
-          value: u => `${formatNum(u.joins)} joins + ${formatNum(u.links)} links`
+          title: "Joins + Links",
+          note: "showing up with receipts",
+          items: [...all].sort((a,b)=>(b.joins+b.links)-(a.joins+a.links)).slice(0,3),
+          score: u => `${fmt(u.joins + u.links)} total`
         }
       ];
+    }
 
-      wrap.innerHTML = picks.map(item => `
-        <article class="watch-card">
-          <div class="inner">
-            <div class="tiny">${escapeHtml(item.title)}</div>
-            <div class="big-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
-            <div class="big-value">${item.user ? item.value(item.user) : "0"}</div>
+    function renderWatchSlider(){
+      const track = document.getElementById("watch-slider-track");
+      const dots = document.getElementById("watch-dots");
+
+      track.innerHTML = watchSlides.map(slide => `
+        <div class="watch-slide">
+          <div class="watch-carousel">
+            ${slide.items.map((u, idx) => `
+              <div class="watch-carousel-card">
+                <div class="watch-top-rank">#${idx+1}</div>
+                ${avatarPhotoMarkup(u.nick, "watch-top-photo")}
+                <div class="watch-carousel-name">${esc(u.nick)}</div>
+                <div class="watch-carousel-score">${slide.score(u)}</div>
+                <div class="watch-carousel-note">${esc(slide.note)}</div>
+              </div>
+            `).join("")}
           </div>
-        </article>
+        </div>
       `).join("");
+
+      dots.innerHTML = watchSlides.map((_, idx) => `
+        <button type="button" class="watch-dot${idx === 0 ? " active" : ""}" data-index="${idx}" aria-label="Go to slide ${idx+1}"></button>
+      `).join("");
+
+      dots.querySelectorAll(".watch-dot").forEach(dot => {
+        dot.addEventListener("click", () => goWatchSlide(Number(dot.dataset.index), true));
+      });
+
+      goWatchSlide(0, false);
+      startWatchSlider();
     }
 
-    function applySearch(fullList) {
-      const search = document.getElementById("searchBox");
+    function goWatchSlide(index, restart){
+      watchIndex = index % watchSlides.length;
+      document.getElementById("watch-slider-track").style.transform = `translateX(-${watchIndex * 100}%)`;
+      document.getElementById("watch-slider-title").textContent = watchSlides[watchIndex].title;
+      document.querySelectorAll(".watch-dot").forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === watchIndex);
+      });
+      if(restart) startWatchSlider();
+    }
 
-      function render() {
-        const q = search.value.trim().toLowerCase();
-        const filtered = fullList.filter(user => user.nick.toLowerCase().includes(q));
+    function startWatchSlider(){
+      if(watchTimer) clearInterval(watchTimer);
+      watchTimer = setInterval(() => {
+        goWatchSlide((watchIndex + 1) % watchSlides.length, false);
+      }, 3500);
+    }
 
-        buildTop10(filtered);
-        buildRanked(filtered);
-
-        const visible = filtered.slice(0, 30);
-        document.getElementById("showingCount").textContent = formatNum(visible.length);
-        document.getElementById("totalJoins").textContent = formatNum(
-          visible.reduce((sum, user) => sum + user.joins, 0)
-        );
+    async function loadData(){
+      for(const url of DATA_URLS){
+        try{
+          const res = await fetch(url, { cache:"no-store" });
+          if(res.ok) return await res.json();
+        }catch(e){}
       }
-
-      search.addEventListener("input", render);
-      render();
+      throw new Error("json failed");
     }
 
-    async function loadPage() {
-      try {
-        const response = await fetch(DATA_URL, { cache: "no-store" });
-        if (!response.ok) throw new Error("Failed to load join stats");
-        const raw = await response.json();
-
-        const entries = safeEntries(raw)
-          .filter(user => user.nick.toLowerCase() !== "girl")
-          .sort((a, b) => b.joins - a.joins);
-
-        buildWatch(entries);
-        applySearch(entries);
-      } catch (error) {
-        document.getElementById("top10Wrap").className = "empty";
-        document.getElementById("top10Wrap").textContent = "Could not load join stats.";
-        document.getElementById("rankedWrap").className = "empty";
-        document.getElementById("rankedWrap").textContent = "Could not load ranked list.";
-        document.getElementById("watchWrap").innerHTML = '<div class="empty">Could not load watchlist.</div>';
+    async function boot(){
+      try{
+        const raw = await loadData();
+        const all = entriesFrom(raw);
+        renderJoins(all);
+        watchSlides = buildWatchSlides(all);
+        renderWatchSlider();
+      }catch(e){
+        status("json-status-main", "truthseekers stats .json can't load");
+        status("json-status-watch", "truthseekers stats .json can't load");
       }
     }
 
-    loadPage();
+    boot();
   </script>
 </body>
 </html>
