@@ -893,13 +893,7 @@
     }
 
     async function loadData(){
-      for(const url of DATA_URLS){
-        try{
-          const res = await fetch(url, { cache:"no-store" });
-          if(res.ok) return await res.json();
-        }catch(e){}
-      }
-      throw new Error("json failed");
+      return await window.loadMergedGirlServStats();
     }
 
     async function boot(){
@@ -930,8 +924,8 @@
         watchSlides = buildWatchSlides(all);
         renderWatchSlider();
       }catch(e){
-        status("json-status-main", "truthseekers stats .json can't load");
-        status("json-status-watch", "truthseekers stats .json can't load");
+        status("json-status-main", "");
+        status("json-status-watch", "");
       }
     }
 

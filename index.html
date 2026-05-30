@@ -1367,8 +1367,7 @@
     }
 
     const USER_STATS_SOURCES = [
-      "preloaded_user_stats.json",
-      "truth_seekers_user_stats.json",
+      "base_user_stats.json",
       "live_truth_seekers_user_stats.json"
     ];
 
@@ -1651,7 +1650,7 @@
         console.error(err);
         ["memory-wall", "receipts", "recent-memories", "last-seen"].forEach(id => {
           const el = document.getElementById(id);
-          if (el) el.innerHTML = `<div class="error">Could not load live stats yet.</div>`;
+          if (el) el.innerHTML = `<div class="error">Stats are being rebuilt.</div>`;
         });
         ["summary-users", "summary-words", "summary-lols", "summary-links", "quick-top-chatter", "quick-top-lol", "quick-top-links"].forEach(id => {
           const el = document.getElementById(id);

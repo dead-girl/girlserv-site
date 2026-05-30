@@ -847,6 +847,7 @@
     </div>
   </main>
 
+  <script src="girlserv-stats-loader.js"></script>
   <script>
 const currentPage = (() => {
   const file = window.location.pathname.split("/").pop() || "index.html";
@@ -955,7 +956,7 @@ document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
     function renderSelected(user){
       const root = document.getElementById("chatter-expanded-full");
       if(!user){
-        root.textContent = "truthseekers stats .json can't load";
+        root.textContent = "stats are being rebuilt";
         return;
       }
       root.innerHTML = `
@@ -1157,15 +1158,7 @@ document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
     }
 
     async function loadData(){
-      for(const url of DATA_URLS){
-        try{
-          const res = await fetch(url, { cache:"no-store" });
-          if(res.ok){
-            return await res.json();
-          }
-        }catch(e){}
-      }
-      throw new Error("json failed");
+      return await window.loadMergedGirlServStats();
     }
 
     async function boot(){
@@ -1180,9 +1173,9 @@ document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
         renderSelected(top30[0] || null);
         setupSearch(all);
       }catch(e){
-        status("json-status-left", "truthseekers stats .json can't load");
-        status("json-status-top3", "truthseekers stats .json can't load");
-        status("json-status-watch", "truthseekers stats .json can't load");
+        status("json-status-left", "");
+        status("json-status-top3", "");
+        status("json-status-watch", "");
         renderSelected(null);
       }
     }
