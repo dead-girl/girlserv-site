@@ -7,37 +7,226 @@
 
   <style>
     :root {
-      --bg: #07070d;
-      --panel: #151521;
-      --panel2: #1d1d2f;
-      --panel3: #111119;
-      --text: #f4f4f8;
-      --muted: #a7a7b8;
-      --pink: #ff3f8f;
-      --blue: #4fdcff;
+      --ink: #fff8fd;
+      --muted: #dcc7dc;
+      --pink: #ff4aa5;
+      --hotpink: #ff128f;
+      --purple: #9d6cff;
+      --aqua: #67e9ff;
+      --lime: #d8ff5e;
+      --paper: #fff4ea;
+      --black: #0b0b10;
+      --panel: rgba(18, 10, 28, 0.92);
+      --shadow: 5px 5px 0 #000;
       --yellow: #ffe45c;
-      --green: #78ff91;
-      --purple: #bf8cff;
-      --orange: #ff9f43;
-      --border: #303047;
-      --paper: #f3e6ea;
       --paper2: #f2efe7;
       --paper5: #f6e7bf;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      padding: 18px;
       min-height: 100vh;
-      font-family: monospace;
-      color: var(--text);
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
       background:
-        radial-gradient(circle at 15% 10%, rgba(255, 63, 143, 0.18), transparent 24%),
-        radial-gradient(circle at 85% 12%, rgba(79, 220, 255, 0.16), transparent 24%),
-        radial-gradient(circle at 50% 90%, rgba(191, 140, 255, 0.13), transparent 30%),
-        #07070d;
+        radial-gradient(circle at 12% 12%, rgba(255, 74, 165, 0.26), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(103, 233, 255, 0.20), transparent 20%),
+        radial-gradient(circle at 18% 88%, rgba(216, 255, 94, 0.12), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(157, 108, 255, 0.20), transparent 26%),
+        linear-gradient(180deg, #120716 0%, #0c0610 46%, #050308 100%);
+      overflow-x: hidden;
+      padding: 18px;
+    }
+
+    body::before {
+      content: "♡ ★ xoxo ★ burn book ★ coolour ★ girlserv ★ memories ★";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      color: rgba(255,255,255,0.045);
+      font-size: 34px;
+      line-height: 125px;
+      letter-spacing: 8px;
+      transform: rotate(-7deg) scale(1.12);
+      white-space: pre-wrap;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1600px, calc(100% - 22px));
+      margin: 12px auto 26px;
+    }
+
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 auto 10px;
+      padding: 9px 14px;
+      border: 2px solid #000;
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.12) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, transparent 0 26px, rgba(255, 18, 143, 0.22) 26px 28px, transparent 28px),
+        rgba(255, 244, 234, 0.96);
+      box-shadow: 6px 6px 0 #000;
+      color: #111;
+    }
+
+    .mini-logo {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hotpink);
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-size: clamp(25px, 3vw, 42px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      transform-origin: center;
+    }
+
+    .mini-logo:hover,
+    .mini-logo:focus-visible {
+      animation: logoWiggle 0.38s linear infinite;
+      outline: none;
+    }
+
+    @keyframes logoWiggle {
+      0%, 100% { transform: rotate(0deg) translate(0, 0); }
+      20% { transform: rotate(-4deg) translate(-1px, 1px); }
+      40% { transform: rotate(3deg) translate(1px, -1px); }
+      60% { transform: rotate(-2deg) translate(1px, 1px); }
+      80% { transform: rotate(4deg) translate(-1px, -1px); }
+    }
+
+    .top-nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px 7px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .top-nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #111;
+      font-size: clamp(12px, 1.02vw, 15px);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
+    }
+
+    .nav-text:hover,
+    .nav-text:focus-visible,
+    .top-nav-item:hover .nav-text {
+      color: #fff;
+      background: #111;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .top-nav-item.is-current .nav-text {
+      color: rgba(17,17,17,0.58);
+      background: rgba(0,0,0,0.08);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .nav-preview {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px) rotate(var(--r, -2deg));
+      width: min(255px, 26vw);
+      min-width: 190px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 80;
+      transition: opacity 0.13s ease, transform 0.13s ease, visibility 0.13s ease;
+    }
+
+    .top-nav-item:nth-child(2n) .nav-preview { --r: 2deg; }
+    .top-nav-item:nth-child(3n) .nav-preview { --r: -3deg; }
+
+    .top-nav-item:hover .nav-preview,
+    .top-nav-item:focus-within .nav-preview {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) rotate(var(--r, -2deg));
+    }
+
+    .nav-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
+
+    .top-nav-item.is-current .nav-preview img {
+      filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
+
+    .nav-preview::after {
+      content: attr(data-note);
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%) rotate(-2deg);
+      color: #111;
+      background: #fff4ea;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      text-transform: lowercase;
+    }
+
+    .top-nav-item.is-current .nav-preview::before {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      transform: translateX(-50%) rotate(2deg);
+      color: #111;
+      background: #d8ff5e;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      z-index: 2;
     }
 
     .wrap { max-width: 1250px; margin: auto; }
@@ -527,6 +716,25 @@
     }
 
     @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 10px, 1600px);
+      }
+
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .nav-preview {
+        width: min(220px, 72vw);
+      }
+
       .top-chatters-grid,
       .top3-grid,
       .watch-carousel,
@@ -538,60 +746,127 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="panel active" id="panel-chatters">
-      <div class="home-layout">
-        <div class="board">
-          <div class="board-title">★ Top Chatters ♡</div>
-          <div class="board-subnote">word crimes logged ♡</div>
-          <div id="json-status-left"></div>
+  <main class="page-shell">
+    <div class="top-bar" aria-label="GirlServ top navigation">
+      <a class="mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
+      <nav class="top-nav" aria-label="GirlServ pages">
+        <span class="top-nav-item" data-page="index.html">
+          <a class="nav-text" href="index.html">GirlServ HQ</a>
+          <span class="nav-preview" data-note="home base" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="loudmouths.html">
+          <a class="nav-text" href="loudmouths.html">Loudmouths</a>
+          <span class="nav-preview" data-note="top chatters" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="channel-trolls.html">
+          <a class="nav-text" href="channel-trolls.html">Channel Trolls</a>
+          <span class="nav-preview" data-note="degenerates" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="lol-lords.html">
+          <a class="nav-text" href="lol-lords.html">LOL Lords</a>
+          <span class="nav-preview" data-note="ha! ha! ha!" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="clickbait-crew.html">
+          <a class="nav-text" href="clickbait-crew.html">Clickbait Crew</a>
+          <span class="nav-preview" data-note="linked by" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="frequent-flyers.html">
+          <a class="nav-text" href="frequent-flyers.html">Frequent Flyers</a>
+          <span class="nav-preview" data-note="repeat joiners" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="stat-dump.html">
+          <a class="nav-text" href="stat-dump.html">Stat Dump</a>
+          <span class="nav-preview" data-note="totals" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="girls-notes.html">
+          <a class="nav-text" href="girls-notes.html">Girl's Notes</a>
+          <span class="nav-preview" data-note="no entry!" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="room-reports.html">
+          <a class="nav-text" href="room-reports.html">Room Reports</a>
+          <span class="nav-preview" data-note="channel receipts" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="the-girlbook.html">
+          <a class="nav-text" href="the-girlbook.html">Girlbook</a>
+          <span class="nav-preview" data-note="drop the &quot;the&quot;" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+        </span>
+      </nav>
+    </div>
 
-          <div class="top-chatters-grid">
-            <div>
-              <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
-              <div id="chatters-left"></div>
-            </div>
-            <div>
-              <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
-              <div id="chatters-right"></div>
-            </div>
-          </div>
-        </div>
+    <div class="wrap">
+      <section class="panel active" id="panel-chatters">
+        <div class="home-layout">
+          <div class="board">
+            <div class="board-title">★ Top Chatters ♡</div>
+            <div class="board-subnote">word crimes logged ♡</div>
+            <div id="json-status-left"></div>
 
-        <div class="sidebar-stack">
-          <div class="board selected-user-board">
-            <div class="selected-user-topline">
-              <div class="selected-search-wrap">
-                <input id="selected-user-search" class="selected-user-search" type="search" placeholder="search nick..." autocomplete="off">
-                <div id="selected-user-results" class="selected-user-results"></div>
+            <div class="top-chatters-grid">
+              <div>
+                <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
+                <div id="chatters-left"></div>
+              </div>
+              <div>
+                <div class="chatter-col-header"><span>#</span><span>Nick</span><span>Words</span></div>
+                <div id="chatters-right"></div>
               </div>
             </div>
-            <div class="chatter-expanded-full open" id="chatter-expanded-full">loading...</div>
           </div>
 
-          <div class="board">
-            <div class="board-title">☆ #truth-seekers</div>
-            <div id="json-status-top3"></div>
-            <div class="top3-grid" id="top3-grid"></div>
+          <div class="sidebar-stack">
+            <div class="board selected-user-board">
+              <div class="selected-user-topline">
+                <div class="selected-search-wrap">
+                  <input id="selected-user-search" class="selected-user-search" type="search" placeholder="search nick..." autocomplete="off">
+                  <div id="selected-user-results" class="selected-user-results"></div>
+                </div>
+              </div>
+              <div class="chatter-expanded-full open" id="chatter-expanded-full">loading...</div>
+            </div>
+
+            <div class="board">
+              <div class="board-title">☆ #truth-seekers</div>
+              <div id="json-status-top3"></div>
+              <div class="top3-grid" id="top3-grid"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="board watch-wide-board">
-        <div class="board-title">Users To Keep An Eye On</div>
-        <div class="watch-slider-head">
-          <div class="watch-slider-title" id="watch-slider-title">loading...</div>
-          <div class="watch-dots" id="watch-dots"></div>
+        <div class="board watch-wide-board">
+          <div class="board-title">Users To Keep An Eye On</div>
+          <div class="watch-slider-head">
+            <div class="watch-slider-title" id="watch-slider-title">loading...</div>
+            <div class="watch-dots" id="watch-dots"></div>
+          </div>
+          <div id="json-status-watch"></div>
+          <div class="watch-slider-viewport">
+            <div class="watch-slider-track" id="watch-slider-track"></div>
+          </div>
         </div>
-        <div id="json-status-watch"></div>
-        <div class="watch-slider-viewport">
-          <div class="watch-slider-track" id="watch-slider-track"></div>
-        </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
+  </main>
 
   <script>
+    const currentPage = (() => {
+      const file = window.location.pathname.split("/").pop() || "index.html";
+      return file === "" ? "index.html" : file;
+    })();
+
+    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+      const page = item.dataset.page;
+      const isCurrent = page === currentPage || (currentPage === "index.html" && page === "index.html");
+      if (!isCurrent) return;
+
+      item.classList.add("is-current");
+      const link = item.querySelector(".nav-text");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+        link.removeAttribute("href");
+        link.addEventListener("click", event => event.preventDefault());
+      }
+    });
+
     const DATA_URLS = [
       "channel-stats/truth_seekers_user_stats.json",
       "truth_seekers_user_stats.json",
