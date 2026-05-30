@@ -1,0 +1,525 @@
+{
+  "archive_source": "irccloud-export-292117-2026-04-24-10-42-48/855401323-Rizon Bouncer/#truth-seekers.txt",
+  "totals": {
+    "users": 838,
+    "words": 1799286,
+    "joins": 6736,
+    "lol": 6870,
+    "degeneracy": 16741,
+    "links": 12264,
+    "messages": 215373,
+    "actions": 2326
+  },
+  "top_users": {
+    "words": [
+      [
+        "RedRose",
+        {
+          "words": 214623,
+          "joins": 70,
+          "lol": 79,
+          "degeneracy": 233,
+          "links": 5912
+        }
+      ],
+      [
+        "dead_girl",
+        {
+          "words": 201810,
+          "joins": 0,
+          "lol": 1750,
+          "degeneracy": 1176,
+          "links": 419
+        }
+      ],
+      [
+        "girl",
+        {
+          "words": 197254,
+          "joins": 92,
+          "lol": 23,
+          "degeneracy": 9395,
+          "links": 25
+        }
+      ],
+      [
+        "Kowal",
+        {
+          "words": 98855,
+          "joins": 11,
+          "lol": 448,
+          "degeneracy": 422,
+          "links": 660
+        }
+      ],
+      [
+        "Girard",
+        {
+          "words": 92693,
+          "joins": 215,
+          "lol": 157,
+          "degeneracy": 527,
+          "links": 791
+        }
+      ],
+      [
+        "xOOG",
+        {
+          "words": 78078,
+          "joins": 65,
+          "lol": 39,
+          "degeneracy": 353,
+          "links": 337
+        }
+      ],
+      [
+        "dumbgoy",
+        {
+          "words": 60681,
+          "joins": 14,
+          "lol": 638,
+          "degeneracy": 386,
+          "links": 397
+        }
+      ],
+      [
+        "SoulCareer",
+        {
+          "words": 57266,
+          "joins": 215,
+          "lol": 48,
+          "degeneracy": 58,
+          "links": 135
+        }
+      ],
+      [
+        "ShadowMantis",
+        {
+          "words": 57200,
+          "joins": 115,
+          "lol": 17,
+          "degeneracy": 110,
+          "links": 59
+        }
+      ],
+      [
+        "owo",
+        {
+          "words": 50821,
+          "joins": 48,
+          "lol": 495,
+          "degeneracy": 106,
+          "links": 113
+        }
+      ]
+    ],
+    "joins": [
+      [
+        "powermail",
+        {
+          "words": 1,
+          "joins": 263,
+          "lol": 0,
+          "degeneracy": 0,
+          "links": 0
+        }
+      ],
+      [
+        "dru",
+        {
+          "words": 2214,
+          "joins": 218,
+          "lol": 21,
+          "degeneracy": 1,
+          "links": 8
+        }
+      ],
+      [
+        "Girard",
+        {
+          "words": 92693,
+          "joins": 215,
+          "lol": 157,
+          "degeneracy": 527,
+          "links": 791
+        }
+      ],
+      [
+        "SoulCareer",
+        {
+          "words": 57266,
+          "joins": 215,
+          "lol": 48,
+          "degeneracy": 58,
+          "links": 135
+        }
+      ],
+      [
+        "ap",
+        {
+          "words": 129,
+          "joins": 172,
+          "lol": 0,
+          "degeneracy": 0,
+          "links": 0
+        }
+      ],
+      [
+        "truthr",
+        {
+          "words": 3662,
+          "joins": 172,
+          "lol": 10,
+          "degeneracy": 27,
+          "links": 66
+        }
+      ],
+      [
+        "Madafaka",
+        {
+          "words": 1129,
+          "joins": 166,
+          "lol": 19,
+          "degeneracy": 28,
+          "links": 0
+        }
+      ],
+      [
+        "dog_whistle",
+        {
+          "words": 5198,
+          "joins": 149,
+          "lol": 3,
+          "degeneracy": 99,
+          "links": 88
+        }
+      ],
+      [
+        "somebody___",
+        {
+          "words": 3285,
+          "joins": 148,
+          "lol": 70,
+          "degeneracy": 36,
+          "links": 0
+        }
+      ],
+      [
+        "antitheus",
+        {
+          "words": 144,
+          "joins": 125,
+          "lol": 1,
+          "degeneracy": 3,
+          "links": 0
+        }
+      ]
+    ],
+    "lol": [
+      [
+        "dead_girl",
+        {
+          "words": 201810,
+          "joins": 0,
+          "lol": 1750,
+          "degeneracy": 1176,
+          "links": 419
+        }
+      ],
+      [
+        "dumbgoy",
+        {
+          "words": 60681,
+          "joins": 14,
+          "lol": 638,
+          "degeneracy": 386,
+          "links": 397
+        }
+      ],
+      [
+        "owo",
+        {
+          "words": 50821,
+          "joins": 48,
+          "lol": 495,
+          "degeneracy": 106,
+          "links": 113
+        }
+      ],
+      [
+        "truthwillout",
+        {
+          "words": 45090,
+          "joins": 47,
+          "lol": 491,
+          "degeneracy": 120,
+          "links": 31
+        }
+      ],
+      [
+        "Kowal",
+        {
+          "words": 98855,
+          "joins": 11,
+          "lol": 448,
+          "degeneracy": 422,
+          "links": 660
+        }
+      ],
+      [
+        "linuxyo",
+        {
+          "words": 44899,
+          "joins": 58,
+          "lol": 249,
+          "degeneracy": 208,
+          "links": 339
+        }
+      ],
+      [
+        "Mysteria",
+        {
+          "words": 24899,
+          "joins": 44,
+          "lol": 158,
+          "degeneracy": 115,
+          "links": 127
+        }
+      ],
+      [
+        "Girard",
+        {
+          "words": 92693,
+          "joins": 215,
+          "lol": 157,
+          "degeneracy": 527,
+          "links": 791
+        }
+      ],
+      [
+        "rdr",
+        {
+          "words": 22956,
+          "joins": 6,
+          "lol": 145,
+          "degeneracy": 111,
+          "links": 45
+        }
+      ],
+      [
+        "CountChocula",
+        {
+          "words": 27001,
+          "joins": 3,
+          "lol": 120,
+          "degeneracy": 130,
+          "links": 72
+        }
+      ]
+    ],
+    "links": [
+      [
+        "RedRose",
+        {
+          "words": 214623,
+          "joins": 70,
+          "lol": 79,
+          "degeneracy": 233,
+          "links": 5912
+        }
+      ],
+      [
+        "Girard",
+        {
+          "words": 92693,
+          "joins": 215,
+          "lol": 157,
+          "degeneracy": 527,
+          "links": 791
+        }
+      ],
+      [
+        "Kowal",
+        {
+          "words": 98855,
+          "joins": 11,
+          "lol": 448,
+          "degeneracy": 422,
+          "links": 660
+        }
+      ],
+      [
+        "PureTrance",
+        {
+          "words": 38500,
+          "joins": 28,
+          "lol": 97,
+          "degeneracy": 174,
+          "links": 482
+        }
+      ],
+      [
+        "dead_girl",
+        {
+          "words": 201810,
+          "joins": 0,
+          "lol": 1750,
+          "degeneracy": 1176,
+          "links": 419
+        }
+      ],
+      [
+        "dumbgoy",
+        {
+          "words": 60681,
+          "joins": 14,
+          "lol": 638,
+          "degeneracy": 386,
+          "links": 397
+        }
+      ],
+      [
+        "redubious",
+        {
+          "words": 30578,
+          "joins": 12,
+          "lol": 51,
+          "degeneracy": 112,
+          "links": 347
+        }
+      ],
+      [
+        "linuxyo",
+        {
+          "words": 44899,
+          "joins": 58,
+          "lol": 249,
+          "degeneracy": 208,
+          "links": 339
+        }
+      ],
+      [
+        "xOOG",
+        {
+          "words": 78078,
+          "joins": 65,
+          "lol": 39,
+          "degeneracy": 353,
+          "links": 337
+        }
+      ],
+      [
+        "osnap",
+        {
+          "words": 33707,
+          "joins": 11,
+          "lol": 105,
+          "degeneracy": 361,
+          "links": 182
+        }
+      ]
+    ],
+    "degeneracy": [
+      [
+        "girl",
+        {
+          "words": 197254,
+          "joins": 92,
+          "lol": 23,
+          "degeneracy": 9395,
+          "links": 25
+        }
+      ],
+      [
+        "dead_girl",
+        {
+          "words": 201810,
+          "joins": 0,
+          "lol": 1750,
+          "degeneracy": 1176,
+          "links": 419
+        }
+      ],
+      [
+        "Girard",
+        {
+          "words": 92693,
+          "joins": 215,
+          "lol": 157,
+          "degeneracy": 527,
+          "links": 791
+        }
+      ],
+      [
+        "Kowal",
+        {
+          "words": 98855,
+          "joins": 11,
+          "lol": 448,
+          "degeneracy": 422,
+          "links": 660
+        }
+      ],
+      [
+        "dumbgoy",
+        {
+          "words": 60681,
+          "joins": 14,
+          "lol": 638,
+          "degeneracy": 386,
+          "links": 397
+        }
+      ],
+      [
+        "osnap",
+        {
+          "words": 33707,
+          "joins": 11,
+          "lol": 105,
+          "degeneracy": 361,
+          "links": 182
+        }
+      ],
+      [
+        "xOOG",
+        {
+          "words": 78078,
+          "joins": 65,
+          "lol": 39,
+          "degeneracy": 353,
+          "links": 337
+        }
+      ],
+      [
+        "RedRose",
+        {
+          "words": 214623,
+          "joins": 70,
+          "lol": 79,
+          "degeneracy": 233,
+          "links": 5912
+        }
+      ],
+      [
+        "linuxyo",
+        {
+          "words": 44899,
+          "joins": 58,
+          "lol": 249,
+          "degeneracy": 208,
+          "links": 339
+        }
+      ],
+      [
+        "SummerSkies",
+        {
+          "words": 25855,
+          "joins": 121,
+          "lol": 76,
+          "degeneracy": 185,
+          "links": 38
+        }
+      ]
+    ]
+  }
+}
