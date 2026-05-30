@@ -1,434 +1,941 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stat Dump | GirlServ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    :root{
-      --paper:#fffdf8;
-      --ink:#111;
-      --line:#111;
-      --pink:#ffd7ea;
-      --blue:#dff1ff;
-      --yellow:#fff4b8;
-      --mint:#e4ffd9;
-      --shadow:4px 5px 0 #111;
+    :root {
+      --ink: #fff8fd;
+      --muted: #dcc7dc;
+      --pink: #ff4aa5;
+      --hotpink: #ff128f;
+      --purple: #9d6cff;
+      --aqua: #67e9ff;
+      --lime: #d8ff5e;
+      --paper: #fff4ea;
+      --black: #0b0b10;
+      --panel: rgba(18, 10, 28, 0.92);
+      --shadow: 5px 5px 0 #000;
+      --yellow: #ffe45c;
+      --paper2: #f2efe7;
+      --paper5: #f6e7bf;
     }
 
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    body{
-      margin:0;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 22%),
-        linear-gradient(180deg, #fff8f2 0%, #fff0f7 100%);
-      color:var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
+        radial-gradient(circle at 12% 12%, rgba(255, 74, 165, 0.26), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(103, 233, 255, 0.20), transparent 20%),
+        radial-gradient(circle at 18% 88%, rgba(216, 255, 94, 0.12), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(157, 108, 255, 0.20), transparent 26%),
+        linear-gradient(180deg, #120716 0%, #0c0610 46%, #050308 100%);
+      overflow-x: hidden;
+      padding: 18px;
     }
 
-    main{
-      width:min(1400px, calc(100% - 28px));
-      margin:18px auto 42px;
+    body::before {
+      content: "♡ ★ xoxo ★ burn book ★ coolour ★ girlserv ★ memories ★";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      color: rgba(255,255,255,0.045);
+      font-size: 34px;
+      line-height: 125px;
+      letter-spacing: 8px;
+      transform: rotate(-7deg) scale(1.12);
+      white-space: pre-wrap;
+      z-index: 0;
     }
 
-    .hero,
-    .section,
-    .tool-card,
-    .stat-card{
-      background:var(--paper);
-      border:3px solid var(--line);
-      border-radius:32px;
-      box-shadow:var(--shadow);
+    a { color: inherit; text-decoration: none; }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1600px, calc(100% - 22px));
+      margin: 12px auto 26px;
     }
 
-    .hero{
-      padding:22px 22px 18px;
-      margin-bottom:18px;
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 auto 10px;
+      padding: 9px 14px;
+      border: 2px solid #000;
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.12) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, transparent 0 26px, rgba(255, 18, 143, 0.22) 26px 28px, transparent 28px),
+        rgba(255, 244, 234, 0.96);
+      box-shadow: 6px 6px 0 #000;
+      color: #111;
     }
 
-    .kicker{
-      display:inline-block;
-      padding:7px 12px;
-      border:2px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      font-weight:900;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:12px;
+    .mini-logo {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hotpink);
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-size: clamp(25px, 3vw, 42px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      transform-origin: center;
     }
 
-    h1{
-      margin:0 0 6px;
-      font-size:clamp(34px, 5vw, 64px);
-      line-height:.95;
-      letter-spacing:-2px;
+    .mini-logo:hover,
+    .mini-logo:focus-visible {
+      animation: logoWiggle 0.38s linear infinite;
+      outline: none;
     }
 
-    .hero p{
-      margin:0;
-      font-size:16px;
-      font-weight:700;
+    @keyframes logoWiggle {
+      0%, 100% { transform: rotate(0deg) translate(0, 0); }
+      20% { transform: rotate(-4deg) translate(-1px, 1px); }
+      40% { transform: rotate(3deg) translate(1px, -1px); }
+      60% { transform: rotate(-2deg) translate(1px, 1px); }
+      80% { transform: rotate(4deg) translate(-1px, -1px); }
     }
 
-    .toolbar{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:12px;
-      margin:18px 0;
+    .top-nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px 7px;
+      flex-wrap: wrap;
+      min-width: 0;
     }
 
-    .tool-card{
-      padding:14px;
-      border-radius:22px;
+    .top-nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .tool-label{
-      display:block;
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      margin-bottom:8px;
-      letter-spacing:.06em;
+    .nav-text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #111;
+      font-size: clamp(12px, 1.02vw, 15px);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
     }
 
-    .mini-stat{
-      font-size:28px;
-      font-weight:900;
-      line-height:1;
-      margin:2px 0 6px;
+    .nav-text:hover,
+    .nav-text:focus-visible,
+    .top-nav-item:hover .nav-text {
+      color: #fff;
+      background: #111;
+      transform: translateY(-1px);
+      outline: none;
     }
 
-    .mini-note{
-      font-size:13px;
-      font-weight:700;
-      opacity:.78;
+    .top-nav-item.is-current .nav-text {
+      color: rgba(17,17,17,0.58);
+      background: rgba(0,0,0,0.08);
+      cursor: default;
+      pointer-events: none;
     }
 
-    .section{
-      padding:18px;
-      margin:18px 0;
+    .nav-preview {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px) rotate(var(--r, -2deg));
+      width: min(160px, 18vw);
+      min-width: 120px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 80;
+      transition: opacity 0.13s ease, transform 0.13s ease, visibility 0.13s ease;
     }
 
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
+    .top-nav-item:nth-child(2n) .nav-preview { --r: 2deg; }
+    .top-nav-item:nth-child(3n) .nav-preview { --r: -3deg; }
+
+    .top-nav-item:hover .nav-preview,
+    .top-nav-item:focus-within .nav-preview {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) rotate(var(--r, -2deg));
     }
 
-    h2{
-      margin:0;
-      font-size:clamp(26px, 3.4vw, 40px);
-      line-height:1;
-      letter-spacing:-1px;
+    .nav-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55));
     }
 
-    .sub{
-      margin:0;
-      font-size:13px;
-      font-weight:700;
-      opacity:.75;
+    .top-nav-item.is-current .nav-preview img {
+      filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
     }
 
-    .stats-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:12px;
+    .nav-preview::after {
+      content: attr(data-note);
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%) rotate(-2deg);
+      color: #111;
+      background: #fff4ea;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      text-transform: lowercase;
     }
 
-    .stat-card{
-      padding:14px;
-      border-radius:24px;
+    .top-nav-item.is-current .nav-preview::before {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      transform: translateX(-50%) rotate(2deg);
+      color: #111;
+      background: #d8ff5e;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      z-index: 2;
     }
 
-    .stat-card:nth-child(4n+1){background:#fff7fb}
-    .stat-card:nth-child(4n+2){background:#f2fbff}
-    .stat-card:nth-child(4n+3){background:#fffbea}
-    .stat-card:nth-child(4n+4){background:#f5fff0}
+    .wrap { max-width: 1250px; margin: auto; }
 
-    .tiny{
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      margin-bottom:8px;
+    .panel {
+      display: block;
+      border: 3px solid #000;
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(18, 18, 30, 0.96);
+      box-shadow: 7px 7px 0 #000;
+      margin-bottom: 30px;
     }
 
-    .big-value{
-      font-size:32px;
-      font-weight:900;
-      line-height:1;
-      margin-bottom:6px;
-      word-break:break-word;
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
     }
 
-    .big-name{
-      font-size:16px;
-      font-weight:800;
-      word-break:break-word;
+    .title-strip {
+      display: inline-block;
+      color: #111;
+      background: var(--pink);
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: clamp(21px, 2.2vw, 32px);
+      font-weight: 900;
+      transform: rotate(-1.5deg);
     }
 
-    .table-wrap{
-      border:3px solid var(--line);
-      border-radius:24px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow:3px 4px 0 #111;
+    .subline {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      max-width: 620px;
+      line-height: 1.35;
+      font-weight: 700;
     }
 
-    table{
-      width:100%;
-      border-collapse:collapse;
+    .small-note {
+      color: #111;
+      background: #fff3c7;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transform: rotate(2deg);
+      white-space: nowrap;
+      box-shadow: 4px 4px 0 #000;
     }
 
-    th, td{
-      padding:12px 14px;
-      border-bottom:2px solid #111;
-      text-align:left;
-      font-size:14px;
+    .hero-note {
+      display: inline-block;
+      background: var(--paper2);
+      color: #111;
+      border: 1px solid #999;
+      padding: 5px 10px;
+      border-radius: 2px;
+      transform: rotate(-2deg);
+      margin-bottom: 14px;
     }
 
-    th{
-      background:#fff4ea;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
-    tr:last-child td{
-      border-bottom:0;
+    .stat-card {
+      color: #111;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 18px;
+      min-height: 104px;
+      padding: 14px 12px;
+      text-align: center;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      transform: rotate(var(--r));
     }
 
-    .loading,
-    .empty{
-      border:3px dashed var(--line);
-      border-radius:24px;
-      padding:18px;
-      background:#fff;
-      font-weight:800;
+    .stat-card:nth-child(1) { background: #ff9ecf; --r: -1deg; }
+    .stat-card:nth-child(2) { background: #b7f5ff; --r: 1deg; }
+    .stat-card:nth-child(3) { background: #ccb6ff; --r: -1deg; }
+    .stat-card:nth-child(4) { background: #e7ff86; --r: 1deg; }
+
+    .stat-kicker {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      opacity: 0.78;
     }
 
-    @media (max-width: 1100px){
-      .stats-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
+    .stat-value {
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .stat-caption {
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .dump-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .dump-card {
+      background: #11111b;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .dump-head {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+      color: white;
+      text-align: left;
+      font-family: monospace;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 12px;
+    }
+
+    .dump-title {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .dump-topline {
+      color: var(--yellow);
+      font-size: 14px;
+      font-weight: 900;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .dump-extra {
+      display: none;
+      padding: 12px;
+      background: linear-gradient(180deg, #f1dce4, #f6e7ec);
+      color: #111;
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .dump-card.open .dump-extra {
+      display: block;
+    }
+
+    .dump-table {
+      display: grid;
+      gap: 6px;
+    }
+
+    .dump-row {
+      display: grid;
+      grid-template-columns: 34px minmax(0,1fr) auto;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      padding: 7px 8px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .dump-rank {
+      color: var(--pink);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .dump-name {
+      color: #111;
+      overflow-wrap: anywhere;
+    }
+
+    .dump-score {
+      color: #111;
+      white-space: nowrap;
+    }
+
+    .watch-wide-board {
+      margin-top: 16px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .watch-slider-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .watch-slider-title {
+      color: var(--yellow);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .watch-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .watch-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      opacity: 0.45;
+      cursor: pointer;
+    }
+
+    .watch-dot.active {
+      opacity: 1;
+      background: var(--pink);
+    }
+
+    .watch-slider-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .watch-slider-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .watch-slide {
+      min-width: 100%;
+      width: 100%;
+    }
+
+    .watch-carousel {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 10px;
+      min-height: 275px;
+    }
+
+    .watch-carousel-card {
+      min-height: 225px;
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+
+    .watch-top-rank {
+      display: inline-block;
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-weight: 900;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .watch-carousel-name {
+      font-size: 17px;
+      font-weight: 900;
+      word-break: break-word;
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+
+    .watch-carousel-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .watch-carousel-note {
+      font-size: 12px;
+      color: #444;
+      margin-top: 7px;
+    }
+
+    .status-note {
+      margin-top: 10px;
+      display: inline-block;
+      background: var(--paper5);
+      color: #111;
+      border: 1px solid #b9a457;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transform: rotate(-2deg);
+      font-weight: 900;
+    }
+
+    @media (max-width: 1050px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 900px){
-      .toolbar,
-      .stats-grid{
-        grid-template-columns:1fr;
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 10px, 1600px);
       }
 
-      th, td{
-        padding:10px 10px;
-        font-size:13px;
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .nav-preview {
+        width: min(220px, 72vw);
+      }
+
+      .stats-grid,
+      .dump-grid,
+      .watch-carousel {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <span class="kicker">GirlServ / Totals</span>
-      <h1>📊 Stat Dump ♡</h1>
-      <p>all the numbers in one pile ♡</p>
-    </section>
+  <main class="page-shell">
+    <div class="top-bar" aria-label="GirlServ top navigation">
+      <a class="mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
+      <nav class="top-nav" aria-label="GirlServ pages">
+        <span class="top-nav-item" data-page="index.html">
+          <a class="nav-text" href="index.html">GirlServ HQ</a>
+          <span class="nav-preview" data-note="home base" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="loudmouths.html">
+          <a class="nav-text" href="loudmouths.html">Loudmouths</a>
+          <span class="nav-preview" data-note="top chatters" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="channel-trolls.html">
+          <a class="nav-text" href="channel-trolls.html">Channel Trolls</a>
+          <span class="nav-preview" data-note="degenerates" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="lol-lords.html">
+          <a class="nav-text" href="lol-lords.html">LOL Lords</a>
+          <span class="nav-preview" data-note="ha! ha! ha!" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="clickbait-crew.html">
+          <a class="nav-text" href="clickbait-crew.html">Clickbait Crew</a>
+          <span class="nav-preview" data-note="linked by" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="frequent-flyers.html">
+          <a class="nav-text" href="frequent-flyers.html">Frequent Flyers</a>
+          <span class="nav-preview" data-note="repeat joiners" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="stat-dump.html">
+          <a class="nav-text" href="stat-dump.html">Stat Dump</a>
+          <span class="nav-preview" data-note="totals" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="girls-notes.html">
+          <a class="nav-text" href="girls-notes.html">Girl's Notes</a>
+          <span class="nav-preview" data-note="no entry!" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="room-reports.html">
+          <a class="nav-text" href="room-reports.html">Room Reports</a>
+          <span class="nav-preview" data-note="channel receipts" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="the-girlbook.html">
+          <a class="nav-text" href="the-girlbook.html">Girlbook</a>
+          <span class="nav-preview" data-note="drop the &quot;the&quot;" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+        </span>
+      </nav>
+    </div>
 
-    <section class="toolbar">
-      <div class="tool-card">
-        <div class="tool-label">Tracked users</div>
-        <div class="mini-stat" id="trackedUsers">0</div>
-        <div class="mini-note">excluding girl</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-label">Combined words</div>
-        <div class="mini-stat" id="combinedWords">0</div>
-        <div class="mini-note">all tracked chatter</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-label">Combined events</div>
-        <div class="mini-stat" id="combinedEvents">0</div>
-        <div class="mini-note">joins + lol + chaos + links</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2># Room leaders</h2>
-          <p class="sub">biggest totals by category</p>
+    <div class="wrap">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="title-strip">Stat Dump ♡</div>
+            <div class="subline">The big totals page cut out into its own page. Overall counters at the top, then quick dump cards for the main categories underneath.</div>
+          </div>
+          <div class="small-note">overview totals</div>
         </div>
-      </div>
-      <div id="leadersWrap" class="loading">Loading totals…</div>
-    </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2># Full totals table</h2>
-          <p class="sub">all tracked users sorted by total words</p>
+        <div class="hero-note">all the big numbers in one place ♡</div>
+        <div id="json-status-main"></div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-kicker">chatters</div>
+            <div class="stat-value" id="summary-users">…</div>
+            <div class="stat-caption">people on the board</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-kicker">words</div>
+            <div class="stat-value" id="summary-words">…</div>
+            <div class="stat-caption">typed into history</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-kicker">lols</div>
+            <div class="stat-value" id="summary-lols">…</div>
+            <div class="stat-caption">public giggles recorded</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-kicker">links</div>
+            <div class="stat-value" id="summary-links">…</div>
+            <div class="stat-caption">receipts dropped</div>
+          </article>
         </div>
-      </div>
-      <div id="tableWrap" class="loading">Loading user totals…</div>
-    </section>
+
+        <div class="dump-grid">
+          <div class="dump-card">
+            <button class="dump-head" type="button">
+              <div class="dump-title">Top Chatters</div>
+              <div class="dump-topline" id="top-chatter-line">loading...</div>
+            </button>
+            <div class="dump-extra" style="display:block;">
+              <div class="dump-table" id="dump-chatters"></div>
+            </div>
+          </div>
+
+          <div class="dump-card">
+            <button class="dump-head" type="button">
+              <div class="dump-title">Top LOLs</div>
+              <div class="dump-topline" id="top-lol-line">loading...</div>
+            </button>
+            <div class="dump-extra" style="display:block;">
+              <div class="dump-table" id="dump-lols"></div>
+            </div>
+          </div>
+
+          <div class="dump-card">
+            <button class="dump-head" type="button">
+              <div class="dump-title">Top Links</div>
+              <div class="dump-topline" id="top-links-line">loading...</div>
+            </button>
+            <div class="dump-extra" style="display:block;">
+              <div class="dump-table" id="dump-links"></div>
+            </div>
+          </div>
+
+          <div class="dump-card">
+            <button class="dump-head" type="button">
+              <div class="dump-title">Top Joins</div>
+              <div class="dump-topline" id="top-joins-line">loading...</div>
+            </button>
+            <div class="dump-extra" style="display:block;">
+              <div class="dump-table" id="dump-joins"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel watch-wide-board">
+          <div class="panel-head" style="margin-bottom:10px;">
+            <div>
+              <div class="title-strip">Users To Keep An Eye On</div>
+            </div>
+          </div>
+          <div class="watch-slider-head">
+            <div class="watch-slider-title" id="watch-slider-title">loading...</div>
+            <div class="watch-dots" id="watch-dots"></div>
+          </div>
+          <div id="json-status-watch"></div>
+          <div class="watch-slider-viewport">
+            <div class="watch-slider-track" id="watch-slider-track"></div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script>
-    const DATA_URL = "truth_seekers_user_stats.json";
+    const currentPage = (() => {
+      const file = window.location.pathname.split("/").pop() || "index.html";
+      if (file === "" || file === "index.html") return "index.html";
+      if (file === "loudmouths") return "loudmouths.html";
+      if (file === "channel-trolls") return "channel-trolls.html";
+      if (file === "lol-lords") return "lol-lords.html";
+      if (file === "clickbait-crew") return "clickbait-crew.html";
+      if (file === "frequent-flyers") return "frequent-flyers.html";
+      if (file === "stat-dump") return "stat-dump.html";
+      if (file === "girls-notes") return "girls-notes.html";
+      if (file === "room-reports") return "room-reports.html";
+      if (file === "girlbook" || file === "the-girlbook") return "the-girlbook.html";
+      return file;
+    })();
 
-    function formatNum(value) {
-      return Number(value || 0).toLocaleString("en-US");
+    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+      const page = item.dataset.page;
+      const isCurrent = page === currentPage;
+      if (!isCurrent) return;
+      item.classList.add("is-current");
+      const link = item.querySelector(".nav-text");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+        link.removeAttribute("href");
+        link.addEventListener("click", event => event.preventDefault());
+      }
+    });
+
+    const DATA_URLS = [
+      "channel-stats/truth_seekers_user_stats.json",
+      "truth_seekers_user_stats.json",
+      "./truth_seekers_user_stats.json"
+    ];
+
+    let watchSlides = [];
+    let watchIndex = 0;
+    let watchTimer = null;
+
+    function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
+
+    function esc(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;");
     }
 
-    function safeEntries(raw) {
+    function status(elId, text){
+      const el = document.getElementById(elId);
+      if(!el) return;
+      el.innerHTML = text ? `<div class="status-note">${esc(text)}</div>` : "";
+    }
+
+    function entriesFrom(raw){
       return Object.entries(raw || {}).map(([nick, stats]) => ({
         nick,
-        words: Number(stats?.words || 0),
-        joins: Number(stats?.joins || 0),
-        lol: Number(stats?.lol || 0),
-        degeneracy: Number(stats?.degeneracy || 0),
-        links: Number(stats?.links || 0)
-      }));
+        words:Number(stats?.words||0),
+        joins:Number(stats?.joins||0),
+        lol:Number(stats?.lol||0),
+        degeneracy:Number(stats?.degeneracy||0),
+        links:Number(stats?.links||0)
+      })).filter(u => u.nick.toLowerCase() !== "girl");
     }
 
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
+    function total(users, field){
+      return users.reduce((sum, u) => sum + Number(u[field] || 0), 0);
     }
 
-    function buildLeaders(entries) {
-      const wrap = document.getElementById("leadersWrap");
-
-      const leaders = [
-        {
-          title: "most words",
-          user: [...entries].sort((a, b) => b.words - a.words)[0],
-          value: u => `${formatNum(u.words)} words`
-        },
-        {
-          title: "most joins",
-          user: [...entries].sort((a, b) => b.joins - a.joins)[0],
-          value: u => `${formatNum(u.joins)} joins`
-        },
-        {
-          title: "most lol",
-          user: [...entries].sort((a, b) => b.lol - a.lol)[0],
-          value: u => `${formatNum(u.lol)} lol`
-        },
-        {
-          title: "most chaos",
-          user: [...entries].sort((a, b) => b.degeneracy - a.degeneracy)[0],
-          value: u => `${formatNum(u.degeneracy)} chaos`
-        },
-        {
-          title: "most links",
-          user: [...entries].sort((a, b) => b.links - a.links)[0],
-          value: u => `${formatNum(u.links)} links`
-        },
-        {
-          title: "biggest total events",
-          user: [...entries].sort((a, b) => (b.joins + b.lol + b.degeneracy + b.links) - (a.joins + a.lol + a.degeneracy + a.links))[0],
-          value: u => `${formatNum(u.joins + u.lol + u.degeneracy + u.links)} total events`
-        },
-        {
-          title: "largest chaos pile",
-          user: [...entries].sort((a, b) => (b.words + b.degeneracy) - (a.words + a.degeneracy))[0],
-          value: u => `${formatNum(u.words + u.degeneracy)} words + chaos`
-        },
-        {
-          title: "busiest goblin",
-          user: [...entries].sort((a, b) => (b.words + b.joins + b.lol + b.links) - (a.words + a.joins + a.lol + a.links))[0],
-          value: u => `${formatNum(u.words + u.joins + u.lol + u.links)} stacked activity`
-        }
-      ];
-
-      wrap.className = "stats-grid";
-      wrap.innerHTML = leaders.map(item => `
-        <article class="stat-card">
-          <div class="tiny">${escapeHtml(item.title)}</div>
-          <div class="big-value">${item.user ? item.value(item.user) : "0"}</div>
-          <div class="big-name">${escapeHtml(item.user?.nick || "nobody yet")}</div>
-        </article>
+    function renderTable(elId, users, field, suffix){
+      document.getElementById(elId).innerHTML = users.slice(0,5).map((u, idx) => `
+        <div class="dump-row">
+          <div class="dump-rank">#${idx + 1}</div>
+          <div class="dump-name">${esc(u.nick)}</div>
+          <div class="dump-score">${fmt(u[field])} ${suffix}</div>
+        </div>
       `).join("");
     }
 
-    function buildTable(entries) {
-      const wrap = document.getElementById("tableWrap");
+    function buildWatchSlides(all){
+      return [
+        {
+          title: "Highest Word Counts",
+          note: "most chatty",
+          items: [...all].sort((a,b)=>b.words-a.words).slice(0,3),
+          score: u => `${fmt(u.words)} words`
+        },
+        {
+          title: "Highest LOL Counts",
+          note: "most giggly",
+          items: [...all].sort((a,b)=>b.lol-a.lol).slice(0,3),
+          score: u => `${fmt(u.lol)} lol`
+        },
+        {
+          title: "Highest Link Counts",
+          note: "most receipts",
+          items: [...all].sort((a,b)=>b.links-a.links).slice(0,3),
+          score: u => `${fmt(u.links)} links`
+        },
+        {
+          title: "Highest Join Counts",
+          note: "always coming back",
+          items: [...all].sort((a,b)=>b.joins-a.joins).slice(0,3),
+          score: u => `${fmt(u.joins)} joins`
+        }
+      ];
+    }
 
-      if (!entries.length) {
-        wrap.className = "empty";
-        wrap.textContent = "No tracked users found.";
-        return;
-      }
+    function renderWatchSlider(){
+      const track = document.getElementById("watch-slider-track");
+      const dots = document.getElementById("watch-dots");
 
-      wrap.className = "table-wrap";
-      wrap.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>User</th>
-              <th>Words</th>
-              <th>Joins</th>
-              <th>LOL</th>
-              <th>Chaos</th>
-              <th>Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${entries.map((user, index) => `
-              <tr>
-                <td>${index + 1}</td>
-                <td>${escapeHtml(user.nick)}</td>
-                <td>${formatNum(user.words)}</td>
-                <td>${formatNum(user.joins)}</td>
-                <td>${formatNum(user.lol)}</td>
-                <td>${formatNum(user.degeneracy)}</td>
-                <td>${formatNum(user.links)}</td>
-              </tr>
+      track.innerHTML = watchSlides.map(slide => `
+        <div class="watch-slide">
+          <div class="watch-carousel">
+            ${slide.items.map((u, idx) => `
+              <div class="watch-carousel-card">
+                <div class="watch-top-rank">#${idx+1}</div>
+                <div class="watch-carousel-name">${esc(u.nick)}</div>
+                <div class="watch-carousel-score">${slide.score(u)}</div>
+                <div class="watch-carousel-note">${esc(slide.note)}</div>
+              </div>
             `).join("")}
-          </tbody>
-        </table>
-      `;
+          </div>
+        </div>
+      `).join("");
+
+      dots.innerHTML = watchSlides.map((_, idx) => `
+        <button type="button" class="watch-dot${idx === 0 ? " active" : ""}" data-index="${idx}" aria-label="Go to slide ${idx+1}"></button>
+      `).join("");
+
+      dots.querySelectorAll(".watch-dot").forEach(dot => {
+        dot.addEventListener("click", () => goWatchSlide(Number(dot.dataset.index), true));
+      });
+
+      goWatchSlide(0, false);
+      startWatchSlider();
     }
 
-    async function loadPage() {
-      try {
-        const response = await fetch(DATA_URL, { cache: "no-store" });
-        if (!response.ok) throw new Error("Failed to load stat totals");
-        const raw = await response.json();
+    function goWatchSlide(index, restart){
+      watchIndex = index % watchSlides.length;
+      document.getElementById("watch-slider-track").style.transform = `translateX(-${watchIndex * 100}%)`;
+      document.getElementById("watch-slider-title").textContent = watchSlides[watchIndex].title;
+      document.querySelectorAll(".watch-dot").forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === watchIndex);
+      });
+      if(restart) startWatchSlider();
+    }
 
-        const entries = safeEntries(raw)
-          .filter(user => user.nick.toLowerCase() !== "girl")
-          .sort((a, b) => b.words - a.words);
+    function startWatchSlider(){
+      if(watchTimer) clearInterval(watchTimer);
+      watchTimer = setInterval(() => {
+        goWatchSlide((watchIndex + 1) % watchSlides.length, false);
+      }, 3500);
+    }
 
-        const combinedWords = entries.reduce((sum, user) => sum + user.words, 0);
-        const combinedEvents = entries.reduce((sum, user) => sum + user.joins + user.lol + user.degeneracy + user.links, 0);
+    async function loadData(){
+      for(const url of DATA_URLS){
+        try{
+          const res = await fetch(url, { cache:"no-store" });
+          if(res.ok) return await res.json();
+        }catch(e){}
+      }
+      throw new Error("json failed");
+    }
 
-        document.getElementById("trackedUsers").textContent = formatNum(entries.length);
-        document.getElementById("combinedWords").textContent = formatNum(combinedWords);
-        document.getElementById("combinedEvents").textContent = formatNum(combinedEvents);
+    async function boot(){
+      try{
+        const raw = await loadData();
+        const all = entriesFrom(raw);
 
-        buildLeaders(entries);
-        buildTable(entries);
-      } catch (error) {
-        document.getElementById("leadersWrap").className = "empty";
-        document.getElementById("leadersWrap").textContent = "Could not load totals.";
-        document.getElementById("tableWrap").className = "empty";
-        document.getElementById("tableWrap").textContent = "Could not load user totals.";
+        const byWords = [...all].sort((a,b)=>b.words-a.words);
+        const byLols = [...all].sort((a,b)=>b.lol-a.lol);
+        const byLinks = [...all].sort((a,b)=>b.links-a.links);
+        const byJoins = [...all].sort((a,b)=>b.joins-a.joins);
+
+        document.getElementById("summary-users").textContent = fmt(all.length);
+        document.getElementById("summary-words").textContent = fmt(total(all, "words"));
+        document.getElementById("summary-lols").textContent = fmt(total(all, "lol"));
+        document.getElementById("summary-links").textContent = fmt(total(all, "links"));
+
+        document.getElementById("top-chatter-line").textContent = byWords[0] ? `${byWords[0].nick} • ${fmt(byWords[0].words)}` : "—";
+        document.getElementById("top-lol-line").textContent = byLols[0] ? `${byLols[0].nick} • ${fmt(byLols[0].lol)}` : "—";
+        document.getElementById("top-links-line").textContent = byLinks[0] ? `${byLinks[0].nick} • ${fmt(byLinks[0].links)}` : "—";
+        document.getElementById("top-joins-line").textContent = byJoins[0] ? `${byJoins[0].nick} • ${fmt(byJoins[0].joins)}` : "—";
+
+        renderTable("dump-chatters", byWords, "words", "words");
+        renderTable("dump-lols", byLols, "lol", "lol");
+        renderTable("dump-links", byLinks, "links", "links");
+        renderTable("dump-joins", byJoins, "joins", "joins");
+
+        watchSlides = buildWatchSlides(all);
+        renderWatchSlider();
+      }catch(e){
+        status("json-status-main", "truthseekers stats .json can't load");
+        status("json-status-watch", "truthseekers stats .json can't load");
       }
     }
 
-    loadPage();
+    boot();
   </script>
 </body>
 </html>
