@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girlbook | GirlServ</title>
+
+  <style>
+    :root {
+      --ink: #fff8fd;
+      --muted: #dcc7dc;
+      --pink: #ff4aa5;
+      --hotpink: #ff128f;
+      --purple: #9d6cff;
+      --aqua: #67e9ff;
+      --lime: #d8ff5e;
+      --paper: #fff4ea;
+      --black: #0b0b10;
+      --panel: rgba(18, 10, 28, 0.92);
+      --shadow: 5px 5px 0 #000;
+      --yellow: #ffe45c;
+      --paper2: #f2efe7;
+      --paper3: #e8dcff;
+      --paper4: #ffe6f2;
+      --paper5: #f6e7bf;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255, 74, 165, 0.26), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(103, 233, 255, 0.20), transparent 20%),
+        radial-gradient(circle at 18% 88%, rgba(216, 255, 94, 0.12), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(157, 108, 255, 0.20), transparent 26%),
+        linear-gradient(180deg, #120716 0%, #0c0610 46%, #050308 100%);
+      overflow-x: hidden;
+      padding: 18px;
+    }
+
+    body::before {
+      content: "♡ ★ xoxo ★ burn book ★ coolour ★ girlserv ★ memories ★";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      color: rgba(255,255,255,0.045);
+      font-size: 34px;
+      line-height: 125px;
+      letter-spacing: 8px;
+      transform: rotate(-7deg) scale(1.12);
+      white-space: pre-wrap;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1600px, calc(100% - 22px));
+      margin: 12px auto 26px;
+    }
+
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 auto 10px;
+      padding: 9px 14px;
+      border: 2px solid #000;
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(0deg, rgba(103, 233, 255, 0.12) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, transparent 0 26px, rgba(255, 18, 143, 0.22) 26px 28px, transparent 28px),
+        rgba(255, 244, 234, 0.96);
+      box-shadow: 6px 6px 0 #000;
+      color: #111;
+    }
+
+    .mini-logo {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hotpink);
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-size: clamp(25px, 3vw, 42px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      transform-origin: center;
+    }
+
+    .mini-logo:hover,
+    .mini-logo:focus-visible {
+      animation: logoWiggle 0.38s linear infinite;
+      outline: none;
+    }
+
+    @keyframes logoWiggle {
+      0%, 100% { transform: rotate(0deg) translate(0, 0); }
+      20% { transform: rotate(-4deg) translate(-1px, 1px); }
+      40% { transform: rotate(3deg) translate(1px, -1px); }
+      60% { transform: rotate(-2deg) translate(1px, 1px); }
+      80% { transform: rotate(4deg) translate(-1px, -1px); }
+    }
+
+    .top-nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px 7px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .top-nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #111;
+      font-size: clamp(12px, 1.02vw, 15px);
+      font-weight: 900;
+      white-space: nowrap;
+      transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease;
+    }
+
+    .nav-text:hover,
+    .nav-text:focus-visible,
+    .top-nav-item:hover .nav-text {
+      color: #fff;
+      background: #111;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .top-nav-item.is-current .nav-text {
+      color: rgba(17,17,17,0.58);
+      background: rgba(0,0,0,0.08);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .nav-preview {
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px) rotate(var(--r, -2deg));
+      width: min(160px, 18vw);
+      min-width: 120px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 80;
+      transition: opacity 0.13s ease, transform 0.13s ease, visibility 0.13s ease;
+    }
+
+    .top-nav-item:nth-child(2n) .nav-preview { --r: 2deg; }
+    .top-nav-item:nth-child(3n) .nav-preview { --r: -3deg; }
+
+    .top-nav-item:hover .nav-preview,
+    .top-nav-item:focus-within .nav-preview {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) rotate(var(--r, -2deg));
+    }
+
+    .nav-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
+
+    .top-nav-item.is-current .nav-preview img {
+      filter: grayscale(1) brightness(0.58) contrast(1.05) drop-shadow(0 8px 10px rgba(0,0,0,0.55));
+    }
+
+    .nav-preview::after {
+      content: attr(data-note);
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%) rotate(-2deg);
+      color: #111;
+      background: #fff4ea;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      text-transform: lowercase;
+    }
+
+    .top-nav-item.is-current .nav-preview::before {
+      content: "you are here";
+      position: absolute;
+      left: 50%;
+      top: -12px;
+      transform: translateX(-50%) rotate(2deg);
+      color: #111;
+      background: #d8ff5e;
+      border: 2px solid #000;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 2px 3px 0 #000;
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    .wrap { max-width: 1250px; margin: auto; }
+
+    .panel {
+      display: block;
+      border: 3px solid #000;
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(18, 18, 30, 0.96);
+      box-shadow: 7px 7px 0 #000;
+      margin-bottom: 30px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .title-strip {
+      display: inline-block;
+      color: #111;
+      background: #d7c0ff;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: clamp(21px, 2.2vw, 32px);
+      font-weight: 900;
+      transform: rotate(-1.5deg);
+    }
+
+    .subline {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      max-width: 620px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .small-note {
+      color: #111;
+      background: #fff3c7;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      transform: rotate(2deg);
+      white-space: nowrap;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .hero-note {
+      display: inline-block;
+      background: var(--paper2);
+      color: #111;
+      border: 1px solid #999;
+      padding: 5px 10px;
+      border-radius: 2px;
+      transform: rotate(-2deg);
+      margin-bottom: 14px;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .book-card {
+      color: #111;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      border-radius: 16px;
+      padding: 14px 12px;
+      min-height: 175px;
+      position: relative;
+      transform: rotate(var(--r));
+    }
+
+    .book-card:nth-child(1) { background: #fff4ea; --r: -1.4deg; }
+    .book-card:nth-child(2) { background: #ffe6f2; --r: 1.4deg; }
+    .book-card:nth-child(3) { background: #ebf7ff; --r: -1deg; }
+    .book-card:nth-child(4) { background: #f1ebff; --r: 1deg; }
+
+    .book-pin {
+      position: absolute;
+      top: -10px;
+      left: 18px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--hotpink);
+      border: 2px solid #7f003f;
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .book-title {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: .78;
+      margin-bottom: 8px;
+    }
+
+    .book-big {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .book-copy {
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .watch-wide-board {
+      margin-top: 16px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .watch-slider-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .watch-slider-title {
+      color: var(--yellow);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .watch-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .watch-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      opacity: 0.45;
+      cursor: pointer;
+    }
+
+    .watch-dot.active {
+      opacity: 1;
+      background: var(--pink);
+    }
+
+    .watch-slider-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .watch-slider-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .watch-slide {
+      min-width: 100%;
+      width: 100%;
+    }
+
+    .watch-carousel {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 10px;
+      min-height: 230px;
+    }
+
+    .watch-carousel-card {
+      min-height: 190px;
+      background: var(--paper2);
+      color: #111;
+      border: 2px solid #c7b398;
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+
+    .watch-top-rank {
+      display: inline-block;
+      background: var(--yellow);
+      color: #111;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-weight: 900;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .watch-carousel-name {
+      font-size: 17px;
+      font-weight: 900;
+      word-break: break-word;
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+
+    .watch-carousel-score {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: #ffb6d1;
+      color: #111;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .watch-carousel-note {
+      font-size: 12px;
+      color: #444;
+      margin-top: 7px;
+    }
+
+    .status-note {
+      margin-top: 10px;
+      display: inline-block;
+      background: var(--paper5);
+      color: #111;
+      border: 1px solid #b9a457;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transform: rotate(-2deg);
+      font-weight: 900;
+    }
+
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 10px, 1600px);
+      }
+
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .nav-preview {
+        width: min(220px, 72vw);
+      }
+
+      .book-grid,
+      .watch-carousel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <div class="top-bar" aria-label="GirlServ top navigation">
+      <a class="mini-logo" href="index.html" aria-label="GirlServ HQ">GirlServ</a>
+      <nav class="top-nav" aria-label="GirlServ pages">
+        <span class="top-nav-item" data-page="index.html">
+          <a class="nav-text" href="index.html">GirlServ HQ</a>
+          <span class="nav-preview" data-note="home base" aria-hidden="true"><img src="assets/buttons/girlserv-hq.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="loudmouths.html">
+          <a class="nav-text" href="loudmouths.html">Loudmouths</a>
+          <span class="nav-preview" data-note="top chatters" aria-hidden="true"><img src="assets/buttons/loudmouths.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="channel-trolls.html">
+          <a class="nav-text" href="channel-trolls.html">Channel Trolls</a>
+          <span class="nav-preview" data-note="degenerates" aria-hidden="true"><img src="assets/buttons/channel-trolls.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="lol-lords.html">
+          <a class="nav-text" href="lol-lords.html">LOL Lords</a>
+          <span class="nav-preview" data-note="ha! ha! ha!" aria-hidden="true"><img src="assets/buttons/lol-lords.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="clickbait-crew.html">
+          <a class="nav-text" href="clickbait-crew.html">Clickbait Crew</a>
+          <span class="nav-preview" data-note="linked by" aria-hidden="true"><img src="assets/buttons/clickbait-crew.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="frequent-flyers.html">
+          <a class="nav-text" href="frequent-flyers.html">Frequent Flyers</a>
+          <span class="nav-preview" data-note="repeat joiners" aria-hidden="true"><img src="assets/buttons/frequent-flyers.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="stat-dump.html">
+          <a class="nav-text" href="stat-dump.html">Stat Dump</a>
+          <span class="nav-preview" data-note="totals" aria-hidden="true"><img src="assets/buttons/stat-dump.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="girls-notes.html">
+          <a class="nav-text" href="girls-notes.html">Girl's Notes</a>
+          <span class="nav-preview" data-note="no entry!" aria-hidden="true"><img src="assets/buttons/girls-notes.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="room-reports.html">
+          <a class="nav-text" href="room-reports.html">Room Reports</a>
+          <span class="nav-preview" data-note="channel receipts" aria-hidden="true"><img src="assets/buttons/room-reports.png" alt=""></span>
+        </span>
+        <span class="top-nav-item" data-page="the-girlbook.html">
+          <a class="nav-text" href="the-girlbook.html">Girlbook</a>
+          <span class="nav-preview" data-note="drop the &quot;the&quot;" aria-hidden="true"><img src="assets/buttons/the-girlbook.png" alt=""></span>
+        </span>
+      </nav>
+    </div>
+
+    <div class="wrap">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="title-strip">Girlbook ♡</div>
+            <div class="subline">The social page cut out into its own page. Little scrapbook cards for who is active, funny, nosy, and chaotic right now.</div>
+          </div>
+          <div class="small-note">social board</div>
+        </div>
+
+        <div class="hero-note">drop the "the" ♡</div>
+        <div id="json-status-main"></div>
+
+        <div class="book-grid" id="book-grid"></div>
+
+        <div class="watch-wide-board">
+          <div class="watch-slider-head">
+            <div class="watch-slider-title" id="watch-slider-title">loading...</div>
+            <div class="watch-dots" id="watch-dots"></div>
+          </div>
+          <div id="json-status-watch"></div>
+          <div class="watch-slider-viewport">
+            <div class="watch-slider-track" id="watch-slider-track"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const currentPage = (() => {
+      const file = window.location.pathname.split("/").pop() || "index.html";
+      if (file === "" || file === "index.html") return "index.html";
+      if (file === "loudmouths") return "loudmouths.html";
+      if (file === "channel-trolls") return "channel-trolls.html";
+      if (file === "lol-lords") return "lol-lords.html";
+      if (file === "clickbait-crew") return "clickbait-crew.html";
+      if (file === "frequent-flyers") return "frequent-flyers.html";
+      if (file === "stat-dump") return "stat-dump.html";
+      if (file === "girls-notes") return "girls-notes.html";
+      if (file === "room-reports") return "room-reports.html";
+      if (file === "girlbook" || file === "the-girlbook") return "the-girlbook.html";
+      return file;
+    })();
+
+    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+      const page = item.dataset.page;
+      const isCurrent = page === currentPage;
+      if (!isCurrent) return;
+      item.classList.add("is-current");
+      const link = item.querySelector(".nav-text");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+        link.removeAttribute("href");
+        link.addEventListener("click", event => event.preventDefault());
+      }
+    });
+
+    const DATA_URLS = [
+      "channel-stats/truth_seekers_user_stats.json",
+      "truth_seekers_user_stats.json",
+      "./truth_seekers_user_stats.json"
+    ];
+
+    let watchSlides = [];
+    let watchIndex = 0;
+    let watchTimer = null;
+
+    function fmt(n){ return Number(n||0).toLocaleString("en-US"); }
+
+    function esc(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;");
+    }
+
+    function status(elId, text){
+      const el = document.getElementById(elId);
+      if(!el) return;
+      el.innerHTML = text ? `<div class="status-note">${esc(text)}</div>` : "";
+    }
+
+    function entriesFrom(raw){
+      return Object.entries(raw || {}).map(([nick, stats]) => ({
+        nick,
+        words:Number(stats?.words||0),
+        joins:Number(stats?.joins||0),
+        lol:Number(stats?.lol||0),
+        degeneracy:Number(stats?.degeneracy||0),
+        links:Number(stats?.links||0)
+      })).filter(u => u.nick.toLowerCase() !== "girl");
+    }
+
+    function renderBook(users){
+      const byWords = [...users].sort((a,b)=>b.words-a.words)[0];
+      const byLols = [...users].sort((a,b)=>b.lol-a.lol)[0];
+      const byLinks = [...users].sort((a,b)=>b.links-a.links)[0];
+      const byChaos = [...users].sort((a,b)=>b.degeneracy-a.degeneracy)[0];
+
+      document.getElementById("book-grid").innerHTML = `
+        <article class="book-card">
+          <div class="book-pin"></div>
+          <div class="book-title">currently most active</div>
+          <div class="book-big">${esc(byWords?.nick || "nobody yet")}</div>
+          <div class="book-copy">${byWords ? `${fmt(byWords.words)} words and clearly not shutting up.` : "waiting for stats."}</div>
+        </article>
+        <article class="book-card">
+          <div class="book-pin"></div>
+          <div class="book-title">funniest one</div>
+          <div class="book-big">${esc(byLols?.nick || "nobody yet")}</div>
+          <div class="book-copy">${byLols ? `${fmt(byLols.lol)} lols logged in public.` : "waiting for stats."}</div>
+        </article>
+        <article class="book-card">
+          <div class="book-pin"></div>
+          <div class="book-title">most nosey</div>
+          <div class="book-big">${esc(byLinks?.nick || "nobody yet")}</div>
+          <div class="book-copy">${byLinks ? `${fmt(byLinks.links)} links dropped all over the place.` : "waiting for stats."}</div>
+        </article>
+        <article class="book-card">
+          <div class="book-pin"></div>
+          <div class="book-title">biggest menace</div>
+          <div class="book-big">${esc(byChaos?.nick || "nobody yet")}</div>
+          <div class="book-copy">${byChaos ? `${fmt(byChaos.degeneracy)} chaos points and still going.` : "waiting for stats."}</div>
+        </article>
+      `;
+    }
+
+    function buildWatchSlides(all){
+      return [
+        {
+          title: "Most Active",
+          note: "main characters",
+          items: [...all].sort((a,b)=>b.words-a.words).slice(0,3),
+          score: u => `${fmt(u.words)} words`
+        },
+        {
+          title: "Most Funny",
+          note: "giggly little pests",
+          items: [...all].sort((a,b)=>b.lol-a.lol).slice(0,3),
+          score: u => `${fmt(u.lol)} lol`
+        },
+        {
+          title: "Most Nosey",
+          note: "link droppers",
+          items: [...all].sort((a,b)=>b.links-a.links).slice(0,3),
+          score: u => `${fmt(u.links)} links`
+        },
+        {
+          title: "Most Chaotic",
+          note: "causing problems",
+          items: [...all].sort((a,b)=>b.degeneracy-a.degeneracy).slice(0,3),
+          score: u => `${fmt(u.degeneracy)} chaos`
+        }
+      ];
+    }
+
+    function renderWatchSlider(){
+      const track = document.getElementById("watch-slider-track");
+      const dots = document.getElementById("watch-dots");
+
+      track.innerHTML = watchSlides.map(slide => `
+        <div class="watch-slide">
+          <div class="watch-carousel">
+            ${slide.items.map((u, idx) => `
+              <div class="watch-carousel-card">
+                <div class="watch-top-rank">#${idx+1}</div>
+                <div class="watch-carousel-name">${esc(u.nick)}</div>
+                <div class="watch-carousel-score">${slide.score(u)}</div>
+                <div class="watch-carousel-note">${esc(slide.note)}</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+
+      dots.innerHTML = watchSlides.map((_, idx) => `
+        <button type="button" class="watch-dot${idx === 0 ? " active" : ""}" data-index="${idx}" aria-label="Go to slide ${idx+1}"></button>
+      `).join("");
+
+      dots.querySelectorAll(".watch-dot").forEach(dot => {
+        dot.addEventListener("click", () => goWatchSlide(Number(dot.dataset.index), true));
+      });
+
+      goWatchSlide(0, false);
+      startWatchSlider();
+    }
+
+    function goWatchSlide(index, restart){
+      watchIndex = index % watchSlides.length;
+      document.getElementById("watch-slider-track").style.transform = `translateX(-${watchIndex * 100}%)`;
+      document.getElementById("watch-slider-title").textContent = watchSlides[watchIndex].title;
+      document.querySelectorAll(".watch-dot").forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === watchIndex);
+      });
+      if(restart) startWatchSlider();
+    }
+
+    function startWatchSlider(){
+      if(watchTimer) clearInterval(watchTimer);
+      watchTimer = setInterval(() => {
+        goWatchSlide((watchIndex + 1) % watchSlides.length, false);
+      }, 3500);
+    }
+
+    async function loadData(){
+      for(const url of DATA_URLS){
+        try{
+          const res = await fetch(url, { cache:"no-store" });
+          if(res.ok) return await res.json();
+        }catch(e){}
+      }
+      throw new Error("json failed");
+    }
+
+    async function boot(){
+      try{
+        const raw = await loadData();
+        const all = entriesFrom(raw);
+        renderBook(all);
+        watchSlides = buildWatchSlides(all);
+        renderWatchSlider();
+      }catch(e){
+        status("json-status-main", "truthseekers stats .json can't load");
+        status("json-status-watch", "truthseekers stats .json can't load");
+      }
+    }
+
+    boot();
+  </script>
+</body>
+</html>
