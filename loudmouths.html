@@ -848,24 +848,34 @@
   </main>
 
   <script>
-    const currentPage = (() => {
-      const file = window.location.pathname.split("/").pop() || "index.html";
-      return file === "" ? "index.html" : file;
-    })();
+const currentPage = (() => {
+  const file = window.location.pathname.split("/").pop() || "index.html";
+  if (file === "" || file === "index.html") return "index.html";
+  if (file === "loudmouths") return "loudmouths.html";
+  if (file === "channel-trolls") return "channel-trolls.html";
+  if (file === "lol-lords") return "lol-lords.html";
+  if (file === "clickbait-crew") return "clickbait-crew.html";
+  if (file === "frequent-flyers") return "frequent-flyers.html";
+  if (file === "stat-dump") return "stat-dump.html";
+  if (file === "girls-notes") return "girls-notes.html";
+  if (file === "room-reports") return "room-reports.html";
+  if (file === "girlbook" || file === "the-girlbook") return "the-girlbook.html";
+  return file;
+})();
 
-    document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
-      const page = item.dataset.page;
-      const isCurrent = page === currentPage || (currentPage === "index.html" && page === "index.html");
-      if (!isCurrent) return;
+document.querySelectorAll(".top-nav-item[data-page]").forEach(item => {
+  const page = item.dataset.page;
+  const isCurrent = page === currentPage;
+  if (!isCurrent) return;
 
-      item.classList.add("is-current");
-      const link = item.querySelector(".nav-text");
-      if (link) {
-        link.setAttribute("aria-current", "page");
-        link.removeAttribute("href");
-        link.addEventListener("click", event => event.preventDefault());
-      }
-    });
+  item.classList.add("is-current");
+  const link = item.querySelector(".nav-text");
+  if (link) {
+    link.setAttribute("aria-current", "page");
+    link.removeAttribute("href");
+    link.addEventListener("click", event => event.preventDefault());
+  }
+});
 
     const DATA_URLS = [
       "channel-stats/truth_seekers_user_stats.json",
